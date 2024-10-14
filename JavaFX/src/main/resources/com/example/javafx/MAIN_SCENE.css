@@ -1,0 +1,59 @@
+.backgr{
+    -fx-background-image: url(../../../../../../../../Users/Admin/Downloads/MAIN_SCENE_control/backgr.png);
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-alignment: center;
+}
+
+.top_bar{    /* bar top trên cùng (logo, menu , avatar) */
+    -fx-background-color: rgb(250,247,247,0.8);
+    -fx-border-radius: 150;   /* Bán kính góc bo tròn */
+    -fx-background-radius: 150; /* Cùng bán kính với chiều rộng để có hình tròn */
+    -fx-padding: 10;  /* Khoảng cách giữa biên và các phần tử con */
+}
+.main_bar{  /* bar chính */
+    -fx-border-radius: 50;   /* Bán kính góc bo tròn */
+    -fx-background-radius: 50; /* Cùng bán kính với chiều rộng để có hình tròn */
+    -fx-background-color: rgb(250,247,247,0.8);
+    -fx-fill-height: true;
+    -fx-fill-width: true;
+}
+.menu_item1{    /* menu 1 */
+    -fx-border-radius: 50;   /* Bán kính góc bo tròn */
+    -fx-background-radius: 50; /* Cùng bán kính với chiều rộng để có hình tròn */
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-font-size: 20px;
+}
+.menu_item1:hover{
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-border-color: #00FF44;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+.menu_item2{    /* menu 2 */
+    -fx-border-radius: 50;   /* Bán kính góc bo tròn */
+    -fx-background-radius: 50; /* Cùng bán kính với chiều rộng để có hình tròn */
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-font-size: 20px;
+}
+.menu_item2:hover{
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-border-color: #ff0000;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+.menu_item3{    /* menu 3 */
+    -fx-border-radius: 50;   /* Bán kính góc bo tròn */
+    -fx-background-radius: 50; /* Cùng bán kính với chiều rộng để có hình tròn */
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-font-size: 20px;
+}
+.menu_item3:hover{
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-border-color: #1900ff;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+.avatar{
+    -fx-border-radius: 50;   /* Bán kính góc bo tròn */
+    -fx-background-radius: 50;
+}
