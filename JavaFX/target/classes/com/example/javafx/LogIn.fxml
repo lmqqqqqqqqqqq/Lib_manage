@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="554.0" prefWidth="689.0" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.LoginController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="396.0">
+         <children>
+            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#202020" height="402.0" layoutY="-1.0" opacity="0.79" stroke="BLACK" strokeType="INSIDE" width="396.0" />
+            <Label layoutX="156.0" layoutY="30.0" prefHeight="81.0" prefWidth="190.0" text="    Login" textFill="#0adaff">
+               <font>
+                  <Font name="Calibri Bold Italic" size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="125.0" prefHeight="32.0" prefWidth="120.0" text="  Username" textFill="#0adaff">
+               <font>
+                  <Font name="Segoe UI Light Italic" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="usernameTextField" layoutX="150.0" layoutY="127.0" opacity="0.55" prefHeight="32.0" prefWidth="201.0" promptText="username" style="-fx-background-color: #70706b;" styleClass="field" stylesheets="@style.css">
+               <font>
+                  <Font name="Arial Italic" size="13.0" />
+               </font>
+            </TextField>
+            <Label layoutX="30.0" layoutY="187.0" prefHeight="32.0" prefWidth="120.0" text="  Password" textFill="#0adaff">
+               <font>
+                  <Font name="Segoe UI Light Italic" size="24.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="enterPasswordField" layoutX="150.0" layoutY="187.0" opacity="0.55" prefHeight="32.0" prefWidth="201.0" promptText="password" style="-fx-background-color: #70706b;" styleClass="field" stylesheets="@style.css">
+               <font>
+                  <Font name="Arial Italic" size="13.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="loginButton" layoutX="150.0" layoutY="256.0" mnemonicParsing="false" onAction="#loginButtonClickedOnAction" opacity="0.55" prefHeight="32.0" prefWidth="201.0" style="-fx-background-color: #70706b;" text="Login" textFill="#0adaff">
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="cancelButton" layoutX="62.0" layoutY="256.0" mnemonicParsing="false" onAction="#cancelButtonClickedOnAction" opacity="0.55" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: #70706b;" text="Cancel" textFill="#0adaff">
+               <font>
+                  <Font name="Calibri Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label alignment="CENTER_RIGHT" layoutX="58.0" layoutY="301.0" prefHeight="20.0" prefWidth="322.0" text="Don't have an acount ? Sign up now !" textAlignment="RIGHT" textFill="#0adaff">
+               <font>
+                  <Font name="Segoe UI Light Italic" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="signUpButton" layoutX="149.0" layoutY="331.0" mnemonicParsing="false" onAction="#signUpButtonClickedOnAction" opacity="0.69" prefHeight="32.0" prefWidth="202.0" style="-fx-background-color: #70706b;" text="Sign up with us !" textFill="#0adaff">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="InvalidLoginLabel" layoutX="48.0" layoutY="222.0" prefHeight="32.0" prefWidth="300.0" text=" " textFill="#cee40b">
+               <font>
+                  <Font name="Segoe UI Light Italic" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="9.0" layoutY="-4.0">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

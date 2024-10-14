@@ -1,0 +1,9 @@
+.body {
+    -fx-background-image: url("background.jpg");
+    -fx-background-size: cover;
+
+    /* Để ảnh căn giữa */
+}
+.field {
+    -fx-text-fill: #0adaff;
+}
