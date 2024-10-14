@@ -64,10 +64,7 @@ public class LoginController {
     /**
      * close the login window and open the register window.
      */
-    public void signUpButtonClickedOnAction() {
-        Stage stage = (Stage) signUpButton.getScene().getWindow();
-        SceneSwitcher.SwitchScene(stage,"SignUp.FXML");
-    }
+
     /**
      * use the database's information and check if it's exist or not.
      * @return true if the login information is correct .
