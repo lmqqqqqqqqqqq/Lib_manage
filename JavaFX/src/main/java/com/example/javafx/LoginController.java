@@ -52,7 +52,11 @@ public class LoginController {
     /**
      * check if the button is clicked and close the window then.
      */
-    
+    public void cancelButtonClickedOnAction() {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+        //????
+    }
 
     /**
      * close the login window and open the register window.
