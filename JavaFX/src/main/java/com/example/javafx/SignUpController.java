@@ -309,6 +309,6 @@ public class SignUpController {
      */
     public void backToLoginButtonOnAction() {
         Stage stage = (Stage)backToLoginButton.getScene().getWindow();
-        SceneSwitcher.swingScene(stage,"Login.fxml");
+        SceneSwitcher.SwitchScene(stage,"Login.fxml");
     }
 }

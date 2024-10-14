@@ -21,6 +21,8 @@ public class LoginController {
     private PasswordField enterPasswordField;
     @FXML
     private Button signUpButton;
+    @FXML
+    private Button loginButton;
 
     /**
      * connect with database.
@@ -41,6 +43,8 @@ public class LoginController {
             if(validLogin()) {
                 InvalidLoginLabel.setText("Redirecting!");
                 InvalidLoginLabel.setStyle("-fx-text-fill: green");
+                Stage stage = (Stage) loginButton.getScene().getWindow();
+                SceneSwitcher.SwitchScene(stage, "MAIN_SCENE.fxml");
             } else {
                 InvalidLoginLabel.setText("Invalid password or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
@@ -62,7 +66,7 @@ public class LoginController {
      */
     public void signUpButtonClickedOnAction() {
         Stage stage = (Stage) signUpButton.getScene().getWindow();
-        SceneSwitcher.swingScene(stage,"SignUp.FXML");
+        SceneSwitcher.SwitchScene(stage,"SignUp.FXML");
     }
     /**
      * use the database's information and check if it's exist or not.

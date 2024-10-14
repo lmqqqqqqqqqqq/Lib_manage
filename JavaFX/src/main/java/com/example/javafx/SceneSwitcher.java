@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 public class SceneSwitcher {
 
-    public static void swingScene(Stage currentStage, String string) {
+    public static void SwitchScene(Stage currentStage, String string) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource(string));
             Scene scene = new Scene(fxmlLoader.load());
