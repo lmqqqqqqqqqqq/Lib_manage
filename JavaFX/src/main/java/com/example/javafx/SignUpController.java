@@ -41,6 +41,8 @@ public class SignUpController {
     private ComboBox yearCombo;
     @FXML
     private Label invalidBirthDateLabel;
+    @FXML
+    private Button registerButton;
 
     /**
      * initialize the comboBox
@@ -172,81 +174,122 @@ public class SignUpController {
     }
 
     /**
-     * check the condition of username, password, confirm password, if valid information, export data to database.
+     * check the username and using released to check throughout the process.
      */
-    public void registerButtonClickedOnAction() {
-        boolean isValid = true; //valid registration check.
-
-        // check username
+    @FXML
+    public  void userNameReleased () {
+        boolean check = true;
         if (setUsernameTextField.getText().isEmpty()) {
             invalidUsernameLabel.setText("You need to enter a username");
             invalidUsernameLabel.setStyle("-fx-text-fill: red");
-            isValid = false;
+            check = false;
         } else if (setUsernameTextField.getText().length() < 6 || setUsernameTextField.getText().length() > 15) {
             invalidUsernameLabel.setText("Username must be between 6 and 15 characters");
             invalidUsernameLabel.setStyle("-fx-text-fill: red");
-            isValid = false;
+            check = false;
         } else if(!pass(setUsernameTextField.getText())) {
             invalidUsernameLabel.setText("Username can not contains special characters except '@, '-', '_'.");
             invalidUsernameLabel.setStyle("-fx-text-fill: red");
+            check = false;
         }
-        else {
+        else if(UsernameExisted()) {
+            invalidUsernameLabel.setText("Username already exists");
+            invalidUsernameLabel.setStyle("-fx-text-fill: red");
+            check = false;
+        } if(check) {
             invalidUsernameLabel.setText("Valid username");
             invalidUsernameLabel.setStyle("-fx-text-fill: green");
         }
+    }
 
-        // check password.
+    /**
+     * check the password and using released to check throughout the process.
+     */
+
+    @FXML
+    public void passwordRelease () {
+        boolean check = true;
         if (setPasswordField.getText().isEmpty()) {
             invalidPasswordLabel.setText("You need to enter a password");
             invalidPasswordLabel.setStyle("-fx-text-fill: red");
-            isValid = false;
+            check = false;
         } else if (setPasswordField.getText().length() < 6 || setPasswordField.getText().length() > 50) {
             invalidPasswordLabel.setText("Password should be between 6 and 50 characters");
             invalidPasswordLabel.setStyle("-fx-text-fill: red");
-            isValid = false;
-        } else {
+            check = false;
+        } if (check) {
             invalidPasswordLabel.setText("Valid password");
             invalidPasswordLabel.setStyle("-fx-text-fill: green");
         }
+    }
 
-        // confirm password check.
+    /**
+     * check the confirm and using released to check throughout the process.
+     */
+
+    public void confirmReleased () {
+        boolean check = true;
         if (!invalidPasswordLabel.getText().equals("Valid password")) {
             invalidConfirmPasswordLabel.setText("Please enter a valid password");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
+            check = false;
         } else if (confirmPasswordField.getText().isEmpty()) {
             invalidConfirmPasswordLabel.setText("You need to enter a confirm password");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
+            check = false;
         } else if (!confirmPasswordField.getText().equals(setPasswordField.getText())) {
             invalidConfirmPasswordLabel.setText("Password does not match");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
-            isValid = false;
-        } else {
+            check = false;
+        } if(check) {
             invalidConfirmPasswordLabel.setText("Valid Password");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: green");
         }
+    }
 
-        //birthDate check
 
+
+    public void registerButtonClickedOnAction() {
+        /**
+         * check birth's date.
+         */
         if (validateFields()) {
             invalidBirthDateLabel.setText("Valid Birth Date");
-        } else {
-            isValid = false;
         }
 
-        if (isValid) {
-            if(!UsernameExisted()) {
+        if (invalidUsernameLabel.equals("Valid username") && invalidPasswordLabel.equals("Valid password")
+                && invalidConfirmPasswordLabel.equals("Valid confirm password") && validateFields()) {
                 titleLabel.setText("Registration successful");
                 registerUser();
-            } else {
-                titleLabel.setText("Registration failed!");
-                invalidUsernameLabel.setText("Username already exists");
-                invalidUsernameLabel.setStyle("-fx-text-fill: red");
-            }
         } else {
             titleLabel.setText("Registration failed!");
             titleLabel.setStyle("-fx-text-fill: red");
         }
     }
+
+    public void registerEnter () {
+        registerButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: green");
+    }
+
+    public void registerExited () {
+        registerButton.setStyle("");
+    }
+    public void cancelEnter () {
+        cancelSignupButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: red");
+    }
+
+    public void cancelExited () {
+        cancelSignupButton.setStyle("");
+    }
+
+    public void backEnter () {
+        backToLoginButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: yellow");
+    }
+
+    public void backExited () {
+        backToLoginButton.setStyle("");
+    }
+
 
     /**
      * export data into database.
