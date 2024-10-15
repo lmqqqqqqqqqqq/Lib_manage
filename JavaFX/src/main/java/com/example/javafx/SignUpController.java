@@ -34,11 +34,11 @@ public class SignUpController {
     @FXML
     private Label titleLabel;
     @FXML
-    private ComboBox monthCombo;
+    private ComboBox<String> monthCombo;
     @FXML
-    private ComboBox dayCombo;
+    private ComboBox<String> dayCombo;
     @FXML
-    private ComboBox yearCombo;
+    private ComboBox<String> yearCombo;
     @FXML
     private Label invalidBirthDateLabel;
     @FXML
@@ -48,23 +48,25 @@ public class SignUpController {
      * initialize the comboBox
      */
     public void initialize() {
-        ObservableList<Integer> months = FXCollections.observableArrayList();
+        ObservableList<String> months = FXCollections.observableArrayList();
         for (int i=1 ; i<=12 ; i++) {
-            months.add(i);
+            months.add(Integer.toString(i));
         }
         monthCombo.setItems(months);
 
-        ObservableList<Integer> days = FXCollections.observableArrayList();
-        for (int i=1 ; i<=31 ; i++) {
-            days.add(i);
+        ObservableList<String> days = FXCollections.observableArrayList();
+        for(int i=1 ; i<=31 ; i++) {
+            days.add(Integer.toString(i));
         }
         dayCombo.setItems(days);
 
-        ObservableList<Integer> years = FXCollections.observableArrayList();
+
+        ObservableList<String> years = FXCollections.observableArrayList();
         for(int i=1900 ; i<=2024 ; i++) {
-            years.add(i);
+            years.add(Integer.toString(i));
         }
         yearCombo.setItems(years);
+
     }
 
     /**
@@ -135,6 +137,24 @@ public class SignUpController {
             invalidBirthDateLabel.setText("please fill in your real year of birth.");
             return false;
         }
+        if(Integer.parseInt(monthInput) == 2) {
+            if (Integer.parseInt(yearInput) % 4 == 0 && Integer.parseInt(yearInput) % 100 != 0 || Integer.parseInt(yearInput) % 400 == 0) {
+                if(Integer.parseInt(dayInput) > 29) {
+                    invalidBirthDateLabel.setText("please finish your birth date.");
+                    return false;
+                }
+            } else {
+                if(Integer.parseInt(dayInput) > 28) {
+                    invalidBirthDateLabel.setText("please finish your birth date.");
+                    return false;
+                }
+            }
+        } else if (Integer.parseInt(monthInput) == 4 || Integer.parseInt(monthInput) == 6 || Integer.parseInt(monthInput) == 9 || Integer.parseInt(monthInput) == 11) {
+            if(Integer.parseInt(dayInput) > 30) {
+                invalidBirthDateLabel.setText("please finish your birth date.");
+                return false;
+            }
+        }
 
         if(checkbirth(year, month, day)) {
             return true;
@@ -167,7 +187,7 @@ public class SignUpController {
         for(char it : s.toCharArray()) {
             if(!Character.isLetterOrDigit(it)) {
                 if(it != '@' && it != '_' && it != '-')
-                return false;
+                    return false;
             }
         }
         return true;
@@ -202,6 +222,7 @@ public class SignUpController {
         }
     }
 
+
     /**
      * check the password and using released to check throughout the process.
      */
@@ -218,7 +239,7 @@ public class SignUpController {
             invalidPasswordLabel.setStyle("-fx-text-fill: red");
             check = false;
         } if (check) {
-            invalidPasswordLabel.setText("Valid password");
+            invalidPasswordLabel.setText("Valid Password");
             invalidPasswordLabel.setStyle("-fx-text-fill: green");
         }
     }
@@ -229,7 +250,7 @@ public class SignUpController {
 
     public void confirmReleased () {
         boolean check = true;
-        if (!invalidPasswordLabel.getText().equals("Valid password")) {
+        if (!invalidPasswordLabel.getText().equals("Valid Password")) {
             invalidConfirmPasswordLabel.setText("Please enter a valid password");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
             check = false;
@@ -248,19 +269,22 @@ public class SignUpController {
     }
 
 
-
     public void registerButtonClickedOnAction() {
         /**
          * check birth's date.
          */
+        userNameReleased();
+        passwordRelease();
+        confirmReleased();
         if (validateFields()) {
             invalidBirthDateLabel.setText("Valid Birth Date");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: green");
         }
 
-        if (invalidUsernameLabel.equals("Valid username") && invalidPasswordLabel.equals("Valid password")
-                && invalidConfirmPasswordLabel.equals("Valid confirm password") && validateFields()) {
-                titleLabel.setText("Registration successful");
-                registerUser();
+        if (invalidUsernameLabel.getText().equals("Valid username") && invalidPasswordLabel.getText().equals("Valid Password")
+                && invalidConfirmPasswordLabel.getText().equals("Valid Password") && validateFields()) {
+            titleLabel.setText("Registration successful");
+            registerUser();
         } else {
             titleLabel.setText("Registration failed!");
             titleLabel.setStyle("-fx-text-fill: red");
@@ -299,10 +323,9 @@ public class SignUpController {
         String passwordInput = setPasswordField.getText();
         String firstNameInput = firstnameTextField.getText();
         String lastNameInput = lastnameTextField.getText();
-        Integer day = (Integer) dayCombo.getValue();
-        Integer month = (Integer) monthCombo.getValue();
-        Integer year = (Integer) yearCombo.getValue();
-        StringBuilder m = new StringBuilder();
+        String day = (String) dayCombo.getValue();
+        String month = (String) monthCombo.getValue();
+        String year = (String) yearCombo.getValue();
 
         String query = "insert into users (first_name, last_name, username, password, birthDate, monthDate, yearDate) value (?, ?, ?, ?, ?, ?, ?)";
 
@@ -312,9 +335,9 @@ public class SignUpController {
             preparedStatement.setString(2, lastNameInput);
             preparedStatement.setString(3, usernameInput);
             preparedStatement.setString(4, passwordInput);
-            preparedStatement.setInt(5, day);
-            preparedStatement.setInt(6, month);
-            preparedStatement.setInt(7, year);
+            preparedStatement.setInt(5, Integer.parseInt(day));
+            preparedStatement.setInt(6, Integer.parseInt(month));
+            preparedStatement.setInt(7, Integer.parseInt(year));
 
 
             preparedStatement.executeUpdate();
