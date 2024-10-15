@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.sql.*;
 
@@ -21,6 +24,10 @@ public class LoginController {
     private PasswordField enterPasswordField;
     @FXML
     private Button signUpButton;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Label signUpLabelClicked;
 
     /**
      * connect with database.
@@ -34,6 +41,10 @@ public class LoginController {
      *check if the login button being clicked and check in the database by the validLogin().
      */
     public  void loginButtonClickedOnAction() {
+        checkValidLogin();
+    }
+
+    public void checkValidLogin () {
         if (usernameTextField.getText().isBlank() || enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
@@ -41,12 +52,13 @@ public class LoginController {
             if(validLogin()) {
                 InvalidLoginLabel.setText("Redirecting!");
                 InvalidLoginLabel.setStyle("-fx-text-fill: green");
+                Stage stage = (Stage) loginButton.getScene().getWindow();
+                SceneSwitcher.SwitchScene(stage, "MAIN_SCENE.fxml");
             } else {
                 InvalidLoginLabel.setText("Invalid password or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
             }
         }
-
     }
 
     /**
@@ -55,15 +67,18 @@ public class LoginController {
     public void cancelButtonClickedOnAction() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
+        //????
     }
 
     /**
      * close the login window and open the register window.
      */
-    public void signUpButtonClickedOnAction() {
-        Stage stage = (Stage) signUpButton.getScene().getWindow();
-        SceneSwitcher.swingScene(stage,"SignUp.FXML");
+    public void signUpLabelClick() {
+        Stage stage = (Stage) signUpLabelClicked.getScene().getWindow();
+        SceneSwitcher.SwitchScene(stage,"SignUp.FXML");
     }
+
+
     /**
      * use the database's information and check if it's exist or not.
      * @return true if the login information is correct .
@@ -98,4 +113,16 @@ public class LoginController {
         return false;
     }
 
+    public void loginButtonPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER) {
+            checkValidLogin();
+        }
+    }
+
+    public void signUpMouseEnter() {
+        signUpLabelClicked.setStyle("-fx-text-fill: red; -fx-underline: true;");
+    }
+    public void signUpMouseExited() {
+        signUpLabelClicked.setStyle("-fx-text-fill: #f5deb3; -fx-underline: false;");
+    }
 }
