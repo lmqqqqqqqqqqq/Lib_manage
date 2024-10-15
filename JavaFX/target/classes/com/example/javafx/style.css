@@ -5,5 +5,9 @@
     /* Để ảnh căn giữa */
 }
 .field {
-    -fx-text-fill: #0adaff;
+    -fx-text-fill: #f5deb3;
+}
+.Button {
+    -fx-background-color: transparent; /* Nền trong suốt */
+    -fx-text-fill: #f5deb3; /* Màu chữ */
 }

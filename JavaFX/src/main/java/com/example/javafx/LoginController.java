@@ -6,6 +6,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import java.sql.*;
 
@@ -23,6 +26,8 @@ public class LoginController {
     private Button signUpButton;
     @FXML
     private Button loginButton;
+    @FXML
+    private Label signUpLabelClicked;
 
     /**
      * connect with database.
@@ -36,6 +41,10 @@ public class LoginController {
      *check if the login button being clicked and check in the database by the validLogin().
      */
     public  void loginButtonClickedOnAction() {
+        checkValidLogin();
+    }
+
+    public void checkValidLogin () {
         if (usernameTextField.getText().isBlank() || enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
@@ -50,7 +59,6 @@ public class LoginController {
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
             }
         }
-
     }
 
     /**
@@ -65,10 +73,11 @@ public class LoginController {
     /**
      * close the login window and open the register window.
      */
-    public void signUpButtonClickedOnAction() {
-        Stage stage = (Stage) signUpButton.getScene().getWindow();
+    public void signUpLabelClick() {
+        Stage stage = (Stage) signUpLabelClicked.getScene().getWindow();
         SceneSwitcher.SwitchScene(stage,"SignUp.FXML");
     }
+
 
     /**
      * use the database's information and check if it's exist or not.
@@ -104,4 +113,16 @@ public class LoginController {
         return false;
     }
 
+    public void loginButtonPressed(KeyEvent event) {
+        if(event.getCode() == KeyCode.ENTER) {
+            checkValidLogin();
+        }
+    }
+
+    public void signUpMouseEnter() {
+        signUpLabelClicked.setStyle("-fx-text-fill: red; -fx-underline: true;");
+    }
+    public void signUpMouseExited() {
+        signUpLabelClicked.setStyle("-fx-text-fill: #f5deb3; -fx-underline: false;");
+    }
 }
