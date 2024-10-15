@@ -1,5 +1,5 @@
 .backgr{
-    -fx-background-image: url(../../../../../../../../Users/Admin/Downloads/MAIN_SCENE_control/backgr.png);
+    -fx-background-image: url(backgr.png);
     -fx-background-size: contain;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
