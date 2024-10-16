@@ -8,6 +8,6 @@
     -fx-text-fill: #f5deb3;
 }
 .Button {
-    -fx-background-color: transparent; /* Nền trong suốt */
-    -fx-text-fill: #f5deb3; /* Màu chữ */
+    -fx-background-color: transparent;
+    -fx-text-fill: #f5deb3;
 }
