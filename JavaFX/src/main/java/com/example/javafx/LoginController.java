@@ -17,17 +17,16 @@ public class LoginController {
     private Button cancelButton;
     @FXML
     private Label InvalidLoginLabel;
-
     @FXML
     private TextField usernameTextField;
     @FXML
     private PasswordField enterPasswordField;
     @FXML
-    private Button signUpButton;
-    @FXML
     private Button loginButton;
     @FXML
     private Label signUpLabelClicked;
+    @FXML
+    private Label forgetLabelClicked;
 
     /**
      * connect with database.
@@ -44,14 +43,13 @@ public class LoginController {
         checkValidLogin();
     }
 
+
     public void checkValidLogin () {
         if (usernameTextField.getText().isBlank() || enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
         } else {
             if(validLogin()) {
-                InvalidLoginLabel.setText("Redirecting!");
-                InvalidLoginLabel.setStyle("-fx-text-fill: green");
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 SceneSwitcher.SwitchScene(stage, "MAIN_SCENE.fxml");
             } else {
@@ -78,6 +76,11 @@ public class LoginController {
         SceneSwitcher.SwitchScene(stage,"SignUp.FXML");
     }
 
+    public void forgetLabelClick() {
+        Stage stage = (Stage) forgetLabelClicked.getScene().getWindow();
+        SceneSwitcher.SwitchScene(stage,"RecoverPassword.FXML");
+    }
+
 
     /**
      * use the database's information and check if it's exist or not.
@@ -85,7 +88,7 @@ public class LoginController {
      */
     public boolean validLogin() {
 
-        //the input of username and password.
+            //the input of username and password.
         String usernameInp = usernameTextField.getText();
         String passwordInp = enterPasswordField.getText();
 
@@ -119,10 +122,33 @@ public class LoginController {
         }
     }
 
+    public void loginEnter () {
+        loginButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: yellow");
+    }
+
+    public void loginExited () {
+        loginButton.setStyle("");
+    }
+
+    public void cancelEnter () {
+        cancelButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: yellow");
+    }
+
+    public void cancelExited () {
+        cancelButton.setStyle("");
+    }
+
     public void signUpMouseEnter() {
         signUpLabelClicked.setStyle("-fx-text-fill: red; -fx-underline: true;");
     }
     public void signUpMouseExited() {
         signUpLabelClicked.setStyle("-fx-text-fill: #f5deb3; -fx-underline: false;");
+    }
+
+    public void forgetMouseEnter() {
+        forgetLabelClicked.setStyle("-fx-text-fill: red; -fx-underline: true;");
+    }
+    public void forgetMouseExited() {
+        forgetLabelClicked.setStyle("-fx-text-fill: #f5deb3; -fx-underline: false;");
     }
 }
