@@ -43,6 +43,10 @@ public class SignUpController {
     private Label invalidBirthDateLabel;
     @FXML
     private Button registerButton;
+    @FXML
+    private TextField codeTextfield;
+    @FXML
+    private Label invalidRecover;
 
     /**
      * initialize the comboBox
@@ -101,6 +105,7 @@ public class SignUpController {
 
         if (monthInput == null || monthInput.isBlank() || dayInput == null || dayInput.isBlank() || yearInput == null || yearInput.isBlank()) {
             invalidBirthDateLabel.setText("Please finish your birth date.");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
             return false;
         }
 
@@ -109,6 +114,7 @@ public class SignUpController {
             month = Integer.parseInt(monthInput);
         } catch (NumberFormatException e) {
             invalidBirthDateLabel.setText("Month must be a number");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
             return false;
         }
         int day;
@@ -116,6 +122,7 @@ public class SignUpController {
             day = Integer.parseInt(dayInput);
         } catch (NumberFormatException e) {
             invalidBirthDateLabel.setText("Day of birth must be a number");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
             return false;
         }
         int year;
@@ -123,35 +130,42 @@ public class SignUpController {
             year = Integer.parseInt(yearInput);
         } catch (NumberFormatException e) {
             invalidBirthDateLabel.setText("Year must be a number");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
             return false;
         }
         if (Integer.parseInt(monthInput) < 1 || Integer.parseInt(monthInput) > 12) {
             invalidBirthDateLabel.setText("please finish your birth date.");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
             return false;
         }
         if (Integer.parseInt(dayInput) < 1 && Integer.parseInt(monthInput) > 31) {
             invalidBirthDateLabel.setText("please finish your birth date.");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
             return false;
         }
         if(Integer.parseInt(yearInput) < 1900 || Integer.parseInt(yearInput) > 2024) {
             invalidBirthDateLabel.setText("please fill in your real year of birth.");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
             return false;
         }
         if(Integer.parseInt(monthInput) == 2) {
             if (Integer.parseInt(yearInput) % 4 == 0 && Integer.parseInt(yearInput) % 100 != 0 || Integer.parseInt(yearInput) % 400 == 0) {
                 if(Integer.parseInt(dayInput) > 29) {
                     invalidBirthDateLabel.setText("please finish your birth date.");
+                    invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
                     return false;
                 }
             } else {
                 if(Integer.parseInt(dayInput) > 28) {
                     invalidBirthDateLabel.setText("please finish your birth date.");
+                    invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
                     return false;
                 }
             }
         } else if (Integer.parseInt(monthInput) == 4 || Integer.parseInt(monthInput) == 6 || Integer.parseInt(monthInput) == 9 || Integer.parseInt(monthInput) == 11) {
             if(Integer.parseInt(dayInput) > 30) {
                 invalidBirthDateLabel.setText("please finish your birth date.");
+                invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
                 return false;
             }
         }
@@ -227,7 +241,6 @@ public class SignUpController {
      * check the password and using released to check throughout the process.
      */
 
-    @FXML
     public void passwordRelease () {
         boolean check = true;
         if (setPasswordField.getText().isEmpty()) {
@@ -273,16 +286,20 @@ public class SignUpController {
         /**
          * check birth's date.
          */
-        userNameReleased();
-        passwordRelease();
-        confirmReleased();
         if (validateFields()) {
             invalidBirthDateLabel.setText("Valid Birth Date");
             invalidBirthDateLabel.setStyle("-fx-text-fill: green");
         }
+        if (codeTextfield.getText().isEmpty()) {
+            invalidRecover.setText("Please fill in your recover code");
+            invalidRecover.setStyle("-fx-text-fill: red");
+        } else {
+            invalidRecover.setText("Valid Code");
+            invalidRecover.setStyle("-fx-text-fill: green");
+        }
 
         if (invalidUsernameLabel.getText().equals("Valid username") && invalidPasswordLabel.getText().equals("Valid Password")
-                && invalidConfirmPasswordLabel.getText().equals("Valid Password") && validateFields()) {
+                && invalidConfirmPasswordLabel.getText().equals("Valid Password") && invalidRecover.getText().equals("Valid Code") && validateFields()) {
             titleLabel.setText("Registration successful");
             registerUser();
         } else {
@@ -323,11 +340,13 @@ public class SignUpController {
         String passwordInput = setPasswordField.getText();
         String firstNameInput = firstnameTextField.getText();
         String lastNameInput = lastnameTextField.getText();
+        String recoveryCode = codeTextfield.getText();
         String day = (String) dayCombo.getValue();
         String month = (String) monthCombo.getValue();
         String year = (String) yearCombo.getValue();
 
-        String query = "insert into users (first_name, last_name, username, password, birthDate, monthDate, yearDate) value (?, ?, ?, ?, ?, ?, ?)";
+
+        String query = "insert into users (first_name, last_name, username, password, birthDate, monthDate, yearDate, recoveryCode) value (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = databaseConnect.connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -338,6 +357,7 @@ public class SignUpController {
             preparedStatement.setInt(5, Integer.parseInt(day));
             preparedStatement.setInt(6, Integer.parseInt(month));
             preparedStatement.setInt(7, Integer.parseInt(year));
+            preparedStatement.setString(8, recoveryCode);
 
 
             preparedStatement.executeUpdate();

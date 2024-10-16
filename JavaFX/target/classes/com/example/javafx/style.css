@@ -11,14 +11,3 @@
     -fx-background-color: transparent;
     -fx-text-fill: #f5deb3;
 }
-.combo-box {
-    -fx-background-color: rgba(255, 255, 255, 0.0); /* Nền trong suốt */
-    -fx-border-color: rgba(204, 204, 204, 1); /* Màu viền (có thể thay đổi) */
-    -fx-border-width: 1px; /* Độ dày của viền */
-    -fx-padding: 5px; /* Khoảng cách giữa nội dung và viền */
-}
-
-.combo-box .list-view {
-    -fx-background-color: #ffffff; /* Màu nền cho danh sách (có thể thay đổi) */
-    -fx-border-color: rgba(204, 204, 204, 1); /* Màu viền cho danh sách */
-}
