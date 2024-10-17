@@ -16,7 +16,7 @@
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="396.0">
          <children>
             <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#202020" height="402.0" layoutY="-1.0" opacity="0.79" stroke="BLACK" strokeType="INSIDE" width="396.0" />
-            <Label layoutX="156.0" layoutY="30.0" prefHeight="81.0" prefWidth="190.0" text="    Login" textFill="WHEAT">
+            <Label layoutX="156.0" layoutY="30.0" prefHeight="81.0" prefWidth="190.0" text="    Login" textFill="#ffd690">
                <font>
                   <Font name="Calibri Bold Italic" size="48.0" />
                </font>
@@ -41,22 +41,22 @@
                   <Font name="Arial Italic" size="13.0" />
                </font>
             </PasswordField>
-            <Button fx:id="loginButton" layoutX="150.0" layoutY="256.0" mnemonicParsing="false" onAction="#loginButtonClickedOnAction" onKeyPressed="#loginButtonPressed" opacity="0.55" prefHeight="32.0" prefWidth="201.0" style="-fx-background-color: #70706b;" text="Login" textFill="WHEAT">
+            <Button fx:id="loginButton" layoutX="150.0" layoutY="267.0" mnemonicParsing="false" onAction="#loginButtonClickedOnAction" onKeyPressed="#loginButtonPressed" onMouseEntered="#loginEnter" onMouseExited="#loginExited" opacity="0.55" prefHeight="32.0" prefWidth="201.0" styleClass="Button" stylesheets="@style.css" text="Login" textFill="WHEAT">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="cancelButton" layoutX="62.0" layoutY="256.0" mnemonicParsing="false" onAction="#cancelButtonClickedOnAction" opacity="0.55" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: #70706b;" text="Cancel" textFill="WHEAT">
+            <Button fx:id="cancelButton" layoutX="48.0" layoutY="267.0" mnemonicParsing="false" onAction="#cancelButtonClickedOnAction" onMouseEntered="#cancelEnter" onMouseExited="#cancelExited" opacity="0.55" prefHeight="32.0" prefWidth="83.0" styleClass="Button" stylesheets="@style.css" text="Cancel" textFill="WHEAT">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Button>
-            <Label fx:id="signUpLabelClicked" alignment="CENTER_RIGHT" layoutX="81.0" layoutY="304.0" onMouseClicked="#signUpLabelClick" onMouseEntered="#signUpMouseEnter" onMouseExited="#signUpMouseExited" prefHeight="20.0" prefWidth="255.0" text="Don't have an acount ? Sign up now !" textAlignment="RIGHT" textFill="WHEAT">
+            <Label fx:id="signUpLabelClicked" alignment="CENTER_RIGHT" layoutX="98.0" layoutY="313.0" onMouseClicked="#signUpLabelClick" onMouseEntered="#signUpMouseEnter" onMouseExited="#signUpMouseExited" prefHeight="20.0" prefWidth="255.0" text="Don't have an acount ? Sign up now !" textAlignment="RIGHT" textFill="WHEAT">
                <font>
                   <Font name="Segoe UI Light Italic" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="InvalidLoginLabel" layoutX="48.0" layoutY="222.0" prefHeight="32.0" prefWidth="300.0" text=" " textFill="#cee40b">
+            <Label fx:id="InvalidLoginLabel" layoutX="54.0" layoutY="222.0" prefHeight="32.0" prefWidth="300.0" text=" " textFill="#cee40b">
                <font>
                   <Font name="Segoe UI Light Italic" size="15.0" />
                </font>
@@ -66,6 +66,11 @@
                   <Image url="@logo.png" />
                </image>
             </ImageView>
+            <Label fx:id="forgetLabelClicked" alignment="CENTER_RIGHT" layoutX="90.0" layoutY="333.0" onMouseClicked="#forgetLabelClick" onMouseEntered="#forgetMouseEnter" onMouseExited="#forgetMouseExited" prefHeight="20.0" prefWidth="255.0" text="Forget password ?" textAlignment="RIGHT" textFill="WHEAT">
+               <font>
+                  <Font name="Segoe UI Light Italic" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
