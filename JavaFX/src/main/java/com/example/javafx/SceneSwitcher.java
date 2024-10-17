@@ -34,8 +34,9 @@ public class SceneSwitcher {
             stage.setMinWidth(400);
             stage.setMinHeight(400);
             stage.setHeight(400);
-            stage.setWidth(400);
+            stage.setWidth(500);
             stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
