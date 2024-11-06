@@ -56,23 +56,35 @@ public class RecoverController {
      * checkValid function.
      */
     public void checkValid() {
-        if (usernameTextField.getText().isBlank() || codeTextfield.getText().isBlank()) {
-            InvalidLoginLabel.setText("You need to enter a username and code");
+        if (usernameTextField.getText().isBlank() && codeTextfield.getText().isBlank()) {
+            InvalidLoginLabel.setText("You need to enter your username and recovery code");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
-        } else {
+            usernameTextField.setStyle("-fx-border-color: red");
+            codeTextfield.setStyle("-fx-border-color: red");
+        } else if(usernameTextField.getText().isBlank())  {
+            InvalidLoginLabel.setText("You need to enter your username");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            usernameTextField.setStyle("-fx-border-color: red");
+        } else if(codeTextfield.getText().isBlank())  {
+            InvalidLoginLabel.setText("You need to enter your recovery code");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            codeTextfield.setStyle("-fx-border-color: red");
+        }
+        else {
             if (validRecover()) {
                 Stage stage = (Stage) recoverButton.getScene().getWindow();
                 SceneSwitcher.SwitchScene(stage, "NewPassword.fxml");
             } else {
                 InvalidLoginLabel.setText("Invalid code or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
+                codeTextfield.setStyle("-fx-border-color: red");
+                usernameTextField.setStyle("-fx-border-color: red");
             }
         }
     }
 
     /**
      * check if the username and code is true or not.
-     *
      * @return true if it;s right.
      */
     public boolean validRecover() {

@@ -77,24 +77,12 @@ public class SignUpController {
         userNameReleased();
         passwordReleased();
         confirmReleased();
+        firstnameReleased();
+        recoveryReleased();
 
         if (validateFields()) {
             invalidBirthDateLabel.setText("Valid Birth Date");
-            invalidBirthDateLabel.setStyle("-fx-text-fill: green");
-        }
-        if (codeTextfield.getText().isEmpty()) {
-            invalidRecover.setText("Please fill in your recover code");
-            invalidRecover.setStyle("-fx-text-fill: red");
-        } else {
-            invalidRecover.setText("Valid Code");
-            invalidRecover.setStyle("-fx-text-fill: green");
-        }
-
-        if (firstnameTextField.getText().isEmpty()) {
-            invalidFirstNameLabel.setText("Please enter your first name");
-            invalidFirstNameLabel.setStyle("-fx-text-fill: red");
-        } else {
-            invalidFirstNameLabel.setText("Valid");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: #4CAF50");
         }
 
         if (invalidUsernameLabel.getText().equals("Valid username") && (invalidPasswordLabel.getText().equals("Medium Password")
@@ -103,7 +91,7 @@ public class SignUpController {
                 && invalidRecover.getText().equals("Valid Code") && validateFields()
                 && invalidFirstNameLabel.getText().equals("Valid")) {
             titleLabel.setText("Successful Registration");
-            titleLabel.setStyle("-fx-text-fill: green");
+            titleLabel.setStyle("-fx-text-fill: #4CAF50");
             registerUser();
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Success !");
@@ -175,27 +163,26 @@ public class SignUpController {
      * check the username and using released to check throughout the process.
      */
     public void userNameReleased() {
-        boolean check = true;
         if (setUsernameTextField.getText().isEmpty()) {
             invalidUsernameLabel.setText("You need to enter a username");
             invalidUsernameLabel.setStyle("-fx-text-fill: red");
-            check = false;
+            setUsernameTextField.setStyle("-fx-border-color: red");
         } else if (setUsernameTextField.getText().length() < 6 || setUsernameTextField.getText().length() > 15) {
             invalidUsernameLabel.setText("Username must be between 6 and 15 characters");
             invalidUsernameLabel.setStyle("-fx-text-fill: red");
-            check = false;
+            setUsernameTextField.setStyle("-fx-border-color: red");
         } else if (!pass(setUsernameTextField.getText())) {
             invalidUsernameLabel.setText("Username can not contains special characters except '@, '-', '_'.");
             invalidUsernameLabel.setStyle("-fx-text-fill: red");
-            check = false;
+            setUsernameTextField.setStyle("-fx-border-color: red");
         } else if (UsernameExisted()) {
             invalidUsernameLabel.setText("Username already exists");
             invalidUsernameLabel.setStyle("-fx-text-fill: red");
-            check = false;
-        }
-        if (check) {
+            setUsernameTextField.setStyle("-fx-border-color: red");
+        } else {
             invalidUsernameLabel.setText("Valid username");
-            invalidUsernameLabel.setStyle("-fx-text-fill: green");
+            invalidUsernameLabel.setStyle("-fx-text-fill: #4CAF50");
+            setUsernameTextField.setStyle("-fx-border-color: #4CAF50");
         }
     }
 
@@ -204,18 +191,16 @@ public class SignUpController {
      * check the password and using released to check throughout the process.
      */
     public void passwordReleased() {
-        boolean check = true;
         String password = setPasswordField.getText();
         if (password.isEmpty()) {
             invalidPasswordLabel.setText("You need to enter a password");
             invalidPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
+            setPasswordField.setStyle("-fx-border-color: red");
         } else if (password.length() < 6 || password.length() > 50) {
             invalidPasswordLabel.setText("Password should be between 6 and 50 characters");
             invalidPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
-        }
-        if (check) {
+            setPasswordField.setStyle("-fx-border-color: red");
+        } else {
             boolean checkS = false;
             boolean checkD = false;
             boolean checkA = false;
@@ -233,15 +218,18 @@ public class SignUpController {
             }
             if (checkS && checkD && checkA && checkU && password.length() > 11) {
                 invalidPasswordLabel.setText("Strong Password");
-                invalidPasswordLabel.setStyle("-fx-text-fill: green");
+                invalidPasswordLabel.setStyle("-fx-text-fill: #4CAF50");
+                setPasswordField.setStyle("-fx-border-color: #4CAF50;");
             }
             else if (checkA && (checkD || checkS) && password.length() > 7) {
                 invalidPasswordLabel.setText("Medium Password");
-                invalidPasswordLabel.setStyle("-fx-text-fill: #6a6a02");
+                invalidPasswordLabel.setStyle("-fx-text-fill: #c3c30b");
+                setPasswordField.setStyle("-fx-border-color: #c3c30b;");
             }
             else {
                 invalidPasswordLabel.setText("Week Password");
                 invalidPasswordLabel.setStyle("-fx-text-fill: red");
+                setPasswordField.setStyle("-fx-border-color: red;");
             }
         }
     }
@@ -250,27 +238,54 @@ public class SignUpController {
      * check the confirmation and using released to check throughout the process.
      */
     public void confirmReleased() {
-        boolean check = true;
         if (!(invalidPasswordLabel.getText().equals("Medium Password") || invalidPasswordLabel.getText().equals("Strong Password"))) {
             invalidConfirmPasswordLabel.setText("Please enter a valid password");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
+            confirmPasswordField.setStyle("-fx-border-color: red");
         } else if (confirmPasswordField.getText().isEmpty()) {
             invalidConfirmPasswordLabel.setText("You need to enter a confirm password");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
+            confirmPasswordField.setStyle("-fx-border-color: red");
         } else if (!confirmPasswordField.getText().equals(setPasswordField.getText())) {
             invalidConfirmPasswordLabel.setText("Password does not match");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
-        }
-        if (check) {
+            confirmPasswordField.setStyle("-fx-border-color: red");
+        } else {
             invalidConfirmPasswordLabel.setText("Valid Password");
-            invalidConfirmPasswordLabel.setStyle("-fx-text-fill: green");
+            invalidConfirmPasswordLabel.setStyle("-fx-text-fill: #4CAF50");
+            confirmPasswordField.setStyle("-fx-border-color: #4CAF50");
         }
     }
 
+    /**
+     * check the firstname and using released to check throughout the process.
+     */
+    public void firstnameReleased() {
+        if (firstnameTextField.getText().isEmpty()) {
+            invalidFirstNameLabel.setText("Please enter your first name");
+            invalidFirstNameLabel.setStyle("-fx-text-fill: red");
+            firstnameTextField.setStyle("-fx-border-color: red");
+        } else {
+            invalidFirstNameLabel.setText("Valid");
+            invalidFirstNameLabel.setStyle("-fx-text-fill: #4CAF50");
+            firstnameTextField.setStyle("-fx-border-color: #4CAF50");
+        }
+    }
 
+    /**
+     * check the code and using released to check throughout the process.
+     */
+    public void recoveryReleased() {
+        if (codeTextfield.getText().isEmpty()) {
+            invalidRecover.setText("Please fill in your recover code");
+            invalidRecover.setStyle("-fx-text-fill: red");
+            codeTextfield.setStyle("-fx-border-color: red");
+        } else {
+            invalidRecover.setText("Valid Code");
+            invalidRecover.setStyle("-fx-text-fill: #4CAF50");
+            codeTextfield.setStyle("-fx-border-color: #4CAF50");
+        }
+    }
 
     /**
      * initialize the comboBox
@@ -432,7 +447,7 @@ public class SignUpController {
      * using css for the effect.
      */
     public void registerEnter() {
-        registerButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: green");
+        registerButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: #4CAF50");
     }
 
     public void registerExited() {
