@@ -97,18 +97,16 @@ public class NewPasswordController {
      * check the password and using released to check throughout the process.
      */
     public void passwordReleased() {
-        boolean check = true;
         String password = setPasswordField.getText();
         if (password.isEmpty()) {
             invalidPasswordLabel.setText("You need to enter a password");
             invalidPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
+            setPasswordField.setStyle("-fx-border-color: red");
         } else if (password.length() < 6 || password.length() > 50) {
             invalidPasswordLabel.setText("Password should be between 6 and 50 characters");
             invalidPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
-        }
-        if (check) {
+            setPasswordField.setStyle("-fx-border-color: red");
+        } else {
             boolean checkS = false;
             boolean checkD = false;
             boolean checkA = false;
@@ -126,15 +124,18 @@ public class NewPasswordController {
             }
             if (checkS && checkD && checkA && checkU && password.length() > 11) {
                 invalidPasswordLabel.setText("Strong Password");
-                invalidPasswordLabel.setStyle("-fx-text-fill: green");
+                invalidPasswordLabel.setStyle("-fx-text-fill: #4CAF50");
+                setPasswordField.setStyle("-fx-border-color: #4CAF50;");
             }
             else if (checkA && (checkD || checkS) && password.length() > 7) {
                 invalidPasswordLabel.setText("Medium Password");
-                invalidPasswordLabel.setStyle("-fx-text-fill: yellow");
+                invalidPasswordLabel.setStyle("-fx-text-fill: #c3c30b");
+                setPasswordField.setStyle("-fx-border-color: #c3c30b;");
             }
             else {
                 invalidPasswordLabel.setText("Week Password");
                 invalidPasswordLabel.setStyle("-fx-text-fill: red");
+                setPasswordField.setStyle("-fx-border-color: red;");
             }
         }
     }
@@ -143,23 +144,22 @@ public class NewPasswordController {
      * check the confirmation and using released to check throughout the process.
      */
     public void confirmReleased() {
-        boolean check = true;
         if (!(invalidPasswordLabel.getText().equals("Medium Password") || invalidPasswordLabel.getText().equals("Strong Password"))) {
             invalidConfirmPasswordLabel.setText("Please enter a valid password");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
+            confirmPasswordField.setStyle("-fx-border-color: red");
         } else if (confirmPasswordField.getText().isEmpty()) {
             invalidConfirmPasswordLabel.setText("You need to enter a confirm password");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
+            confirmPasswordField.setStyle("-fx-border-color: red");
         } else if (!confirmPasswordField.getText().equals(setPasswordField.getText())) {
             invalidConfirmPasswordLabel.setText("Password does not match");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
-            check = false;
-        }
-        if (check) {
+            confirmPasswordField.setStyle("-fx-border-color: red");
+        } else {
             invalidConfirmPasswordLabel.setText("Valid Password");
-            invalidConfirmPasswordLabel.setStyle("-fx-text-fill: green");
+            invalidConfirmPasswordLabel.setStyle("-fx-text-fill: #4CAF50");
+            confirmPasswordField.setStyle("-fx-border-color: #4CAF50");
         }
     }
 

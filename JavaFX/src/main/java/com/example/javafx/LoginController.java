@@ -41,7 +41,6 @@ public class LoginController {
 
     /**
      * same as the login button on action but with enter.
-     *
      * @param event enter.
      */
     public void loginButtonPressed(KeyEvent event) {
@@ -54,10 +53,21 @@ public class LoginController {
      * checkValid function.
      */
     public void checkValid() {
-        if (usernameTextField.getText().isBlank() || enterPasswordField.getText().isBlank()) {
+        if (usernameTextField.getText().isBlank() && enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
-        } else {
+            usernameTextField.setStyle("-fx-border-color: red");
+        }
+        if (usernameTextField.getText().isBlank()) {
+            InvalidLoginLabel.setText("You need to enter a username");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            usernameTextField.setStyle("-fx-border-color: red");
+        } else if(enterPasswordField.getText().isBlank()) {
+            InvalidLoginLabel.setText("You need to enter a password");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            enterPasswordField.setStyle("-fx-border-color: red");
+        }
+        else {
             if (validLogin()) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 SceneSwitcher.SwitchScene(stage, "MAIN_SCENE.fxml");
