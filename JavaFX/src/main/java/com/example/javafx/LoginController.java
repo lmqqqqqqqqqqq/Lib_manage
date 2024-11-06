@@ -1,6 +1,5 @@
 package com.example.javafx;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,8 +7,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
 import java.sql.*;
 
 public class LoginController {
@@ -31,25 +30,35 @@ public class LoginController {
     /**
      * connect with database.
      */
-    private DatabaseConnect databaseConnect;
-    public  LoginController(){
-        this.databaseConnect = new DatabaseConnect();
+    DatabaseConnect databaseConnect = new DatabaseConnect();
+
+    /**
+     * check if the login button being clicked and move to main's interface.
+     */
+    public void loginButtonClickedOnAction() {
+        checkValid();
     }
 
     /**
-     *check if the login button being clicked and check in the database by the validLogin().
+     * same as the login button on action but with enter.
+     *
+     * @param event enter.
      */
-    public  void loginButtonClickedOnAction() {
-        checkValidLogin();
+    public void loginButtonPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            checkValid();
+        }
     }
 
-
-    public void checkValidLogin () {
+    /**
+     * checkValid function.
+     */
+    public void checkValid() {
         if (usernameTextField.getText().isBlank() || enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
         } else {
-            if(validLogin()) {
+            if (validLogin()) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 SceneSwitcher.SwitchScene(stage, "MAIN_SCENE.fxml");
             } else {
@@ -60,12 +69,41 @@ public class LoginController {
     }
 
     /**
+     * use the database's information and check if it's exist or not.
+     * @return true if the login information is correct .
+     */
+    public boolean validLogin()  {
+
+        //the input of username and password.
+        String usernameInp = usernameTextField.getText();
+        String passwordInp = enterPasswordField.getText();
+
+        //use the query and preparedStatement to keep it safety.
+        String query = "SELECT * FROM users WHERE username = ? and password = ?";
+
+        //use connection() in the DataConnector class to link with the database.
+        //use try catch to close the connection.
+        try (Connection connection = databaseConnect.connect()) {
+            //use prepared to take the input login's information.
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, usernameInp);
+            preparedStatement.setString(2, passwordInp);
+            //resultSet being used to check in the database and return true if it's exist.
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
+    }
+
+    /**
      * check if the button is clicked and close the window then.
      */
     public void cancelButtonClickedOnAction() {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
-        //????
     }
 
     /**
@@ -73,82 +111,49 @@ public class LoginController {
      */
     public void signUpLabelClick() {
         Stage stage = (Stage) signUpLabelClicked.getScene().getWindow();
-        SceneSwitcher.SwitchScene(stage,"SignUp.FXML");
+        SceneSwitcher.SwitchScene(stage, "SignUp.fxml");
     }
-
-    public void forgetLabelClick() {
-        Stage stage = (Stage) forgetLabelClicked.getScene().getWindow();
-        SceneSwitcher.SwitchScene(stage,"RecoverPassword.FXML");
-    }
-
 
     /**
-     * use the database's information and check if it's exist or not.
-     * @return true if the login information is correct .
+     * close the login window and open the checkForget window.
      */
-    public boolean validLogin() {
-
-            //the input of username and password.
-        String usernameInp = usernameTextField.getText();
-        String passwordInp = enterPasswordField.getText();
-
-        //use the query and preparedStatement to keep it safety.
-        String query = "SELECT * FROM users WHERE username = ? and password = ?";
-
-        //use connection() in the Dtconnector class to link with the database.
-        //use try catch to close the connection.
-        try (Connection connection = databaseConnect.connect()) {
-            //use prepared to take the input login's information.
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, usernameInp);
-            preparedStatement.setString(2, passwordInp);
-            //resultset being used to check in the database and return true if it's exist.
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()) {
-                return true;
-            } else {
-                return false;
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
+    public void forgetLabelClick() {
+        Stage stage = (Stage) forgetLabelClicked.getScene().getWindow();
+        SceneSwitcher.SwitchScene(stage, "RecoverPassword.fxml");
     }
 
-    public void loginButtonPressed(KeyEvent event) {
-        if(event.getCode() == KeyCode.ENTER) {
-            checkValidLogin();
-        }
+    /**
+     * using css for the effect.
+     */
+    public void loginEnter() {
+        loginButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: blue");
     }
 
-    public void loginEnter () {
-        loginButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: yellow");
-    }
-
-    public void loginExited () {
+    public void loginExited() {
         loginButton.setStyle("");
     }
 
-    public void cancelEnter () {
-        cancelButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: yellow");
+    public void cancelEnter() {
+        cancelButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: blue");
     }
 
-    public void cancelExited () {
+    public void cancelExited() {
         cancelButton.setStyle("");
     }
 
     public void signUpMouseEnter() {
         signUpLabelClicked.setStyle("-fx-text-fill: red; -fx-underline: true;");
     }
+
     public void signUpMouseExited() {
-        signUpLabelClicked.setStyle("-fx-text-fill: #f5deb3; -fx-underline: false;");
+        signUpLabelClicked.setStyle("-fx-text-fill: #9000ff; -fx-underline: false;");
     }
 
     public void forgetMouseEnter() {
         forgetLabelClicked.setStyle("-fx-text-fill: red; -fx-underline: true;");
     }
+
     public void forgetMouseExited() {
-        forgetLabelClicked.setStyle("-fx-text-fill: #f5deb3; -fx-underline: false;");
+        forgetLabelClicked.setStyle("-fx-text-fill: #000000; -fx-underline: false;");
     }
 }

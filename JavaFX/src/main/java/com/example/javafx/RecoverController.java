@@ -24,36 +24,45 @@ public class RecoverController {
     @FXML
     private Button recoverButton;
 
+    /**
+     * the username use for NewPasswordController.
+     */
     public static String Username;
 
-    private DatabaseConnect databaseConnect;
-    public RecoverController(){
-        this.databaseConnect = new DatabaseConnect();
-    }
+    /**
+     * Connect with the database.
+     */
+    DatabaseConnect databaseConnect = new DatabaseConnect();
 
-    public void backToLoginButtonOnAction() {
-        Stage stage = (Stage)backToLoginButton.getScene().getWindow();
-        SceneSwitcher.SwitchScene(stage,"Login.fxml");
-    }
-
+    /**
+     * check if the recover button being clicked and move to NewPasswordController.
+     */
     public void recoverButtonClickedOnAction() {
         checkValid();
     }
 
+    /**
+     * same as recover button on action but with enter.
+     *
+     * @param event enter button being pressed.
+     */
     public void recoverPressed(KeyEvent event) {
-        if(event.getCode() == KeyCode.ENTER) {
+        if (event.getCode() == KeyCode.ENTER) {
             checkValid();
         }
     }
 
-    public void checkValid () {
+    /**
+     * checkValid function.
+     */
+    public void checkValid() {
         if (usernameTextField.getText().isBlank() || codeTextfield.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and code");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
         } else {
-            if(validRecover()) {
-                Stage stage = (Stage)recoverButton.getScene().getWindow();
-                SceneSwitcher.SwitchScene(stage,"NewPassword.fxml");
+            if (validRecover()) {
+                Stage stage = (Stage) recoverButton.getScene().getWindow();
+                SceneSwitcher.SwitchScene(stage, "NewPassword.fxml");
             } else {
                 InvalidLoginLabel.setText("Invalid code or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
@@ -61,6 +70,11 @@ public class RecoverController {
         }
     }
 
+    /**
+     * check if the username and code is true or not.
+     *
+     * @return true if it;s right.
+     */
     public boolean validRecover() {
         String username = usernameTextField.getText();
         String code = codeTextfield.getText();
@@ -72,30 +86,36 @@ public class RecoverController {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, code);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch(Exception e) {
-            e.printStackTrace();
+            return resultSet.next();
+        } catch (Exception _) {
         }
         return false;
     }
 
-    public void recoverEnter () {
+    /**
+     * back to the login's interface.
+     */
+    public void backToLoginButtonOnAction() {
+        Stage stage = (Stage) backToLoginButton.getScene().getWindow();
+        SceneSwitcher.SwitchScene(stage, "Login.fxml");
+    }
+
+    /**
+     * using css for the effect
+     */
+    public void recoverEnter() {
         recoverButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: green");
     }
 
-    public void recoverExited () {
+    public void recoverExited() {
         recoverButton.setStyle("");
     }
 
-    public void backEnter () {
+    public void backEnter() {
         backToLoginButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: yellow");
     }
 
-    public void backExited () {
+    public void backExited() {
         backToLoginButton.setStyle("");
     }
 

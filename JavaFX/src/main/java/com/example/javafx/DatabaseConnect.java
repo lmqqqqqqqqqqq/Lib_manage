@@ -4,7 +4,7 @@ package com.example.javafx;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DatabaseConnect{
+public class  DatabaseConnect{
     private static final String url = "jdbc:mysql://127.0.0.1:3306/login_schema";
     private static final String DataUsername = "root";
     private static final String DataPassword = "12345678";
