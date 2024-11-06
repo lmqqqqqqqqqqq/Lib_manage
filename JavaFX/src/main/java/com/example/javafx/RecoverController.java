@@ -32,11 +32,7 @@ public class RecoverController {
     /**
      * Connect with the database.
      */
-    private DatabaseConnect databaseConnect;
-
-    public RecoverController() {
-        this.databaseConnect = new DatabaseConnect();
-    }
+    DatabaseConnect databaseConnect = new DatabaseConnect();
 
     /**
      * check if the recover button being clicked and move to NewPasswordController.
@@ -90,13 +86,8 @@ public class RecoverController {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, code);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            return resultSet.next();
+        } catch (Exception _) {
         }
         return false;
     }

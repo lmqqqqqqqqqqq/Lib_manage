@@ -1,10 +1,11 @@
 package com.example.javafx;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.sql.*;
@@ -54,17 +55,18 @@ public class SignUpController {
     /**
      * connect with database.
      */
-    private DatabaseConnect databaseConnect;
-
-    public SignUpController() {
-        this.databaseConnect = new DatabaseConnect();
-    }
-
+    DatabaseConnect databaseConnect = new DatabaseConnect();
     /**
      * check if the signup button being clicked.
      */
     public void registerButtonClickedOnAction() {
         checkValid();
+    }
+
+    public void registerPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            checkValid();
+        }
     }
 
     /**
@@ -92,18 +94,24 @@ public class SignUpController {
             invalidFirstNameLabel.setText("Please enter your first name");
             invalidFirstNameLabel.setStyle("-fx-text-fill: red");
         } else {
-            invalidFirstNameLabel.setText("Valid First Name");
+            invalidFirstNameLabel.setText("Valid");
         }
 
         if (invalidUsernameLabel.getText().equals("Valid username") && (invalidPasswordLabel.getText().equals("Medium Password")
                 || invalidPasswordLabel.getText().equals("Strong Password"))
                 && invalidConfirmPasswordLabel.getText().equals("Valid Password")
                 && invalidRecover.getText().equals("Valid Code") && validateFields()
-                && invalidFirstNameLabel.getText().equals("Valid First Name")) {
-            titleLabel.setText("Registration successful");
+                && invalidFirstNameLabel.getText().equals("Valid")) {
+            titleLabel.setText("Successful Registration");
+            titleLabel.setStyle("-fx-text-fill: green");
             registerUser();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success !");
+            alert.setHeaderText(null);
+            alert.setContentText("Register successfully !");
+            alert.showAndWait();
         } else {
-            titleLabel.setText("Registration failed!");
+            titleLabel.setText("Failed Registration!");
             titleLabel.setStyle("-fx-text-fill: red");
         }
     }
@@ -117,9 +125,9 @@ public class SignUpController {
         String firstNameInput = firstnameTextField.getText();
         String lastNameInput = lastnameTextField.getText();
         String recoveryCode = codeTextfield.getText();
-        String day = (String) dayCombo.getValue();
-        String month = (String) monthCombo.getValue();
-        String year = (String) yearCombo.getValue();
+        String day = dayCombo.getValue();
+        String month = monthCombo.getValue();
+        String year = yearCombo.getValue();
 
 
         String query = "insert into users (first_name, last_name, username, password, birthDate, monthDate, yearDate, recoveryCode) value (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -138,7 +146,7 @@ public class SignUpController {
 
             preparedStatement.executeUpdate();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
     }
@@ -156,13 +164,9 @@ public class SignUpController {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, UsernameInput);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return true;
-            } else {
-                return false;
-            }
+            return resultSet.next();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return false;
     }
@@ -233,7 +237,7 @@ public class SignUpController {
             }
             else if (checkA && (checkD || checkS) && password.length() > 7) {
                 invalidPasswordLabel.setText("Medium Password");
-                invalidPasswordLabel.setStyle("-fx-text-fill: yellow");
+                invalidPasswordLabel.setStyle("-fx-text-fill: #6a6a02");
             }
             else {
                 invalidPasswordLabel.setText("Week Password");
@@ -266,6 +270,8 @@ public class SignUpController {
         }
     }
 
+
+
     /**
      * initialize the comboBox
      */
@@ -296,16 +302,14 @@ public class SignUpController {
      *
      * @return true if it's valid.
      */
-    public boolean checkbirth(int year, int month, int day) {
+    public boolean checkBirth(int year, int month, int day) {
         if (year > LocalDate.now().getYear()) {
             return false;
         } else if (year == LocalDate.now().getYear()) {
             if (month > LocalDate.now().getMonthValue()) {
                 return false;
             } else if (month == LocalDate.now().getMonthValue()) {
-                if (day > LocalDate.now().getDayOfMonth()) {
-                    return false;
-                }
+                return day <= LocalDate.now().getDayOfMonth();
             }
         } else if (year < LocalDate.now().getYear()) {
             return true;
@@ -319,9 +323,9 @@ public class SignUpController {
      * @return true if it's.
      */
     public boolean validateFields() {
-        String dayInput = (String) dayCombo.getValue();
-        String monthInput = (String) monthCombo.getValue();
-        String yearInput = (String) yearCombo.getValue();
+        String dayInput = dayCombo.getValue();
+        String monthInput = monthCombo.getValue();
+        String yearInput = yearCombo.getValue();
 
         if (monthInput == null || monthInput.isBlank() || dayInput == null || dayInput.isBlank() || yearInput == null || yearInput.isBlank()) {
             invalidBirthDateLabel.setText("Please finish your birth date.");
@@ -354,12 +358,12 @@ public class SignUpController {
             return false;
         }
         if (Integer.parseInt(monthInput) < 1 || Integer.parseInt(monthInput) > 12) {
-            invalidBirthDateLabel.setText("please finish your birth date.");
+            invalidBirthDateLabel.setText("Month must be a number between 1 and 12.");
             invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
             return false;
         }
         if (Integer.parseInt(dayInput) < 1 && Integer.parseInt(monthInput) > 31) {
-            invalidBirthDateLabel.setText("please finish your birth date.");
+            invalidBirthDateLabel.setText("please finish your date of birth.");
             invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
             return false;
         }
@@ -390,10 +394,7 @@ public class SignUpController {
             }
         }
 
-        if (checkbirth(year, month, day)) {
-            return true;
-        }
-        return false;
+        return checkBirth(year, month, day);
     }
 
 

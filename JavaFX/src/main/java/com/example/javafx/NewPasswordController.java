@@ -1,7 +1,7 @@
 package com.example.javafx;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class NewPasswordController {
+    @FXML
+    public Label titleLabel1;
     @FXML
     private PasswordField setPasswordField;
     @FXML
@@ -27,11 +29,11 @@ public class NewPasswordController {
     private Button backToLoginButton;
     @FXML
     private Button setButton;
-    DatabaseConnect databaseConnect = new DatabaseConnect();
 
-    public NewPasswordController() {
-        this.databaseConnect = new DatabaseConnect();
-    }
+    /**
+     * connect with database.
+     */
+    DatabaseConnect databaseConnect = new DatabaseConnect();
 
     /**
      * check if the set button being clicked and update the database.
@@ -42,7 +44,6 @@ public class NewPasswordController {
 
     /**
      * same as the set button on action but with enter.
-     *
      * @param event enter being pressed.
      */
     public void setPressed(KeyEvent event) {
@@ -61,11 +62,18 @@ public class NewPasswordController {
         if ((invalidPasswordLabel.getText().equals("Medium Password") || invalidPasswordLabel.getText().equals("Strong Password"))
                 && invalidConfirmPasswordLabel.getText().equals("Valid Password")) {
             titleLabel.setText("Success!");
+            titleLabel1.setText("");
             titleLabel.setStyle("-fx-text-fill: green");
             passwordUser();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success !");
+            alert.setHeaderText(null);
+            alert.setContentText("Password change successfully!");
+            alert.showAndWait();
         } else {
-            titleLabel.setText("Failed");
+            titleLabel.setText("Failed to change password!");
             titleLabel.setStyle("-fx-text-fill: red");
+            titleLabel1.setText("");
         }
     }
 
@@ -81,8 +89,7 @@ public class NewPasswordController {
             preparedStatement.setString(1, password1);
             preparedStatement.setString(2, username1);
             preparedStatement.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (Exception _) {
         }
     }
 

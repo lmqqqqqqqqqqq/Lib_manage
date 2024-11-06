@@ -1,13 +1,56 @@
 .body {
-    -fx-background-image: url("background.jpg");
-    -fx-background-size: cover;
+    -fx-background-image: url("loginBackground.jpeg");
+    -fx-background-size: stretch; /* Phóng to hình ảnh để lấp đầy toàn bộ phần tử */
+    -fx-background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+    -fx-background-position: center; /* Căn giữa hình ảnh */
+}
 
-    /* Để ảnh căn giữa */
-}
-.field {
-    -fx-text-fill: #f5deb3;
-}
 .Button {
+    -fx-background-color: #000000; /* Màu nền đen */
+    -fx-text-fill: #FFFFFF; /* Màu chữ trắng */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+}
+
+.Button1 {
+    -fx-background-color: #FFFFFF; /* Màu nền đen */
+    -fx-text-fill: #000000; /* Màu chữ trắng */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+}
+
+.text-field {
     -fx-background-color: transparent;
-    -fx-text-fill: #f5deb3;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #000000; /* Màu của dòng kẻ, có thể thay đổi */
+}
+
+.text-field:focused {
+    -fx-border-color: #3b5998; /* Màu dòng kẻ khi đang nhập liệu */
+}
+
+.text1-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #FFFFFF; /* Màu của dòng kẻ, có thể thay đổi */
+}
+
+.text1-field:focused {
+    -fx-border-color: yellow; /* Màu dòng kẻ khi đang nhập liệu */
+}
+
+/* CSS for ComboBox */
+.combo-box,.list-view {
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #FFFFFF; /* Màu của dòng kẻ, có thể thay đổi */
+}
+.combo-box:focused {
+    -fx-border-color: yellow; /* Màu dòng kẻ khi đang nhập liệu */
+}
+.combo-box .text-field {
+    -fx-text-fill: white; /* Đổi màu chữ thành trắng */
+
 }
