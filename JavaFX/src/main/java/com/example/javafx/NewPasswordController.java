@@ -94,6 +94,10 @@ public class NewPasswordController {
         fadeOutTransition.setToValue(0);    // Đến độ trong suốt là 0 (khong nhìn thấy)
 
         SequentialTransition sequentialTransition = new SequentialTransition(fadeInTransition, fadeOutTransition);
+        sequentialTransition.setOnFinished(_ -> {
+            Stage stage = (Stage) successfulLabel.getScene().getWindow();
+            SceneSwitcher.SwitchScene(stage, "Login.fxml");
+        });
         sequentialTransition.play();
     }
 
@@ -109,7 +113,8 @@ public class NewPasswordController {
             preparedStatement.setString(1, password1);
             preparedStatement.setString(2, username1);
             preparedStatement.executeUpdate();
-        } catch (Exception _) {
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -181,6 +186,11 @@ public class NewPasswordController {
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: #4CAF50");
             confirmPasswordField.setStyle("-fx-border-color: #4CAF50");
         }
+    }
+
+    public void initialize() {
+        successfulLabel.setVisible(false);
+        failedLabel.setVisible(false);
     }
 
     /**
