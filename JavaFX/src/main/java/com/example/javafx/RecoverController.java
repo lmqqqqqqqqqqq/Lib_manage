@@ -32,11 +32,7 @@ public class RecoverController {
     /**
      * Connect with the database.
      */
-    private DatabaseConnect databaseConnect;
-
-    public RecoverController() {
-        this.databaseConnect = new DatabaseConnect();
-    }
+    DatabaseConnect databaseConnect = new DatabaseConnect();
 
     /**
      * check if the recover button being clicked and move to NewPasswordController.
@@ -60,23 +56,35 @@ public class RecoverController {
      * checkValid function.
      */
     public void checkValid() {
-        if (usernameTextField.getText().isBlank() || codeTextfield.getText().isBlank()) {
-            InvalidLoginLabel.setText("You need to enter a username and code");
+        if (usernameTextField.getText().isBlank() && codeTextfield.getText().isBlank()) {
+            InvalidLoginLabel.setText("You need to enter your username and recovery code");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
-        } else {
+            usernameTextField.setStyle("-fx-border-color: red");
+            codeTextfield.setStyle("-fx-border-color: red");
+        } else if(usernameTextField.getText().isBlank())  {
+            InvalidLoginLabel.setText("You need to enter your username");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            usernameTextField.setStyle("-fx-border-color: red");
+        } else if(codeTextfield.getText().isBlank())  {
+            InvalidLoginLabel.setText("You need to enter your recovery code");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            codeTextfield.setStyle("-fx-border-color: red");
+        }
+        else {
             if (validRecover()) {
                 Stage stage = (Stage) recoverButton.getScene().getWindow();
                 SceneSwitcher.SwitchScene(stage, "NewPassword.fxml");
             } else {
                 InvalidLoginLabel.setText("Invalid code or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
+                codeTextfield.setStyle("-fx-border-color: red");
+                usernameTextField.setStyle("-fx-border-color: red");
             }
         }
     }
 
     /**
      * check if the username and code is true or not.
-     *
      * @return true if it;s right.
      */
     public boolean validRecover() {
@@ -90,13 +98,8 @@ public class RecoverController {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, code);
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            return resultSet.next();
+        } catch (Exception _) {
         }
         return false;
     }

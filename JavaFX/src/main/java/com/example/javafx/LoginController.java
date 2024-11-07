@@ -1,6 +1,5 @@
 package com.example.javafx;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,7 +7,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.sql.*;
@@ -32,11 +30,7 @@ public class LoginController {
     /**
      * connect with database.
      */
-    private DatabaseConnect databaseConnect;
-
-    public LoginController() {
-        this.databaseConnect = new DatabaseConnect();
-    }
+    DatabaseConnect databaseConnect = new DatabaseConnect();
 
     /**
      * check if the login button being clicked and move to main's interface.
@@ -47,7 +41,6 @@ public class LoginController {
 
     /**
      * same as the login button on action but with enter.
-     *
      * @param event enter.
      */
     public void loginButtonPressed(KeyEvent event) {
@@ -60,10 +53,21 @@ public class LoginController {
      * checkValid function.
      */
     public void checkValid() {
-        if (usernameTextField.getText().isBlank() || enterPasswordField.getText().isBlank()) {
+        if (usernameTextField.getText().isBlank() && enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
-        } else {
+            usernameTextField.setStyle("-fx-border-color: red");
+        }
+        if (usernameTextField.getText().isBlank()) {
+            InvalidLoginLabel.setText("You need to enter a username");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            usernameTextField.setStyle("-fx-border-color: red");
+        } else if(enterPasswordField.getText().isBlank()) {
+            InvalidLoginLabel.setText("You need to enter a password");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            enterPasswordField.setStyle("-fx-border-color: red");
+        }
+        else {
             if (validLogin()) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 SceneSwitcher.SwitchScene(stage, "MAIN_SCENE.fxml");
@@ -76,10 +80,9 @@ public class LoginController {
 
     /**
      * use the database's information and check if it's exist or not.
-     *
      * @return true if the login information is correct .
      */
-    public boolean validLogin() {
+    public boolean validLogin()  {
 
         //the input of username and password.
         String usernameInp = usernameTextField.getText();
@@ -88,23 +91,19 @@ public class LoginController {
         //use the query and preparedStatement to keep it safety.
         String query = "SELECT * FROM users WHERE username = ? and password = ?";
 
-        //use connection() in the Dtconnector class to link with the database.
+        //use connection() in the DataConnector class to link with the database.
         //use try catch to close the connection.
         try (Connection connection = databaseConnect.connect()) {
             //use prepared to take the input login's information.
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, usernameInp);
             preparedStatement.setString(2, passwordInp);
-            //resultset being used to check in the database and return true if it's exist.
+            //resultSet being used to check in the database and return true if it's exist.
             ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                return true;
-            } else {
-                return false;
-            }
+            return resultSet.next();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
         return false;
     }
@@ -122,7 +121,7 @@ public class LoginController {
      */
     public void signUpLabelClick() {
         Stage stage = (Stage) signUpLabelClicked.getScene().getWindow();
-        SceneSwitcher.SwitchScene(stage, "SignUp.FXML");
+        SceneSwitcher.SwitchScene(stage, "SignUp.fxml");
     }
 
     /**
@@ -130,14 +129,14 @@ public class LoginController {
      */
     public void forgetLabelClick() {
         Stage stage = (Stage) forgetLabelClicked.getScene().getWindow();
-        SceneSwitcher.SwitchScene(stage, "RecoverPassword.FXML");
+        SceneSwitcher.SwitchScene(stage, "RecoverPassword.fxml");
     }
 
     /**
      * using css for the effect.
      */
     public void loginEnter() {
-        loginButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: yellow");
+        loginButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: blue");
     }
 
     public void loginExited() {
@@ -145,7 +144,7 @@ public class LoginController {
     }
 
     public void cancelEnter() {
-        cancelButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: yellow");
+        cancelButton.setStyle("-fx-underline: true; -fx-background-color: rgba(0, 0, 0, 0.2); -fx-text-fill: blue");
     }
 
     public void cancelExited() {
@@ -157,7 +156,7 @@ public class LoginController {
     }
 
     public void signUpMouseExited() {
-        signUpLabelClicked.setStyle("-fx-text-fill: #f5deb3; -fx-underline: false;");
+        signUpLabelClicked.setStyle("-fx-text-fill: #9000ff; -fx-underline: false;");
     }
 
     public void forgetMouseEnter() {
@@ -165,6 +164,6 @@ public class LoginController {
     }
 
     public void forgetMouseExited() {
-        forgetLabelClicked.setStyle("-fx-text-fill: #f5deb3; -fx-underline: false;");
+        forgetLabelClicked.setStyle("-fx-text-fill: #000000; -fx-underline: false;");
     }
 }
