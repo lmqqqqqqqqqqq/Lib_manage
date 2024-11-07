@@ -1,5 +1,8 @@
 package com.example.javafx;
 
+import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -34,8 +38,6 @@ public class SignUpController {
     @FXML
     private Button backToLoginButton;
     @FXML
-    private Label titleLabel;
-    @FXML
     private ComboBox<String> monthCombo;
     @FXML
     private ComboBox<String> dayCombo;
@@ -51,7 +53,10 @@ public class SignUpController {
     private Label invalidRecover;
     @FXML
     private Label invalidFirstNameLabel;
-
+    @FXML
+    private Label successfulLabel;
+    @FXML
+    private Label failedLabel;
     /**
      * connect with database.
      */
@@ -59,6 +64,8 @@ public class SignUpController {
     /**
      * check if the signup button being clicked.
      */
+
+
     public void registerButtonClickedOnAction() {
         checkValid();
     }
@@ -90,18 +97,35 @@ public class SignUpController {
                 && invalidConfirmPasswordLabel.getText().equals("Valid Password")
                 && invalidRecover.getText().equals("Valid Code") && validateFields()
                 && invalidFirstNameLabel.getText().equals("Valid")) {
-            titleLabel.setText("Successful Registration");
-            titleLabel.setStyle("-fx-text-fill: #4CAF50");
-            registerUser();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success !");
-            alert.setHeaderText(null);
-            alert.setContentText("Register successfully !");
-            alert.showAndWait();
+                    successfulLabel.setVisible(true);
+                    fadeAnimation(successfulLabel);
+                    registerUser();
         } else {
-            titleLabel.setText("Failed Registration!");
-            titleLabel.setStyle("-fx-text-fill: red");
+            failedLabel.setVisible(true);
+            fadeAnimation(failedLabel);
         }
+    }
+
+    /**
+     * fade animation.
+     */
+    public void fadeAnimation(Label label) {
+        FadeTransition fadeInTransition = new FadeTransition();
+        fadeInTransition.setNode(label);  // Gán Label vào hiệu ứng
+        fadeInTransition.setDuration(Duration.seconds(2));  // Thời gian fade in
+        fadeInTransition.setFromValue(0);  // Từ độ trong suốt là 0 (không nhìn thấy)
+        fadeInTransition.setToValue(1);    // Đến độ trong suốt là 1 (hoàn toàn nhìn thấy)
+
+        PauseTransition pauseTransition = new PauseTransition(Duration.seconds(3));
+
+        FadeTransition fadeOutTransition = new FadeTransition();
+        fadeOutTransition.setNode(label);  // Gán Label vào hiệu ứng
+        fadeOutTransition.setDuration(Duration.seconds(2));  // Thời gian fade in
+        fadeOutTransition.setFromValue(1);  // Từ độ trong suốt là 1 ( nhìn thấy)
+        fadeOutTransition.setToValue(0);    // Đến độ trong suốt là 0 (khong nhìn thấy)
+
+        SequentialTransition sequentialTransition = new SequentialTransition(fadeInTransition, pauseTransition, fadeOutTransition);
+        sequentialTransition.play();
     }
 
     /**
@@ -118,7 +142,7 @@ public class SignUpController {
         String year = yearCombo.getValue();
 
 
-        String query = "insert into users (first_name, last_name, username, password, birthDate, monthDate, yearDate, recoveryCode) value (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into users (first_name, last_name, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode) value (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = databaseConnect.connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -288,9 +312,11 @@ public class SignUpController {
     }
 
     /**
-     * initialize the comboBox
+     * initialize
      */
     public void initialize() {
+        successfulLabel.setVisible(false);
+        failedLabel.setVisible(false);
         ObservableList<String> months = FXCollections.observableArrayList();
         for (int i = 1; i <= 12; i++) {
             months.add(Integer.toString(i));
