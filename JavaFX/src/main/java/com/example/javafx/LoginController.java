@@ -1,5 +1,6 @@
 package com.example.javafx;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.sql.*;
 
@@ -26,7 +28,10 @@ public class LoginController {
     private Label signUpLabelClicked;
     @FXML
     private Label forgetLabelClicked;
-
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label passwordLabel;
     /**
      * connect with database.
      */
@@ -41,7 +46,6 @@ public class LoginController {
 
     /**
      * same as the login button on action but with enter.
-     *
      * @param event enter.
      */
     public void loginButtonPressed(KeyEvent event) {
@@ -54,13 +58,25 @@ public class LoginController {
      * checkValid function.
      */
     public void checkValid() {
-        if (usernameTextField.getText().isBlank() || enterPasswordField.getText().isBlank()) {
+        if (usernameTextField.getText().isBlank() && enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
-        } else {
-            if (validLogin()) {
+            usernameTextField.setStyle("-fx-border-color: red");
+        }
+        if (usernameTextField.getText().isBlank()) {
+            InvalidLoginLabel.setText("You need to enter a username");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            usernameTextField.setStyle("-fx-border-color: red");
+        } else if(enterPasswordField.getText().isBlank()) {
+            InvalidLoginLabel.setText("You need to enter a password");
+            InvalidLoginLabel.setStyle("-fx-text-fill: red");
+            enterPasswordField.setStyle("-fx-border-color: red");
+        }
+        else {
+            User user = validLogin();
+            if (user != null) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
-                SceneSwitcher.SwitchScene(stage, "MAIN_SCENE.fxml");
+                SceneSwitcher.SwitchScene(stage, "mainScene.fxml");
             } else {
                 InvalidLoginLabel.setText("Invalid password or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
@@ -69,10 +85,10 @@ public class LoginController {
     }
 
     /**
-     * use the database's information and check if it's exist or not.
-     * @return true if the login information is correct .
+     * take information in the database to check the valid login and give information to user.
+     * @return the information.
      */
-    public boolean validLogin()  {
+    public User validLogin()  {
 
         //the input of username and password.
         String usernameInp = usernameTextField.getText();
@@ -90,12 +106,23 @@ public class LoginController {
             preparedStatement.setString(2, passwordInp);
             //resultSet being used to check in the database and return true if it's exist.
             ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
+            if(resultSet.next()) {
+                int id = resultSet.getInt("idusers");
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                String firstname = resultSet.getString("first_name");
+                String lastname = resultSet.getString("last_name");
+                int dayOfBirth = resultSet.getInt("dayOfBirth");
+                int monthOfBirth = resultSet.getInt("monthOfBirth");
+                int yearOfBirth = resultSet.getInt("yearOfBirth");
+                String recoveryCode = resultSet.getString("recoveryCode");
+                return new User(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth);
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return false;
+        return null;
     }
 
     /**
@@ -156,4 +183,35 @@ public class LoginController {
     public void forgetMouseExited() {
         forgetLabelClicked.setStyle("-fx-text-fill: #000000; -fx-underline: false;");
     }
+
+    public void loginMouseEnter() {
+        loginAnimation(true, usernameLabel );
+    }
+
+    public void loginMouseExited() {
+        loginAnimation(false, usernameLabel );
+    }
+
+    public void passwordMouseEnter() {
+        loginAnimation(true, passwordLabel );
+    }
+
+    public void passwordMouseExited() {
+        loginAnimation(false, passwordLabel );
+    }
+
+    public void loginAnimation(boolean isEntered, Label label) {
+        TranslateTransition animation = new TranslateTransition();
+        animation.setNode(label);
+        if (isEntered) {
+            animation.setByY(-15);
+        } else {
+            animation.setByY(15);
+        }
+        animation.setDuration(Duration.seconds(0.05)); // 0.3s cho sự mượt mà
+        animation.setCycleCount(1);
+        animation.setAutoReverse(false); // Không quay lại khi hết thời gian
+        animation.play();
+    }
+
 }

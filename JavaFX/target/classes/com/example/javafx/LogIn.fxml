@@ -10,124 +10,101 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="554.0" prefWidth="689.0" styleClass="body" stylesheets="@style.css"
-           xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.example.javafx.LoginController">
-   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0"
-               prefWidth="848.0">
+<StackPane prefHeight="554.0" prefWidth="689.0" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.LoginController">
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="848.0">
       <Label layoutX="57.0" layoutY="35.0" prefHeight="81.0" prefWidth="190.0" text="    Login">
          <font>
-            <Font name="Calibri Bold Italic" size="48.0"/>
+            <Font name="Calibri Bold Italic" size="48.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="153.0" prefHeight="32.0" prefWidth="120.0" styleClass="label-floating"
-             stylesheets="@style.css" text="  Username">
+      <Label fx:id="usernameLabel" layoutX="32.0" layoutY="153.0" prefHeight="32.0" prefWidth="120.0" styleClass="label-floating" stylesheets="@style.css" text="  Username">
          <font>
-            <Font name="Calibri Italic" size="24.0"/>
+            <Font name="Calibri Italic" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField" layoutX="47.0" layoutY="207.0" onKeyPressed="#loginButtonPressed"
-                 prefHeight="32.0" prefWidth="300.0" stylesheets="@style.css">
+      <TextField fx:id="usernameTextField" layoutX="47.0" layoutY="183.0" onKeyPressed="#loginButtonPressed" onMouseEntered="#loginMouseEnter" onMouseExited="#loginMouseExited" prefHeight="32.0" prefWidth="300.0" stylesheets="@style.css">
          <font>
-            <Font name="Calibri Italic" size="17.0"/>
+            <Font name="Calibri Italic" size="17.0" />
          </font>
       </TextField>
-      <Label layoutX="32.0" layoutY="269.0" prefHeight="32.0" prefWidth="120.0" text="  Password">
+      <Label fx:id="passwordLabel" layoutX="32.0" layoutY="253.0" prefHeight="32.0" prefWidth="120.0" text="  Password">
          <font>
-            <Font name="Calibri Italic" size="24.0"/>
+            <Font name="Calibri Italic" size="24.0" />
          </font>
       </Label>
-      <PasswordField fx:id="enterPasswordField" layoutX="47.0" layoutY="305.0" onKeyPressed="#loginButtonPressed"
-                     prefHeight="32.0" prefWidth="300.0" styleClass="password-field" stylesheets="@style.css">
+      <PasswordField fx:id="enterPasswordField" layoutX="47.0" layoutY="283.0" onKeyPressed="#loginButtonPressed" onMouseEntered="#passwordMouseEnter" onMouseExited="#passwordMouseExited" prefHeight="32.0" prefWidth="300.0" styleClass="password-field" stylesheets="@style.css">
          <font>
-            <Font name="Calibri Italic" size="17.0"/>
+            <Font name="Calibri Italic" size="17.0" />
          </font>
       </PasswordField>
-      <Button fx:id="loginButton" layoutX="39.0" layoutY="385.0" mnemonicParsing="false"
-              onAction="#loginButtonClickedOnAction" onKeyPressed="#loginButtonPressed" onMouseEntered="#loginEnter"
-              onMouseExited="#loginExited" prefHeight="39.0" prefWidth="226.0" styleClass="Button"
-              stylesheets="@style.css" text="Login">
+      <Button fx:id="loginButton" layoutX="39.0" layoutY="385.0" mnemonicParsing="false" onAction="#loginButtonClickedOnAction" onKeyPressed="#loginButtonPressed" onMouseEntered="#loginEnter" onMouseExited="#loginExited" prefHeight="39.0" prefWidth="226.0" styleClass="Button" stylesheets="@style.css" text="Login">
          <font>
-            <Font name="Calibri Bold" size="15.0"/>
+            <Font name="Calibri Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="cancelButton" layoutX="289.0" layoutY="385.0" mnemonicParsing="false"
-              onAction="#cancelButtonClickedOnAction" onMouseEntered="#cancelEnter" onMouseExited="#cancelExited"
-              prefHeight="39.0" prefWidth="82.0" styleClass="Button" stylesheets="@style.css" text="Cancel"
-              textFill="WHEAT">
+      <Button fx:id="cancelButton" layoutX="289.0" layoutY="385.0" mnemonicParsing="false" onAction="#cancelButtonClickedOnAction" onMouseEntered="#cancelEnter" onMouseExited="#cancelExited" prefHeight="39.0" prefWidth="82.0" styleClass="Button" stylesheets="@style.css" text="Cancel" textFill="WHEAT">
          <font>
-            <Font name="Calibri Bold" size="15.0"/>
+            <Font name="Calibri Bold" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="signUpLabelClicked" alignment="CENTER_RIGHT" layoutX="221.0" layoutY="496.0"
-             onMouseClicked="#signUpLabelClick" onMouseEntered="#signUpMouseEnter" onMouseExited="#signUpMouseExited"
-             prefHeight="20.0" prefWidth="58.0" text="Sign Up" textAlignment="RIGHT" textFill="#9000ff">
+      <Label fx:id="signUpLabelClicked" alignment="CENTER_RIGHT" layoutX="221.0" layoutY="496.0" onMouseClicked="#signUpLabelClick" onMouseEntered="#signUpMouseEnter" onMouseExited="#signUpMouseExited" prefHeight="20.0" prefWidth="58.0" text="Sign Up" textAlignment="RIGHT" textFill="#9000ff">
          <font>
-            <Font name="Calibri Bold Italic" size="16.0"/>
+            <Font name="Calibri Bold Italic" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="InvalidLoginLabel" layoutX="47.0" layoutY="347.0" prefHeight="32.0" prefWidth="300.0" text=" "
-             textFill="#cee40b">
+      <Label fx:id="InvalidLoginLabel" layoutX="47.0" layoutY="347.0" prefHeight="32.0" prefWidth="300.0" text=" " textFill="#cee40b">
          <font>
-            <Font name="Segoe UI Light Italic" size="15.0"/>
+            <Font name="Segoe UI Light Italic" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="forgetLabelClicked" alignment="CENTER_RIGHT" layoutX="63.0" layoutY="453.0"
-             onMouseClicked="#forgetLabelClick" onMouseEntered="#forgetMouseEnter" onMouseExited="#forgetMouseExited"
-             prefHeight="20.0" prefWidth="126.0" text="Forget password ?" textAlignment="RIGHT">
+      <Label fx:id="forgetLabelClicked" alignment="CENTER_RIGHT" layoutX="63.0" layoutY="453.0" onMouseClicked="#forgetLabelClick" onMouseEntered="#forgetMouseEnter" onMouseExited="#forgetMouseExited" prefHeight="20.0" prefWidth="126.0" text="Forget password ?" textAlignment="RIGHT">
          <font>
-            <Font name="Calibri Bold" size="16.0"/>
+            <Font name="Calibri Bold" size="16.0" />
          </font>
       </Label>
       <Label layoutX="630.0" layoutY="89.0" prefHeight="82.0" prefWidth="178.0" text="WELCOME" textFill="WHITE">
          <font>
-            <Font name="Calibri Bold" size="40.0"/>
+            <Font name="Calibri Bold" size="40.0" />
          </font>
       </Label>
       <Label layoutX="673.0" layoutY="148.0" prefHeight="74.0" prefWidth="134.0" text="BACK !" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="40.0"/>
+            <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Label layoutX="583.0" layoutY="233.0" prefHeight="18.0" prefWidth="238.0"
-             text="A good book on your shelf is a friend" textFill="WHITE">
+      <Label layoutX="583.0" layoutY="233.0" prefHeight="18.0" prefWidth="238.0" text="A good book on your shelf is a friend" textFill="WHITE">
          <font>
-            <Font name="Calibri Italic" size="16.0"/>
+            <Font name="Calibri Italic" size="16.0" />
          </font>
       </Label>
       <Label layoutX="63.0" layoutY="488.0" prefHeight="35.0" prefWidth="164.0" text="Don't have an account? ">
          <font>
-            <Font name="Calibri Bold" size="16.0"/>
+            <Font name="Calibri Bold" size="16.0" />
          </font>
       </Label>
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="322.0" layoutY="191.0" pickOnBounds="true"
-                 preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="322.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@user.png"/>
+            <Image url="@user.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="322.0" layoutY="289.0" pickOnBounds="true"
-                 preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="322.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@lock.png"/>
+            <Image url="@lock.png" />
          </image>
       </ImageView>
-      <Label layoutX="624.0" layoutY="260.0" prefHeight="18.0" prefWidth="200.0"
-             text="that turns its back on you and" textFill="WHITE">
+      <Label layoutX="624.0" layoutY="260.0" prefHeight="18.0" prefWidth="200.0" text="that turns its back on you and" textFill="WHITE">
          <font>
-            <Font name="Calibri Italic" size="16.0"/>
+            <Font name="Calibri Italic" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="673.0" layoutY="292.0" prefHeight="18.0" prefWidth="150.0" text="remains a good friend."
-             textFill="WHITE">
+      <Label layoutX="673.0" layoutY="292.0" prefHeight="18.0" prefWidth="150.0" text="remains a good friend." textFill="WHITE">
          <font>
-            <Font name="Calibri Italic" size="16.0"/>
+            <Font name="Calibri Italic" size="16.0" />
          </font>
       </Label>
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="197.0" layoutY="447.0" pickOnBounds="true"
-                 preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="197.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@forget.png"/>
+            <Image url="@forget.png" />
          </image>
       </ImageView>
    </AnchorPane>

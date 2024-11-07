@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
@@ -13,12 +15,12 @@
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="844.0">
          <children>
-            <Label layoutX="397.0" layoutY="110.0" prefHeight="38.0" prefWidth="133.0" text="First name" textFill="WHITE">
+            <Label layoutX="399.0" layoutY="103.0" prefHeight="38.0" prefWidth="133.0" text="First name" textFill="WHITE">
                <font>
                   <Font name="Calibri Italic" size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="firstnameTextField" layoutX="558.0" layoutY="103.0" onKeyPressed="#registerPressed" prefHeight="38.0" prefWidth="150.0" styleClass="text1-field" stylesheets="@style.css">
+            <TextField fx:id="firstnameTextField" layoutX="558.0" layoutY="103.0" onKeyPressed="#registerPressed" onKeyReleased="#firstnameReleased" prefHeight="38.0" prefWidth="150.0" styleClass="text1-field" stylesheets="@style.css">
                <font>
                   <Font name="Calibri Italic" size="17.0" />
                </font>
@@ -63,7 +65,7 @@
                   <Font name="Calibri Bold Italic" size="20.0" />
                </font>
             </Button>
-            <Label fx:id="invalidUsernameLabel" layoutX="7.0" layoutY="184.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="366.0" text="Your username should be between 6-15 characters." textAlignment="RIGHT">
+            <Label fx:id="invalidUsernameLabel" layoutX="4.0" layoutY="196.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="416.0" text="Your username should be between 6-15 characters." textAlignment="RIGHT">
                <font>
                   <Font name="Calibri Italic" size="15.0" />
                </font>
@@ -114,7 +116,7 @@
                   <Font name="Calibri Italic" size="27.0" />
                </font>
             </Label>
-            <TextField fx:id="codeTextfield" layoutX="174.0" layoutY="413.0" onKeyPressed="#registerPressed" prefHeight="32.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
+            <TextField fx:id="codeTextfield" layoutX="174.0" layoutY="413.0" onKeyPressed="#registerPressed" onKeyReleased="#recoveryReleased" prefHeight="32.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
@@ -128,6 +130,30 @@
                <font>
                   <Font name="Calibri Italic" size="15.0" />
                </font>
+            </Label>
+            <Label fx:id="successfulLabel" layoutX="15.0" layoutY="21.0" prefHeight="67.0" prefWidth="258.0" styleClass="Button" stylesheets="@style.css" text="Successful registration !" textFill="#2ff74df7">
+               <font>
+                  <Font name="Calibri Bold Italic" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="46.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@check.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+            <Label fx:id="failedLabel" layoutX="15.0" layoutY="18.0" prefHeight="67.0" prefWidth="258.0" styleClass="Button" stylesheets="@style.css" text="Failed registration !">
+               <font>
+                  <Font name="Calibri Bold Italic" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@failed.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Label>
          </children>
       </AnchorPane>

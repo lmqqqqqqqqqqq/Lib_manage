@@ -52,5 +52,8 @@
 }
 .combo-box .text-field {
     -fx-text-fill: white; /* Đổi màu chữ thành trắng */
+}
 
+.label-move {
+    transition: translate 1s ease-in-out;  /* Lặp lại animation với thời gian 1s */
 }
