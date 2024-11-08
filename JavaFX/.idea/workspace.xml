@@ -5,28 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="614f8d6b-eb6b-4cb8-af27-b12988f6199b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafx/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafx/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafx/MAIN_SCENE_control.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafx/NewPasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafx/NewPasswordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafx/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/javafx/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/javafx/profileController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/javafx/MAIN_SCENE.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/javafx/MAIN_SCENE.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/javafx/backgr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/javafx/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/javafx/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/javafx/profile.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/javafx/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/MAIN_SCENE.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/MAIN_SCENE.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/MAIN_SCENE_control.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/NewPasswordController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/javafx/NewPasswordController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/javafx/SignUpController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/backgr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/profile.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/javafx/profileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,9 +24,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2oWv3E5gFTnaFIvukLDclWs6Jbs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
