@@ -76,7 +76,7 @@ public class LoginController {
             User user = validLogin();
             if (user != null) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
-                SceneSwitcher.SwitchScene(stage, "MAIN_SCENE.fxml");
+                SceneSwitcher.SwitchScene(stage, "mainScene.fxml");
             } else {
                 InvalidLoginLabel.setText("Invalid password or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");

@@ -97,9 +97,9 @@ public class SignUpController {
                 && invalidConfirmPasswordLabel.getText().equals("Valid Password")
                 && invalidRecover.getText().equals("Valid Code") && validateFields()
                 && invalidFirstNameLabel.getText().equals("Valid")) {
-                    successfulLabel.setVisible(true);
-                    fadeAnimation(successfulLabel);
-                    registerUser();
+            successfulLabel.setVisible(true);
+            fadeAnimation(successfulLabel);
+            registerUser();
         } else {
             failedLabel.setVisible(true);
             fadeAnimation(failedLabel);
@@ -125,6 +125,10 @@ public class SignUpController {
         fadeOutTransition.setToValue(0);    // Đến độ trong suốt là 0 (khong nhìn thấy)
 
         SequentialTransition sequentialTransition = new SequentialTransition(fadeInTransition, pauseTransition, fadeOutTransition);
+        sequentialTransition.setOnFinished(_ -> {
+            Stage stage = (Stage) successfulLabel.getScene().getWindow();
+            SceneSwitcher.SwitchScene(stage, "Login.fxml");
+        });
         sequentialTransition.play();
     }
 
