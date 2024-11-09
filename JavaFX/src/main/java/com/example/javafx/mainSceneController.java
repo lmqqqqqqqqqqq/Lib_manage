@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -30,36 +27,46 @@ public class mainSceneController {
     private AnchorPane yourBookPane;
     @FXML
     private AnchorPane advancedSearchPane;
+
+    /**
+     * when init show mainPane first.
+     */
+    @FXML
+    public void initialize() {
+        showPane(mainPane);
+    }
+
+
     @FXML
     public void yourBookOnClick() {
-        mainPane.setVisible(false);
-        advancedSearchPane.setVisible(false);
-        searchPaneInMain.setVisible(true);
-        searchButtonInMain.setVisible(true);
-        yourBookPane.setVisible(true);
+        showPane(yourBookPane);
     }
     @FXML
     public void mainPaneOnClick() {
-        yourBookPane.setVisible(false);
-        advancedSearchPane.setVisible(false);
-        searchPaneInMain.setVisible(true);
-        searchButtonInMain.setVisible(true);
-        mainPane.setVisible(true);
+        showPane(mainPane);
     }
     @FXML
     public void advancedSearchPaneOnClick() {
-        mainPane.setVisible(false);
-        yourBookPane.setVisible(false);
-        searchButtonInMain.setVisible(false);
-        searchPaneInMain.setVisible(false);
-        advancedSearchPane.setVisible(true);
+        showPane(advancedSearchPane);
     }
     @FXML
     public void profilePaneOnClick() {
+        showPane(profilePane);
+    }
+
+    private void showPane(AnchorPane paneToShow) {
+        // Ẩn tất cả các `Pane`
+        profilePane.setVisible(false);
         mainPane.setVisible(false);
         yourBookPane.setVisible(false);
         advancedSearchPane.setVisible(false);
-        profilePane.setVisible(true);
-    }
 
+        // Chỉ hiển thị `Pane` được chọn
+        paneToShow.setVisible(true);
+
+        // Ẩn hoặc hiển thị các phần tử bổ sung trong `mainPane`
+        boolean showtoppane = (paneToShow == mainPane || paneToShow == yourBookPane);
+        searchPaneInMain.setVisible(showtoppane);
+        searchButtonInMain.setVisible(showtoppane);
+    }
 }
