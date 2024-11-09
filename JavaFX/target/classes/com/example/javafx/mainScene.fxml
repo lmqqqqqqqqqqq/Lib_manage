@@ -154,10 +154,63 @@
                                 </SplitPane>
                             </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="yourBookPane" layoutY="56.0" prefHeight="914.0" prefWidth="1536.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="56.0" />
-                        <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="22.0" prefHeight="26.0" prefWidth="526.0" promptText="Search for books" AnchorPane.bottomAnchor="948.0" AnchorPane.leftAnchor="582.0" AnchorPane.rightAnchor="693.0" AnchorPane.topAnchor="22.0" />
-                        <Button fx:id="searchButtonInMain" layoutX="1155.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Search" AnchorPane.bottomAnchor="948.0" AnchorPane.leftAnchor="1155.0" AnchorPane.rightAnchor="552.0" AnchorPane.topAnchor="22.0" />
-                        <AnchorPane fx:id="profilePane" layoutY="56.0" prefHeight="914.0" prefWidth="1536.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="56.0" />
+                        <AnchorPane fx:id="yourBookPane" layoutY="56.0" prefHeight="914.0" prefWidth="1536.0" styleClass="mainContent_pane" stylesheets="@mainScene.css" visible="false" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="56.0">
+                     <children>
+                        <VBox layoutX="64.0" layoutY="21.0" prefHeight="280.0" prefWidth="1674.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="32.0" prefWidth="1754.0" text="Sách đã mượn">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ListView maxHeight="-Infinity" maxWidth="-Infinity" orientation="HORIZONTAL" prefHeight="250.0" prefWidth="1722.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </ListView>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="64.0" layoutY="319.0" prefHeight="280.0" prefWidth="1674.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="32.0" prefWidth="1719.0" text="Sách đọc dở">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ListView maxHeight="-Infinity" maxWidth="-Infinity" orientation="HORIZONTAL" prefHeight="250.0" prefWidth="1695.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </ListView>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="64.0" layoutY="643.0" prefHeight="280.0" prefWidth="1674.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="35.0" prefWidth="1674.0" text="Sách yêu thích">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ListView maxHeight="-Infinity" maxWidth="-Infinity" orientation="HORIZONTAL" prefHeight="247.0" prefWidth="1674.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </ListView>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+                        <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="10.0" prefHeight="27.0" prefWidth="527.0" promptText="Search for books" />
+                        <Button fx:id="searchButtonInMain" layoutX="1155.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="95.0" text="Search" />
+                        <AnchorPane fx:id="profilePane" layoutY="56.0" prefHeight="914.0" prefWidth="1536.0" visible="false" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="56.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane fx:id="advancedSearchPane" prefHeight="968.0" prefWidth="1534.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
