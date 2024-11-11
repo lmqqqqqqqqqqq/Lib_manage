@@ -20,8 +20,7 @@ public class SceneSwitcher {
             currentStage.setScene(scene);
             currentStage.show();
         } catch (Exception e) {
-            System.out.println("khong tai duoc" + e.getMessage());
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }
