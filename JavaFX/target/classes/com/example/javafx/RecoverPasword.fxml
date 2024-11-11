@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.RecoverryController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.RecoverController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="456.0">
          <children>
@@ -33,7 +33,7 @@
                   <Font name="Arial Italic" size="13.0" />
                </font>
             </TextField>
-            <Button fx:id="recoverButton" layoutX="278.0" layoutY="221.0" mnemonicParsing="false" onAction="#recoverButtonClickedOnAction" onMouseEntered="#recoverEnter" onMouseExited="#ecoverExited" opacity="0.73" prefHeight="43.0" prefWidth="134.0" styleClass="Button" stylesheets="@style.css" text="Recover" textFill="WHEAT">
+            <Button fx:id="recoverButton" layoutX="278.0" layoutY="221.0" mnemonicParsing="false" onAction="#recoverButtonClickedOnAction" onMouseEntered="#recoverEnter" onMouseExited="#recoverExited" opacity="0.73" prefHeight="43.0" prefWidth="134.0" styleClass="Button" stylesheets="@style.css" text="Recover" textFill="WHEAT">
                <font>
                   <Font name="Calibri Bold Italic" size="20.0" />
                </font>
