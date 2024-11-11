@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane prefHeight="554.0" prefWidth="689.0" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.LoginController">
-   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="848.0">
+   <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#paneclick" prefHeight="559.0" prefWidth="848.0">
       <Label layoutX="57.0" layoutY="35.0" prefHeight="81.0" prefWidth="190.0" text="    Login">
          <font>
             <Font name="Calibri Bold Italic" size="48.0" />
@@ -22,7 +22,7 @@
             <Font name="Calibri Italic" size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField" layoutX="47.0" layoutY="183.0" onKeyPressed="#loginButtonPressed" onMouseEntered="#loginMouseEnter" onMouseExited="#loginMouseExited" prefHeight="32.0" prefWidth="300.0" stylesheets="@style.css">
+      <TextField fx:id="usernameTextField" layoutX="47.0" layoutY="183.0" onKeyPressed="#loginButtonPressed" onMouseClicked="#userclick" prefHeight="32.0" prefWidth="300.0" stylesheets="@style.css">
          <font>
             <Font name="Calibri Italic" size="17.0" />
          </font>
@@ -32,7 +32,7 @@
             <Font name="Calibri Italic" size="24.0" />
          </font>
       </Label>
-      <PasswordField fx:id="enterPasswordField" layoutX="47.0" layoutY="283.0" onKeyPressed="#loginButtonPressed" onMouseEntered="#passwordMouseEnter" onMouseExited="#passwordMouseExited" prefHeight="32.0" prefWidth="300.0" styleClass="password-field" stylesheets="@style.css">
+      <PasswordField fx:id="enterPasswordField" layoutX="47.0" layoutY="283.0" onKeyPressed="#loginButtonPressed" onMouseClicked="#passclick" prefHeight="32.0" prefWidth="300.0" styleClass="password-field" stylesheets="@style.css">
          <font>
             <Font name="Calibri Italic" size="17.0" />
          </font>
@@ -47,7 +47,7 @@
             <Font name="Calibri Bold" size="15.0" />
          </font>
       </Button>
-      <Label fx:id="signUpLabelClicked" alignment="CENTER_RIGHT" layoutX="221.0" layoutY="496.0" onMouseClicked="#signUpLabelClick" onMouseEntered="#signUpMouseEnter" onMouseExited="#signUpMouseExited" prefHeight="20.0" prefWidth="58.0" text="Sign Up" textAlignment="RIGHT" textFill="#9000ff">
+      <Label fx:id="signUpLabelClicked" alignment="CENTER_RIGHT" layoutX="221.0" layoutY="496.0" onMouseClicked="#signUpLabelClick" onMouseEntered="#signUpMouseEnter" onMouseExited="#signUpMouseExited" prefHeight="20.0" prefWidth="58.0" stylesheets="@style.css" text="Sign Up" textAlignment="RIGHT" textFill="#9000ff">
          <font>
             <Font name="Calibri Bold Italic" size="16.0" />
          </font>

@@ -21,6 +21,7 @@
     -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
 }
 
+
 .text-field {
     -fx-background-color: transparent;
     -fx-border-width: 0 0 2 0;
@@ -42,7 +43,7 @@
     -fx-border-color: yellow; /* Màu dòng kẻ khi đang nhập liệu */
 }
 
-/* CSS for ComboBox */
+
 .combo-box,.list-view {
     -fx-border-width: 0 0 2 0;
     -fx-border-color: #FFFFFF; /* Màu của dòng kẻ, có thể thay đổi */
@@ -52,8 +53,4 @@
 }
 .combo-box .text-field {
     -fx-text-fill: white; /* Đổi màu chữ thành trắng */
-}
-
-.label-move {
-    transition: translate 1s ease-in-out;  /* Lặp lại animation với thời gian 1s */
 }
