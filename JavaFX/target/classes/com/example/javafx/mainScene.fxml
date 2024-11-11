@@ -5,8 +5,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -15,6 +18,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -80,7 +84,7 @@
     <center>
         <AnchorPane prefHeight="915.0" prefWidth="1620.0" BorderPane.alignment="CENTER">
             <children>
-                <AnchorPane prefHeight="968.0" prefWidth="1534.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                <AnchorPane prefHeight="968.0" prefWidth="1534.0" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
                     <children>
                         <AnchorPane fx:id="mainPane" layoutY="56.0" opacity="0.94" prefHeight="872.0" prefWidth="1470.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="56.0">
                             <children>
@@ -154,13 +158,100 @@
                                 </SplitPane>
                             </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="yourBookPane" layoutY="56.0" prefHeight="914.0" prefWidth="1536.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="56.0" />
-                        <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="22.0" prefHeight="26.0" prefWidth="526.0" promptText="Search for books" AnchorPane.bottomAnchor="948.0" AnchorPane.leftAnchor="582.0" AnchorPane.rightAnchor="693.0" AnchorPane.topAnchor="22.0" />
-                        <Button fx:id="searchButtonInMain" layoutX="1155.0" layoutY="22.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Search" AnchorPane.bottomAnchor="948.0" AnchorPane.leftAnchor="1155.0" AnchorPane.rightAnchor="552.0" AnchorPane.topAnchor="22.0" />
+                        <AnchorPane fx:id="yourBookPane" layoutY="56.0" prefHeight="914.0" prefWidth="1536.0" styleClass="mainContent_pane" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="56.0">
+                     <children>
+                        <VBox layoutX="64.0" layoutY="21.0" prefHeight="280.0" prefWidth="1674.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="32.0" prefWidth="1754.0" text="Sách đã mượn">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ListView maxHeight="-Infinity" maxWidth="-Infinity" orientation="HORIZONTAL" prefHeight="250.0" prefWidth="1722.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </ListView>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="64.0" layoutY="319.0" prefHeight="280.0" prefWidth="1674.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="32.0" prefWidth="1719.0" text="Sách đọc dở">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ListView maxHeight="-Infinity" maxWidth="-Infinity" orientation="HORIZONTAL" prefHeight="250.0" prefWidth="1695.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </ListView>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="64.0" layoutY="643.0" prefHeight="280.0" prefWidth="1674.0">
+                           <children>
+                              <Label alignment="TOP_LEFT" prefHeight="35.0" prefWidth="1674.0" text="Sách yêu thích">
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ListView maxHeight="-Infinity" maxWidth="-Infinity" orientation="HORIZONTAL" prefHeight="247.0" prefWidth="1674.0">
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </ListView>
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+                        <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="10.0" prefHeight="27.0" prefWidth="527.0" promptText="Search for books" />
+                        <Button fx:id="searchButtonInMain" layoutX="1155.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="95.0" text="Search" />
                         <AnchorPane fx:id="profilePane" layoutY="56.0" prefHeight="914.0" prefWidth="1536.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="56.0" />
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="advancedSearchPane" prefHeight="968.0" prefWidth="1534.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
+                <AnchorPane fx:id="advancedSearchPane" prefHeight="968.0" prefWidth="1534.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TilePane alignment="CENTER" hgap="30.0" layoutX="21.0" layoutY="40.0" prefHeight="891.0" prefWidth="1183.0" vgap="30.0" />
+                  <AnchorPane layoutX="1230.0" layoutY="40.0" prefHeight="891.0" prefWidth="548.0">
+                     <children>
+                        <TextField layoutX="112.0" layoutY="160.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with authors name" />
+                        <Label layoutX="34.0" layoutY="403.0" text="From :" />
+                        <DatePicker layoutX="112.0" layoutY="399.0" promptText="From" />
+                        <Button layoutX="220.0" layoutY="604.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="Search" />
+                        <TextField layoutX="112.0" layoutY="100.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with Title name" />
+                        <Label layoutX="314.0" layoutY="403.0" prefHeight="17.0" prefWidth="24.0" text="To :" />
+                        <DatePicker layoutX="358.0" layoutY="399.0" promptText="To" />
+                        <Label alignment="CENTER" layoutX="22.0" layoutY="103.0" prefHeight="29.0" prefWidth="51.0" text="Title :" />
+                        <Label alignment="CENTER" layoutX="22.0" layoutY="163.0" prefHeight="29.0" prefWidth="51.0" text="Authors :" />
+                        <Label alignment="CENTER" layoutX="22.0" layoutY="223.0" prefHeight="29.0" prefWidth="51.0" text="Subject :" />
+                        <TextField layoutX="112.0" layoutY="220.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with subject" />
+                        <Label alignment="CENTER" layoutX="22.0" layoutY="343.0" prefHeight="29.0" prefWidth="51.0" text="ISBN :" />
+                        <Label alignment="CENTER" layoutX="22.0" layoutY="283.0" prefHeight="29.0" prefWidth="51.0" text="Publisher :" />
+                        <TextField layoutX="112.0" layoutY="280.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with subject" />
+                        <TextField layoutX="112.0" layoutY="340.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with isbn" />
+                        <MenuButton layoutX="134.0" layoutY="446.0" mnemonicParsing="false" text="Language">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                          </items>
+                        </MenuButton>
+                        <MenuButton layoutX="268.0" layoutY="446.0" mnemonicParsing="false" text="Sort by">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Oldest first" />
+                              <MenuItem mnemonicParsing="false" text="Newest first" />
+                           </items>
+                        </MenuButton>
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
             </children>
         </AnchorPane>
     </center>
