@@ -101,12 +101,13 @@ public class mainSceneController {
     private ImageView mainSceneAvatar;
     @FXML
     private Label welcomeText;
+
     /**
      * when init show mainPane first.
      */
     @FXML
     public void initialize() {
-        welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!" );
+        welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!");
         loadImage(mainSceneAvatar, user.getAvatarLink());
         showPane(mainPane);
         dayLabel.setText(numberOfDay());
@@ -150,14 +151,17 @@ public class mainSceneController {
     public void yourBookOnClick() {
         showPane(yourBookPane);
     }
+
     @FXML
     public void mainPaneOnClick() {
         showPane(mainPane);
     }
+
     @FXML
     public void advancedSearchPaneOnClick() {
         showPane(advancedSearchPane);
     }
+
     @FXML
     public void profilePaneOnClick() {
         showPane(profile);
@@ -209,10 +213,9 @@ public class mainSceneController {
         }
 
 
-
-        if ((isValidUsername ||usernameLabel.getText().equals("Nothing changed") || usernameLabel.getText().isEmpty())
+        if ((isValidUsername || usernameLabel.getText().equals("Nothing changed") || usernameLabel.getText().isEmpty())
                 && (isValidFirstname || firstnameLabel.getText().isEmpty())
-                && (invalidBirthDateLabel.getText().equals("Valid Birth Date") || invalidBirthDateLabel.getText().isEmpty()) ) {
+                && (invalidBirthDateLabel.getText().equals("Valid Birth Date") || invalidBirthDateLabel.getText().isEmpty())) {
             successfulLabel.setVisible(true);
             Animation.fadeAnimation(successfulLabel);
             updateUser();
@@ -225,11 +228,12 @@ public class mainSceneController {
 
     /**
      * load image to imageview
+     *
      * @param avatarImage is .
-     * @param link is.
+     * @param link        is.
      */
     public void loadImage(ImageView avatarImage, String link) {
-        if(!link.equals("/com/example/javafx/user.jpg")) {
+        if (!link.equals("/com/example/javafx/user.jpg")) {
             Image image = new Image(link);
             avatarImage.setImage(image);
             System.out.println(avatarImage.getFitWidth() + " " + avatarImage.getFitHeight());
@@ -255,7 +259,7 @@ public class mainSceneController {
     public void usernameReleased() {
         Released.userNameReleased(usernameTextField, usernameLabel, checkUsername);
         isValidUsername = checkUsername[0];
-        if(usernameTextField.getText().equals(user.getUsername())) {
+        if (usernameTextField.getText().equals(user.getUsername())) {
             usernameLabel.setText("Nothing changed");
             usernameLabel.setStyle("-fx-text-fill: red");
         } else if (UsernameExisted()) {
@@ -434,6 +438,7 @@ public class mainSceneController {
     }
 
     private String avatarPath = "";
+
     public void openImageChooser() {
         // Mở hộp thoại chọn file
         FileChooser fileChooser = new FileChooser();
