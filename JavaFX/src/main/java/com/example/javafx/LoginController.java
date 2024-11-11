@@ -8,6 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -32,6 +33,8 @@ public class LoginController {
     private Label usernameLabel;
     @FXML
     private Label passwordLabel;
+    @FXML
+    private AnchorPane pane;
     /**
      * connect with database.
      */
@@ -43,6 +46,7 @@ public class LoginController {
     public void loginButtonClickedOnAction() {
         checkValid();
     }
+
 
     /**
      * same as the login button on action but with enter.
@@ -57,6 +61,9 @@ public class LoginController {
     /**
      * checkValid function.
      */
+
+    public static User user;
+
     public void checkValid() {
         if (usernameTextField.getText().isBlank() && enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
@@ -73,7 +80,7 @@ public class LoginController {
             enterPasswordField.setStyle("-fx-border-color: red");
         }
         else {
-            User user = validLogin();
+            user = validLogin();
             if (user != null) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 SceneSwitcher.SwitchScene(stage, "mainScene.fxml");
@@ -116,7 +123,9 @@ public class LoginController {
                 int monthOfBirth = resultSet.getInt("monthOfBirth");
                 int yearOfBirth = resultSet.getInt("yearOfBirth");
                 String recoveryCode = resultSet.getString("recoveryCode");
-                return new User(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth);
+                String avatar = resultSet.getString("avatar");
+                String dayIn = resultSet.getString("currentDate");
+                return new User(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn);
             }
 
         } catch (Exception e) {
@@ -184,34 +193,73 @@ public class LoginController {
         forgetLabelClicked.setStyle("-fx-text-fill: #000000; -fx-underline: false;");
     }
 
-    public void loginMouseEnter() {
-        loginAnimation(true, usernameLabel );
+    boolean isUserUp = false;
+    boolean isPassUp = false;
+
+    public void userclick() {
+        if(!isUserUp && !isPassUp) {
+            userAnimation(true, usernameLabel);
+            isUserUp = true;
+        } else if(isPassUp && !isUserUp) {
+            userAnimation(true, usernameLabel);
+            passAnimation(false, passwordLabel);
+            isUserUp = true;
+            isPassUp = false;
+        }
     }
 
-    public void loginMouseExited() {
-        loginAnimation(false, usernameLabel );
+    public void passclick() {
+        if(!isUserUp && !isPassUp) {
+            passAnimation(true, passwordLabel);
+            isPassUp = true;
+        } else if(isUserUp && !isPassUp) {
+            passAnimation(true, passwordLabel);
+            userAnimation(false, usernameLabel);
+            isPassUp = true;
+            isUserUp = false;
+        }
     }
 
-    public void passwordMouseEnter() {
-        loginAnimation(true, passwordLabel );
+    public void paneclick() {
+        pane.requestFocus();
+        if(isUserUp || isPassUp) {
+            if(isUserUp) {
+                userAnimation(false, usernameLabel);
+                isUserUp = false;
+            }
+            if(isPassUp) {
+                passAnimation(false, passwordLabel);
+                isPassUp = false;
+            }
+        }
     }
 
-    public void passwordMouseExited() {
-        loginAnimation(false, passwordLabel );
-    }
 
-    public void loginAnimation(boolean isEntered, Label label) {
+    public void userAnimation(boolean check, Label label) {
         TranslateTransition animation = new TranslateTransition();
         animation.setNode(label);
-        if (isEntered) {
+        if (check) {
             animation.setByY(-15);
         } else {
             animation.setByY(15);
         }
-        animation.setDuration(Duration.seconds(0.05)); // 0.3s cho sự mượt mà
+        animation.setDuration(Duration.seconds(0.05));
         animation.setCycleCount(1);
         animation.setAutoReverse(false); // Không quay lại khi hết thời gian
         animation.play();
     }
 
+    public void passAnimation(boolean check, Label label) {
+        TranslateTransition animation = new TranslateTransition();
+        animation.setNode(label);
+        if (check) {
+            animation.setByY(-15);
+        } else {
+            animation.setByY(15);
+        }
+        animation.setDuration(Duration.seconds(0.05));
+        animation.setCycleCount(1);
+        animation.setAutoReverse(false); // Không quay lại khi hết thời gian
+        animation.play();
+    }
 }

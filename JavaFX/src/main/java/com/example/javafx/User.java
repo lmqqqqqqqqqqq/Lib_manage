@@ -9,9 +9,12 @@ public class User {
     private int yearOfBirth;
     private String username;
     private String password;
+    private String recoveryCode;
+    private String avatarLink;
+    private String dayIn;
 
     public User(int id, String firstname, String lastname, String username, String password,
-                int dayOfBirth, int monthOfBirth, int yearOfBirth) {
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -20,6 +23,9 @@ public class User {
         this.dayOfBirth = dayOfBirth;
         this.monthOfBirth = monthOfBirth;
         this.yearOfBirth = yearOfBirth;
+        this.recoveryCode = recoveryCode;
+        this.avatarLink = avatarLink;
+        this.dayIn = dayIn;
     }
 
     public int getId() {
@@ -54,4 +60,19 @@ public class User {
         return yearOfBirth;
     }
 
+    public String getRecoveryCode() {
+        return recoveryCode;
+    }
+
+    public String getAvatarLink() {
+        return avatarLink;
+    }
+
+    public void setAvatarLink(String avatarLink) {
+        this.avatarLink = avatarLink;
+    }
+
+    public String getDayIn() {
+        return dayIn;
+    }
 }
