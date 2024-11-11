@@ -5,7 +5,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
@@ -222,33 +221,32 @@
                   <TilePane alignment="CENTER" hgap="30.0" layoutX="21.0" layoutY="40.0" prefHeight="891.0" prefWidth="1183.0" vgap="30.0" />
                   <AnchorPane layoutX="1230.0" layoutY="40.0" prefHeight="891.0" prefWidth="548.0">
                      <children>
-                        <TextField layoutX="112.0" layoutY="160.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with authors name" />
-                        <Label layoutX="34.0" layoutY="403.0" text="From :" />
-                        <DatePicker layoutX="112.0" layoutY="399.0" promptText="From" />
-                        <Button layoutX="220.0" layoutY="604.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="Search" />
-                        <TextField layoutX="112.0" layoutY="100.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with Title name" />
-                        <Label layoutX="314.0" layoutY="403.0" prefHeight="17.0" prefWidth="24.0" text="To :" />
-                        <DatePicker layoutX="358.0" layoutY="399.0" promptText="To" />
+                        <TextField fx:id="Author" layoutX="112.0" layoutY="160.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with authors name" />
+                        <Label layoutX="34.0" layoutY="409.0" text="Year :" />
+                        <Button layoutX="107.0" layoutY="604.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="34.0" prefWidth="96.0" text="Search" />
+                        <TextField fx:id="Title" layoutX="112.0" layoutY="100.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with Title name" />
                         <Label alignment="CENTER" layoutX="22.0" layoutY="103.0" prefHeight="29.0" prefWidth="51.0" text="Title :" />
                         <Label alignment="CENTER" layoutX="22.0" layoutY="163.0" prefHeight="29.0" prefWidth="51.0" text="Authors :" />
                         <Label alignment="CENTER" layoutX="22.0" layoutY="223.0" prefHeight="29.0" prefWidth="51.0" text="Subject :" />
-                        <TextField layoutX="112.0" layoutY="220.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with subject" />
+                        <TextField fx:id="Subject" layoutX="112.0" layoutY="220.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with subject" />
                         <Label alignment="CENTER" layoutX="22.0" layoutY="343.0" prefHeight="29.0" prefWidth="51.0" text="ISBN :" />
-                        <Label alignment="CENTER" layoutX="22.0" layoutY="283.0" prefHeight="29.0" prefWidth="51.0" text="Publisher :" />
-                        <TextField layoutX="112.0" layoutY="280.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with subject" />
-                        <TextField layoutX="112.0" layoutY="340.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with isbn" />
-                        <MenuButton layoutX="134.0" layoutY="446.0" mnemonicParsing="false" text="Language">
+                        <Label alignment="CENTER" layoutX="10.0" layoutY="284.0" prefHeight="29.0" prefWidth="75.0" text="Publisher :" />
+                        <TextField fx:id="Publisher" layoutX="112.0" layoutY="280.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with subject" />
+                        <TextField fx:id="ISBN" layoutX="112.0" layoutY="340.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with isbn" />
+                        <MenuButton fx:id="Language" layoutX="129.0" layoutY="459.0" mnemonicParsing="false" text="Language">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
                         </MenuButton>
-                        <MenuButton layoutX="268.0" layoutY="446.0" mnemonicParsing="false" text="Sort by">
+                        <MenuButton fx:id="SortBy" layoutX="270.0" layoutY="460.0" mnemonicParsing="false" text="Sort by">
                            <items>
                               <MenuItem mnemonicParsing="false" text="Oldest first" />
                               <MenuItem mnemonicParsing="false" text="Newest first" />
                            </items>
                         </MenuButton>
+                        <TextField fx:id="Year" layoutX="112.0" layoutY="400.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with isbn" />
+                        <Button layoutX="305.0" layoutY="604.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="Reset" />
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
