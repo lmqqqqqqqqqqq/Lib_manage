@@ -98,9 +98,9 @@
                   <Font name="Calibri Bold" size="48.0" />
                </font>
             </Label>
-            <ComboBox fx:id="monthCombo" editable="true" layoutX="695.0" layoutY="362.0" onKeyPressed="#registerPressed" prefWidth="150.0" promptText="month" styleClass="Button" stylesheets="@style.css" />
-            <ComboBox fx:id="dayCombo" editable="true" layoutX="695.0" layoutY="301.0" onKeyPressed="#registerPressed" prefWidth="150.0" promptText="day" styleClass="Button" stylesheets="@style.css" />
-            <ComboBox fx:id="yearCombo" editable="true" layoutX="695.0" layoutY="423.0" onKeyPressed="#registerPressed" prefWidth="150.0" promptText="year" styleClass="Button" stylesheets="@style.css" />
+            <ComboBox fx:id="monthCombo" editable="true" layoutX="695.0" layoutY="362.0" onKeyPressed="#registerPressed" prefWidth="150.0" promptText="month" styleClass="text-field" stylesheets="@style.css" />
+            <ComboBox fx:id="dayCombo" editable="true" layoutX="695.0" layoutY="301.0" onKeyPressed="#registerPressed" prefWidth="150.0" promptText="day" styleClass="text-field" stylesheets="@style.css" />
+            <ComboBox fx:id="yearCombo" editable="true" layoutX="695.0" layoutY="423.0" onKeyPressed="#registerPressed" prefWidth="150.0" promptText="year" styleClass="text-field" stylesheets="@style.css" />
             <Label layoutX="595.0" layoutY="248.0" prefHeight="18.0" prefWidth="111.0" text="Birth date" textFill="WHITE">
                <font>
                   <Font name="Calibri Italic" size="20.0" />

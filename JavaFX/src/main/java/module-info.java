@@ -5,8 +5,10 @@ module com.example.javafx {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires java.desktop;
-    requires java.sql;
     requires mysql.connector.j;
+    requires java.net.http;
+    requires com.google.gson;
+    requires okhttp3;
 
     opens com.example.javafx to javafx.fxml;
     exports com.example.javafx;
