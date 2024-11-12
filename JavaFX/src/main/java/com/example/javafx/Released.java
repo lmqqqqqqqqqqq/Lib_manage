@@ -96,7 +96,7 @@ public class Released {
     }
 
     public static void confirmReleased(PasswordField confirmPasswordField, PasswordField setPasswordField,
-                                Label invalidPasswordLabel, Label invalidConfirmPasswordLabel, boolean[] checkConfirm) {
+                                       Label invalidPasswordLabel, Label invalidConfirmPasswordLabel, boolean[] checkConfirm) {
         if (!(invalidPasswordLabel.getText().equals("Medium Password") || invalidPasswordLabel.getText().equals("Strong Password"))) {
             invalidConfirmPasswordLabel.setText("Please enter a valid password");
             invalidConfirmPasswordLabel.setStyle("-fx-text-fill: red");
