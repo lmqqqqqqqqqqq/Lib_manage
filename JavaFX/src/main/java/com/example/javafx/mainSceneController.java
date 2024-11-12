@@ -3,21 +3,18 @@ package com.example.javafx;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -58,7 +55,7 @@ public class mainSceneController {
     @FXML
     private Label firstnameLabel;
     @FXML
-    private ImageView avatarImageView;
+    private ImageView infoAvatar;
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -84,7 +81,7 @@ public class mainSceneController {
     @FXML
     private Label dayLabel;
     @FXML
-    private ImageView avatarImage;
+    private ImageView introAvatar;
     @FXML
     private AnchorPane intro;
     @FXML
@@ -103,6 +100,14 @@ public class mainSceneController {
     private ImageView mainSceneAvatar;
     @FXML
     private Label welcomeText;
+    @FXML
+    private Button infoButton;
+    @FXML
+    private Button securityButton;
+    @FXML
+    private AnchorPane manager;
+    @FXML
+    private AnchorPane managerBar;
     /**
      * when init show mainPane first.
      */
@@ -115,8 +120,8 @@ public class mainSceneController {
         avatarPath = user.getAvatarLink();
         successfulLabel.setVisible(false);
         failedLabel.setVisible(false);
-        loadImage(avatarImageView, user.getAvatarLink());
-        loadImage(avatarImage, user.getAvatarLink());
+        loadImage(infoAvatar, user.getAvatarLink());
+        loadImage(introAvatar, user.getAvatarLink());
         name.setText(user.getUsername());
         usernameTextField.setText(user.getUsername());
         idLabel.setText(Integer.toString(user.getId()));
@@ -148,32 +153,41 @@ public class mainSceneController {
     }
 
 
-    @FXML
     public void yourBookOnClick() {
         showPane(yourBookPane);
     }
-    @FXML
     public void mainPaneOnClick() {
         showPane(mainPane);
     }
-    @FXML
     public void advancedSearchPaneOnClick() {
         showPane(advancedSearchPane);
     }
-    @FXML
     public void profilePaneOnClick() {
         showPane(profile);
         intro.setVisible(true);
         intro.setDisable(false);
         header.setVisible(false);
     }
+    public void managerOnAction() {
+        manager.setVisible(true);
+        manager.setDisable(false);
+        Animation.translateAnimation(managerBar);
+    }
+
+    public void outSideManagerClick() {
+        manager.setVisible(false);
+        manager.setDisable(true);
+    }
+
 
     private void showPane(AnchorPane paneToShow) {
         // Ẩn tất cả các `Pane`
+        manager.setVisible(false);
         profile.setVisible(false);
         mainPane.setVisible(false);
         yourBookPane.setVisible(false);
         advancedSearchPane.setVisible(false);
+        manager.setDisable(true);
         profile.setDisable(true);
         mainPane.setDisable(true);
         yourBookPane.setDisable(true);
@@ -218,6 +232,8 @@ public class mainSceneController {
             successfulLabel.setVisible(true);
             Animation.fadeAnimation(successfulLabel);
             updateUser();
+            loadImage(introAvatar, user.getAvatarLink());
+            loadImage(mainSceneAvatar, user.getAvatarLink());
             user.setAvatarLink(avatarPath);
         } else {
             failedLabel.setVisible(true);
@@ -446,10 +462,10 @@ public class mainSceneController {
 
         if (selectedFile != null) {
             avatarPath = selectedFile.toURI().toString();
-            loadImage(avatarImageView, avatarPath);
+            loadImage(infoAvatar, avatarPath);
             user.setAvatarLink(avatarPath);
         } else {
-            loadImage(avatarImageView, user.getAvatarLink());
+            loadImage(infoAvatar, user.getAvatarLink());
             avatarPath = user.getAvatarLink();
         }
     }
@@ -581,18 +597,34 @@ public class mainSceneController {
         showProfilePane(information);
         header.setVisible(true);
         header.setDisable(false);
+        securityButton.setStyle(null);
+        infoButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-background-color: transparent;\n" +
+                "    -fx-text-fill: #43fb00; ");
     }
 
     public void securityOnAction() {
         showProfilePane(security);
         header.setVisible(true);
         header.setDisable(false);
+        infoButton.setStyle(null);
+        securityButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-background-color: transparent;\n" +
+                "    -fx-text-fill: #43fb00; ");
     }
 
     public void setting() {
         showProfilePane(information);
         header.setVisible(true);
         header.setDisable(false);
+        infoButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-background-color: transparent;\n" +
+                "    -fx-text-fill: #43fb00; ");
+    }
+
+    public void logout() {
+        Stage stage = (Stage) name.getScene().getWindow();
+        SceneSwitcher.SwitchScene(stage, "Login.fxml");
     }
 
     public void backToProfileOnAction() {
