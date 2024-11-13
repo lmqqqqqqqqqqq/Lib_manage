@@ -1,14 +1,19 @@
 package com.example.javafx;
 
+import javafx.fxml.FXML;
+
 import java.awt.print.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class AdvancedSearch extends SearchController {
+    public final static List<String> lang = Arrays.asList("English", "Spanish", "French", "German"
+            , "Russian", "Vietnamese", "Standard Arabic", "Hindi", "Chinese");
 
     @Override
     public List<Books> search(String query, List<Object> params, Connection connect) throws SQLException {
@@ -39,4 +44,61 @@ public class AdvancedSearch extends SearchController {
     public void resetSearch() {
 
     }
+
+    /**
+     * process to get query from database.
+     * @param title
+     * @param author
+     * @param subject
+     * @param publisher
+     * @param isbn
+     * @param language
+     * @param year
+     * @param sortBy
+     * @param params
+     * @return query.
+     */
+    public String process(String title, String author, String subject
+            , String publisher, String isbn, String language
+            , String year, String sortBy, List<Object> params) {
+        StringBuilder Q = new StringBuilder("SELECT * FROM books WHERE 1=1");
+
+        if (title != null && !title.isEmpty()) {
+            Q.append(" AND title LIKE ?");
+            params.add("%" + title + "%");
+        }
+        if (author != null && !author.isEmpty()) {
+            Q.append(" AND author LIKE ?");
+            params.add("%" + author + "%");
+        }
+        if (subject != null && !subject.isEmpty()) {
+            Q.append(" AND subject LIKE ?");
+            params.add("%" + subject + "%");
+        }
+        if (publisher != null && !publisher.isEmpty()) {
+            Q.append(" AND publisher LIKE ?");
+            params.add("%" + publisher + "%");
+        }
+        if (isbn != null && !isbn.isEmpty()) {
+            Q.append(" AND isbn = ?");
+            params.add(isbn);
+        }
+        if (year != null && !year.isEmpty()) {
+            Q.append(" AND YEAR(created_date) = ?");
+            params.add(year);
+        }
+        if (sortBy != null && !sortBy.equals("Sort by")) {
+            if(sortBy.equals("Newest first")) {
+                Q.append(" ORDER BY created_date DESC");
+            } else {
+                Q.append(" ORDER BY created_date ASC");
+            }
+        }
+        if (language != null && !language.equals("Language")) {
+            Q.append(" AND language = ?");
+            params.add(language);
+        }
+        return Q.toString();
+    }
 }
+

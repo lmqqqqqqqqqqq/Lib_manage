@@ -3,7 +3,9 @@ package com.example.javafx;
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class Animation {
@@ -27,5 +29,14 @@ public class Animation {
 
         SequentialTransition sequentialTransition = new SequentialTransition(fadeInTransition, pauseTransition, fadeOutTransition);
         sequentialTransition.play();
+    }
+
+    public static void translateAnimation(AnchorPane pane) {
+        TranslateTransition translateTransition = new TranslateTransition();
+        translateTransition.setNode(pane);
+        translateTransition.setDuration(Duration.seconds(0.25));
+        translateTransition.setFromX(-200);
+        translateTransition.setToX(0);
+        translateTransition.play();
     }
 }

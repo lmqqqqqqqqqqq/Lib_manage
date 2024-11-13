@@ -19,13 +19,6 @@
     -fx-text-fill: #FFFFFF;
 }
 
-/* Khi Button được nhấn, dùng :active để thay đổi trạng thái */
-.button2:focused {
-    -fx-font-size: 25px;
-    -fx-background-color: transparent;
-    -fx-text-fill: #43fb00; /* Màu chữ khi nhấn */
-}
-
 /* Định dạng khi hover vào Button */
 .button2:hover {
     -fx-background-color: #063755; /* Màu nền khi hover */

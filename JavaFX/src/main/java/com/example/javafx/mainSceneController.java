@@ -4,20 +4,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class mainSceneController {
     @FXML
     private Label firstnameLabel;
     @FXML
-    private ImageView avatarImageView;
+    private ImageView infoAvatar;
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -84,7 +84,7 @@ public class mainSceneController {
     @FXML
     private Label dayLabel;
     @FXML
-    private ImageView avatarImage;
+    private ImageView introAvatar;
     @FXML
     private AnchorPane intro;
     @FXML
@@ -103,6 +103,14 @@ public class mainSceneController {
     private ImageView mainSceneAvatar;
     @FXML
     private Label welcomeText;
+    @FXML
+    private Button infoButton;
+    @FXML
+    private Button securityButton;
+    @FXML
+    private AnchorPane manager;
+    @FXML
+    private AnchorPane managerBar;
     /**
      * when init show mainPane first.
      */
@@ -115,8 +123,8 @@ public class mainSceneController {
         avatarPath = user.getAvatarLink();
         successfulLabel.setVisible(false);
         failedLabel.setVisible(false);
-        loadImage(avatarImageView, user.getAvatarLink());
-        loadImage(avatarImage, user.getAvatarLink());
+        loadImage(infoAvatar, user.getAvatarLink());
+        loadImage(introAvatar, user.getAvatarLink());
         name.setText(user.getUsername());
         usernameTextField.setText(user.getUsername());
         idLabel.setText(Integer.toString(user.getId()));
@@ -148,32 +156,42 @@ public class mainSceneController {
     }
 
 
-    @FXML
     public void yourBookOnClick() {
         showPane(yourBookPane);
     }
-    @FXML
     public void mainPaneOnClick() {
         showPane(mainPane);
     }
-    @FXML
     public void advancedSearchPaneOnClick() {
         showPane(advancedSearchPane);
+        initLang();
     }
-    @FXML
     public void profilePaneOnClick() {
         showPane(profile);
         intro.setVisible(true);
         intro.setDisable(false);
         header.setVisible(false);
     }
+    public void managerOnAction() {
+        manager.setVisible(true);
+        manager.setDisable(false);
+        Animation.translateAnimation(managerBar);
+    }
+
+    public void outSideManagerClick() {
+        manager.setVisible(false);
+        manager.setDisable(true);
+    }
+
 
     private void showPane(AnchorPane paneToShow) {
         // Ẩn tất cả các `Pane`
+        manager.setVisible(false);
         profile.setVisible(false);
         mainPane.setVisible(false);
         yourBookPane.setVisible(false);
         advancedSearchPane.setVisible(false);
+        manager.setDisable(true);
         profile.setDisable(true);
         mainPane.setDisable(true);
         yourBookPane.setDisable(true);
@@ -218,6 +236,8 @@ public class mainSceneController {
             successfulLabel.setVisible(true);
             Animation.fadeAnimation(successfulLabel);
             updateUser();
+            loadImage(introAvatar, user.getAvatarLink());
+            loadImage(mainSceneAvatar, user.getAvatarLink());
             user.setAvatarLink(avatarPath);
         } else {
             failedLabel.setVisible(true);
@@ -446,10 +466,10 @@ public class mainSceneController {
 
         if (selectedFile != null) {
             avatarPath = selectedFile.toURI().toString();
-            loadImage(avatarImageView, avatarPath);
+            loadImage(infoAvatar, avatarPath);
             user.setAvatarLink(avatarPath);
         } else {
-            loadImage(avatarImageView, user.getAvatarLink());
+            loadImage(infoAvatar, user.getAvatarLink());
             avatarPath = user.getAvatarLink();
         }
     }
@@ -581,18 +601,34 @@ public class mainSceneController {
         showProfilePane(information);
         header.setVisible(true);
         header.setDisable(false);
+        securityButton.setStyle(null);
+        infoButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-background-color: transparent;\n" +
+                "    -fx-text-fill: #43fb00; ");
     }
 
     public void securityOnAction() {
         showProfilePane(security);
         header.setVisible(true);
         header.setDisable(false);
+        infoButton.setStyle(null);
+        securityButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-background-color: transparent;\n" +
+                "    -fx-text-fill: #43fb00; ");
     }
 
     public void setting() {
         showProfilePane(information);
         header.setVisible(true);
         header.setDisable(false);
+        infoButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-background-color: transparent;\n" +
+                "    -fx-text-fill: #43fb00; ");
+    }
+
+    public void logout() {
+        Stage stage = (Stage) name.getScene().getWindow();
+        SceneSwitcher.SwitchScene(stage, "Login.fxml");
     }
 
     public void backToProfileOnAction() {
@@ -621,10 +657,19 @@ public class mainSceneController {
     @FXML
     private TextField Year;
     @FXML
+    private MenuButton SortBy;
+    @FXML
     private MenuButton Language;
     @FXML
-    private MenuButton SortBy;
-
+    private TilePane resultpane;
+    @FXML
+    public void initLang() {
+        Language.getItems().clear();
+        for(String a : AdvancedSearch.lang) {
+            MenuItem item = new MenuItem(a);
+            Language.getItems().add(item);
+        }
+    }
     @FXML
     public void onSearchClick() throws Exception {
         String title = Title.getText();
@@ -635,54 +680,36 @@ public class mainSceneController {
         String year = Year.getText();
         String language = Language.getText();
         String sortBy = SortBy.getText();
-        StringBuilder Q = new StringBuilder("SELECT * FROM books WHERE 1=1");
+
+        // process input to show the result
+        AdvancedSearch Search = new AdvancedSearch();
         List<Object> params = new ArrayList<>();
 
-        if (title != null && !title.isEmpty()) {
-            Q.append(" AND title LIKE ?");
-            params.add("%" + title + "%");
-        }
-        if (author != null && !author.isEmpty()) {
-            Q.append(" AND author LIKE ?");
-            params.add("%" + author + "%");
-        }
-        if (subject != null && !subject.isEmpty()) {
-            Q.append(" AND subject LIKE ?");
-            params.add("%" + subject + "%");
-        }
-        if (publisher != null && !publisher.isEmpty()) {
-            Q.append(" AND publisher LIKE ?");
-            params.add("%" + publisher + "%");
-        }
-        if (isbn != null && !isbn.isEmpty()) {
-            Q.append(" AND isbn = ?");
-            params.add(isbn);
-        }
-//        if (language != null && !language.isEmpty()) {
-//            Q.append(" AND language = ?");
-//            params.add(language);
-//        }
-        if (year != null && !year.isEmpty()) {
-            Q.append(" AND YEAR(created_date) = ?");
-            params.add(year);
-        }
-        if (sortBy != null && !sortBy.isEmpty()) {
-            if(sortBy.equals("Newest first")) {
-                Q.append(" ORDER BY created_date DESC");
-            } else {
-                Q.append(" ORDER BY created_date ASC");
-            }
-        }
-        AdvancedSearch Search = new AdvancedSearch();
+        StringBuilder Q = new StringBuilder(Search.process(title, author, subject, publisher, isbn, language, year, sortBy, params));
         List<Books> res = Search.search(Q.toString(), params, databaseConnect.connect());
+
+//        if (res.isEmpty()) {
+//            System.out.println("No results found.");
+//        } else {
+//            for (Books b : res) {
+//                System.out.println(b.toString());
+//            }
+//        }
+        resultpane.getChildren().clear();
         if (res.isEmpty()) {
             System.out.println("No results found.");
         } else {
             for (Books b : res) {
-                System.out.println(b.toString());
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/javafx/resultBookShow.fxml"));
+                AnchorPane bookPane = loader.load();
+                resultBookShow controller = loader.getController();
+                controller.setOutputData(getClass().getResource("/com/example/javafx/test.png").toExternalForm(), b.getTitle(), b.getAuthor());
+                resultpane.getChildren().add(bookPane);
             }
         }
     }
+
+
 }
 
 
