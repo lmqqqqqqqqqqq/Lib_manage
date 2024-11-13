@@ -267,7 +267,7 @@
                         <Label alignment="CENTER" layoutX="10.0" layoutY="284.0" prefHeight="29.0" prefWidth="75.0" text="Publisher :" />
                         <TextField fx:id="Publisher" layoutX="112.0" layoutY="280.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with subject" />
                         <TextField fx:id="ISBN" layoutX="112.0" layoutY="340.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with isbn" />
-                        <MenuButton fx:id="Language" layoutX="129.0" layoutY="459.0" mnemonicParsing="false" onAction="#initLang" text="Language" />
+                        <MenuButton fx:id="Language" layoutX="129.0" layoutY="459.0" mnemonicParsing="false" text="Language" />
                         <MenuButton fx:id="SortBy" layoutX="270.0" layoutY="460.0" mnemonicParsing="false" text="Sort by">
                            <items>
                               <MenuItem mnemonicParsing="false" text="Oldest first" />
