@@ -58,3 +58,9 @@
 .text-field:focused {
     -fx-border-color: #3b5998; /* Màu dòng kẻ khi đang nhập liệu */
 }
+
+.circle {
+    -fx-fill: transparent;   /* Bên trong trong suốt */
+    -fx-stroke: black;       /* Viền đen */
+    -fx-stroke-width: 2;     /* Độ dày của viền */
+}

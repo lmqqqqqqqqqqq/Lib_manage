@@ -99,7 +99,9 @@ public class RecoverController {
             preparedStatement.setString(2, code);
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet.next();
-        } catch (Exception _) {
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
         return false;
     }

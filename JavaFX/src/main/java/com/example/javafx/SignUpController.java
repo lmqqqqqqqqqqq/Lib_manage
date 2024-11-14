@@ -370,7 +370,13 @@ public class SignUpController {
             }
         }
 
-        return checkBirth(year, month, day);
+        if(checkBirth(year, month, day)) {
+            return true;
+        } else {
+            invalidBirthDateLabel.setText("birth date is not valid");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
+            return false;
+        }
     }
 
 

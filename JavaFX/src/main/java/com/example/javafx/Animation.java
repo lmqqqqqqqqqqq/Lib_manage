@@ -39,4 +39,5 @@ public class Animation {
         translateTransition.setToX(0);
         translateTransition.play();
     }
+
 }
