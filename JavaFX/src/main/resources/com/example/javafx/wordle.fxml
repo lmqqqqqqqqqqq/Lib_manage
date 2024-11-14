@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.javafx.Wordle" stylesheets="@wordle.css">
+
+    <!-- Title Label -->
+    <Label text="Wordle Game" layoutX="150" layoutY="20" styleClass="header"/>
+
+    <!-- Grid for Guesses (dynamic rows added for each guess) -->
+    <GridPane fx:id="guessGrid" layoutX="50" layoutY="60" hgap="5" vgap="5">
+        <!-- Guess cells will be added here programmatically -->
+    </GridPane>
+
+    <!-- Input Field and Submit Button - fixed position below guess grid -->
+    <TextField fx:id="inputField" layoutX="100" layoutY="400" promptText="Enter guess" styleClass="input-field" prefWidth="200"/>
+    <Button text="Submit" layoutX="320" layoutY="400" onAction="#handleGuess" styleClass="submit-button"/>
+
+    <!-- Message Label for feedback, positioned below the input field -->
+    <Label fx:id="messageLabel" layoutX="150" layoutY="450" styleClass="message-label"/>
+
+</AnchorPane>

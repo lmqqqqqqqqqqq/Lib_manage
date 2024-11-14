@@ -29,7 +29,7 @@ public class SceneSwitcher {
         }
     }
 
-    public static void switchPage(StackPane pane, String string, AnchorPane manager) throws IOException {
+    public static void switchPage(AnchorPane pane, String string, AnchorPane manager) throws IOException {
         FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(string));
         Parent page = loader.load();
 
@@ -38,5 +38,13 @@ public class SceneSwitcher {
         pane.getChildren().add(manager);
 
         manager.toFront();
+    }
+
+    public static void switchBetweenPage(AnchorPane pane, String string) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(string));
+        Parent page = loader.load();
+
+        pane.getChildren().clear();
+        pane.getChildren().add(page);
     }
 }

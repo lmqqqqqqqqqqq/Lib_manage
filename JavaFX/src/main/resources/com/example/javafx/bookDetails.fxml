@@ -5,42 +5,64 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="668.0" prefWidth="1082.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.BookDetails">
+<AnchorPane fx:id="BookDetailsScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1006.0" prefWidth="1707.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.BookDetailsController">
    <children>
-      <AnchorPane layoutX="29.0" layoutY="27.0" prefHeight="478.0" prefWidth="359.0">
+      <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
-            <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#7c8083" height="478.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="359.0">
+            <AnchorPane prefHeight="1006.0" prefWidth="498.0">
+               <children>
+                  <AnchorPane layoutX="-2.0" layoutY="82.0" prefHeight="200.0" prefWidth="200.0" />
+                  <AnchorPane layoutX="106.0" layoutY="172.0" prefHeight="483.0" prefWidth="292.0" style="-fx-background-color: #FFFFFF;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#686b6e" height="483.0" opacity="0.73" stroke="BLACK" strokeType="INSIDE" width="292.0" />
+                        <ImageView fitHeight="260.0" fitWidth="200.0" layoutX="50.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="13.0" layoutY="322.0" prefHeight="32.0" prefWidth="254.0" text="Author">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="64.0" layoutY="296.0" prefHeight="25.0" prefWidth="174.0" text="Name">
+                           <font>
+                              <Font name="Calibri" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="13.0" layoutY="354.0" prefHeight="32.0" prefWidth="254.0" text="Year">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="13.0" layoutY="410.0" mnemonicParsing="false" text="Add book" />
+                        <Button layoutX="120.0" layoutY="410.0" mnemonicParsing="false" onAction="#backToSearchOnAction" text="Back To Search" />
+                     </children>
+                     <effect>
+                        <DropShadow radius="23.4525" width="74.81" />
+                     </effect>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="1006.0" prefWidth="1061.0" style="-fx-background-color: #FFFFFF;">
                <effect>
-                  <DropShadow height="79.62" radius="41.5075" width="88.41" />
+                  <DropShadow height="202.33" radius="72.2925" spread="0.07" width="88.84" />
                </effect>
-            </Rectangle>
-            <Label layoutX="14.0" layoutY="231.0" prefHeight="42.0" prefWidth="156.0" text="Name">
-               <font>
-                  <Font name="Calibri Bold Italic" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="273.0" prefHeight="48.0" prefWidth="156.0" text="Day">
-               <font>
-                  <Font name="Calibri Bold Italic" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="14.0" layoutY="327.0" prefHeight="48.0" prefWidth="156.0" text="Author">
-               <font>
-                  <Font name="Calibri Bold Italic" size="20.0" />
-               </font>
-            </Label>
-            <Button layoutX="32.0" layoutY="388.0" mnemonicParsing="false" text="add  " />
+               <children>
+                  <Label layoutX="58.0" layoutY="239.0" prefHeight="350.0" prefWidth="916.0" wrapText="true">
+                     <font>
+                        <Font name="Calibri" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="67.0" layoutY="159.0" prefHeight="32.0" prefWidth="254.0" text="Description">
+                     <font>
+                        <Font name="Calibri Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
-      <AnchorPane layoutX="436.0" layoutY="-1.0" prefHeight="668.0" prefWidth="646.0" style="-fx-background-color: #FFFFFF;">
-         <effect>
-            <DropShadow height="203.95" radius="66.6075" spread="0.09" width="64.48" />
-         </effect>
-      </AnchorPane>
+      </HBox>
    </children>
 </AnchorPane>
