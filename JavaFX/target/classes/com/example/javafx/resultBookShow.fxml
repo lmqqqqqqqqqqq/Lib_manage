@@ -5,11 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="223.0" styleClass="resultBookShow" stylesheets="@mainScene.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.resultBookShow">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="223.0" styleClass="resultBookShow" stylesheets="@mainScene.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.resultBookShow">
    <children>
-      <Label fx:id="author" alignment="CENTER" layoutX="2.0" layoutY="216.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="219.0" text="label" />
+      <Label fx:id="author" alignment="CENTER" layoutX="2.0" layoutY="204.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="219.0" text="label" />
       <ImageView fx:id="image" fitHeight="168.0" fitWidth="223.0" pickOnBounds="true" />
-      <Label fx:id="title" alignment="CENTER" layoutX="2.0" layoutY="177.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="219.0" text="Label" wrapText="true" />
+      <Label fx:id="title" alignment="CENTER" layoutX="2.0" layoutY="168.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="219.0" text="Label" wrapText="true" />
    </children>
    <cursor>
       <Cursor fx:constant="DEFAULT" />
