@@ -18,9 +18,7 @@ public class mainController {
     @FXML
     private AnchorPane managerBar;
     @FXML
-    private StackPane ContentAnchorPane;
-    @FXML
-    private Circle circle;
+    private AnchorPane ContentAnchorPane;
 
     User user = LoginController.user;
 
