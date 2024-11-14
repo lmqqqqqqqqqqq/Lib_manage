@@ -3,13 +3,10 @@ package com.example.javafx;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -20,21 +17,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
 
-public class mainSceneController {
+public class ProfileController {
 
-    @FXML
-    private AnchorPane mainPane;
-    @FXML
-    private TextField searchPaneInMain;
-    @FXML
-    private Button searchButtonInMain;
-    @FXML
-    private AnchorPane yourBookPane;
-    @FXML
-    private AnchorPane advancedSearchPane;
+
     @FXML
     private TextField usernameTextField;
     @FXML
@@ -98,27 +84,19 @@ public class mainSceneController {
     @FXML
     private Label failedLabel1;
     @FXML
-    private AnchorPane profile;
-    @FXML
-    private ImageView mainSceneAvatar;
-    @FXML
-    private Label welcomeText;
-    @FXML
     private Button infoButton;
     @FXML
     private Button securityButton;
-    @FXML
-    private AnchorPane manager;
-    @FXML
-    private AnchorPane managerBar;
+
+
+
+    User user = LoginController.user;
     /**
-     * when init show mainPane first.
+     * connect with database.
      */
-    @FXML
+    DatabaseConnect databaseConnect = new DatabaseConnect();
+
     public void initialize() {
-        welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!" );
-        loadImage(mainSceneAvatar, user.getAvatarLink());
-        showPane(mainPane);
         dayLabel.setText(numberOfDay());
         avatarPath = user.getAvatarLink();
         successfulLabel.setVisible(false);
@@ -156,64 +134,6 @@ public class mainSceneController {
     }
 
 
-    public void yourBookOnClick() {
-        showPane(yourBookPane);
-    }
-    public void mainPaneOnClick() {
-        showPane(mainPane);
-    }
-    public void advancedSearchPaneOnClick() {
-        showPane(advancedSearchPane);
-        initLang();
-    }
-    public void profilePaneOnClick() {
-        showPane(profile);
-        intro.setVisible(true);
-        intro.setDisable(false);
-        header.setVisible(false);
-    }
-    public void managerOnAction() {
-        manager.setVisible(true);
-        manager.setDisable(false);
-        Animation.translateAnimation(managerBar);
-    }
-
-    public void outSideManagerClick() {
-        manager.setVisible(false);
-        manager.setDisable(true);
-    }
-
-
-    private void showPane(AnchorPane paneToShow) {
-        // Ẩn tất cả các `Pane`
-        manager.setVisible(false);
-        profile.setVisible(false);
-        mainPane.setVisible(false);
-        yourBookPane.setVisible(false);
-        advancedSearchPane.setVisible(false);
-        manager.setDisable(true);
-        profile.setDisable(true);
-        mainPane.setDisable(true);
-        yourBookPane.setDisable(true);
-        advancedSearchPane.setDisable(true);
-
-        // Chỉ hiển thị `Pane` được chọn
-        paneToShow.setVisible(true);
-        paneToShow.setDisable(false);
-
-        // Ẩn hoặc hiển thị các phần tử bổ sung trong `mainPane`
-        boolean showtoppane = (paneToShow == mainPane || paneToShow == yourBookPane);
-        searchPaneInMain.setVisible(showtoppane);
-        searchButtonInMain.setVisible(showtoppane);
-    }
-
-    User user = LoginController.user;
-    /**
-     * connect with database.
-     */
-    DatabaseConnect databaseConnect = new DatabaseConnect();
-
-
     public void updateButtonOnAction() {
         checkValidInformation();
     }
@@ -237,7 +157,6 @@ public class mainSceneController {
             Animation.fadeAnimation(successfulLabel);
             updateUser();
             loadImage(introAvatar, user.getAvatarLink());
-            loadImage(mainSceneAvatar, user.getAvatarLink());
             user.setAvatarLink(avatarPath);
         } else {
             failedLabel.setVisible(true);
@@ -250,13 +169,13 @@ public class mainSceneController {
      * @param avatarImage is .
      * @param link is.
      */
-    public void loadImage(ImageView avatarImage, String link) {
+    public static void loadImage(ImageView avatarImage, String link) {
         if(!link.equals("/com/example/javafx/user.jpg")) {
             Image image = new Image(link);
             avatarImage.setImage(image);
             System.out.println(avatarImage.getFitWidth() + " " + avatarImage.getFitHeight());
         } else {
-            Image defaultImage = new Image(getClass().getResource("/com/example/javafx/user.jpg").toExternalForm());
+            Image defaultImage = new Image(ProfileController.class.getResource("/com/example/javafx/user.jpg").toExternalForm());
             avatarImage.setImage(defaultImage);
             System.out.println(avatarImage.getFitWidth() + " " + avatarImage.getFitHeight());
         }
@@ -452,7 +371,13 @@ public class mainSceneController {
             }
         }
 
-        return checkBirth(year, month, day);
+        if(checkBirth(year, month, day)) {
+            return true;
+        } else {
+            invalidBirthDateLabel.setText("birth date is not valid");
+            invalidBirthDateLabel.setStyle("-fx-text-fill: red;");
+            return false;
+        }
     }
 
     private String avatarPath = "";
@@ -643,76 +568,4 @@ public class mainSceneController {
         long days = ChronoUnit.DAYS.between(signUpDate, date);
         return days + " days";
     }
-
-    @FXML
-    private TextField Title;
-    @FXML
-    private TextField Author;
-    @FXML
-    private TextField Subject;
-    @FXML
-    private TextField Publisher;
-    @FXML
-    private TextField ISBN;
-    @FXML
-    private TextField Year;
-    @FXML
-    private MenuButton SortBy;
-    @FXML
-    private MenuButton Language;
-    @FXML
-    private TilePane resultpane;
-    @FXML
-    public void initLang() {
-        Language.getItems().clear();
-        for(String a : AdvancedSearch.lang) {
-            MenuItem item = new MenuItem(a);
-            Language.getItems().add(item);
-        }
-    }
-    @FXML
-    public void onSearchClick() throws Exception {
-        String title = Title.getText();
-        String author = Author.getText();
-        String subject = Subject.getText();
-        String publisher = Publisher.getText();
-        String isbn = ISBN.getText();
-        String year = Year.getText();
-        String language = Language.getText();
-        String sortBy = SortBy.getText();
-
-        // process input to show the result
-        AdvancedSearch Search = new AdvancedSearch();
-        List<Object> params = new ArrayList<>();
-
-        StringBuilder Q = new StringBuilder(Search.process(title, author, subject, publisher, isbn, language, year, sortBy, params));
-        List<Books> res = Search.search(Q.toString(), params, databaseConnect.connect());
-
-//        if (res.isEmpty()) {
-//            System.out.println("No results found.");
-//        } else {
-//            for (Books b : res) {
-//                System.out.println(b.toString());
-//            }
-//        }
-        resultpane.getChildren().clear();
-        if (res.isEmpty()) {
-            System.out.println("No results found.");
-        } else {
-            for (Books b : res) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/javafx/resultBookShow.fxml"));
-                AnchorPane bookPane = loader.load();
-                resultBookShow controller = loader.getController();
-                controller.setOutputData(getClass().getResource("/com/example/javafx/test.png").toExternalForm(), b.getTitle(), b.getAuthor());
-                resultpane.getChildren().add(bookPane);
-            }
-        }
-    }
-
-
 }
-
-
-
-
-

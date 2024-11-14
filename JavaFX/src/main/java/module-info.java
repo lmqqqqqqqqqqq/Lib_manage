@@ -9,6 +9,7 @@ module com.example.javafx {
     requires java.net.http;
     requires com.google.gson;
     requires okhttp3;
+    requires jdk.jfr;
 
     opens com.example.javafx to javafx.fxml;
     exports com.example.javafx;

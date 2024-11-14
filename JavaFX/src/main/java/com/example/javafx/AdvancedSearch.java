@@ -1,8 +1,5 @@
 package com.example.javafx;
 
-import javafx.fxml.FXML;
-
-import java.awt.print.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +11,7 @@ import java.util.List;
 public class AdvancedSearch extends SearchController {
     public final static List<String> lang = Arrays.asList("English", "Spanish", "French", "German"
             , "Russian", "Vietnamese", "Standard Arabic", "Hindi", "Chinese");
+    public final static List<String> SortBy = Arrays.asList("Newest first", "Oldest first");
 
     @Override
     public List<Books> search(String query, List<Object> params, Connection connect) throws SQLException {
@@ -38,11 +36,6 @@ public class AdvancedSearch extends SearchController {
         }
 
         return result;
-    }
-
-    @Override
-    public void resetSearch() {
-
     }
 
     /**

@@ -16,6 +16,5 @@ public abstract class SearchController {
      */
     public abstract List<Books> search(String query, List<Object> params, Connection connect) throws SQLException;
 
-    public abstract void resetSearch();
 
 }
