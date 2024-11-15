@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdvancedSearchController {
-    DatabaseConnect databaseConnect;
+
+    DatabaseConnect databaseConnect = new DatabaseConnect();
 
     @FXML
     private TextField Title;

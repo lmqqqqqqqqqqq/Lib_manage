@@ -39,6 +39,7 @@ public class AdvancedSearch extends SearchController {
     }
 
     /**
+     * bug when choose only sort by and when everything is null select the newest first.
      * process to get query from database.
      * @param title
      * @param author
@@ -91,6 +92,7 @@ public class AdvancedSearch extends SearchController {
             Q.append(" AND language = ?");
             params.add(language);
         }
+        Q.append(" AND is_deleted = 0");
         return Q.toString();
     }
 }
