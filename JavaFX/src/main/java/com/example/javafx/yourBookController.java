@@ -22,8 +22,11 @@ public class yourBookController {
     private HBox borrowed;
 
     @FXML
+    private HBox favorite;
+    @FXML
     public void initialize() throws Exception {
         loadBorrowed();
+        loadFavorite();
     }
 
     @FXML
@@ -31,7 +34,7 @@ public class yourBookController {
         borrowed.getChildren().clear();
         StringBuilder Q = new StringBuilder("SELECT * FROM books INNER JOIN user_books");
         Q.append(" ON user_books.idbooks = books.idbooks AND user_books.idusers = ? " +
-                "AND user_books.borrow = 1 limit 7");
+                "AND user_books.borrow = 1");
         PreparedStatement stm = databaseConnect.connect().prepareStatement(Q.toString());
         stm.setObject(1,LoginController.user.getId());
         stm.executeQuery();
@@ -62,6 +65,44 @@ public class yourBookController {
                 borrowed.getChildren().add(bookPane);
             }
         }
-
     }
+
+    @FXML
+    public void loadFavorite() throws Exception {
+        favorite.getChildren().clear();
+        StringBuilder Q = new StringBuilder("SELECT * FROM books INNER JOIN user_books" +
+                " ON user_books.idbooks = books.idbooks AND user_books.idusers = ? " +
+                "AND user_books.is_favorite = 1");
+        PreparedStatement stm = databaseConnect.connect().prepareStatement(Q.toString());
+        stm.setObject(1,LoginController.user.getId());
+        stm.executeQuery();
+        ResultSet rs = stm.getResultSet();
+        List<Books> result = new ArrayList<>();
+
+        while (rs.next()) {
+            String title = rs.getString("title");
+            String author = rs.getString("author");
+            String publisher = rs.getString("publisher");
+            String isbn = rs.getString("ISBN");
+            String subject = rs.getString("subject");
+            String description = rs.getString("description");
+            String id = rs.getString("idbooks");
+            String language = rs.getString("language");
+            String year = rs.getString("created_date");
+            Books bok = new Books(id, title, description, author, subject, publisher, isbn, language, year);
+            result.add(bok);
+        }
+        if (result.isEmpty()) {
+            System.out.println("No books found");
+        } else {
+            for (Books b : result) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/javafx/resultBookShow.fxml"));
+                AnchorPane bookPane = loader.load();
+                resultBookShow controller = loader.getController();
+                controller.setOutputData(getClass().getResource("/com/example/javafx/test.png").toExternalForm(), b.getTitle(), b.getAuthor());
+                favorite.getChildren().add(bookPane);
+            }
+        }
+    }
+
 }

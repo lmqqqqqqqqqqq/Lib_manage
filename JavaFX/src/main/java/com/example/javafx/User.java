@@ -1,6 +1,6 @@
 package com.example.javafx;
 
-public class User {
+public class User implements OBJECT {
     private int id;
     private String firstname;
     private String lastname;
@@ -74,5 +74,13 @@ public class User {
 
     public String getDayIn() {
         return dayIn;
+    }
+
+    @Override
+    public String toString() {
+        return "User[ id = " + id + ", firstname = " + firstname + ", lastname = " + lastname
+                + ", dayOfBirth = " + dayOfBirth + ", monthOfBirth = " + monthOfBirth
+                + ", yearOfBirth = " + yearOfBirth + ", recoveryCode = " + recoveryCode
+                + ", avatarLink = " + avatarLink + ", dayIn = " + dayIn + "]";
     }
 }
