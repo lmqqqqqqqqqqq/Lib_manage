@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -25,9 +24,9 @@
                 <font>
                     <Font name="Calibri Bold" size="20.0" />
                 </font>
-            <graphic>
+                <graphic>
                     <ImageView fx:id="mainSceneAvatar" fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic>
+                </graphic>
             </Button>
             <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#homeOnClick" prefHeight="163.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css">
                 <cursor>
@@ -80,42 +79,47 @@
             </Pane>
         </VBox>
     </left>
-   <center>
-       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-           <StackPane fx:id="ContentAnchorPane" prefHeight="150.0" prefWidth="200.0">
-               <AnchorPane fx:id="manager" prefHeight="1014.0" prefWidth="1705.0" visible="false">
-                   <AnchorPane layoutX="314.0" layoutY="-6.0" onMouseClicked="#outSideManagerClick" opacity="0.59" prefHeight="1020.0" prefWidth="1391.0" style="-fx-background-color: #FFFFFF;" />
-                   <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-8.0" prefHeight="1022.0" prefWidth="318.0" style="-fx-background-color: #FFFFFF;">
-                       <effect>
-                           <DropShadow />
-                       </effect>
-                       <VBox prefHeight="1000.0" prefWidth="322.0">
+    <center>
+        <AnchorPane prefHeight="1012.0" prefWidth="1705.0" BorderPane.alignment="CENTER">
+         <AnchorPane fx:id="ContentAnchorPane" layoutX="6.4" layoutY="11.2" prefHeight="1014.0" prefWidth="1710.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="11.0" />
+         <AnchorPane fx:id="manager" layoutX="10.0" layoutY="10.0" prefHeight="1014.0" prefWidth="1705.0" visible="false">
+            <children>
+               <AnchorPane layoutX="314.0" layoutY="-6.0" onMouseClicked="#outSideManagerClick" opacity="0.59" prefHeight="1020.0" prefWidth="1391.0" style="-fx-background-color: #FFFFFF;" />
+               <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-8.0" prefHeight="1022.0" prefWidth="318.0" style="-fx-background-color: #FFFFFF;">
+                  <effect>
+                     <DropShadow />
+                  </effect>
+                  <children>
+                     <VBox prefHeight="1000.0" prefWidth="322.0">
+                        <children>
                            <AnchorPane prefHeight="234.0" prefWidth="163.0" />
                            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="98.0" prefWidth="325.0" styleClass="left_but" stylesheets="@mainScene.css" text="add book">
-                               <cursor>
-                                   <Cursor fx:constant="HAND" />
-                               </cursor>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
                            </Button>
                            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="110.0" prefWidth="325.0" styleClass="left_but" stylesheets="@mainScene.css" text="add book">
-                               <cursor>
-                                   <Cursor fx:constant="HAND" />
-                               </cursor>
-                               <graphic>
-                                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
-                               </graphic>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
+                              <graphic>
+                                 <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                              </graphic>
                            </Button>
                            <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="118.0" prefWidth="342.0" styleClass="left_but" stylesheets="@mainScene.css" text="user management">
-                               <cursor>
-                                   <Cursor fx:constant="HAND" />
-                               </cursor>
-                               <graphic>
-                                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
-                               </graphic>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
+                              <graphic>
+                                 <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
+                              </graphic>
                            </Button>
-                       </VBox>
-                   </AnchorPane>
+                        </children>
+                     </VBox>
+                  </children>
                </AnchorPane>
-           </StackPane>
-       </AnchorPane>
-   </center>
+            </children>
+         </AnchorPane>
+        </AnchorPane>
+    </center>
 </BorderPane>
