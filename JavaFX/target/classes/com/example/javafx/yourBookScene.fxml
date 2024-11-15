@@ -28,7 +28,7 @@
       </ScrollPane>
       <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="365.0" prefHeight="276.0" prefWidth="1525.0" vbarPolicy="NEVER">
          <content>
-            <HBox fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0">
+            <HBox fx:id="favorite" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0">
                <padding>
                   <Insets left="20.0" right="20.0" top="15.0" />
                </padding>
@@ -44,5 +44,21 @@
             </HBox>
          </content>
       </ScrollPane>
+      <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="333.0" prefHeight="32.0" prefWidth="1525.0" text="Favorite books">
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="658.0" prefHeight="32.0" prefWidth="1525.0" text="something">
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
