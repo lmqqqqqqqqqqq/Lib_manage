@@ -65,19 +65,13 @@ public class AdvancedSearchController {
         List<Object> params = new ArrayList<>();
 
         StringBuilder Q = new StringBuilder(Search.process(title, author, subject, publisher, isbn, language, year, sortBy, params));
-        List<Books> res = Search.search(Q.toString(), params, databaseConnect.connect());
+        List<Books> result = Search.search(Q.toString(), params, databaseConnect.connect());
 
         resultpane.getChildren().clear();
-        if (res.isEmpty()) {
+        if (result.isEmpty()) {
             System.out.println("No results found.");
         } else {
-            for (Books b : res) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/javafx/resultBookShow.fxml"));
-                AnchorPane bookPane = loader.load();
-                resultBookShow controller = loader.getController();
-                controller.setOutputData(getClass().getResource("/com/example/javafx/test.png").toExternalForm(), b.getTitle(), b.getAuthor());
-                resultpane.getChildren().add(bookPane);
-            }
+            showLoad.intoBox(resultpane, result);
         }
     }
 }
