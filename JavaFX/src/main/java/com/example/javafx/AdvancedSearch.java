@@ -39,6 +39,36 @@ public class AdvancedSearch extends SearchController {
     }
 
     /**
+     * excute query with only 1 param.
+     * @param query
+     * @param o
+     * @param connect
+     * @return
+     * @throws SQLException
+     */
+    public List<Books> search(String query, Object o, Connection connect) throws SQLException {
+        PreparedStatement stm = connect.prepareStatement(query);
+        stm.setObject(1, o);
+        ResultSet rs = stm.executeQuery();
+        List<Books> result = new ArrayList<>();
+        while (rs.next()) {
+            String title = rs.getString("title");
+            String author = rs.getString("author");
+            String publisher = rs.getString("publisher");
+            String isbn = rs.getString("ISBN");
+            String subject = rs.getString("subject");
+            String description = rs.getString("description");
+            String id = rs.getString("idbooks");
+            String language = rs.getString("language");
+            String year = rs.getString("created_date");
+            Books bok = new Books(id, title, description, author, subject, publisher, isbn, language, year);
+            result.add(bok);
+        }
+
+        return result;
+    }
+
+    /**
      * bug when choose only sort by and when everything is null select the newest first.
      * process to get query from database.
      * @param title
