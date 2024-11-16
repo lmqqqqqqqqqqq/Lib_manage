@@ -12,9 +12,10 @@ public class User implements OBJECT {
     private String recoveryCode;
     private String avatarLink;
     private String dayIn;
+    private Integer isSave;
 
     public User(int id, String firstname, String lastname, String username, String password,
-                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn) {
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -26,6 +27,7 @@ public class User implements OBJECT {
         this.recoveryCode = recoveryCode;
         this.avatarLink = avatarLink;
         this.dayIn = dayIn;
+        this.isSave = isSave;
     }
 
     public int getId() {
@@ -74,6 +76,14 @@ public class User implements OBJECT {
 
     public String getDayIn() {
         return dayIn;
+    }
+
+    public Integer getIsSave() {
+        return isSave;
+    }
+
+    public void setIsSave(Integer isSave) {
+        this.isSave = isSave;
     }
 
     @Override
