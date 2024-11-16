@@ -11,9 +11,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1006.0" prefWidth="1707.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ProfileController">
+<AnchorPane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1021.0" prefWidth="1708.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ProfileController">
    <children>
-      <AnchorPane fx:id="header" layoutY="-3.0" prefHeight="234.0" prefWidth="1707.0" style="-fx-background-color: #315469;" visible="false">
+      <AnchorPane fx:id="header" layoutY="-19.0" prefHeight="250.0" prefWidth="1707.0" style="-fx-background-color: #315469;">
          <children>
             <Label layoutX="12.0" prefHeight="130.0" prefWidth="445.0" text="Information Management System" textFill="#baf578">
                <font>
@@ -32,7 +32,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="information" layoutY="231.0" prefHeight="782.0" prefWidth="1707.0" style="-fx-background-color: #91d2f2;" visible="false">
+      <AnchorPane fx:id="information" layoutY="231.0" prefHeight="782.0" prefWidth="1707.0" style="-fx-background-color: #91d2f2;">
          <children>
             <AnchorPane layoutX="551.0" layoutY="172.0" prefHeight="69.0" prefWidth="450.0">
                <children>
@@ -132,10 +132,9 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button layoutX="889.0" layoutY="696.0" mnemonicParsing="false" onAction="#backToProfileOnAction" styleClass="Button1" stylesheets="@profile.css" text="Back to personal profile" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="security" layoutY="231.0" prefHeight="778.0" prefWidth="1705.0" style="-fx-background-color: #91d2f2;" visible="false">
+      <AnchorPane fx:id="security" layoutY="231.0" prefHeight="778.0" prefWidth="1705.0" style="-fx-background-color: #91d2f2;">
          <children>
             <AnchorPane layoutX="727.0" layoutY="110.0" prefHeight="69.0" prefWidth="450.0">
                <children>
@@ -226,69 +225,6 @@
                   </ImageView>
                </graphic>
             </Label>
-            <Button layoutX="1071.0" layoutY="632.0" mnemonicParsing="false" onAction="#backToProfileOnAction" styleClass="Button1" stylesheets="@profile.css" text="Back to personal profile" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="intro" layoutX="-5.0" layoutY="2.0" prefHeight="1000.0" prefWidth="1705.0">
-         <children>
-            <AnchorPane layoutX="5.0" layoutY="-4.0" prefHeight="1009.0" prefWidth="1707.0" style="-fx-background-color: #91d2f2;">
-               <children>
-                  <ImageView fx:id="introAvatar" fitHeight="180.0" fitWidth="180.0" layoutX="835.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@user.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="name" layoutX="877.0" layoutY="267.0" prefHeight="50.0" prefWidth="232.0" text="Username">
-                     <font>
-                        <Font name="Calibri Bold Italic" size="25.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="664.0" layoutY="342.0" prefHeight="49.0" prefWidth="130.0" text="Số sách đã đọc">
-                     <font>
-                        <Font name="Calibri Bold Italic" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="904.0" layoutY="342.0" prefHeight="49.0" prefWidth="130.0" text="Danh sách đọc">
-                     <font>
-                        <Font name="Calibri Bold Italic" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="1193.0" layoutY="342.0" prefHeight="49.0" prefWidth="130.0" text="Đã tham gia">
-                     <font>
-                        <Font name="Calibri Bold Italic" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="dayLabel" layoutX="1303.0" layoutY="342.0" prefHeight="49.0" prefWidth="65.0">
-                     <font>
-                        <Font name="Calibri Bold Italic" size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="1120.0" layoutY="422.0" onMouseClicked="#setting" prefHeight="73.0" prefWidth="317.0" styleClass="Label" stylesheets="@profile.css" text="Update information">
-                     <font>
-                        <Font name="Calibri Bold Italic" size="20.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="61.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@update.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Label>
-                  <Label layoutX="1500.0" layoutY="422.0" onMouseClicked="#logout" prefHeight="73.0" prefWidth="168.0" styleClass="Label" stylesheets="@profile.css" text="Log Out !">
-                     <font>
-                        <Font name="Calibri Bold Italic" size="20.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="59.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@logout.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Label>
-               </children>
-            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

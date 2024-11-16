@@ -1,13 +1,14 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+
+import static com.example.javafx.ProfileController.loadImage;
 
 public class mainController {
 
@@ -19,16 +20,23 @@ public class mainController {
     @FXML
     private AnchorPane managerBar;
     @FXML
-    private Button managerBut;
+    private AnchorPane intro;
     @FXML
     private AnchorPane ContentAnchorPane;
-
+    @FXML
+    private Label name;
+    @FXML
+    private ImageView introAvatar;
     User user = LoginController.user;
 
 
     public void initialize() throws IOException {
-        ProfileController.loadImage(mainSceneAvatar, user.getAvatarLink());
+        loadImage(mainSceneAvatar, user.getAvatarLink());
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
+        loadImage(introAvatar, user.getAvatarLink());
+        name.setText(user.getUsername());
+        manager.setVisible(false);
+        managerBar.setVisible(false);
     }
 
     public void homeOnClick() throws IOException {
@@ -50,22 +58,43 @@ public class mainController {
         manager.setVisible(false);
     }
 
-    public void profileOnClick() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "profileScene.fxml", manager);
-        manager.setDisable(true);
-        manager.setVisible(false);
+    public void profileOnClick() {
+        manager.setVisible(true);
+        manager.setDisable(false);
+        managerBar.setVisible(false);
+        managerBar.setDisable(true);
+        intro.setVisible(true);
+        intro.setDisable(false);
+        Animation.translateAnimation(intro);
+
     }
     public void managerOnAction() {
         manager.setVisible(true);
         manager.setDisable(false);
+        managerBar.setVisible(true);
+        managerBar.setDisable(false);
+        intro.setVisible(false);
+        intro.setDisable(true);
         Animation.translateAnimation(managerBar);
     }
 
     public void outSideManagerClick() {
-        manager.setVisible(false);
-        manager.setDisable(true);
+        try {
+            manager.setVisible(false);
+            manager.setDisable(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public void setting() throws IOException {
+        SceneSwitcher.switchBetweenPage(ContentAnchorPane, "profileScene.fxml");
+    }
+
+    public void logout() {
+        Stage stage = (Stage) name.getScene().getWindow();
+        SceneSwitcher.SwitchScene(stage, "Login.fxml");
+    }
 
 }
 
