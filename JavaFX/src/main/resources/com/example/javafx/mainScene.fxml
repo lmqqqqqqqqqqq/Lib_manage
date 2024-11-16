@@ -79,11 +79,11 @@
         </VBox>
     </left>
     <center>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1004.0" prefWidth="1716.0" BorderPane.alignment="CENTER">
-            <AnchorPane fx:id="ContentAnchorPane" layoutX="-5.0" layoutY="11.2" prefHeight="992.0" prefWidth="1721.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="-5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="11.0" />
-            <AnchorPane fx:id="manager" layoutX="-1.0" layoutY="5.0" prefHeight="1000.0" prefWidth="1717.0" stylesheets="@profile.css">
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1004.0" prefWidth="1706.0" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="ContentAnchorPane" layoutY="2.0" prefHeight="1000.0" prefWidth="1706.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
+            <AnchorPane fx:id="manager" layoutX="-2.0" layoutY="1.0" prefHeight="872.0" prefWidth="1717.0" stylesheets="@profile.css">
                 <children>
-               <AnchorPane fx:id="intro" layoutX="-3.0" layoutY="-18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1031.0" prefWidth="327.0" style="-fx-background-color: #91d2f2;" styleClass="anchor-pane" visible="false">
+               <AnchorPane fx:id="intro" layoutX="-3.0" layoutY="-18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1019.0" prefWidth="327.0" style="-fx-background-color: #91d2f2;" styleClass="anchor-pane" visible="false">
                   <children>
                      <ImageView fx:id="introAvatar" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                         <image>
@@ -131,9 +131,9 @@
                      </Label>
                   </children>
                </AnchorPane>
-                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-17.0" prefHeight="1034.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF;" styleClass="anchor-pane" visible="false">
+                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1015.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF;" styleClass="anchor-pane" visible="false">
                         <children>
-                            <VBox layoutY="3.0" prefHeight="990.0" prefWidth="322.0">
+                            <VBox layoutX="6.0" layoutY="13.0" prefHeight="1004.0" prefWidth="316.0">
                                 <children>
                                     <AnchorPane prefHeight="234.0" prefWidth="163.0" />
                                     <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="98.0" prefWidth="325.0" styleClass="left_but" stylesheets="@mainScene.css" text="add book">
