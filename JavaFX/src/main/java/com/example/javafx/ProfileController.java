@@ -9,14 +9,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class ProfileController {
 
@@ -66,14 +64,6 @@ public class ProfileController {
     @FXML
     private AnchorPane security;
     @FXML
-    private Label name;
-    @FXML
-    private Label dayLabel;
-    @FXML
-    private ImageView introAvatar;
-    @FXML
-    private AnchorPane intro;
-    @FXML
     private AnchorPane header;
     @FXML
     private Label successfulLabel;
@@ -97,17 +87,20 @@ public class ProfileController {
     DatabaseConnect databaseConnect = new DatabaseConnect();
 
     public void initialize() {
-        dayLabel.setText(numberOfDay());
         avatarPath = user.getAvatarLink();
         successfulLabel.setVisible(false);
         failedLabel.setVisible(false);
         loadImage(infoAvatar, user.getAvatarLink());
-        loadImage(introAvatar, user.getAvatarLink());
-        name.setText(user.getUsername());
         usernameTextField.setText(user.getUsername());
         idLabel.setText(Integer.toString(user.getId()));
         firstnameTextField.setText(user.getFirstname());
         lastnameTextField.setText(user.getLastname());
+        infoButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-background-color: transparent;\n" +
+                "    -fx-text-fill: #43fb00; ");
+        information.setVisible(true);
+        security.setVisible(false);
+        security.setDisable(true);
 
         ObservableList<String> months = FXCollections.observableArrayList();
         for (int i = 1; i <= 12; i++) {
@@ -156,7 +149,6 @@ public class ProfileController {
             successfulLabel.setVisible(true);
             Animation.fadeAnimation(successfulLabel);
             updateUser();
-            loadImage(introAvatar, user.getAvatarLink());
             user.setAvatarLink(avatarPath);
         } else {
             failedLabel.setVisible(true);
@@ -512,11 +504,9 @@ public class ProfileController {
         security.setVisible(false);
         information.setVisible(false);
         header.setVisible(false);
-        intro.setVisible(false);
         security.setDisable(true);
         information.setDisable(true);
         header.setDisable(true);
-        intro.setDisable(true);
 
         paneShowed.setVisible(true);
         paneShowed.setDisable(false);
@@ -542,30 +532,4 @@ public class ProfileController {
                 "    -fx-text-fill: #43fb00; ");
     }
 
-    public void setting() {
-        showProfilePane(information);
-        header.setVisible(true);
-        header.setDisable(false);
-        infoButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-background-color: transparent;\n" +
-                "    -fx-text-fill: #43fb00; ");
-    }
-
-    public void logout() {
-        Stage stage = (Stage) name.getScene().getWindow();
-        SceneSwitcher.SwitchScene(stage, "Login.fxml");
-    }
-
-    public void backToProfileOnAction() {
-        showProfilePane(intro);
-    }
-
-
-
-    public String numberOfDay() {
-        LocalDate date = LocalDate.now();
-        LocalDate signUpDate = LocalDate.parse(user.getDayIn());
-        long days = ChronoUnit.DAYS.between(signUpDate, date);
-        return days + " days";
-    }
 }
