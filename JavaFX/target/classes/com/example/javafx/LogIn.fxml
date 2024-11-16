@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -17,7 +18,7 @@
             <Font name="Calibri Bold Italic" size="48.0" />
          </font>
       </Label>
-      <Label fx:id="usernameLabel" layoutX="32.0" layoutY="153.0" prefHeight="32.0" prefWidth="120.0" styleClass="label-floating" stylesheets="@style.css" text="  Username">
+      <Label fx:id="usernameLabel" layoutX="32.0" layoutY="153.0" prefHeight="32.0" prefWidth="120.0" text="  Username">
          <font>
             <Font name="Calibri Italic" size="24.0" />
          </font>
@@ -32,7 +33,7 @@
             <Font name="Calibri Italic" size="24.0" />
          </font>
       </Label>
-      <PasswordField fx:id="enterPasswordField" layoutX="47.0" layoutY="283.0" onKeyPressed="#loginButtonPressed" onMouseClicked="#passclick" prefHeight="32.0" prefWidth="300.0" styleClass="password-field" stylesheets="@style.css">
+      <PasswordField fx:id="enterPasswordField" layoutX="47.0" layoutY="283.0" onKeyPressed="#loginButtonPressed" onMouseClicked="#passclick" prefHeight="32.0" prefWidth="300.0" styleClass="password-field">
          <font>
             <Font name="Calibri Italic" size="17.0" />
          </font>
@@ -107,5 +108,10 @@
             <Image url="@forget.png" />
          </image>
       </ImageView>
+      <CheckBox fx:id="checkPass" layoutX="362.0" layoutY="270.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="178.0" text="Remember Pasword">
+         <font>
+            <Font name="Calibri Bold Italic" size="15.0" />
+         </font>
+      </CheckBox>
    </AnchorPane>
 </StackPane>

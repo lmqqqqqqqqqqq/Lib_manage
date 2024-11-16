@@ -1,6 +1,6 @@
 package com.example.javafx;
 
-public class User {
+public class User implements OBJECT {
     private int id;
     private String firstname;
     private String lastname;
@@ -12,9 +12,10 @@ public class User {
     private String recoveryCode;
     private String avatarLink;
     private String dayIn;
+    private Integer isSave;
 
     public User(int id, String firstname, String lastname, String username, String password,
-                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn) {
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -26,6 +27,7 @@ public class User {
         this.recoveryCode = recoveryCode;
         this.avatarLink = avatarLink;
         this.dayIn = dayIn;
+        this.isSave = isSave;
     }
 
     public int getId() {
@@ -74,5 +76,21 @@ public class User {
 
     public String getDayIn() {
         return dayIn;
+    }
+
+    public Integer getIsSave() {
+        return isSave;
+    }
+
+    public void setIsSave(Integer isSave) {
+        this.isSave = isSave;
+    }
+
+    @Override
+    public String toString() {
+        return "User[ id = " + id + ", firstname = " + firstname + ", lastname = " + lastname
+                + ", dayOfBirth = " + dayOfBirth + ", monthOfBirth = " + monthOfBirth
+                + ", yearOfBirth = " + yearOfBirth + ", recoveryCode = " + recoveryCode
+                + ", avatarLink = " + avatarLink + ", dayIn = " + dayIn + "]";
     }
 }

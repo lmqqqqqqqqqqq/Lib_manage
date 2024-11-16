@@ -1,6 +1,7 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -18,12 +19,11 @@ public class mainController {
     @FXML
     private AnchorPane managerBar;
     @FXML
+    private Button managerBut;
+    @FXML
     private AnchorPane ContentAnchorPane;
 
     User user = LoginController.user;
-
-
-
 
 
     public void initialize() throws IOException {

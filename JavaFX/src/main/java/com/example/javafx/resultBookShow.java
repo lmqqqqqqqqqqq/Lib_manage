@@ -18,4 +18,6 @@ public class resultBookShow {
         this.title.setText(title);
         this.author.setText(author);
     }
+
+
 }

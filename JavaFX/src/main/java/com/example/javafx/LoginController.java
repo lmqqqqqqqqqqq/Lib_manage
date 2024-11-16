@@ -2,10 +2,7 @@ package com.example.javafx;
 
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -35,6 +32,8 @@ public class LoginController {
     private Label passwordLabel;
     @FXML
     private AnchorPane pane;
+    @FXML
+    private CheckBox checkPass;
     /**
      * connect with database.
      */
@@ -114,6 +113,18 @@ public class LoginController {
             //resultSet being used to check in the database and return true if it's exist.
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
+                int isSaved;
+                if(checkPass.isSelected()) {
+                    isSaved = 1;
+                } else {
+                    isSaved = 0;
+                }
+                String updateQuery = "UPDATE users SET isSave = ? WHERE username = ?";
+                try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
+                    updateStatement.setInt(1, isSaved);
+                    updateStatement.setString(2, usernameInp);
+                    updateStatement.executeUpdate();
+                }
                 int id = resultSet.getInt("idusers");
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
@@ -125,7 +136,8 @@ public class LoginController {
                 String recoveryCode = resultSet.getString("recoveryCode");
                 String avatar = resultSet.getString("avatar");
                 String dayIn = resultSet.getString("currentDate");
-                return new User(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn);
+                int isSave = resultSet.getInt("isSave");
+                return new User(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave);
             }
 
         } catch (Exception e) {
@@ -217,6 +229,24 @@ public class LoginController {
             userAnimation(false, usernameLabel);
             isPassUp = true;
             isUserUp = false;
+        }
+        String usernameInp = usernameTextField.getText();
+        String query = "select password from users where username = ? and isSave = ?";
+        try (Connection connection = databaseConnect.connect()) {
+            //use prepared to take the input login's information.
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, usernameInp);
+            preparedStatement.setInt(2, 1);
+            //resultSet being used to check in the database and return true if it's exist.
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                String password = resultSet.getString("password");
+                enterPasswordField.setText(password);
+                checkPass.setSelected(true);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 

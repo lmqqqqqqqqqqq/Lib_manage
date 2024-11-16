@@ -24,7 +24,7 @@
             <children>
                 <TextField fx:id="Author" layoutX="112.0" layoutY="160.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with authors name" />
                 <Label layoutX="34.0" layoutY="409.0" text="Year :" />
-                <Button layoutX="107.0" layoutY="604.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="34.0" prefWidth="96.0" text="Search" />
+                <Button layoutX="107.0" layoutY="604.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="34.0" prefWidth="96.0" styleClass="search_button" stylesheets="@advancedSearch.css" text="Search" />
                 <TextField fx:id="Title" layoutX="112.0" layoutY="100.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with Title name" />
                 <Label alignment="CENTER" layoutX="22.0" layoutY="103.0" prefHeight="29.0" prefWidth="51.0" text="Title :" />
                 <Label alignment="CENTER" layoutX="22.0" layoutY="163.0" prefHeight="29.0" prefWidth="51.0" text="Authors :" />
@@ -34,10 +34,10 @@
                 <Label alignment="CENTER" layoutX="10.0" layoutY="284.0" prefHeight="29.0" prefWidth="75.0" text="Publisher :" />
                 <TextField fx:id="Publisher" layoutX="112.0" layoutY="280.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with subject" />
                 <TextField fx:id="ISBN" layoutX="112.0" layoutY="340.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with isbn" />
-                <MenuButton fx:id="Language" layoutX="129.0" layoutY="459.0" mnemonicParsing="false" text="Language" />
-                <MenuButton fx:id="SortBy" layoutX="270.0" layoutY="460.0" mnemonicParsing="false" text="Sort by" />
+                <MenuButton fx:id="Language" layoutX="126.0" layoutY="472.0" mnemonicParsing="false" text="Language" />
+                <MenuButton fx:id="SortBy" layoutX="287.0" layoutY="473.0" mnemonicParsing="false" text="Sort by" />
                 <TextField fx:id="Year" layoutX="112.0" layoutY="400.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with isbn" />
-                <Button layoutX="305.0" layoutY="604.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" text="Reset" />
+                <Button layoutX="305.0" layoutY="604.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="96.0" styleClass="clear_button" stylesheets="@advancedSearch.css" text="Reset" />
             </children>
         </AnchorPane>
     </children>
