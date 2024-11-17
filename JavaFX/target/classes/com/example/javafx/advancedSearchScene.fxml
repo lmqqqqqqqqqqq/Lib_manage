@@ -27,7 +27,7 @@
                 <Button layoutX="107.0" layoutY="604.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="34.0" prefWidth="96.0" styleClass="search_button" stylesheets="@advancedSearch.css" text="Search" />
                 <TextField fx:id="Title" layoutX="112.0" layoutY="100.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with Title name" />
                 <Label alignment="CENTER" layoutX="22.0" layoutY="103.0" prefHeight="29.0" prefWidth="51.0" text="Title :" />
-                <Label alignment="CENTER" layoutX="22.0" layoutY="163.0" prefHeight="29.0" prefWidth="51.0" text="Authors :" />
+                <Label alignment="CENTER" layoutX="22.0" layoutY="163.0" prefHeight="29.0" prefWidth="51.0" text="Author :" />
                 <Label alignment="CENTER" layoutX="22.0" layoutY="223.0" prefHeight="29.0" prefWidth="51.0" text="Subject :" />
                 <TextField fx:id="Subject" layoutX="112.0" layoutY="220.0" prefHeight="35.0" prefWidth="420.0" promptText="Find with subject" />
                 <Label alignment="CENTER" layoutX="22.0" layoutY="343.0" prefHeight="29.0" prefWidth="51.0" text="ISBN :" />

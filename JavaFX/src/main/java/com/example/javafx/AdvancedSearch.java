@@ -121,8 +121,8 @@ public class AdvancedSearch extends SearchController {
             normalSearch = false;
         }
         if (language != null && !language.equals("Language")) {
-            Q.append(" AND language = ?");
-            params.add(language);
+            Q.append(" AND language LIKE ?");
+            params.add("%" + language + "%");
             normalSearch = false;
         }
         if (sortBy != null && !sortBy.equals("Sort by")) {
@@ -141,6 +141,26 @@ public class AdvancedSearch extends SearchController {
         } else {
             return Q.toString();
         }
+    }
+
+    public static List<Books> getAllBooks(Connection connect) throws SQLException {
+        PreparedStatement stm = connect.prepareStatement("SELECT * FROM books");
+        ResultSet rs = stm.executeQuery();
+        List<Books> result = new ArrayList<>();
+        while (rs.next()) {
+            String title = rs.getString("title");
+            String author = rs.getString("author");
+            String publisher = rs.getString("publisher");
+            String isbn = rs.getString("ISBN");
+            String subject = rs.getString("subject");
+            String description = rs.getString("description");
+            String id = rs.getString("idbooks");
+            String language = rs.getString("language");
+            String year = rs.getString("created_date");
+            Books bok = new Books(id, title, description, author, subject, publisher, isbn, language, year);
+            result.add(bok);
+        }
+        return result;
     }
 }
 
