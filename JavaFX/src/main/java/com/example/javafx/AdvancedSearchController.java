@@ -34,7 +34,10 @@ public class AdvancedSearchController {
     @FXML
     private TilePane resultpane;
     @FXML
+    private AnchorPane advancedSearchPane;
+    @FXML
     public void initialize() {
+        resultBookShow.setParentPane(advancedSearchPane);
         Language.getItems().clear();
         for(String a : AdvancedSearch.lang) {
             MenuItem item = new MenuItem(a);

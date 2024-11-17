@@ -11,9 +11,9 @@ public class addBookController {
     @FXML
     private TableView tableView;
 
-    @FXML
-    public void initialize() throws Exception {
-        ObservableList<Books> show = (ObservableList<Books>) AdvancedSearch.getAllBooks(Connect.connect());
-        tableView.setItems(show);
-    }
+//    @FXML
+//    public void initialize() throws Exception {
+//        ObservableList<Books> show = (ObservableList<Books>) AdvancedSearch.getAllBooks(Connect.connect());
+//        tableView.setItems(show);
+//    }
 }

@@ -96,6 +96,9 @@ public class mainController {
         SceneSwitcher.SwitchScene(stage, "Login.fxml");
     }
 
+    public void addBookOnAction() throws IOException {
+        SceneSwitcher.switchBetweenPage(ContentAnchorPane, "addBook.fxml");
+    }
 }
 
 

@@ -131,17 +131,17 @@
                      </Label>
                   </children>
                </AnchorPane>
-                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1015.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF;" styleClass="anchor-pane" visible="false">
+                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1015.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF;" styleClass="anchor-pane">
                         <children>
                             <VBox layoutX="6.0" layoutY="13.0" prefHeight="1004.0" prefWidth="316.0">
                                 <children>
                                     <AnchorPane prefHeight="234.0" prefWidth="163.0" />
-                                    <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="98.0" prefWidth="325.0" styleClass="left_but" stylesheets="@mainScene.css" text="add book">
+                                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addBookOnAction" prefHeight="98.0" prefWidth="325.0" styleClass="left_but" stylesheets="@mainScene.css" text="add book">
                                         <cursor>
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
                                     </Button>
-                                    <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="110.0" prefWidth="325.0" styleClass="left_but" stylesheets="@mainScene.css" text="add book">
+                                    <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="110.0" prefWidth="325.0" styleClass="left_but" stylesheets="@mainScene.css" text="delete book">
                                         <cursor>
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
