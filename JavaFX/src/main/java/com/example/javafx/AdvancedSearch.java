@@ -39,7 +39,7 @@ public class AdvancedSearch extends SearchController {
     }
 
     /**
-     * excute query with only 1 param.
+     * excute query with only 1 param. ( Using for yourBook)
      * @param query
      * @param o
      * @param connect
@@ -69,7 +69,7 @@ public class AdvancedSearch extends SearchController {
     }
 
     /**
-     * bug when choose only sort by and when everything is null select the newest first.
+     * when everything is null select the newest first.
      * process to get query from database.
      * @param title
      * @param author
@@ -85,45 +85,62 @@ public class AdvancedSearch extends SearchController {
     public String process(String title, String author, String subject
             , String publisher, String isbn, String language
             , String year, String sortBy, List<Object> params) {
-        StringBuilder Q = new StringBuilder("SELECT * FROM books WHERE 1=1");
+
+        boolean normalSearch = true;
+
+        StringBuilder Q = new StringBuilder("SELECT * FROM books WHERE 1=1 AND is_deleted=0");
 
         if (title != null && !title.isEmpty()) {
             Q.append(" AND title LIKE ?");
             params.add("%" + title + "%");
+            normalSearch = false;
         }
         if (author != null && !author.isEmpty()) {
             Q.append(" AND author LIKE ?");
             params.add("%" + author + "%");
+            normalSearch = false;
         }
         if (subject != null && !subject.isEmpty()) {
             Q.append(" AND subject LIKE ?");
             params.add("%" + subject + "%");
+            normalSearch = false;
         }
         if (publisher != null && !publisher.isEmpty()) {
             Q.append(" AND publisher LIKE ?");
             params.add("%" + publisher + "%");
+            normalSearch = false;
         }
         if (isbn != null && !isbn.isEmpty()) {
             Q.append(" AND isbn = ?");
             params.add(isbn);
+            normalSearch = false;
         }
         if (year != null && !year.isEmpty()) {
             Q.append(" AND YEAR(created_date) = ?");
             params.add(year);
-        }
-        if (sortBy != null && !sortBy.equals("Sort by")) {
-            if(sortBy.equals("Newest first")) {
-                Q.append(" ORDER BY created_date DESC");
-            } else {
-                Q.append(" ORDER BY created_date ASC");
-            }
+            normalSearch = false;
         }
         if (language != null && !language.equals("Language")) {
             Q.append(" AND language = ?");
             params.add(language);
+            normalSearch = false;
         }
-        Q.append(" AND is_deleted = 0");
-        return Q.toString();
+        if (sortBy != null && !sortBy.equals("Sort by")) {
+            if(sortBy.equals("Newest first")) {
+                Q.append(" ORDER BY created_date DESC");
+                normalSearch = false;
+            } else {
+                Q.append(" ORDER BY created_date ASC");
+                normalSearch = false;
+            }
+        }
+        // if everything is null search the newest first
+        if(normalSearch) {
+            Q.append(" ORDER BY created_date DESC");
+            return Q.toString();
+        } else {
+            return Q.toString();
+        }
     }
 }
 

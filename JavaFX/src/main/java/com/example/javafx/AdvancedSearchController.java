@@ -74,4 +74,16 @@ public class AdvancedSearchController {
             showLoad.intoBox(resultpane, result);
         }
     }
+
+    @FXML
+    public void onResetClick() throws Exception {
+        Title.setText("");
+        Author.setText("");
+        Subject.setText("");
+        Publisher.setText("");
+        ISBN.setText("");
+        Year.setText("");
+        Language.setText("Language");
+        SortBy.setText("Sort By");
+    }
 }
