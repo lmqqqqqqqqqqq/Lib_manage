@@ -1,13 +1,13 @@
 package com.example.javafx;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.sql.*;
 
@@ -26,7 +26,14 @@ public class LoginController {
     private Label signUpLabelClicked;
     @FXML
     private Label forgetLabelClicked;
-
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private Label passwordLabel;
+    @FXML
+    private AnchorPane pane;
+    @FXML
+    private CheckBox checkPass;
     /**
      * connect with database.
      */
@@ -38,6 +45,7 @@ public class LoginController {
     public void loginButtonClickedOnAction() {
         checkValid();
     }
+
 
     /**
      * same as the login button on action but with enter.
@@ -52,6 +60,9 @@ public class LoginController {
     /**
      * checkValid function.
      */
+
+    public static User user;
+
     public void checkValid() {
         if (usernameTextField.getText().isBlank() && enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
@@ -68,9 +79,10 @@ public class LoginController {
             enterPasswordField.setStyle("-fx-border-color: red");
         }
         else {
-            if (validLogin()) {
+            user = validLogin();
+            if (user != null) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
-                SceneSwitcher.SwitchScene(stage, "MAIN_SCENE.fxml");
+                SceneSwitcher.SwitchScene(stage, "mainScene.fxml");
             } else {
                 InvalidLoginLabel.setText("Invalid password or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
@@ -79,10 +91,10 @@ public class LoginController {
     }
 
     /**
-     * use the database's information and check if it's exist or not.
-     * @return true if the login information is correct .
+     * take information in the database to check the valid login and give information to user.
+     * @return the information.
      */
-    public boolean validLogin()  {
+    public User validLogin()  {
 
         //the input of username and password.
         String usernameInp = usernameTextField.getText();
@@ -100,12 +112,38 @@ public class LoginController {
             preparedStatement.setString(2, passwordInp);
             //resultSet being used to check in the database and return true if it's exist.
             ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
+            if(resultSet.next()) {
+                int isSaved;
+                if(checkPass.isSelected()) {
+                    isSaved = 1;
+                } else {
+                    isSaved = 0;
+                }
+                String updateQuery = "UPDATE users SET isSave = ? WHERE username = ?";
+                try (PreparedStatement updateStatement = connection.prepareStatement(updateQuery)) {
+                    updateStatement.setInt(1, isSaved);
+                    updateStatement.setString(2, usernameInp);
+                    updateStatement.executeUpdate();
+                }
+                int id = resultSet.getInt("idusers");
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                String firstname = resultSet.getString("first_name");
+                String lastname = resultSet.getString("last_name");
+                int dayOfBirth = resultSet.getInt("dayOfBirth");
+                int monthOfBirth = resultSet.getInt("monthOfBirth");
+                int yearOfBirth = resultSet.getInt("yearOfBirth");
+                String recoveryCode = resultSet.getString("recoveryCode");
+                String avatar = resultSet.getString("avatar");
+                String dayIn = resultSet.getString("currentDate");
+                int isSave = resultSet.getInt("isSave");
+                return new User(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave);
+            }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return false;
+        return null;
     }
 
     /**
@@ -165,5 +203,93 @@ public class LoginController {
 
     public void forgetMouseExited() {
         forgetLabelClicked.setStyle("-fx-text-fill: #000000; -fx-underline: false;");
+    }
+
+    boolean isUserUp = false;
+    boolean isPassUp = false;
+
+    public void userclick() {
+        if(!isUserUp && !isPassUp) {
+            userAnimation(true, usernameLabel);
+            isUserUp = true;
+        } else if(isPassUp && !isUserUp) {
+            userAnimation(true, usernameLabel);
+            passAnimation(false, passwordLabel);
+            isUserUp = true;
+            isPassUp = false;
+        }
+    }
+
+    public void passclick() {
+        if(!isUserUp && !isPassUp) {
+            passAnimation(true, passwordLabel);
+            isPassUp = true;
+        } else if(isUserUp && !isPassUp) {
+            passAnimation(true, passwordLabel);
+            userAnimation(false, usernameLabel);
+            isPassUp = true;
+            isUserUp = false;
+        }
+        String usernameInp = usernameTextField.getText();
+        String query = "select password from users where username = ? and isSave = ?";
+        try (Connection connection = databaseConnect.connect()) {
+            //use prepared to take the input login's information.
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, usernameInp);
+            preparedStatement.setInt(2, 1);
+            //resultSet being used to check in the database and return true if it's exist.
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                String password = resultSet.getString("password");
+                enterPasswordField.setText(password);
+                checkPass.setSelected(true);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void paneclick() {
+        pane.requestFocus();
+        if(isUserUp || isPassUp) {
+            if(isUserUp) {
+                userAnimation(false, usernameLabel);
+                isUserUp = false;
+            }
+            if(isPassUp) {
+                passAnimation(false, passwordLabel);
+                isPassUp = false;
+            }
+        }
+    }
+
+
+    public void userAnimation(boolean check, Label label) {
+        TranslateTransition animation = new TranslateTransition();
+        animation.setNode(label);
+        if (check) {
+            animation.setByY(-15);
+        } else {
+            animation.setByY(15);
+        }
+        animation.setDuration(Duration.seconds(0.05));
+        animation.setCycleCount(1);
+        animation.setAutoReverse(false); // Không quay lại khi hết thời gian
+        animation.play();
+    }
+
+    public void passAnimation(boolean check, Label label) {
+        TranslateTransition animation = new TranslateTransition();
+        animation.setNode(label);
+        if (check) {
+            animation.setByY(-15);
+        } else {
+            animation.setByY(15);
+        }
+        animation.setDuration(Duration.seconds(0.05));
+        animation.setCycleCount(1);
+        animation.setAutoReverse(false); // Không quay lại khi hết thời gian
+        animation.play();
     }
 }

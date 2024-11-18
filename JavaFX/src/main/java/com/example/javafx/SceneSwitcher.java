@@ -1,8 +1,13 @@
 package com.example.javafx;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 
 public class SceneSwitcher {
@@ -22,5 +27,24 @@ public class SceneSwitcher {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static void switchPage(AnchorPane pane, String string, AnchorPane manager) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(string));
+        Parent page = loader.load();
+
+        pane.getChildren().clear();
+        pane.getChildren().add(page);
+        pane.getChildren().add(manager);
+
+        manager.toFront();
+    }
+
+    public static void switchBetweenPage(AnchorPane pane, String string) throws IOException {
+        FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(string));
+        Parent page = loader.load();
+
+        pane.getChildren().clear();
+        pane.getChildren().add(page);
     }
 }

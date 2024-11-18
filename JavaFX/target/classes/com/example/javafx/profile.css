@@ -1,0 +1,72 @@
+.Button1 {
+    -fx-background-color: #FFFFFF; /* Màu nền trắng */
+    -fx-text-fill: #000000; /* Màu chữ đen */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+}
+
+.Button1:hover {
+    -fx-background-color: #b1f295; /* Đổi màu nền khi chuột vào (màu đỏ cam) */
+    -fx-text-fill: #0b0eba; /* Đổi màu chữ khi chuột vào (màu trắng) */
+    -fx-scale-x: 1.2; /* Phóng to button theo chiều ngang */
+    -fx-scale-y: 1.2; /* Phóng to button theo chiều dọc */
+}
+
+.button2 {
+    -fx-font-size: 20px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFFFFF;
+}
+
+/* Định dạng khi hover vào Button */
+.button2:hover {
+    -fx-background-color: #063755; /* Màu nền khi hover */
+}
+
+.Label {
+    -fx-font-size: 20px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+}
+
+.Label:hover {
+    -fx-font-size: 25px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #bf1636;
+}
+
+.combo-box.list-view {
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #000000; /* Màu của dòng kẻ, có thể thay đổi */
+    -fx-background-color: transparent;
+}
+.combo-box:focused {
+    -fx-border-color: black; /* Màu dòng kẻ khi đang nhập liệu */
+    -fx-background-color: transparent;
+}
+.combo-box {
+    -fx-background-color: transparent;
+}
+
+.text-field {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #000000; /* Màu của dòng kẻ, có thể thay đổi */
+}
+
+.text-field:focused {
+    -fx-border-color: #3b5998; /* Màu dòng kẻ khi đang nhập liệu */
+}
+
+.circle {
+    -fx-fill: transparent;   /* Bên trong trong suốt */
+    -fx-stroke: black;       /* Viền đen */
+    -fx-stroke-width: 2;     /* Độ dày của viền */
+}
+.anchor-pane {
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-border-style: solid;
+}
