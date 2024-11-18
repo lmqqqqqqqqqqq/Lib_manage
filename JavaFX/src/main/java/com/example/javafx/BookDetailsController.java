@@ -33,12 +33,17 @@ public class BookDetailsController {
         SceneSwitcher.switchBetweenPage(BookDetailsScene, "AdvancedSearchScene.fxml");
     }
 
-    public void initialize() {
-        String id = resultBookShow.id_book;
+    private int id_books;
+    public void setId(int id) {
+        id_books = id;
+        loadBookInfo();
+    }
+
+    public void loadBookInfo(){
         String query = "select * from books where idbooks = ?";
         try(Connection connection = db.connect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, id);
+            preparedStatement.setString(1, String.valueOf(id_books));
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 bookNameLabel.setText(resultSet.getString("title"));

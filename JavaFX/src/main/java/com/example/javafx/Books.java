@@ -1,7 +1,7 @@
 package com.example.javafx;
 
 public class Books implements OBJECT {
-    private String id;
+    private int id;
     private String title;
     private String description;
     private String author;
@@ -11,7 +11,7 @@ public class Books implements OBJECT {
     private String language;
     private String year;
 
-    public Books(String id, String title, String description, String author, String subject, String publisher, String isbn, String language, String year) {
+    public Books(int id, String title, String description, String author, String subject, String publisher, String isbn, String language, String year) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -23,7 +23,7 @@ public class Books implements OBJECT {
         this.description = description;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

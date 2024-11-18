@@ -1,6 +1,7 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,17 +25,21 @@ public class resultBookShow {
         root = pane;
     }
 
-    public static String id_book;
-    public void setOutputData(String imagepath, String title, String author, String id) {
+    public int id_book;
+    public void setOutputData(String imagepath, String title, String author, int id) {
         this.image.setImage(new Image(imagepath));
         this.title.setText(title);
         this.author.setText(author);
-        this.id.setText(id);
         id_book = id;
     }
 
     public void resultBookClicked() throws IOException {
-        SceneSwitcher.switchBetweenPage(root, "bookDetails.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("bookDetails.fxml"));
+        AnchorPane newContent = loader.load();
+        BookDetailsController controller = loader.getController();
+        controller.setId(id_book);
+        root.getChildren().clear();
+        root.getChildren().add(newContent);
     }
 
 

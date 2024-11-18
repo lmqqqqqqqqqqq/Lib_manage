@@ -28,7 +28,7 @@ public class AdvancedSearch extends SearchController {
             String isbn = rs.getString("ISBN");
             String subject = rs.getString("subject");
             String description = rs.getString("description");
-            String id = rs.getString("idbooks");
+            int id = rs.getInt("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
             Books bok = new Books(id, title, description, author, subject, publisher, isbn, language, year);
@@ -58,7 +58,7 @@ public class AdvancedSearch extends SearchController {
             String isbn = rs.getString("ISBN");
             String subject = rs.getString("subject");
             String description = rs.getString("description");
-            String id = rs.getString("idbooks");
+            int id = rs.getInt("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
             Books bok = new Books(id, title, description, author, subject, publisher, isbn, language, year);
@@ -154,7 +154,7 @@ public class AdvancedSearch extends SearchController {
             String isbn = rs.getString("ISBN");
             String subject = rs.getString("subject");
             String description = rs.getString("description");
-            String id = rs.getString("idbooks");
+            int id = rs.getInt("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
             Books bok = new Books(id, title, description, author, subject, publisher, isbn, language, year);
