@@ -1,21 +1,21 @@
 package com.example.javafx;
 
 public class Books implements OBJECT {
-    private int id;
+    private String id;
     private String title;
     private String description;
     private String author;
-    private String subject;
+    private String genre;
     private String publisher;
     private String isbn;
     private String language;
     private String year;
 
-    public Books(int id, String title, String description, String author, String subject, String publisher, String isbn, String language, String year) {
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year) {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.subject = subject;
+        this.genre = genre;
         this.publisher = publisher;
         this.isbn = isbn;
         this.language = language;
@@ -23,7 +23,7 @@ public class Books implements OBJECT {
         this.description = description;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -31,12 +31,12 @@ public class Books implements OBJECT {
         return title;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getLanguage() {
@@ -90,7 +90,7 @@ public class Books implements OBJECT {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", author='" + author + '\'' +
-                ", subject='" + subject + '\'' +
+                ", genre='" + genre + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", language='" + language + '\'' +

@@ -16,7 +16,18 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
+        try {
+            // Khởi tạo controller và gọi phương thức từ controller
+            ConnectAPI controller = new ConnectAPI();
+            controller.saveBookToDatabase();
+
+            System.out.println("Process completed.");
+        } catch (Exception e) {
+            System.out.println("Error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
 
     public static void main() {
         launch();
