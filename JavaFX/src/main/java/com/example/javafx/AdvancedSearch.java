@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AdvancedSearch extends SearchController {
+public class AdvancedSearch {
     public final static List<String> lang = Arrays.asList("English", "Spanish", "French", "German"
             , "Russian", "Vietnamese", "Standard Arabic", "Hindi", "Chinese");
     public final static List<String> SortBy = Arrays.asList("Newest first", "Oldest first");
 
-    @Override
     public List<Books> search(String query, List<Object> params, Connection connect) throws SQLException {
         PreparedStatement stm = connect.prepareStatement(query);
         for (int i = 0; i < params.size(); i++) {
@@ -31,7 +30,8 @@ public class AdvancedSearch extends SearchController {
             String id = rs.getString("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year);
+            String image = rs.getString("image");
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image);
             result.add(bok);
         }
 
@@ -61,7 +61,8 @@ public class AdvancedSearch extends SearchController {
             String id = rs.getString("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year);
+            String image = rs.getString("image");
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image);
             result.add(bok);
         }
 
@@ -157,7 +158,8 @@ public class AdvancedSearch extends SearchController {
             String id = rs.getString("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year);
+            String image = rs.getString("image");
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image);
             result.add(bok);
         }
         return result;

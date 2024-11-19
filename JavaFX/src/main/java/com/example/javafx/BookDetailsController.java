@@ -2,6 +2,8 @@ package com.example.javafx;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -28,34 +30,24 @@ public class BookDetailsController {
     private Label createdDateLabel;
     @FXML
     private Label ISBNLabel;
-
+    @FXML
+    private Label genreLabel;
+    @FXML
+    private ImageView bookImage;
     public void backToSearchOnAction() throws IOException {
         SceneSwitcher.switchBetweenPage(BookDetailsScene, "AdvancedSearchScene.fxml");
     }
-
-    private int id_books;
-    public void setId(int id) {
-        id_books = id;
-        loadBookInfo();
-    }
-
-    public void loadBookInfo(){
-        String query = "select * from books where idbooks = ?";
-        try(Connection connection = db.connect()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, String.valueOf(id_books));
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()) {
-                bookNameLabel.setText(resultSet.getString("title"));
-                authorLabel.setText(resultSet.getString("author"));
-                publisherLabel.setText(resultSet.getString("publisher"));
-                ISBNLabel.setText(resultSet.getString("ISBN"));
-                idLabel.setText(resultSet.getString("idbooks"));
-                createdDateLabel.setText(resultSet.getString("created_date"));
-                descriptionText.setText(resultSet.getString("description"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void setBook(Books books) {
+        bookNameLabel.setText(books.getTitle());
+        authorLabel.setText(books.getAuthor());
+        publisherLabel.setText(books.getPublisher());
+        ISBNLabel.setText(books.getIsbn());
+        idLabel.setText(books.getId());
+        descriptionText.setText(books.getDescription());
+        createdDateLabel.setText(books.getYear());
+        genreLabel.setText(books.getGenre());
+        String imageUrl = books.getImageLinks();
+        Image image = new Image(imageUrl);
+        bookImage.setImage(image);
     }
 }
