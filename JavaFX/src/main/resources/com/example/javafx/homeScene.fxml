@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="homeScene" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1007.0" prefWidth="1706.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HomeController">
    <children>
-      <AnchorPane layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="944.0" prefWidth="1706.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="56.0">
+      <AnchorPane fx:id="suggestPane" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="944.0" prefWidth="1706.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="56.0">
          <children>
             <HBox prefHeight="261.0" prefWidth="1801.0" AnchorPane.bottomAnchor="683.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -87,8 +87,8 @@
             </SplitPane>
          </children>
       </AnchorPane>
-      <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="10.0" prefHeight="27.0" prefWidth="527.0" promptText="Search for books" />
-      <Button fx:id="searchButtonInMain" layoutX="1155.0" layoutY="10.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="95.0" text="Search" />
+      <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="10.0" prefHeight="27.0" prefWidth="548.0" promptText="Search for books" />
+      <Button fx:id="searchButtonInMain" layoutX="1155.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="27.0" prefWidth="95.0" text="Search" />
       <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="494.0" text="Welcom userrrrrrrr !" textFill="#d00000">
          <font>
             <Font name="Calibri Bold Italic" size="18.0" />
