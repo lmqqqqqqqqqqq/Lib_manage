@@ -165,11 +165,9 @@ public class ProfileController {
         if(!link.equals("/com/example/javafx/user.jpg")) {
             Image image = new Image(link);
             avatarImage.setImage(image);
-            System.out.println(avatarImage.getFitWidth() + " " + avatarImage.getFitHeight());
         } else {
             Image defaultImage = new Image(ProfileController.class.getResource("/com/example/javafx/user.jpg").toExternalForm());
             avatarImage.setImage(defaultImage);
-            System.out.println(avatarImage.getFitWidth() + " " + avatarImage.getFitHeight());
         }
         double radius = Math.min(avatarImage.getFitWidth(), avatarImage.getFitHeight()) / 2;
         Circle circle = new Circle(avatarImage.getFitWidth() / 2, avatarImage.getFitHeight() / 2, radius);

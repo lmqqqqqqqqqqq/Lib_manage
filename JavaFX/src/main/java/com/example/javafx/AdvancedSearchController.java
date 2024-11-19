@@ -77,8 +77,8 @@ public class AdvancedSearchController {
         if (result.isEmpty() && result1.isEmpty()) {
             System.out.println("No results found.");
         } else {
-            showLoad.intoBox(resultpane, result);
             showLoad.intoBox(resultpane, result1);
+            showLoad.intoBox(resultpane, result);
         }
     }
 

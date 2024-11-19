@@ -1,6 +1,7 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -12,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -36,6 +38,7 @@ public class HomeController {
 
 
     public void initialize() {
+        resultBookShow.setParentPane(homeScene);
         welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!" );
         suggest.setDisable(true);
         suggest.setVisible(false);
@@ -100,7 +103,8 @@ public class HomeController {
                     HBox box = new HBox(10);
                     box.setAlignment(Pos.CENTER_LEFT);
                     ImageView bookImage = new ImageView();
-                    bookImage.setImage(new Image(showLoad.class.getResource("/com/example/javafx/test.png").toExternalForm())); // Đường dẫn ảnh
+                    Image defaultImage = new Image(ProfileController.class.getResource(book.getImageLinks()).toExternalForm());
+                    bookImage.setImage(defaultImage); // Đường dẫn ảnh
                     bookImage.setFitWidth(50);
                     bookImage.setFitHeight(50);
                     bookImage.setPreserveRatio(true);
@@ -112,7 +116,16 @@ public class HomeController {
                     textContainer.getChildren().addAll(bookTitle, bookAuthor);
                     box.getChildren().addAll(bookImage, textContainer);
                     box.setOnMouseClicked(event -> {
-                                //updating
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("bookDetails.fxml"));
+                        AnchorPane newContent = null;
+                        try {
+                            newContent = loader.load();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                        BookDetailsController controller = loader.getController();
+                        controller.setBook(book, newContent);
+                        homeScene.getChildren().add(newContent);
                     });
                     setGraphic(box);
                 }

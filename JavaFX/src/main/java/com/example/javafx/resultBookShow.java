@@ -26,11 +26,17 @@ public class resultBookShow {
     }
     private Books book;
     public void setOutputData(String imagepath, String title, String author, String id, Books books) {
-        try {
-            this.image.setImage(new Image(imagepath));
-        } catch (Exception e) {
+        if(imagepath.equals("No image available")) {
             Image defaultImage = new Image(ProfileController.class.getResource("/com/example/javafx/book.png").toExternalForm());
             image.setImage(defaultImage);
+        } else {
+            try {
+                this.image.setImage(new Image(imagepath));
+                System.out.println(imagepath + "==========");
+            } catch (Exception e) {
+                Image defaultImage = new Image(ProfileController.class.getResource(imagepath).toExternalForm());
+                image.setImage(defaultImage);
+            }
         }
         this.title.setText(title);
         this.author.setText(author);
@@ -39,13 +45,11 @@ public class resultBookShow {
     }
 
     public void resultBookClicked() throws IOException {
-        AnchorPane previousContent = new AnchorPane();
-        previousContent.getChildren().addAll(root.getChildren());
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bookDetails.fxml"));
         AnchorPane newContent = loader.load();
         BookDetailsController controller = loader.getController();
-        controller.setBook(book);
-        root.getChildren().clear();
+
+        controller.setBook(book, newContent);
         root.getChildren().add(newContent);
     }
 

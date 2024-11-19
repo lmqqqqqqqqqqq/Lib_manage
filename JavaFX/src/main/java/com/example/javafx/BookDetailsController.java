@@ -34,10 +34,14 @@ public class BookDetailsController {
     private Label genreLabel;
     @FXML
     private ImageView bookImage;
+
     public void backToSearchOnAction() throws IOException {
-        SceneSwitcher.switchBetweenPage(BookDetailsScene, "AdvancedSearchScene.fxml");
+        currentPane.setVisible(false);
     }
-    public void setBook(Books books) {
+
+    private AnchorPane currentPane;
+    public void setBook(Books books, AnchorPane currentPane) {
+        this.currentPane = currentPane;
         bookNameLabel.setText(books.getTitle());
         authorLabel.setText(books.getAuthor());
         publisherLabel.setText(books.getPublisher());
@@ -47,7 +51,17 @@ public class BookDetailsController {
         createdDateLabel.setText(books.getYear());
         genreLabel.setText(books.getGenre());
         String imageUrl = books.getImageLinks();
-        Image image = new Image(imageUrl);
-        bookImage.setImage(image);
+        try {
+            Image image = new Image(imageUrl);
+            bookImage.setImage(image);
+        } catch (Exception e) {
+            try {
+                Image defaultImage = new Image(ProfileController.class.getResource(imageUrl).toExternalForm());
+                bookImage.setImage(defaultImage);
+            } catch (Exception e2) {
+                Image defaultImage = new Image(ProfileController.class.getResource("/com/example/javafx/book.png").toExternalForm());
+                bookImage.setImage(defaultImage);
+            }
+        }
     }
 }
