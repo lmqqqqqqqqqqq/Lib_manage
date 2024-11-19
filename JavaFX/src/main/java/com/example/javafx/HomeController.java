@@ -1,7 +1,6 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -13,7 +12,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -30,6 +28,10 @@ public class HomeController {
     private TextField searchPaneInMain;
     @FXML
     private ListView<Books> suggest;
+    @FXML
+    private HBox res;
+    @FXML
+    private Label error;
     User user = LoginController.user;
 
 
@@ -43,6 +45,7 @@ public class HomeController {
                 suggest.setVisible(false);
             }
         });
+        error.setVisible(false);
     }
 
     public String numberOfDay() {
@@ -52,17 +55,24 @@ public class HomeController {
         return days + " days";
     }
 
-    public void searchOnAction() throws IOException {
-        try {
-            SceneSwitcher.switchBetweenPage(suggestPane, "findingBOOK.fxml");
 
-        } catch (Exception e) {
-            e.printStackTrace();
+    @FXML
+    public void searchClick() throws Exception {
+        String key = searchPaneInMain.getText();
+        if (key != null && !key.equals("")) {
+            String query = "SELECT * FROM books WHERE author LIKE ? OR TITLE LIKE ?";
+            List<Books> result = AdvancedSearch.search(query, List.of("%" + key + "%", "%" + key + "%"), Connect.connect());
+            showLoad.intoBox(res, result);
+        } else {
+            error.setVisible(true);
+            error.setStyle("-fx-text-fill: red");
+            error.setText("Please enter a valid search!!!!!!!");
         }
     }
 
     @FXML
     public void showSuggest() {
+        error.setVisible(false);
         suggest.setVisible(true);
         suggest.setDisable(false);
     }
@@ -71,12 +81,10 @@ public class HomeController {
     public void handleKey() throws Exception {
         System.out.println("key press");
         String key = searchPaneInMain.getText();
-
         if (key.isEmpty()) {
             suggest.getItems().clear();
             return;
         }
-
         String query = "SELECT * FROM books WHERE author LIKE ? OR title LIKE ?";
         List<Books> result;
         result = AdvancedSearch.search(query, List.of("%" + key + "%", "%" + key + "%"), Connect.connect());
@@ -99,15 +107,12 @@ public class HomeController {
                     VBox textContainer = new VBox(5);
                     Label bookTitle = new Label(book.getTitle());
                     bookTitle.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
-
                     Label bookAuthor = new Label(book.getAuthor());
                     bookAuthor.setStyle("-fx-font-size: 14px;");
-
                     textContainer.getChildren().addAll(bookTitle, bookAuthor);
                     box.getChildren().addAll(bookImage, textContainer);
-
                     box.setOnMouseClicked(event -> {
-
+                                //updating
                     });
                     setGraphic(box);
                 }
