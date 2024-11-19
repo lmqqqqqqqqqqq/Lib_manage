@@ -8,13 +8,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AdvancedSearch extends SearchController {
+public class AdvancedSearch {
     public final static List<String> lang = Arrays.asList("English", "Spanish", "French", "German"
             , "Russian", "Vietnamese", "Standard Arabic", "Hindi", "Chinese");
     public final static List<String> SortBy = Arrays.asList("Newest first", "Oldest first");
 
-    @Override
-    public List<Books> search(String query, List<Object> params, Connection connect) throws SQLException {
+    public static List<Books> search(String query, List<Object> params, Connection connect) throws SQLException {
         PreparedStatement stm = connect.prepareStatement(query);
         for (int i = 0; i < params.size(); i++) {
             stm.setObject(i + 1, params.get(i));
@@ -46,7 +45,7 @@ public class AdvancedSearch extends SearchController {
      * @return
      * @throws SQLException
      */
-    public List<Books> search(String query, Object o, Connection connect) throws SQLException {
+    public static List<Books> search(String query, Object o, Connection connect) throws SQLException {
         PreparedStatement stm = connect.prepareStatement(query);
         stm.setObject(1, o);
         ResultSet rs = stm.executeQuery();
@@ -65,6 +64,26 @@ public class AdvancedSearch extends SearchController {
             result.add(bok);
         }
 
+        return result;
+    }
+
+    public static List<Books> search(String Query, Connection connect) throws SQLException {
+        PreparedStatement stm = connect.prepareStatement(Query);
+        ResultSet rs = stm.executeQuery();
+        List<Books> result = new ArrayList<>();
+        while (rs.next()) {
+            String title = rs.getString("title");
+            String author = rs.getString("author");
+            String publisher = rs.getString("publisher");
+            String isbn = rs.getString("ISBN");
+            String genre = rs.getString("genre");
+            String description = rs.getString("description");
+            String id = rs.getString("idbooks");
+            String language = rs.getString("language");
+            String year = rs.getString("created_date");
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year);
+            result.add(bok);
+        }
         return result;
     }
 
