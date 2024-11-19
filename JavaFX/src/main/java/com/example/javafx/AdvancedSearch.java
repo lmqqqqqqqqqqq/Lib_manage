@@ -13,7 +13,7 @@ public class AdvancedSearch {
             , "Russian", "Vietnamese", "Standard Arabic", "Hindi", "Chinese");
     public final static List<String> SortBy = Arrays.asList("Newest first", "Oldest first");
 
-    public List<Books> search(String query, List<Object> params, Connection connect) throws SQLException {
+    public static List<Books> search(String query, List<Object> params, Connection connect) throws SQLException {
         PreparedStatement stm = connect.prepareStatement(query);
         for (int i = 0; i < params.size(); i++) {
             stm.setObject(i + 1, params.get(i));
@@ -46,7 +46,7 @@ public class AdvancedSearch {
      * @return
      * @throws SQLException
      */
-    public List<Books> search(String query, Object o, Connection connect) throws SQLException {
+    public static List<Books> search(String query, Object o, Connection connect) throws SQLException {
         PreparedStatement stm = connect.prepareStatement(query);
         stm.setObject(1, o);
         ResultSet rs = stm.executeQuery();
@@ -83,7 +83,8 @@ public class AdvancedSearch {
             String id = rs.getString("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year);
+            String image = rs.getString("image");
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image);
             result.add(bok);
         }
         return result;
@@ -103,7 +104,7 @@ public class AdvancedSearch {
      * @param params
      * @return query.
      */
-    public String process(String title, String author, String genre
+    public static String process(String title, String author, String genre
             , String publisher, String isbn, String language
             , String year, String sortBy, List<Object> params) {
 

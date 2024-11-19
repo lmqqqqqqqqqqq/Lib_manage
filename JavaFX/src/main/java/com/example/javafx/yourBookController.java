@@ -35,8 +35,8 @@ public class yourBookController {
         StringBuilder Q = new StringBuilder("SELECT * FROM books INNER JOIN user_books");
         Q.append(" ON user_books.idbooks = books.idbooks AND user_books.idusers = ? " +
                 "AND user_books.borrow = 1");
-        AdvancedSearch Search = new AdvancedSearch();
-        List<Books> result = Search.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
+
+        List<Books> result = AdvancedSearch.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
 
         if (result.isEmpty()) {
             System.out.println("No books found");
@@ -51,8 +51,7 @@ public class yourBookController {
         StringBuilder Q = new StringBuilder("SELECT * FROM books INNER JOIN user_books" +
                 " ON user_books.idbooks = books.idbooks AND user_books.idusers = ? " +
                 "AND user_books.is_favorite = 1");
-        AdvancedSearch Search = new AdvancedSearch();
-        List<Books> result = Search.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
+        List<Books> result = AdvancedSearch.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
 
         if (result.isEmpty()) {
             System.out.println("No books found");
