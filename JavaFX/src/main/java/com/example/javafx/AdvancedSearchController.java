@@ -20,7 +20,7 @@ public class AdvancedSearchController {
     @FXML
     private TextField Author;
     @FXML
-    private TextField Subject;
+    private TextField Genre;
     @FXML
     private TextField Publisher;
     @FXML
@@ -56,7 +56,7 @@ public class AdvancedSearchController {
     public void onSearchClick() throws Exception {
         String title = Title.getText();
         String author = Author.getText();
-        String subject = Subject.getText();
+        String genre = Genre.getText();
         String publisher = Publisher.getText();
         String isbn = ISBN.getText();
         String year = Year.getText();
@@ -67,7 +67,7 @@ public class AdvancedSearchController {
         AdvancedSearch Search = new AdvancedSearch();
         List<Object> params = new ArrayList<>();
 
-        StringBuilder Q = new StringBuilder(Search.process(title, author, subject, publisher, isbn, language, year, sortBy, params));
+        StringBuilder Q = new StringBuilder(Search.process(title, author, genre, publisher, isbn, language, year, sortBy, params));
         List<Books> result = Search.search(Q.toString(), params, databaseConnect.connect());
 
         resultpane.getChildren().clear();
@@ -82,7 +82,7 @@ public class AdvancedSearchController {
     public void onResetClick() throws Exception {
         Title.setText("");
         Author.setText("");
-        Subject.setText("");
+        Genre.setText("");
         Publisher.setText("");
         ISBN.setText("");
         Year.setText("");
