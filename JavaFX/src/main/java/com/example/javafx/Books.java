@@ -10,8 +10,9 @@ public class Books implements OBJECT {
     private String isbn;
     private String language;
     private String year;
+    private String imageLinks;
 
-    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year) {
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -21,6 +22,7 @@ public class Books implements OBJECT {
         this.language = language;
         this.year = year;
         this.description = description;
+        this.imageLinks = imageLinks;
     }
 
     public String getId() {
@@ -81,6 +83,22 @@ public class Books implements OBJECT {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageLinks() {
+        return imageLinks;
+    }
+
+    public void setImageLinks(String imageLinks) {
+        this.imageLinks = imageLinks;
     }
 
     @Override

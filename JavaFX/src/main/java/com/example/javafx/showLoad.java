@@ -16,7 +16,7 @@ public class showLoad {
             FXMLLoader loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/resultBookShow.fxml"));
             AnchorPane bookPane = loader.load();
             resultBookShow controller = loader.getController();
-            controller.setOutputData(showLoad.class.getResource("/com/example/javafx/test.png").toExternalForm(), b.getTitle(), b.getAuthor(), b.getId());
+            controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b);
             target.getChildren().add(bookPane);
         }
     }
@@ -27,7 +27,7 @@ public class showLoad {
             FXMLLoader loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/resultBookShow.fxml"));
             AnchorPane bookPane = loader.load();
             resultBookShow controller = loader.getController();
-            controller.setOutputData(showLoad.class.getResource("/com/example/javafx/test.png").toExternalForm(), b.getTitle(), b.getAuthor(), b.getId());
+            controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b);
             target.getChildren().add(bookPane);
         }
     }
