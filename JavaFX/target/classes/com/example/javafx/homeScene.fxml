@@ -87,12 +87,13 @@
             </SplitPane>
          </children>
       </AnchorPane>
-      <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="10.0" prefHeight="27.0" prefWidth="548.0" promptText="Search for books" />
+      <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="10.0" onKeyTyped="#handleKey" onMouseClicked="#showSuggest" prefHeight="27.0" prefWidth="548.0" promptText="Search for books" />
       <Button layoutX="1155.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="27.0" prefWidth="95.0" text="Search" />
       <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="494.0" text="Welcom userrrrrrrr !" textFill="#d00000">
          <font>
             <Font name="Calibri Bold Italic" size="18.0" />
          </font>
       </Label>
+      <ListView fx:id="suggest" layoutX="583.0" layoutY="36.0" prefHeight="469.0" prefWidth="548.0" />
    </children>
 </AnchorPane>
