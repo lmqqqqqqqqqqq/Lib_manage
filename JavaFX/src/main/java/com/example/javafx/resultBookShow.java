@@ -25,8 +25,8 @@ public class resultBookShow {
         root = pane;
     }
 
-    public int id_book;
-    public void setOutputData(String imagepath, String title, String author, int id) {
+    public String id_book;
+    public void setOutputData(String imagepath, String title, String author, String id) {
         this.image.setImage(new Image(imagepath));
         this.title.setText(title);
         this.author.setText(author);
@@ -37,7 +37,7 @@ public class resultBookShow {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bookDetails.fxml"));
         AnchorPane newContent = loader.load();
         BookDetailsController controller = loader.getController();
-        controller.setId(id_book);
+        controller.setId(Integer.parseInt(id_book));
         root.getChildren().clear();
         root.getChildren().add(newContent);
     }

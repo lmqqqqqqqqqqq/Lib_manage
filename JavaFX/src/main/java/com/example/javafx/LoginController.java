@@ -273,7 +273,7 @@ public class LoginController {
         } else {
             animation.setByY(15);
         }
-        animation.setDuration(Duration.seconds(0.05));
+        animation.setDuration(Duration.seconds(0.1));
         animation.setCycleCount(1);
         animation.setAutoReverse(false); // Không quay lại khi hết thời gian
         animation.play();
@@ -287,7 +287,7 @@ public class LoginController {
         } else {
             animation.setByY(15);
         }
-        animation.setDuration(Duration.seconds(0.05));
+        animation.setDuration(Duration.seconds(0.1));
         animation.setCycleCount(1);
         animation.setAutoReverse(false); // Không quay lại khi hết thời gian
         animation.play();

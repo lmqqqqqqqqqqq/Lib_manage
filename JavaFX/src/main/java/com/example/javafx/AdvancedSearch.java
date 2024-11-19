@@ -26,12 +26,12 @@ public class AdvancedSearch extends SearchController {
             String author = rs.getString("author");
             String publisher = rs.getString("publisher");
             String isbn = rs.getString("ISBN");
-            String subject = rs.getString("subject");
+            String genre = rs.getString("genre");
             String description = rs.getString("description");
-            int id = rs.getInt("idbooks");
+            String id = rs.getString("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
-            Books bok = new Books(id, title, description, author, subject, publisher, isbn, language, year);
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year);
             result.add(bok);
         }
 
@@ -56,12 +56,12 @@ public class AdvancedSearch extends SearchController {
             String author = rs.getString("author");
             String publisher = rs.getString("publisher");
             String isbn = rs.getString("ISBN");
-            String subject = rs.getString("subject");
+            String genre = rs.getString("genre");
             String description = rs.getString("description");
-            int id = rs.getInt("idbooks");
+            String id = rs.getString("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
-            Books bok = new Books(id, title, description, author, subject, publisher, isbn, language, year);
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year);
             result.add(bok);
         }
 
@@ -73,7 +73,7 @@ public class AdvancedSearch extends SearchController {
      * process to get query from database.
      * @param title
      * @param author
-     * @param subject
+     * @param genre
      * @param publisher
      * @param isbn
      * @param language
@@ -82,7 +82,7 @@ public class AdvancedSearch extends SearchController {
      * @param params
      * @return query.
      */
-    public String process(String title, String author, String subject
+    public String process(String title, String author, String genre
             , String publisher, String isbn, String language
             , String year, String sortBy, List<Object> params) {
 
@@ -100,9 +100,9 @@ public class AdvancedSearch extends SearchController {
             params.add("%" + author + "%");
             normalSearch = false;
         }
-        if (subject != null && !subject.isEmpty()) {
-            Q.append(" AND subject LIKE ?");
-            params.add("%" + subject + "%");
+        if (genre != null && !genre.isEmpty()) {
+            Q.append(" AND genre LIKE ?");
+            params.add("%" + genre + "%");
             normalSearch = false;
         }
         if (publisher != null && !publisher.isEmpty()) {
@@ -152,12 +152,12 @@ public class AdvancedSearch extends SearchController {
             String author = rs.getString("author");
             String publisher = rs.getString("publisher");
             String isbn = rs.getString("ISBN");
-            String subject = rs.getString("subject");
+            String genre = rs.getString("genre");
             String description = rs.getString("description");
-            int id = rs.getInt("idbooks");
+            String id = rs.getString("idbooks");
             String language = rs.getString("language");
             String year = rs.getString("created_date");
-            Books bok = new Books(id, title, description, author, subject, publisher, isbn, language, year);
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year);
             result.add(bok);
         }
         return result;
