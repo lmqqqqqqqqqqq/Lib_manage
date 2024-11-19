@@ -10,6 +10,7 @@ public class HomeController {
     @FXML
     private Label welcomeText;
 
+
     User user = LoginController.user;
 
 
