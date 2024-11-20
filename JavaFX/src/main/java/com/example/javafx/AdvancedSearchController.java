@@ -20,7 +20,7 @@ public class AdvancedSearchController {
     @FXML
     private TextField Author;
     @FXML
-    private TextField Subject;
+    private TextField Genre;
     @FXML
     private TextField Publisher;
     @FXML
@@ -34,7 +34,10 @@ public class AdvancedSearchController {
     @FXML
     private TilePane resultpane;
     @FXML
+    private AnchorPane advancedSearchPane;
+    @FXML
     public void initialize() {
+        resultBookShow.setParentPane(advancedSearchPane);
         Language.getItems().clear();
         for(String a : AdvancedSearch.lang) {
             MenuItem item = new MenuItem(a);
@@ -53,7 +56,7 @@ public class AdvancedSearchController {
     public void onSearchClick() throws Exception {
         String title = Title.getText();
         String author = Author.getText();
-        String subject = Subject.getText();
+        String genre = Genre.getText();
         String publisher = Publisher.getText();
         String isbn = ISBN.getText();
         String year = Year.getText();
@@ -61,23 +64,33 @@ public class AdvancedSearchController {
         String sortBy = SortBy.getText();
 
         // process input to show the result
-        AdvancedSearch Search = new AdvancedSearch();
+
         List<Object> params = new ArrayList<>();
 
-        StringBuilder Q = new StringBuilder(Search.process(title, author, subject, publisher, isbn, language, year, sortBy, params));
-        List<Books> res = Search.search(Q.toString(), params, databaseConnect.connect());
+        StringBuilder Q = new StringBuilder(AdvancedSearch.process(title, author, genre, publisher, isbn, language, year, sortBy, params));
+        List<Books> result = AdvancedSearch.search(Q.toString(), params, databaseConnect.connect());
+        ConnectAPI api = new ConnectAPI();
+        String Q1 = api.createQuery(title, author, genre, publisher, isbn, year);
+        List<Books> result1 = api.getBooks(Q1, year);
 
         resultpane.getChildren().clear();
-        if (res.isEmpty()) {
+        if (result.isEmpty() && result1.isEmpty()) {
             System.out.println("No results found.");
         } else {
-            for (Books b : res) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/javafx/resultBookShow.fxml"));
-                AnchorPane bookPane = loader.load();
-                resultBookShow controller = loader.getController();
-                controller.setOutputData(getClass().getResource("/com/example/javafx/test.png").toExternalForm(), b.getTitle(), b.getAuthor());
-                resultpane.getChildren().add(bookPane);
-            }
+            showLoad.intoBox(resultpane, result1);
+            showLoad.intoBox(resultpane, result);
         }
+    }
+
+    @FXML
+    public void onResetClick() throws Exception {
+        Title.setText("");
+        Author.setText("");
+        Genre.setText("");
+        Publisher.setText("");
+        ISBN.setText("");
+        Year.setText("");
+        Language.setText("Language");
+        SortBy.setText("Sort By");
     }
 }

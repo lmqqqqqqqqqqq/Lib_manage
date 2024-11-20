@@ -5,34 +5,64 @@ public class Books implements OBJECT {
     private String title;
     private String description;
     private String author;
-    private String subject;
+    private String genre;
     private String publisher;
     private String isbn;
     private String language;
     private String year;
+    private String imageLinks;
+    private String rating;
 
-    public Books(String id, String title, String description, String author, String subject, String publisher, String isbn, String language, String year) {
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks, String rating) {
         this.id = id;
         this.title = title;
         this.author = author;
-        this.subject = subject;
+        this.genre = genre;
         this.publisher = publisher;
         this.isbn = isbn;
         this.language = language;
         this.year = year;
         this.description = description;
+        this.imageLinks = imageLinks;
+        this.rating = rating;
+    }
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.isbn = isbn;
+        this.language = language;
+        this.year = year;
+        this.imageLinks = imageLinks;
+        this.description = description;
+    }
+    public Books(String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.isbn = isbn;
+        this.language = language;
+        this.year = year;
+        this.imageLinks = imageLinks;
+    }
+    public String getId() {
+        return id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getLanguage() {
@@ -79,6 +109,30 @@ public class Books implements OBJECT {
         this.isbn = isbn;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageLinks() {
+        return imageLinks;
+    }
+
+    public void setImageLinks(String imageLinks) {
+        this.imageLinks = imageLinks;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -86,7 +140,7 @@ public class Books implements OBJECT {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", author='" + author + '\'' +
-                ", subject='" + subject + '\'' +
+                ", genre='" + genre + '\'' +
                 ", publisher='" + publisher + '\'' +
                 ", isbn='" + isbn + '\'' +
                 ", language='" + language + '\'' +

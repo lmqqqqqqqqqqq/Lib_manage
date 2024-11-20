@@ -64,3 +64,9 @@
     -fx-stroke: black;       /* Viền đen */
     -fx-stroke-width: 2;     /* Độ dày của viền */
 }
+.anchor-pane {
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-border-style: solid;
+}
