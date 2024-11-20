@@ -26,18 +26,7 @@ public class resultBookShow {
     }
     private Books book;
     public void setOutputData(String imagepath, String title, String author, String id, Books books) {
-        if(imagepath.equals("No image available")) {
-            Image defaultImage = new Image(ProfileController.class.getResource("/com/example/javafx/book.png").toExternalForm());
-            image.setImage(defaultImage);
-        } else {
-            try {
-                this.image.setImage(new Image(imagepath));
-                System.out.println(imagepath + "==========");
-            } catch (Exception e) {
-                Image defaultImage = new Image(ProfileController.class.getResource(imagepath).toExternalForm());
-                image.setImage(defaultImage);
-            }
-        }
+        LoadBookImage.loadBookImage(imagepath, image);
         this.title.setText(title);
         this.author.setText(author);
         this.id.setText(id);

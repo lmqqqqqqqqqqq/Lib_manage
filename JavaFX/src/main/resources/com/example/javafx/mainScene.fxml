@@ -27,43 +27,43 @@
                     <ImageView fx:id="mainSceneAvatar" fitHeight="170.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
                 </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#homeOnClick" prefHeight="163.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css">
+            <Button fx:id="homeButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#homeOnClick" prefHeight="163.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css">
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor>
                 <graphic>
                     <ImageView fitHeight="58.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@menu.png" />
+                        <Image url="@../image/menu.png" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#yourBookOnClick" prefHeight="178.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css">
+            <Button fx:id="yourBookButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#yourBookOnClick" prefHeight="178.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css">
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor>
                 <graphic>
                     <ImageView fitHeight="67.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@book.png" />
+                        <Image url="@../image/book.png" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#advancedSearchOnClick" prefHeight="171.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css">
+            <Button fx:id="searchButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#advancedSearchOnClick" prefHeight="171.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css">
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor>
                 <graphic>
                     <ImageView fitHeight="65.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@search.png" />
+                        <Image url="@../image/search.png" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="managerBut" contentDisplay="TOP" mnemonicParsing="false" onAction="#managerOnAction" prefHeight="174.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css">
+            <Button fx:id="managerButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#managerOnAction" prefHeight="174.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css">
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor>
                 <graphic>
                     <ImageView fitHeight="65.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
-                        <Image url="@manager.png" />
+                        <Image url="@../image/manager.png" />
                     </ImageView>
                 </graphic>
             </Button>
@@ -71,7 +71,7 @@
                 <Label layoutX="14.0" layoutY="267.0" prefHeight="83.0" prefWidth="140.0" text="Setting">
                     <graphic>
                         <ImageView fitHeight="47.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                            <Image url="@setting.png" />
+                            <Image url="@../image/setting.png" />
                         </ImageView>
                     </graphic>
                 </Label>
@@ -85,11 +85,7 @@
                 <children>
                <AnchorPane fx:id="intro" layoutX="-3.0" layoutY="-18.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1019.0" prefWidth="327.0" style="-fx-background-color: #91d2f2;" styleClass="anchor-pane" visible="false">
                   <children>
-                     <ImageView fx:id="introAvatar" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@user.jpg" />
-                        </image>
-                     </ImageView>
+                     <ImageView fx:id="introAvatar" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
                      <Label fx:id="name" layoutX="91.0" layoutY="263.0" prefHeight="50.0" prefWidth="174.0" text="Username" textAlignment="CENTER">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
@@ -112,7 +108,7 @@
                         <graphic>
                            <ImageView fitHeight="61.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@update.png" />
+                                 <Image url="@../image/update.png" />
                               </image>
                            </ImageView>
                         </graphic>
@@ -124,7 +120,7 @@
                         <graphic>
                            <ImageView fitHeight="59.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                               <image>
-                                 <Image url="@logout.png" />
+                                 <Image url="@../image/logout.png" />
                               </image>
                            </ImageView>
                         </graphic>

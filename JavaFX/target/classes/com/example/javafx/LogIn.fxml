@@ -85,12 +85,12 @@
       </Label>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="322.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@user.png" />
+            <Image url="@../image/user.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="32.0" fitWidth="40.0" layoutX="322.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@lock.png" />
+            <Image url="@../image/lock.png" />
          </image>
       </ImageView>
       <Label layoutX="624.0" layoutY="260.0" prefHeight="18.0" prefWidth="200.0" text="that turns its back on you and" textFill="WHITE">
@@ -105,7 +105,7 @@
       </Label>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="197.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@forget.png" />
+            <Image url="@../image/forget.png" />
          </image>
       </ImageView>
       <CheckBox fx:id="checkPass" layoutX="362.0" layoutY="270.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="178.0" text="Remember Pasword">
