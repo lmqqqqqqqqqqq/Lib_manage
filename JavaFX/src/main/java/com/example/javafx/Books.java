@@ -11,8 +11,9 @@ public class Books implements OBJECT {
     private String language;
     private String year;
     private String imageLinks;
+    private String rating;
 
-    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks, String rating) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -23,6 +24,7 @@ public class Books implements OBJECT {
         this.year = year;
         this.description = description;
         this.imageLinks = imageLinks;
+        this.rating = rating;
     }
 
     public String getId() {
@@ -99,6 +101,14 @@ public class Books implements OBJECT {
 
     public void setImageLinks(String imageLinks) {
         this.imageLinks = imageLinks;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
     @Override
