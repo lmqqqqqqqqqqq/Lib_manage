@@ -162,14 +162,12 @@ public class ProfileController {
      * @param link is.
      */
     public static void loadImage(ImageView avatarImage, String link) {
-        if(!link.equals("/com/example/javafx/user.jpg")) {
+        if(!link.equals("/com/example/image/user.jpg")) {
             Image image = new Image(link);
             avatarImage.setImage(image);
-            System.out.println(avatarImage.getFitWidth() + " " + avatarImage.getFitHeight());
         } else {
-            Image defaultImage = new Image(ProfileController.class.getResource("/com/example/javafx/user.jpg").toExternalForm());
+            Image defaultImage = new Image(ProfileController.class.getResource("/com/example/image/user.jpg").toExternalForm());
             avatarImage.setImage(defaultImage);
-            System.out.println(avatarImage.getFitWidth() + " " + avatarImage.getFitHeight());
         }
         double radius = Math.min(avatarImage.getFitWidth(), avatarImage.getFitHeight()) / 2;
         Circle circle = new Circle(avatarImage.getFitWidth() / 2, avatarImage.getFitHeight() / 2, radius);

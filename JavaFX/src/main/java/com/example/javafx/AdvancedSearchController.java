@@ -64,16 +64,20 @@ public class AdvancedSearchController {
         String sortBy = SortBy.getText();
 
         // process input to show the result
-        AdvancedSearch Search = new AdvancedSearch();
+
         List<Object> params = new ArrayList<>();
 
-        StringBuilder Q = new StringBuilder(Search.process(title, author, genre, publisher, isbn, language, year, sortBy, params));
-        List<Books> result = Search.search(Q.toString(), params, databaseConnect.connect());
+        StringBuilder Q = new StringBuilder(AdvancedSearch.process(title, author, genre, publisher, isbn, language, year, sortBy, params));
+        List<Books> result = AdvancedSearch.search(Q.toString(), params, databaseConnect.connect());
+        ConnectAPI api = new ConnectAPI();
+        String Q1 = api.createQuery(title, author, genre, publisher, isbn, year);
+        List<Books> result1 = api.getBooks(Q1, year);
 
         resultpane.getChildren().clear();
-        if (result.isEmpty()) {
+        if (result.isEmpty() && result1.isEmpty()) {
             System.out.println("No results found.");
         } else {
+            showLoad.intoBox(resultpane, result1);
             showLoad.intoBox(resultpane, result);
         }
     }

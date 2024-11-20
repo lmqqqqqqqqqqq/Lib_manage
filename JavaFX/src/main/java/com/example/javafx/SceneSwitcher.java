@@ -47,4 +47,5 @@ public class SceneSwitcher {
         pane.getChildren().clear();
         pane.getChildren().add(page);
     }
+
 }

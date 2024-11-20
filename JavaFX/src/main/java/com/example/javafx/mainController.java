@@ -1,6 +1,7 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +28,14 @@ public class mainController {
     private Label name;
     @FXML
     private ImageView introAvatar;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button yourBookButton;
+    @FXML
+    private Button searchButton;
+    @FXML
+    private Button managerButton;
     User user = LoginController.user;
 
 
@@ -35,27 +44,48 @@ public class mainController {
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
         loadImage(introAvatar, user.getAvatarLink());
         name.setText(user.getUsername());
-        manager.setVisible(false);
-        managerBar.setVisible(false);
+        outSideManagerClick();
+        homeButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-border-color: #0022ff;\n" +
+                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
+                "    -fx-border-width: 0px 0px 7px 0px; ");
     }
 
     public void homeOnClick() throws IOException {
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
         initialize();
-        manager.setDisable(true);
-        manager.setVisible(false);
+        outSideManagerClick();
+        homeButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-border-color: #0022ff;\n" +
+                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
+                "    -fx-border-width: 0px 0px 7px 0px; ");
+        yourBookButton.setStyle(null);
+        searchButton.setStyle(null);
+        managerButton.setStyle(null);
     }
 
     public void yourBookOnClick() throws IOException {
         SceneSwitcher.switchPage(ContentAnchorPane, "yourBookScene.fxml", manager);
-        manager.setDisable(true);
-        manager.setVisible(false);
+        outSideManagerClick();
+        yourBookButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-border-color: #0022ff;\n" +
+                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
+                "    -fx-border-width: 0px 0px 7px 0px; ");
+        homeButton.setStyle(null);
+        searchButton.setStyle(null);
+        managerButton.setStyle(null);
     }
 
     public void advancedSearchOnClick() throws IOException {
         SceneSwitcher.switchPage(ContentAnchorPane, "advancedSearchScene.fxml", manager);
-        manager.setDisable(true);
-        manager.setVisible(false);
+        outSideManagerClick();
+        searchButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-border-color: #0022ff;\n" +
+                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
+                "    -fx-border-width: 0px 0px 7px 0px; ");
+        yourBookButton.setStyle(null);
+        homeButton.setStyle(null);
+        managerButton.setStyle(null);
     }
 
     public void profileOnClick() {
@@ -76,12 +106,17 @@ public class mainController {
         intro.setVisible(false);
         intro.setDisable(true);
         Animation.translateAnimation(managerBar);
+        managerButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-border-color: #0022ff;\n" +
+                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
+                "    -fx-border-width: 0px 0px 7px 0px; ");
     }
 
     public void outSideManagerClick() {
         try {
             manager.setVisible(false);
             manager.setDisable(true);
+            managerButton.setStyle(null);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -97,7 +132,8 @@ public class mainController {
     }
 
     public void addBookOnAction() throws IOException {
-        SceneSwitcher.switchBetweenPage(ContentAnchorPane, "addBook.fxml");
+        SceneSwitcher.switchPage(ContentAnchorPane, "addBook.fxml", manager);
+        outSideManagerClick();
     }
 }
 

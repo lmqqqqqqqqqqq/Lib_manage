@@ -24,21 +24,21 @@ public class resultBookShow {
     public static void setParentPane(AnchorPane pane) {
         root = pane;
     }
-
-    public String id_book;
-    public void setOutputData(String imagepath, String title, String author, String id) {
-        this.image.setImage(new Image(imagepath));
+    private Books book;
+    public void setOutputData(String imagepath, String title, String author, String id, Books books) {
+        LoadBookImage.loadBookImage(imagepath, image);
         this.title.setText(title);
         this.author.setText(author);
-        id_book = id;
+        this.id.setText(id);
+        this.book = books;
     }
 
     public void resultBookClicked() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bookDetails.fxml"));
         AnchorPane newContent = loader.load();
         BookDetailsController controller = loader.getController();
-        controller.setId(Integer.parseInt(id_book));
-        root.getChildren().clear();
+
+        controller.setBook(book, newContent);
         root.getChildren().add(newContent);
     }
 
