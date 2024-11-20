@@ -36,7 +36,7 @@
                </font>
             </Label>
             <Button layoutX="28.0" layoutY="736.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" text="Add book" />
-            <Button layoutX="169.0" layoutY="736.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="32.0" prefWidth="106.0" text="Back To Search" />
+            <Button layoutX="154.0" layoutY="736.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="32.0" prefWidth="106.0" text="Back To Search" />
             <Label fx:id="ISBNLabel" layoutX="574.0" layoutY="223.0" prefHeight="32.0" prefWidth="254.0">
                <font>
                   <Font name="Calibri Bold Italic" size="25.0" />
