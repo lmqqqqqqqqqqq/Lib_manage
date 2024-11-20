@@ -24,7 +24,10 @@ public class yourBookController {
     @FXML
     private HBox favorite;
     @FXML
+    private AnchorPane yourBookPane;
+    @FXML
     public void initialize() throws Exception {
+        resultBookShow.setParentPane(yourBookPane);
         loadBorrowed();
         loadFavorite();
     }
