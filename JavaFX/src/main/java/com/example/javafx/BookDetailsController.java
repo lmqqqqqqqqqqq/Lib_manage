@@ -51,17 +51,6 @@ public class BookDetailsController {
         createdDateLabel.setText(books.getYear());
         genreLabel.setText(books.getGenre());
         String imageUrl = books.getImageLinks();
-        try {
-            Image image = new Image(imageUrl);
-            bookImage.setImage(image);
-        } catch (Exception e) {
-            try {
-                Image defaultImage = new Image(ProfileController.class.getResource(imageUrl).toExternalForm());
-                bookImage.setImage(defaultImage);
-            } catch (Exception e2) {
-                Image defaultImage = new Image(ProfileController.class.getResource("/com/example/javafx/book.png").toExternalForm());
-                bookImage.setImage(defaultImage);
-            }
-        }
+        LoadBookImage.loadBookImage(imageUrl, bookImage);
     }
 }

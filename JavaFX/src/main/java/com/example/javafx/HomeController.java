@@ -103,8 +103,7 @@ public class HomeController {
                     HBox box = new HBox(10);
                     box.setAlignment(Pos.CENTER_LEFT);
                     ImageView bookImage = new ImageView();
-                    Image defaultImage = new Image(ProfileController.class.getResource(book.getImageLinks()).toExternalForm());
-                    bookImage.setImage(defaultImage); // Đường dẫn ảnh
+                    LoadBookImage.loadBookImage(book.getImageLinks(), bookImage); // Đường dẫn ảnh
                     bookImage.setFitWidth(50);
                     bookImage.setFitHeight(50);
                     bookImage.setPreserveRatio(true);

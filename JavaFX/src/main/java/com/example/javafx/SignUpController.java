@@ -249,7 +249,7 @@ public class SignUpController {
      * initialize
      */
     public void initialize() {
-        avatarLink = "/com/example/javafx/user.jpg";
+        avatarLink = "/com/example/image/user.jpg";
         successfulLabel.setVisible(false);
         failedLabel.setVisible(false);
         ObservableList<String> months = FXCollections.observableArrayList();
