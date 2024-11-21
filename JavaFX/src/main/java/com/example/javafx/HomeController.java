@@ -82,13 +82,9 @@ public class HomeController {
 
     public void loadNewBook() throws Exception {
         newPane.getChildren().clear();
-        ConnectAPI api = new ConnectAPI();
-        String query = "java&orderBy=newest";
-        List<Books> newBookList = api.getBooks(query,"");
-
+        User user = LoginController.user;
         try {
-            showLoad.intoBox(newPane, newBookList);
-            System.out.println(newBookList.size());
+            showLoad.intoBox(newPane, user.getNewBooks());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

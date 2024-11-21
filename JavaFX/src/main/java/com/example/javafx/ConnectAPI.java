@@ -6,9 +6,11 @@ import com.google.gson.JsonParser;
 import javafx.scene.control.Alert;
 
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +21,14 @@ public class ConnectAPI {
     public JsonArray searchBookAPI(String query) throws Exception {
         String baseUrl = "https://www.googleapis.com/books/v1/volumes?q=";
         String apiKey = "&key=AIzaSyAt9UrpQ6vtwkYHb054rpYMx7-uZFdAk1E"; // Thay bằng API key của bạn
-        String APIUrl = baseUrl + query + apiKey;
+        StringBuilder queryBuilder = new StringBuilder(query);
+        for(int i = 0; i<queryBuilder.length(); i++){
+            if(queryBuilder.charAt(i)==' ') {
+                queryBuilder.setCharAt(i,'+');
+            }
+        }
+        String APIUrl = baseUrl + queryBuilder + apiKey;
+
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder().uri(new URI(APIUrl)).GET().build();
@@ -137,7 +146,7 @@ public class ConnectAPI {
                 continue;
             }
 
-            books.add(new Books(id, title, description, author, genre, publisher, ISBN, language, created_date, image, rating));
+            books.add(new Books(id, title, description, author, genre, publisher, ISBN, language, created_date, image, rating, true));
 
         }
         return books;

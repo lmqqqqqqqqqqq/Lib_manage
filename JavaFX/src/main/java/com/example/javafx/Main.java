@@ -17,9 +17,6 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
-        ConnectAPI api = new ConnectAPI();
-        String query = "java&orderBy=newest";
-        List<Books> newBookList = api.getBooks(query,"");
 
     }
     public static void main() {

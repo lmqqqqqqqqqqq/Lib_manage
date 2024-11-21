@@ -32,7 +32,7 @@ public class AdvancedSearch {
             String year = rs.getString("created_date");
             String image = rs.getString("image");
             String rating = rs.getString("rating");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating);
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating, false);
             result.add(bok);
         }
 
@@ -64,7 +64,7 @@ public class AdvancedSearch {
             String year = rs.getString("created_date");
             String image = rs.getString("image");
             String rating = rs.getString("rating");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating);
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating, false);
             result.add(bok);
         }
 
@@ -87,7 +87,7 @@ public class AdvancedSearch {
             String year = rs.getString("created_date");
             String image = rs.getString("image");
             String rating = rs.getString("rating");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image,rating);
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image,rating, false);
             result.add(bok);
         }
         return result;
@@ -184,7 +184,7 @@ public class AdvancedSearch {
             String year = rs.getString("created_date");
             String image = rs.getString("image");
             String rating = rs.getString("rating");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating);
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating, false);
             result.add(bok);
         }
         return result;

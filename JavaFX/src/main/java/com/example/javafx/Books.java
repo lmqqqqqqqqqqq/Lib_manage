@@ -12,8 +12,9 @@ public class Books implements OBJECT {
     private String year;
     private String imageLinks;
     private String rating;
+    private boolean fromAPI;
 
-    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks, String rating) {
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks, String rating, boolean fromAPI) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -25,6 +26,7 @@ public class Books implements OBJECT {
         this.description = description;
         this.imageLinks = imageLinks;
         this.rating = rating;
+        this.fromAPI = fromAPI;
     }
     public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
         this.id = id;
@@ -131,6 +133,14 @@ public class Books implements OBJECT {
 
     public void setRating(String rating) {
         this.rating = rating;
+    }
+
+    public boolean isFromAPI() {
+        return fromAPI;
+    }
+
+    public void setFromAPI(boolean fromAPI) {
+        this.fromAPI = fromAPI;
     }
 
     @Override

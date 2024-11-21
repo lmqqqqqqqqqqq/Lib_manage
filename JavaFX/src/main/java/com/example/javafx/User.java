@@ -1,5 +1,7 @@
 package com.example.javafx;
 
+import java.util.List;
+
 public class User implements OBJECT {
     private int id;
     private String firstname;
@@ -13,9 +15,10 @@ public class User implements OBJECT {
     private String avatarLink;
     private String dayIn;
     private Integer isSave;
+    private List<Books> newBooks;
 
     public User(int id, String firstname, String lastname, String username, String password,
-                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave) {
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -28,6 +31,7 @@ public class User implements OBJECT {
         this.avatarLink = avatarLink;
         this.dayIn = dayIn;
         this.isSave = isSave;
+        this.newBooks = newBooks;
     }
 
     public int getId() {
@@ -85,6 +89,11 @@ public class User implements OBJECT {
     public void setIsSave(Integer isSave) {
         this.isSave = isSave;
     }
+
+    public List<Books> getNewBooks() {
+        return newBooks;
+    }
+
 
     @Override
     public String toString() {
