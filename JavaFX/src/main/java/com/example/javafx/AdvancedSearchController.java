@@ -83,8 +83,8 @@ public class AdvancedSearchController {
             alert.showAndWait();
             System.out.println("No results found.");
         } else {
-            showLoad.intoBox(resultpane, result1);
             showLoad.intoBox(resultpane, result);
+            showLoad.intoBox(resultpane, result1);
         }
     }
 
