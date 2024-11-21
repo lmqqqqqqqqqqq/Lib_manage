@@ -49,6 +49,10 @@ public class mainController {
                 "    -fx-border-color: #0022ff;\n" +
                 "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
                 "    -fx-border-width: 0px 0px 7px 0px; ");
+        if (user instanceof Members) {
+            managerButton.setVisible(false);
+            managerButton.setDisable(true);
+        }
     }
 
     public void homeOnClick() throws IOException {

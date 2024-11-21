@@ -142,7 +142,7 @@ public class LoginController {
                 ConnectAPI api = new ConnectAPI();
                 String query1 = "java&orderBy=newest";
                 List<Books> newBookList = api.getBooks(query1,"");
-                return new User(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
+                return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
             }
 
         } catch (Exception e) {

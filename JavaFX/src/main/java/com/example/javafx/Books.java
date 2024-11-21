@@ -1,4 +1,4 @@
-package com.example.javafx;
+package com.example.javafx.models;
 
 public class Books implements OBJECT {
     private String id;
