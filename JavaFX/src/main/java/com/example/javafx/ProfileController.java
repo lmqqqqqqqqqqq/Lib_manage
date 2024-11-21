@@ -162,18 +162,23 @@ public class ProfileController {
      * @param link is.
      */
     public static void loadImage(ImageView avatarImage, String link) {
-        if(!link.equals("/com/example/image/user.jpg")) {
-            Image image = new Image(link);
-            avatarImage.setImage(image);
-        } else {
-            Image defaultImage = new Image(ProfileController.class.getResource("/com/example/image/user.jpg").toExternalForm());
-            avatarImage.setImage(defaultImage);
+        try {
+            if (!link.equals("/com/example/image/user.jpg")) {
+                Image image = new Image(link);
+                avatarImage.setImage(image);
+            } else {
+                Image defaultImage = new Image(ProfileController.class.getResource("/com/example/image/user.jpg").toExternalForm());
+                avatarImage.setImage(defaultImage);
+            }
+            double radius = Math.min(avatarImage.getFitWidth(), avatarImage.getFitHeight()) / 2;
+            Circle circle = new Circle(avatarImage.getFitWidth() / 2, avatarImage.getFitHeight() / 2, radius);
+            avatarImage.setPreserveRatio(false);
+            avatarImage.setStyle("-fx-border-width: 5px; -fx-border-color: #000000; -fx-border-style: solid;");
+            avatarImage.setClip(circle);
+            System.out.println("=======================================================");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        double radius = Math.min(avatarImage.getFitWidth(), avatarImage.getFitHeight()) / 2;
-        Circle circle = new Circle(avatarImage.getFitWidth() / 2, avatarImage.getFitHeight() / 2, radius);
-        avatarImage.setPreserveRatio(false);
-        avatarImage.setStyle("-fx-border-width: 5px; -fx-border-color: #000000; -fx-border-style: solid;");
-        avatarImage.setClip(circle);
     }
 
 

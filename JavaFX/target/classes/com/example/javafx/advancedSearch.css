@@ -109,7 +109,6 @@
     -fx-border-color: #4CAF50; /* Màu viền (nếu muốn) */
     -fx-border-width: 4;      /* Độ dày viền */
     -fx-padding: 10;          /* Khoảng cách bên trong */
-    -fx-padding: 10; /* Thêm khoảng đệm xung quanh */
 }
 .button {
     -fx-background-color: #4CAF50; /* Màu nền đen */

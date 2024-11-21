@@ -11,7 +11,6 @@ import javafx.scene.layout.Pane;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -69,9 +68,6 @@ public class addBookController {
         try {
             List<Books> bookList = AdvancedSearch.getAllBooks(Connect.connect());
             book.addAll(bookList);
-            for (Books b : bookList) {
-                System.out.println("Description: " + b.getDescription());
-            }
         }
         catch (Exception e) {
             e.printStackTrace();

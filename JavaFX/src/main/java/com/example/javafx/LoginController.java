@@ -139,10 +139,14 @@ public class LoginController {
                 String avatar = resultSet.getString("avatar");
                 String dayIn = resultSet.getString("currentDate");
                 int isSave = resultSet.getInt("isSave");
+                boolean staff = resultSet.getBoolean("staff");
                 ConnectAPI api = new ConnectAPI();
                 String query1 = "java&orderBy=newest";
                 List<Books> newBookList = api.getBooks(query1,"");
-                return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
+                if(!staff) {
+                    return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
+                } else
+                    return new Staff(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
             }
 
         } catch (Exception e) {
