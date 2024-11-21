@@ -2,14 +2,10 @@ package com.example.javafx;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 public class BookDetailsController {
     DatabaseConnect db = new DatabaseConnect();
@@ -34,6 +30,10 @@ public class BookDetailsController {
     private Label genreLabel;
     @FXML
     private ImageView bookImage;
+    @FXML
+    private Label ratingLabel;
+    @FXML
+    private Label languageLabel;
 
     public void backToSearchOnAction() throws IOException {
         currentPane.setVisible(false);
@@ -50,6 +50,8 @@ public class BookDetailsController {
         descriptionText.setText(books.getDescription());
         createdDateLabel.setText(books.getYear());
         genreLabel.setText(books.getGenre());
+        languageLabel.setText(books.getLanguage());
+        ratingLabel.setText(books.getRating());
         String imageUrl = books.getImageLinks();
         LoadBookImage.loadBookImage(imageUrl, bookImage);
     }

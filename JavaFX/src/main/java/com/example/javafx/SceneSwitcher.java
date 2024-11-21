@@ -8,10 +8,13 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class SceneSwitcher {
 
+    private static final Map<String, Parent> cachedScenes = new HashMap<>();
     public static void SwitchScene(Stage currentStage, String string) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(SceneSwitcher.class.getResource(string));
@@ -30,6 +33,7 @@ public class SceneSwitcher {
     }
 
     public static void switchPage(AnchorPane pane, String string, AnchorPane manager) throws IOException {
+
         FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(string));
         Parent page = loader.load();
 

@@ -6,16 +6,21 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
         stage.setMinWidth(600);
         stage.setMinHeight(600);
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.show();
+        ConnectAPI api = new ConnectAPI();
+        String query = "java&orderBy=newest";
+        List<Books> newBookList = api.getBooks(query,"");
+
     }
     public static void main() {
         launch();

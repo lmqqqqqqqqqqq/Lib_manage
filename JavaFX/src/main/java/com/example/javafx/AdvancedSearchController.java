@@ -2,6 +2,7 @@ package com.example.javafx;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
@@ -10,6 +11,7 @@ import javafx.scene.layout.TilePane;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AdvancedSearchController {
 
@@ -70,11 +72,15 @@ public class AdvancedSearchController {
         StringBuilder Q = new StringBuilder(AdvancedSearch.process(title, author, genre, publisher, isbn, language, year, sortBy, params));
         List<Books> result = AdvancedSearch.search(Q.toString(), params, databaseConnect.connect());
         ConnectAPI api = new ConnectAPI();
-        String Q1 = api.createQuery(title, author, genre, publisher, isbn, year);
+        String Q1 = api.createQuery(title, author, genre, publisher, isbn, language);
         List<Books> result1 = api.getBooks(Q1, year);
-
         resultpane.getChildren().clear();
         if (result.isEmpty() && result1.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Thông báo");
+            alert.setHeaderText(null);
+            alert.setContentText("Không tìm thấy sách nào phù hợp với từ khóa tìm kiếm!");
+            alert.showAndWait();
             System.out.println("No results found.");
         } else {
             showLoad.intoBox(resultpane, result1);

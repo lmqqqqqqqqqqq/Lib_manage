@@ -10,13 +10,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Map;
 
 public class HomeController {
     DatabaseConnect Connect = new DatabaseConnect();
@@ -34,11 +38,14 @@ public class HomeController {
     private HBox res;
     @FXML
     private Label error;
+    @FXML
+    private HBox newPane;
     User user = LoginController.user;
 
 
-    public void initialize() {
+    public void initialize() throws Exception {
         resultBookShow.setParentPane(homeScene);
+        loadNewBook();
         welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!" );
         suggest.setDisable(true);
         suggest.setVisible(false);
@@ -73,12 +80,27 @@ public class HomeController {
         }
     }
 
+    public void loadNewBook() throws Exception {
+        newPane.getChildren().clear();
+        ConnectAPI api = new ConnectAPI();
+        String query = "java&orderBy=newest";
+        List<Books> newBookList = api.getBooks(query,"");
+
+        try {
+            showLoad.intoBox(newPane, newBookList);
+            System.out.println(newBookList.size());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     @FXML
     public void showSuggest() {
         error.setVisible(false);
         suggest.setVisible(true);
         suggest.setDisable(false);
     }
+
 
     @FXML
     public void handleKey() throws Exception {
@@ -131,4 +153,5 @@ public class HomeController {
             }
         });
     }
+
 }
