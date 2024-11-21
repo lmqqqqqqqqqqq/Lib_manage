@@ -26,7 +26,29 @@ public class Books implements OBJECT {
         this.imageLinks = imageLinks;
         this.rating = rating;
     }
-
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.isbn = isbn;
+        this.language = language;
+        this.year = year;
+        this.imageLinks = imageLinks;
+        this.description = description;
+    }
+    public Books(String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.isbn = isbn;
+        this.language = language;
+        this.year = year;
+        this.imageLinks = imageLinks;
+    }
     public String getId() {
         return id;
     }
