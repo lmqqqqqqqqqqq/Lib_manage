@@ -153,7 +153,7 @@ public class ConnectAPI {
     }
 
 
-    public String createQuery(String title, String author, String genre, String publisher, String ISBN, String language) {
+    public String createQuery(String title, String author, String genre, String publisher, String ISBN, String language, String sort) {
         StringBuilder query = new StringBuilder();
         if (title != null && !title.isEmpty()) {
             query.append("intitle:").append(title).append("+");
@@ -170,8 +170,15 @@ public class ConnectAPI {
         if (ISBN != null && !ISBN.isEmpty()) {
             query.append("isbn:").append(ISBN).append("+");
         }
-        if(language != null && !language.isEmpty()) {
+
+        if(!query.isEmpty() && query.charAt(query.length() - 1) == '+') {
+            query.deleteCharAt(query.length() - 1);
+        }
+        if(language != null && !language.isEmpty() && !language.equals("Language")) {
             query.append("&langRestrict=").append(language, 0, 2);
+        }
+        if(sort != null && !sort.isEmpty() && !sort.equals("Sort by")) {
+            query.append("&orderBy=").append(sort);
         }
         return query.toString();
     }

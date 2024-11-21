@@ -7,7 +7,7 @@
 }
 
 .Button1:hover {
-    -fx-background-color: #b1f295; /* Đổi màu nền khi chuột vào (màu đỏ cam) */
+    -fx-background-color: #b1f295; /* Đổi màu nền khi chuột vào  */
     -fx-text-fill: #0b0eba; /* Đổi màu chữ khi chuột vào (màu trắng) */
     -fx-scale-x: 1.2; /* Phóng to button theo chiều ngang */
     -fx-scale-y: 1.2; /* Phóng to button theo chiều dọc */
@@ -56,7 +56,7 @@
 }
 
 .text-field:focused {
-    -fx-border-color: #3b5998; /* Màu dòng kẻ khi đang nhập liệu */
+    -fx-border-color: #4CAF50; /* Màu dòng kẻ khi đang nhập liệu */
 }
 
 .circle {

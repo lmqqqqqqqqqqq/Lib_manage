@@ -19,6 +19,7 @@ public class showLoad {
             resultBookShow controller = loader.getController();
             controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b);
             target.getChildren().add(bookPane);
+
         }
     }
 

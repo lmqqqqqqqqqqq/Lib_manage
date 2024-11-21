@@ -11,7 +11,7 @@ import java.util.List;
 public class AdvancedSearch {
     public final static List<String> lang = Arrays.asList("en (English)", "es (Spanish)", "fr (French)", "de (German)"
             , "ru (Russian)", "vi (Vietnamese)", "hi (Hindi)", "zh (Chinese)", "ja (Japanese)", "ko (Korean)");
-    public final static List<String> SortBy = Arrays.asList("Newest first", "Oldest first");
+    public final static List<String> SortBy = Arrays.asList("newest", "oldest");
 
     public static List<Books> search(String query, List<Object> params, Connection connect) throws SQLException {
         PreparedStatement stm = connect.prepareStatement(query);

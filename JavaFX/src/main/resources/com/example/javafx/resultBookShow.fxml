@@ -4,15 +4,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#resultBookClicked" prefHeight="252.0" prefWidth="234.0" styleClass="resultBookShow" stylesheets="@mainScene.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.resultBookShow">
+
+<AnchorPane fx:id="root" prefHeight="276.0" prefWidth="257.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.resultBookShow">
    <children>
-      <Label fx:id="author" alignment="CENTER" layoutX="5.0" layoutY="212.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="219.0" text="label" />
-      <ImageView fx:id="image" fitHeight="154.0" fitWidth="199.0" layoutX="18.0" layoutY="29.0" pickOnBounds="true" />
-      <Label fx:id="title" alignment="CENTER" layoutX="3.0" layoutY="184.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="219.0" text="Label" wrapText="true" />
-      <Label fx:id="id" layoutX="99.0" layoutY="10.0" text="Label" />
+      <AnchorPane layoutX="23.0" layoutY="11.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#resultBookClicked" prefHeight="256.0" prefWidth="212.0" styleClass="bookPane" stylesheets="@advancedSearch.css">
+         <children>
+            <Label fx:id="author" alignment="CENTER" layoutX="-3.0" layoutY="212.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="212.0" text="label">
+               <font>
+                  <Font name="Calibri Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="image" fitHeight="142.0" fitWidth="187.0" layoutX="13.0" layoutY="34.0" pickOnBounds="true" />
+            <Label fx:id="title" alignment="CENTER" layoutX="3.0" layoutY="184.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="212.0" text="Label" wrapText="true">
+               <font>
+                  <Font name="Calibri" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="id" layoutX="62.0" layoutY="10.0" prefHeight="17.0" prefWidth="148.0" text="Label">
+               <font>
+                  <Font name="Calibri Bold Italic" size="15.0" />
+               </font>
+            </Label>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </AnchorPane>
    </children>
-   <cursor>
-      <Cursor fx:constant="DEFAULT" />
-   </cursor>
 </AnchorPane>
