@@ -1,5 +1,10 @@
 package com.example.javafx;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User implements OBJECT {
@@ -34,40 +39,107 @@ public class User implements OBJECT {
         this.newBooks = newBooks;
     }
 
+    public User(int id, String firstname, String lastname, String username, String password,
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.password = password;
+        this.dayOfBirth = dayOfBirth;
+        this.monthOfBirth = monthOfBirth;
+        this.yearOfBirth = yearOfBirth;
+        this.recoveryCode = recoveryCode;
+        this.avatarLink = avatarLink;
+        this.dayIn = dayIn;
+        this.isSave = isSave;
+    }
+
+    public User(String firstname, String lastname, String username, String password,
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.username = username;
+        this.password = password;
+        this.dayOfBirth = dayOfBirth;
+        this.monthOfBirth = monthOfBirth;
+        this.yearOfBirth = yearOfBirth;
+        this.recoveryCode = recoveryCode;
+        this.avatarLink = avatarLink;
+        this.dayIn = dayIn;
+        this.isSave = isSave;
+    }
+
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstname() {
         return firstname;
     }
 
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
     public String getLastname() {
         return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getUsername() {
         return username;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getDayOfBirth() {
         return dayOfBirth;
     }
 
+    public void setDayOfBirth(int dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
+    }
+
     public int getMonthOfBirth() {
         return monthOfBirth;
+    }
+
+    public void setMonthOfBirth(int monthOfBirth) {
+        this.monthOfBirth = monthOfBirth;
     }
 
     public int getYearOfBirth() {
         return yearOfBirth;
     }
 
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+    }
+
     public String getRecoveryCode() {
         return recoveryCode;
+    }
+
+    public void setRecoveryCode(String recoveryCode) {
+        this.recoveryCode = recoveryCode;
     }
 
     public String getAvatarLink() {
@@ -82,6 +154,10 @@ public class User implements OBJECT {
         return dayIn;
     }
 
+    public void setDayIn(String dayIn) {
+        this.dayIn = dayIn;
+    }
+
     public Integer getIsSave() {
         return isSave;
     }
@@ -93,7 +169,6 @@ public class User implements OBJECT {
     public List<Books> getNewBooks() {
         return newBooks;
     }
-
 
     @Override
     public String toString() {
