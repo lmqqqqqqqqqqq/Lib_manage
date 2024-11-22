@@ -73,15 +73,15 @@
             <AnchorPane fx:id="ContentAnchorPane" layoutY="2.0" prefHeight="1000.0" prefWidth="1706.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
             <AnchorPane fx:id="manager" layoutX="-2.0" layoutY="1.0" prefHeight="872.0" prefWidth="1717.0" stylesheets="@profile.css">
                 <children>
-               <AnchorPane fx:id="intro" layoutX="-3.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="327.0" style="-fx-background-color: #91d2f2;" styleClass="anchor-pane">
+               <AnchorPane fx:id="intro" layoutX="-3.0" layoutY="-6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="327.0" style="-fx-background-color: #91d2f2;" styleClass="anchor-pane">
                   <children>
-                     <ImageView fx:id="introAvatar" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
-                     <Label fx:id="name" layoutX="91.0" layoutY="263.0" prefHeight="50.0" prefWidth="174.0" text="Username" textAlignment="CENTER">
+                     <ImageView fx:id="introAvatar" fitHeight="230.0" fitWidth="230.0" layoutX="53.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
+                     <Label fx:id="name" layoutX="91.0" layoutY="341.0" prefHeight="50.0" prefWidth="174.0" text="Username" textAlignment="CENTER">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
                      </Label>
-                     <Label layoutX="14.0" layoutY="454.0" onMouseClicked="#setting" prefHeight="94.0" prefWidth="307.0" styleClass="Label" stylesheets="@profile.css" text="Update information">
+                     <Label layoutX="10.0" layoutY="500.0" onMouseClicked="#setting" prefHeight="94.0" prefWidth="307.0" styleClass="Label" stylesheets="@profile.css" text="Update information">
                         <font>
                            <Font name="Calibri Bold Italic" size="20.0" />
                         </font>
@@ -93,7 +93,7 @@
                            </ImageView>
                         </graphic>
                      </Label>
-                     <Label layoutX="10.0" layoutY="551.0" onMouseClicked="#logout" prefHeight="73.0" prefWidth="168.0" styleClass="Label" stylesheets="@profile.css" text="Log Out !">
+                     <Label layoutX="7.0" layoutY="651.0" onMouseClicked="#logout" prefHeight="73.0" prefWidth="168.0" styleClass="Label" stylesheets="@profile.css" text="Log Out !">
                         <font>
                            <Font name="Calibri Bold Italic" size="20.0" />
                         </font>
@@ -105,9 +105,14 @@
                            </ImageView>
                         </graphic>
                      </Label>
+                     <Label fx:id="roleLabel" layoutX="94.0" layoutY="384.0" prefHeight="50.0" prefWidth="148.0" textAlignment="CENTER">
+                        <font>
+                           <Font name="Calibri Bold Italic" size="25.0" />
+                        </font>
+                     </Label>
                   </children>
                </AnchorPane>
-                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1015.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF;" styleClass="anchor-pane">
+                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1015.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF;" styleClass="anchor-pane" visible="false">
                         <children>
                             <VBox layoutX="2.0" layoutY="13.0" prefHeight="1004.0" prefWidth="315.0">
                                 <children>
@@ -137,7 +142,7 @@
                             </VBox>
                         </children>
                     </AnchorPane>
-               <AnchorPane layoutX="313.0" layoutY="-3.0" onMouseClicked="#outSideManagerClick" opacity="0.59" prefHeight="1000.0" prefWidth="1390.0" style="-fx-background-color: #FFFFFF;" />
+               <AnchorPane layoutX="322.0" layoutY="-3.0" onMouseClicked="#outSideManagerClick" opacity="0.59" prefHeight="1000.0" prefWidth="1381.0" style="-fx-background-color: #FFFFFF;" />
                 </children>
             </AnchorPane>
         </AnchorPane>
