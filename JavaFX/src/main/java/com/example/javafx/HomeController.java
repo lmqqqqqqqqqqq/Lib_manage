@@ -121,7 +121,8 @@ public class HomeController {
 
     public void playEntered() {
         playLabel.setStyle(" -fx-text-fill: #23ff00; " +
-                            "  -fx-underline: true; " );
+                            "  -fx-underline: true; " +
+                            "-fx-cursor: hand;" );
     }
 
     public void playExited() {

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1705.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.BorrowManagement">
+   <children>
+      <ImageView fx:id="userImage" fitHeight="267.0" fitWidth="200.0" layoutX="82.0" layoutY="214.0" pickOnBounds="true">
+         <image>
+            <Image url="@../image/test.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bookImage" fitHeight="267.0" fitWidth="200.0" layoutX="1400.0" layoutY="214.0" pickOnBounds="true">
+         <image>
+            <Image url="@../image/test.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="412.0" layoutY="135.0" prefHeight="46.0" prefWidth="100.0" text="USER">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1147.0" layoutY="136.0" prefHeight="46.0" prefWidth="100.0" text="BOOK">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Pane fx:id="decor" layoutX="-2.0" layoutY="89.0" prefHeight="8.0" prefWidth="1717.0" />
+      <TextField fx:id="borrowDate" layoutX="672.0" layoutY="250.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField fx:id="dueDate" layoutX="843.0" layoutY="250.0" prefHeight="25.0" prefWidth="121.0" />
+      <Label layoutX="695.0" layoutY="214.0" prefHeight="25.0" prefWidth="75.0" text="Borrow Date" />
+      <Label layoutX="874.0" layoutY="214.0" prefHeight="25.0" prefWidth="60.0" text="Due Date" />
+      <Label layoutX="813.0" layoutY="254.0" text="To" />
+      <TableView fx:id="BorrowTable" layoutX="48.0" layoutY="552.0" onMouseClicked="#handleROW" prefHeight="318.0" prefWidth="1614.0">
+        <columns>
+          <TableColumn fx:id="UserID" prefWidth="160.3333282470703" text="User ID" />
+          <TableColumn fx:id="BookID" prefWidth="247.6666717529297" text="Book ID" />
+            <TableColumn fx:id="Borrowdate" prefWidth="356.3333740234375" text="Borrow Date" />
+            <TableColumn fx:id="Duedate" minWidth="0.0" prefWidth="448.6666259765625" text="Due Date" />
+        </columns>
+      </TableView>
+      <TextField fx:id="idUser" layoutX="425.0" layoutY="250.0" prefHeight="25.0" prefWidth="75.0" />
+      <TextField fx:id="UserName" layoutX="412.0" layoutY="332.0" prefHeight="25.0" prefWidth="130.0" />
+      <TextField fx:id="Role" layoutX="412.0" layoutY="398.0" prefHeight="25.0" prefWidth="130.0" />
+      <Label layoutX="359.0" layoutY="402.0" text="Role :" />
+      <Label layoutX="335.0" layoutY="327.0" text="Username :" />
+      <Label layoutX="356.0" layoutY="254.0" text="ID :" />
+      <TextField fx:id="Author" layoutX="1154.0" layoutY="411.0" prefHeight="25.0" prefWidth="187.0" />
+      <TextField fx:id="Title" layoutX="1154.0" layoutY="356.0" prefHeight="25.0" prefWidth="187.0" />
+      <TextField fx:id="ISBN" layoutX="1154.0" layoutY="300.0" prefHeight="25.0" prefWidth="187.0" />
+      <TextField fx:id="idBook" layoutX="1155.0" layoutY="250.0" prefHeight="25.0" prefWidth="187.0" />
+      <Label layoutX="1108.0" layoutY="254.0" text="ID :" />
+      <Label layoutX="1092.0" layoutY="304.0" text="ISBN :" />
+      <Label layoutX="1093.0" layoutY="360.0" text="Title :" />
+      <Label layoutX="1086.0" layoutY="411.0" text="Author :" />
+      <Label fx:id="message" alignment="CENTER" layoutX="795.0" layoutY="298.0" text="Label">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
