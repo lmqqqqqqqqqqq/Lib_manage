@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -48,6 +49,8 @@ public class HomeController {
     private HBox newPane;
     @FXML
     private HBox borowedPane;
+    @FXML
+    private Label playLabel;
     User user = LoginController.user;
 
 
@@ -81,7 +84,7 @@ public class HomeController {
         if (key != null && !key.equals("")) {
             String query = "SELECT * FROM books WHERE author LIKE ? OR TITLE LIKE ?";
             List<Books> result = AdvancedSearch.search(query, List.of("%" + key + "%", "%" + key + "%"), Connect.connect());
-            showLoad.intoBox(res, result);
+            showLoad.intoBox(res, result, 232);
         } else {
             error.setVisible(true);
             error.setStyle("-fx-text-fill: red");
@@ -110,6 +113,19 @@ public class HomeController {
         error.setVisible(false);
         suggest.setVisible(true);
         suggest.setDisable(false);
+    }
+
+    public void playClick() throws IOException {
+        SceneSwitcher.switchPage(homeScene, "wordle.fxml");
+    }
+
+    public void playEntered() {
+        playLabel.setStyle(" -fx-text-fill: #23ff00; " +
+                            "  -fx-underline: true; " );
+    }
+
+    public void playExited() {
+        playLabel.setStyle(null);
     }
 
 

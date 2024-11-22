@@ -129,7 +129,7 @@ public class mainController {
     }
 
     public void setting() throws IOException {
-        SceneSwitcher.switchBetweenPage(ContentAnchorPane, "profileScene.fxml");
+        SceneSwitcher.switchPage(ContentAnchorPane, "profileScene.fxml");
     }
 
     public void logout() {

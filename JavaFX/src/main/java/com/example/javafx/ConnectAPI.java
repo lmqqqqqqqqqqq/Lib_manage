@@ -255,11 +255,10 @@ public class ConnectAPI {
             }
 
             Books book1 = new Books(id, title, description, author, genre, publisher, ISBN, language, created_date, image, rating, true, 0);
+            books.add(book1);
             for(Books b : dbBooks) {
                 if(b.getId().equals(book1.getId())) {
-                    continue;
-                } else {
-                    books.add(book1);
+                    books.remove(b);
                 }
             }
         }

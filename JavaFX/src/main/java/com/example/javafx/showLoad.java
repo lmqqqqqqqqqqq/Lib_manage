@@ -23,6 +23,19 @@ public class showLoad {
         }
     }
 
+    public static void intoBox(HBox target, List<Books> result, int height) throws IOException {
+        for (Books b : result) {
+            FXMLLoader loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/resultBookShow.fxml"));
+            AnchorPane bookPane = loader.load();
+            bookPane.setPrefHeight(height);
+            resultBookShow controller = loader.getController();
+            controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b);
+            target.getChildren().add(bookPane);
+
+        }
+    }
+
+
     @FXML
     public static void intoBox(TilePane target, List<Books> result) throws IOException {
         for (Books b : result) {

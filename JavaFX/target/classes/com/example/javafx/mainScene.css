@@ -22,13 +22,9 @@
     -fx-cursor: hand;
 }
 .resultBox {
-    -fx-border-color: #64805b;
-    -fx-border-width: 1px 1px 1px 1px;
-}
-
-.vbox-background {
-    -fx-background-image: url("/com/example/image/snow.gif");
-    -fx-background-repeat: no-repeat; /* Không lặp lại ảnh */
-    -fx-background-size: cover; /* Ảnh lấp đầy toàn bộ VBox */
-    -fx-background-position: center; /* Căn giữa ảnh */
+    -fx-background-radius: 30; /* Bo góc nền */
+    -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
+    -fx-border-color: #4CAF50; /* Màu viền (nếu muốn) */
+    -fx-border-width: 4px 4px 4px 4px;      /* Độ dày viền */
+    -fx-padding: 10;
 }

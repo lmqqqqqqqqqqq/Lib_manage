@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="advancedSearchPane" prefHeight="1000.0" prefWidth="1705.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AdvancedSearchController">
+<AnchorPane fx:id="advancedSearchPane" prefHeight="1000.0" prefWidth="1705.0" styleClass="vbox-background" stylesheets="@mainScene.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AdvancedSearchController">
     <children>
-        <ScrollPane hbarPolicy="NEVER" layoutX="65.0" layoutY="94.0" stylesheets="@advancedSearch.css">
+        <ScrollPane hbarPolicy="NEVER" layoutX="65.0" layoutY="85.0" prefHeight="761.0" prefWidth="1050.0" styleClass="resultBox" stylesheets="@advancedSearch.css">
             <content>
-                <TilePane fx:id="resultpane" alignment="CENTER" hgap="20.0" prefColumns="4" prefHeight="750.0" prefRows="3" prefWidth="1050.0" styleClass="title-pane" stylesheets="@advancedSearch.css" vgap="20.0">
+                <TilePane fx:id="resultpane" alignment="CENTER" hgap="20.0" prefColumns="4" prefHeight="723.0" prefRows="3" prefWidth="1003.0" stylesheets="@mainScene.css" vgap="20.0">
                     <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                     </padding>

@@ -11,9 +11,14 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane stylesheets="@wordle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Wordle">
+<StackPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@wordle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Wordle">
+   <ImageView fitHeight="998.0" fitWidth="1704.0" pickOnBounds="true">
+      <image>
+         <Image url="@../image/snow.gif" />
+      </image>
+   </ImageView>
 
-    <AnchorPane fx:id="playScreen" prefHeight="600" prefWidth="800" style="-fx-background-color: #f0f0f0;">
+    <AnchorPane fx:id="playScreen" prefHeight="432.0" prefWidth="594.0" style="-fx-background-color: #f0f0f0;">
         <StackPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
             <VBox alignment="CENTER" spacing="20">
                 <ImageView fitHeight="300" fitWidth="500" pickOnBounds="true" preserveRatio="true">
@@ -33,8 +38,8 @@
         </StackPane>
     </AnchorPane>
 
-    <AnchorPane fx:id="gameScreen" prefHeight="600" prefWidth="800" style="-fx-background-color: #F5F5F5;">
-        <VBox alignment="CENTER" spacing="30" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+    <AnchorPane fx:id="gameScreen" prefHeight="997.0" prefWidth="1703.0" style="-fx-background-color: #F5F5F5;">
+        <VBox alignment="CENTER" opacity="0.0" prefHeight="600.0" prefWidth="800.0" spacing="30" styleClass="vbox-background" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <Label fx:id="headerLabel" styleClass="header" text="Wordle Game" />
 
             <!-- Larger grid -->
@@ -48,7 +53,7 @@
 
             <Label fx:id="messageLabel" styleClass="message-label" />
 
-            <VBox alignment="CENTER" spacing="15">
+            <VBox alignment="CENTER" prefHeight="53.0" prefWidth="1161.0" spacing="15">
                 <Label fx:id="streakScoreLabel" styleClass="streak-label" text="Streak: 0" />
                 <Label fx:id="highScoreLabel" styleClass="high-score-label" text="High Streak: 0" />
             </VBox>
