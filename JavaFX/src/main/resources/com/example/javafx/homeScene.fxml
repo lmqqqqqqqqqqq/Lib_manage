@@ -41,16 +41,16 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <ListView layoutX="10.0" maxHeight="-Infinity" maxWidth="-Infinity" orientation="HORIZONTAL" prefHeight="308.0" prefWidth="1393.0">
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
-                              </ListView>
+                              <ScrollPane>
+                                 <content>
+                                    <HBox fx:id="borowedPane" prefHeight="310.0" prefWidth="1296.0" />
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </VBox>
                         <VBox layoutY="340.0" prefHeight="342.0" prefWidth="1394.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="340.0">
                            <children>
-                              <Label alignment="BASELINE_LEFT" prefHeight="34.0" prefWidth="1501.0" text="New Book">
+                              <Label alignment="BASELINE_LEFT" prefHeight="34.0" prefWidth="1501.0" text="New books">
                                  <padding>
                                     <Insets left="20.0" />
                                  </padding>
@@ -58,11 +58,11 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <ListView layoutX="10.0" maxHeight="-Infinity" maxWidth="-Infinity" orientation="HORIZONTAL" prefHeight="308.0" prefWidth="1490.0">
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
-                              </ListView>
+                              <ScrollPane>
+                                 <content>
+                                    <HBox fx:id="newPane" prefHeight="313.0" prefWidth="1295.0" />
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </VBox>
                      </children>

@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.sql.*;
+import java.util.List;
 
 public class LoginController {
     @FXML
@@ -83,6 +84,7 @@ public class LoginController {
             if (user != null) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
                 SceneSwitcher.SwitchScene(stage, "mainScene.fxml");
+
             } else {
                 InvalidLoginLabel.setText("Invalid password or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
@@ -137,7 +139,14 @@ public class LoginController {
                 String avatar = resultSet.getString("avatar");
                 String dayIn = resultSet.getString("currentDate");
                 int isSave = resultSet.getInt("isSave");
-                return new User(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave);
+                boolean staff = resultSet.getBoolean("staff");
+                ConnectAPI api = new ConnectAPI();
+                String query1 = "java&orderBy=newest";
+                List<Books> newBookList = api.getBooks(query1,"");
+                if(!staff) {
+                    return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
+                } else
+                    return new Staff(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
             }
 
         } catch (Exception e) {

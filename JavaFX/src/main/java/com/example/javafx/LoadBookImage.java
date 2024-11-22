@@ -6,7 +6,7 @@ import javafx.scene.image.ImageView;
 public class LoadBookImage {
 
     public static void loadBookImage(String imagepath, ImageView image) {
-        if(imagepath.equals("No image available")) {
+        if(imagepath.equals("No image available") || imagepath.isEmpty()) {
             Image defaultImage = new Image(ProfileController.class.getResource("/com/example/image/book.png").toExternalForm());
             image.setImage(defaultImage);
             image.setPreserveRatio(false);

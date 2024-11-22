@@ -13,10 +13,6 @@
 .mainContent_pane {
     -fx-background-color: #64805b;
 }
-.tilePaneShow {
-    -fx-border-color: #4e4e4e;
-    -fx-border-width: 20px 20px 20px 20px;
-}
 .resultBookShow {
     -fx-border-color: #64805b;
     -fx-border-width: 2px 2px 2px 2px;

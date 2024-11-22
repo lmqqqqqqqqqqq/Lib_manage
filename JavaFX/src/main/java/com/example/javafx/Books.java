@@ -11,8 +11,10 @@ public class Books implements OBJECT {
     private String language;
     private String year;
     private String imageLinks;
+    private String rating;
+    private boolean fromAPI;
 
-    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks, String rating, boolean fromAPI) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -23,6 +25,35 @@ public class Books implements OBJECT {
         this.year = year;
         this.description = description;
         this.imageLinks = imageLinks;
+        this.rating = rating;
+        this.fromAPI = fromAPI;
+    }
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.isbn = isbn;
+        this.language = language;
+        this.year = year;
+        this.imageLinks = imageLinks;
+        this.description = description;
+    }
+    public Books(String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.genre = genre;
+        this.publisher = publisher;
+        this.isbn = isbn;
+        this.language = language;
+        this.year = year;
+        this.imageLinks = imageLinks;
+    }
+
+    public Books() {
+
     }
 
     public String getId() {
@@ -99,6 +130,22 @@ public class Books implements OBJECT {
 
     public void setImageLinks(String imageLinks) {
         this.imageLinks = imageLinks;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public boolean isFromAPI() {
+        return fromAPI;
+    }
+
+    public void setFromAPI(boolean fromAPI) {
+        this.fromAPI = fromAPI;
     }
 
     @Override

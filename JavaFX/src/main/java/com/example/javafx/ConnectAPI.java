@@ -6,20 +6,29 @@ import com.google.gson.JsonParser;
 import javafx.scene.control.Alert;
 
 import java.net.URI;
+import java.net.URLEncoder;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ConnectAPI {
-    DatabaseConnect db = new DatabaseConnect();
 
 
     public JsonArray searchBookAPI(String query) throws Exception {
         String baseUrl = "https://www.googleapis.com/books/v1/volumes?q=";
         String apiKey = "&key=AIzaSyAt9UrpQ6vtwkYHb054rpYMx7-uZFdAk1E"; // Thay bằng API key của bạn
-        String APIUrl = baseUrl + query + "&key=" + apiKey;
+        StringBuilder queryBuilder = new StringBuilder(query);
+        for(int i = 0; i<queryBuilder.length(); i++){
+            if(queryBuilder.charAt(i)==' ') {
+                queryBuilder.setCharAt(i,'+');
+            }
+        }
+        String APIUrl = baseUrl + queryBuilder + apiKey;
+
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder().uri(new URI(APIUrl)).GET().build();
@@ -34,7 +43,7 @@ public class ConnectAPI {
         return null;
     }
 
-    public List<Books> getBooks(String query, String year) throws Exception {
+    public  List<Books> getBooks(String query, String year) throws Exception {
 
         String id;
         String title ;
@@ -46,15 +55,11 @@ public class ConnectAPI {
         String publisher;
         String ISBN = "";
         String language;
+        String rating;
 
         JsonArray booksArray = searchBookAPI(query);
         List<Books> books = new ArrayList<>();
         if(booksArray == null || booksArray.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Thông báo");
-            alert.setHeaderText(null);
-            alert.setContentText("Không tìm thấy sách nào phù hợp với từ khóa tìm kiếm!");
-            alert.showAndWait();
             return books;
         }
         for(int i = 0; i < booksArray.size(); i++) {
@@ -124,6 +129,11 @@ public class ConnectAPI {
             } else {
                 ISBN = "No ISBN available";
             }
+            if(volumeInfo.has("averageRating")) {
+                rating = volumeInfo.get("averageRating").getAsString();
+            } else {
+                rating = "No Rating available";
+            }
             if(volumeInfo.has("language")) {
                 language = volumeInfo.get("language").getAsString();
             } else {
@@ -135,12 +145,15 @@ public class ConnectAPI {
             if (year != null && !year.isEmpty() && !created_date.startsWith(year)) {
                 continue;
             }
-            books.add(new Books(id, title, description, author, genre, publisher, ISBN, language, created_date, image));
+
+            books.add(new Books(id, title, description, author, genre, publisher, ISBN, language, created_date, image, rating, true));
+
         }
-        return  books;
+        return books;
     }
 
-    public String createQuery(String title, String author, String genre, String publisher, String ISBN, String year) {
+
+    public String createQuery(String title, String author, String genre, String publisher, String ISBN, String language, String sort) {
         StringBuilder query = new StringBuilder();
         if (title != null && !title.isEmpty()) {
             query.append("intitle:").append(title).append("+");
@@ -157,6 +170,17 @@ public class ConnectAPI {
         if (ISBN != null && !ISBN.isEmpty()) {
             query.append("isbn:").append(ISBN).append("+");
         }
+
+        if(!query.isEmpty() && query.charAt(query.length() - 1) == '+') {
+            query.deleteCharAt(query.length() - 1);
+        }
+        if(language != null && !language.isEmpty() && !language.equals("Language")) {
+            query.append("&langRestrict=").append(language, 0, 2);
+        }
+        if(sort != null && !sort.isEmpty() && !sort.equals("Sort by")) {
+            query.append("&orderBy=").append(sort);
+        }
         return query.toString();
     }
+
 }
