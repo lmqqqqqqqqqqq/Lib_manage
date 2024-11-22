@@ -54,10 +54,11 @@ public class Books implements OBJECT {
         this.imageLinks = imageLinks;
     }
 
-    public Books(String ISBN, String TITLE, String AUTHOR) {
+    public Books(String ISBN, String TITLE, String AUTHOR, String IMAGE) {
         this.isbn = ISBN;
         this.title = TITLE;
         this.author = AUTHOR;
+        this.imageLinks = IMAGE;
     }
 
     public Books() {

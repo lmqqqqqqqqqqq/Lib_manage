@@ -65,9 +65,10 @@ public class User implements OBJECT {
         this.isSave = isSave;
     }
 
-    public User(int id, String username) {
+    public User(int id, String username, String avatar) {
         this.id = id;
         this.username = username;
+        this.avatarLink = avatar;
     }
 
     public int getId() {
