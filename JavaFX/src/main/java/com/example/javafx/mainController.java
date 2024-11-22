@@ -159,6 +159,18 @@ public class mainController {
                 "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
                 "    -fx-border-width: 0px 0px 7px 0px; ");
     }
+
+    public void userManageOnAction() throws IOException {
+        SceneSwitcher.switchPage(ContentAnchorPane, "userManage.fxml", manager);
+        outSideManagerClick();
+        homeButton.setStyle(null);
+        searchButton.setStyle(null);
+        yourBookButton.setStyle(null);
+        managerButton.setStyle("-fx-font-size: 25px;\n" +
+                "    -fx-border-color: #0022ff;\n" +
+                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
+                "    -fx-border-width: 0px 0px 7px 0px; ");
+    }
 }
 
 

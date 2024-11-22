@@ -145,7 +145,7 @@
                                             <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
                                         </graphic>
                                     </Button>
-                                    <Button contentDisplay="TOP" mnemonicParsing="false" prefHeight="118.0" prefWidth="342.0" styleClass="left_but" stylesheets="@mainScene.css" text="user management">
+                                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#userManageOnAction" prefHeight="118.0" prefWidth="342.0" styleClass="left_but" stylesheets="@mainScene.css" text="user management">
                                         <cursor>
                                             <Cursor fx:constant="HAND" />
                                         </cursor>

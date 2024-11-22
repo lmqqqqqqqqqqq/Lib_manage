@@ -319,7 +319,7 @@ public class addBookController {
             author.setText(selectedBook.getAuthor());
             publisherDate.setText(selectedBook.getYear());
 
-            image.setImage(new Image(addBookController.class.getResource(selectedBook.getImageLinks()).toExternalForm()));
+            LoadBookImage.loadBookImage(selectedBook.getImageLinks(), image);
             imlink.setText(selectedBook.getImageLinks());
         }
     }
