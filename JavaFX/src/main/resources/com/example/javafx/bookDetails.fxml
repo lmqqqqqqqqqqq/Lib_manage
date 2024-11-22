@@ -16,11 +16,9 @@
          </effect>
          <children>
             <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#cbe496" height="949.0" layoutX="2.0" layoutY="1.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" width="1632.0" />
-            <Button fx:id="borrowButton" layoutX="25.0" layoutY="852.0" mnemonicParsing="false" onAction="#borrowOnAction" prefHeight="32.0" prefWidth="106.0" text="Borrow book" />
-            <Button layoutX="185.0" layoutY="852.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="32.0" prefWidth="106.0" text="Back " />
-            <Button fx:id="unfavouriteButton" layoutX="25.0" layoutY="898.0" mnemonicParsing="false" onAction="#unfavouriteOnAction" prefHeight="32.0" prefWidth="106.0" text="Unfavourite" />
-            <Button fx:id="returnButton" layoutX="25.0" layoutY="852.0" mnemonicParsing="false" onAction="#returnOnAction" prefHeight="32.0" prefWidth="106.0" text="Return book" />
-            <Button fx:id="favouriteButton" layoutX="25.0" layoutY="898.0" mnemonicParsing="false" onAction="#favouriteOnAction" prefHeight="32.0" prefWidth="106.0" text="Add to favourite" />
+            <Button fx:id="borrowButton" layoutX="25.0" layoutY="835.0" mnemonicParsing="false" onAction="#borrowOnAction" prefHeight="49.0" prefWidth="123.0" stylesheets="@advancedSearch.css" text="Borrow book" />
+            <Button layoutX="25.0" layoutY="904.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="32.0" prefWidth="123.0" styleClass="Button1" stylesheets="@advancedSearch.css" text="Back " />
+            <Button fx:id="returnButton" layoutX="25.0" layoutY="835.0" mnemonicParsing="false" onAction="#returnOnAction" prefHeight="49.0" prefWidth="123.0" styleClass="Button1" stylesheets="@advancedSearch.css" text="Return book" />
             <Label fx:id="borrowday" layoutX="465.0" layoutY="852.0" prefHeight="32.0" prefWidth="189.0" text="Borrow Day :">
                <font>
                   <Font name="Calibri Bold Italic" size="25.0" />
@@ -146,6 +144,7 @@
                   </Label>
                </children>
             </AnchorPane>
+            <ImageView fx:id="favourite" fitHeight="62.0" fitWidth="68.0" layoutX="186.0" layoutY="837.0" onMouseClicked="#favouriteOnAction" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>

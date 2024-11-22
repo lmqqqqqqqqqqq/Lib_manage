@@ -38,13 +38,14 @@ public class mainController {
     private Button searchButton;
     @FXML
     private Button managerButton;
+    @FXML
+    private Label roleLabel;
     User user = LoginController.user;
 
 
     public void initialize() throws IOException {
         loadImage(mainSceneAvatar, user.getAvatarLink());
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
-        loadImage(introAvatar, user.getAvatarLink());
         name.setText(user.getUsername());
         outSideManagerClick();
         homeButton.setStyle("-fx-font-size: 25px;\n" +
@@ -54,6 +55,9 @@ public class mainController {
         if (user instanceof Members) {
             managerButton.setVisible(false);
             managerButton.setDisable(true);
+            roleLabel.setText("( Member )");
+        } else {
+            roleLabel.setText("( Admin )");
         }
     }
 
@@ -68,6 +72,7 @@ public class mainController {
         yourBookButton.setStyle(null);
         searchButton.setStyle(null);
         managerButton.setStyle(null);
+        loadImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void yourBookOnClick() throws IOException {
@@ -80,6 +85,7 @@ public class mainController {
         homeButton.setStyle(null);
         searchButton.setStyle(null);
         managerButton.setStyle(null);
+        loadImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void advancedSearchOnClick() throws IOException {
@@ -92,6 +98,7 @@ public class mainController {
         yourBookButton.setStyle(null);
         homeButton.setStyle(null);
         managerButton.setStyle(null);
+        loadImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void profileOnClick() {
@@ -102,7 +109,7 @@ public class mainController {
         intro.setVisible(true);
         intro.setDisable(false);
         Animation.translateAnimation(intro);
-
+        loadImage(introAvatar, user.getAvatarLink());
     }
     public void managerOnAction() {
         manager.setVisible(true);
@@ -116,6 +123,7 @@ public class mainController {
                 "    -fx-border-color: #0022ff;\n" +
                 "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
                 "    -fx-border-width: 0px 0px 7px 0px; ");
+        loadImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void outSideManagerClick() {

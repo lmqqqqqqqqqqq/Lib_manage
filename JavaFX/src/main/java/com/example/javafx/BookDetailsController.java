@@ -42,11 +42,7 @@ public class BookDetailsController {
     @FXML
     private Button borrowButton;
     @FXML
-    private Button favouriteButton;
-    @FXML
     private Button returnButton;
-    @FXML
-    private Button unfavouriteButton;
     @FXML
     private Label borrowdayLabel;
     @FXML
@@ -59,6 +55,8 @@ public class BookDetailsController {
     private Label alert;
     @FXML
     private AnchorPane infoPane;
+    @FXML
+    private ImageView favourite;
     private AnchorPane currentPane;
 
     private Books books;
@@ -93,11 +91,6 @@ public class BookDetailsController {
             borrowButton.setDisable(true);
             borrowButton.setVisible(false);
             returnButton.setDisable(false);
-            returnButton.setVisible(true);
-            borrowdayLabel.setVisible(true);
-            returndayLabel.setVisible(true);
-            borrowday.setVisible(true);
-            returnday.setVisible(true);
             getDay();
         } else {
             borrowButton.setDisable(false);
@@ -110,15 +103,9 @@ public class BookDetailsController {
             returnday.setVisible(false);
         }
         if (isFavourite()) {
-            favouriteButton.setDisable(true);
-            favouriteButton.setVisible(false);
-            unfavouriteButton.setDisable(false);
-            unfavouriteButton.setVisible(true);
+            LoadBookImage.loadBookImage("/com/example/image/favourite.png", favourite);
         } else {
-            favouriteButton.setDisable(false);
-            favouriteButton.setVisible(true);
-            unfavouriteButton.setDisable(true);
-            unfavouriteButton.setVisible(false);
+            LoadBookImage.loadBookImage("/com/example/image/unfavoritee.png", favourite);
         }
     }
 
@@ -136,9 +123,25 @@ public class BookDetailsController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("System notifications");
+        alert.setHeaderText(null);
+        alert.setContentText("Borrow book successfully!\nYour book will expire on " + returnDate);
+        alert.showAndWait();
+
+        borrowButton.setDisable(true);
+        borrowButton.setVisible(false);
+        returnButton.setDisable(false);
+        returnButton.setVisible(true);
+        getDay();
     }
 
     public void getDay() {
+        returnButton.setVisible(true);
+        borrowdayLabel.setVisible(true);
+        returndayLabel.setVisible(true);
+        borrowday.setVisible(true);
+        returnday.setVisible(true);
         String query = "select borrow_date, due_date from user_books where idusers = ? and idbooks = ?";
         try (Connection connection = db.connect()) {
             PreparedStatement ps = connection.prepareStatement(query);
@@ -183,17 +186,44 @@ public class BookDetailsController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("System notifications");
+        alert.setHeaderText(null);
+        alert.setContentText("Return book successfully!");
+        alert.showAndWait();
+        returnButton.setDisable(true);
+        returnButton.setVisible(false);
+        borrowButton.setDisable(false);
+        borrowButton.setVisible(true);
+        borrowdayLabel.setVisible(false);
+        returndayLabel.setVisible(false);
+        borrowday.setVisible(false);
+        returnday.setVisible(false);
     }
 
     public void favouriteOnAction() {
-        String query = "update user_books set is_favourite = 1 where idusers = ? and idbooks = ?";
-        try (Connection connection = db.connect()) {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, user.getId());
-            ps.setString(2, books.getId());
-            ps.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(isFavourite()) {
+            String query = "update user_books set is_favourite = 0 where idusers = ? and idbooks = ?";
+            try (Connection connection = db.connect()) {
+                PreparedStatement ps = connection.prepareStatement(query);
+                ps.setInt(1, user.getId());
+                ps.setString(2, books.getId());
+                ps.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            LoadBookImage.loadBookImage("/com/example/image/unfavoritee.png", favourite);
+        } else {
+            String query = "update user_books set is_favourite = 1 where idusers = ? and idbooks = ?";
+            try (Connection connection = db.connect()) {
+                PreparedStatement ps = connection.prepareStatement(query);
+                ps.setInt(1, user.getId());
+                ps.setString(2, books.getId());
+                ps.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            LoadBookImage.loadBookImage("/com/example/image/favourite.png", favourite);
         }
     }
 
@@ -217,18 +247,6 @@ public class BookDetailsController {
             } catch(Exception e) {
                 e.printStackTrace();
             }
-        }
-    }
-
-    public void unfavouriteOnAction() {
-        String query = "update user_books set is_favourite = 0 where idusers = ? and idbooks = ?";
-        try (Connection connection = db.connect()) {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, user.getId());
-            ps.setString(2, books.getId());
-            ps.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 

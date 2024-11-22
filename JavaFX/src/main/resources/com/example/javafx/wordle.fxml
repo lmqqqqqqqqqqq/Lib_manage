@@ -12,11 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 
 <StackPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@wordle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Wordle">
-   <ImageView fitHeight="998.0" fitWidth="1704.0" pickOnBounds="true">
-      <image>
-         <Image url="@../image/snow.gif" />
-      </image>
-   </ImageView>
 
     <AnchorPane fx:id="playScreen" prefHeight="432.0" prefWidth="594.0" style="-fx-background-color: #f0f0f0;">
         <StackPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
@@ -39,7 +34,7 @@
     </AnchorPane>
 
     <AnchorPane fx:id="gameScreen" prefHeight="997.0" prefWidth="1703.0" style="-fx-background-color: #F5F5F5;">
-        <VBox alignment="CENTER" opacity="0.0" prefHeight="600.0" prefWidth="800.0" spacing="30" styleClass="vbox-background" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="30" styleClass="vbox-background" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <Label fx:id="headerLabel" styleClass="header" text="Wordle Game" />
 
             <!-- Larger grid -->
