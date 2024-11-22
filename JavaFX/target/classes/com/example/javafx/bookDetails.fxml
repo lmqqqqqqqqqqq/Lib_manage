@@ -66,7 +66,7 @@
                         <Font name="Calibri Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="createdDateLabel" layoutX="208.0" layoutY="233.0" prefHeight="32.0" prefWidth="269.0">
+                  <Label fx:id="createdDateLabel" layoutX="203.0" layoutY="754.0" prefHeight="32.0" prefWidth="269.0">
                      <font>
                         <Font name="Calibri Bold Italic" size="25.0" />
                      </font>
