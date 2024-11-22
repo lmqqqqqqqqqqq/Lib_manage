@@ -15,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.mainController">
     <left>
-        <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="215.0" styleClass="left_pane" stylesheets="@mainScene.css" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="215.0" styleClass="vbox-background" stylesheets="@mainScene.css" BorderPane.alignment="CENTER">
             <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#profileOnClick" prefHeight="297.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css" text="Welcome">
                 <cursor>
                     <Cursor fx:constant="HAND" />

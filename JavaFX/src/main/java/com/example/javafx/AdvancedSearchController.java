@@ -73,13 +73,18 @@ public class AdvancedSearchController {
         List<Books> result = AdvancedSearch.search(Q.toString(), params, databaseConnect.connect());
         ConnectAPI api = new ConnectAPI();
         String Q1 = api.createQuery(title, author, genre, publisher, isbn, language, sortBy);
-        List<Books> result1 = api.getBooks(Q1, year);
+        List<Books> result1 = api.getBooks(Q1, year, result);
+        for(Books b : result1) {
+            if(b.getId().equals("-UcKEQAAQBAJ")) {
+                System.out.println(b.toString());
+            }
+        }
         resultpane.getChildren().clear();
         if (result.isEmpty() && result1.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Thông báo");
+            alert.setTitle("System notifications");
             alert.setHeaderText(null);
-            alert.setContentText("Không tìm thấy sách nào phù hợp với từ khóa tìm kiếm!");
+            alert.setContentText("No books were found matching the search keywords!");
             alert.showAndWait();
             System.out.println("No results found.");
         } else {

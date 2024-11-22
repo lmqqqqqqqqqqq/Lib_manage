@@ -1,13 +1,18 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 public class BookDetailsController {
     DatabaseConnect db = new DatabaseConnect();
@@ -42,11 +47,23 @@ public class BookDetailsController {
     private Button returnButton;
     @FXML
     private Button unfavouriteButton;
-
+    @FXML
+    private Label borrowdayLabel;
+    @FXML
+    private Label returndayLabel;
+    @FXML
+    private Label borrowday;
+    @FXML
+    private Label returnday;
+    @FXML
+    private Label alert;
+    @FXML
+    private AnchorPane infoPane;
     private AnchorPane currentPane;
 
     private Books books;
     User user = LoginController.user;
+
     public void initialize(Books book, AnchorPane currentPane) {
         this.currentPane = currentPane;
         books = book;
@@ -62,33 +79,46 @@ public class BookDetailsController {
         ratingLabel.setText(books.getRating());
         String imageUrl = books.getImageLinks();
         LoadBookImage.loadBookImage(imageUrl, bookImage);
-        if(isFromApi()) {
+        borrowButton.setDisable(true);
+        borrowButton.setVisible(false);
+        returnButton.setDisable(true);
+        returnButton.setVisible(false);
+        borrowdayLabel.setVisible(false);
+        returndayLabel.setVisible(false);
+        borrowday.setVisible(false);
+        returnday.setVisible(false);
+        addBookFromAPIToDatabase();
+        Check();
+        if (isBorrowed()) {
             borrowButton.setDisable(true);
             borrowButton.setVisible(false);
+            returnButton.setDisable(false);
+            returnButton.setVisible(true);
+            borrowdayLabel.setVisible(true);
+            returndayLabel.setVisible(true);
+            borrowday.setVisible(true);
+            returnday.setVisible(true);
+            getDay();
         } else {
-            Check();
-            if(isBorrowed()) {
-                borrowButton.setDisable(true);
-                borrowButton.setVisible(false);
-                returnButton.setDisable(false);
-                returnButton.setVisible(true);
-            } else {
-                borrowButton.setDisable(false);
-                borrowButton.setVisible(true);
-                returnButton.setDisable(true);
-                returnButton.setVisible(false);
-            }
-            if(isFavourite()) {
-                favouriteButton.setDisable(true);
-                favouriteButton.setVisible(false);
-                unfavouriteButton.setDisable(false);
-                unfavouriteButton.setVisible(true);
-            } else {
-                favouriteButton.setDisable(false);
-                favouriteButton.setVisible(true);
-                unfavouriteButton.setDisable(true);
-                unfavouriteButton.setVisible(false);
-            }
+            borrowButton.setDisable(false);
+            borrowButton.setVisible(true);
+            returnButton.setDisable(true);
+            returnButton.setVisible(false);
+            borrowdayLabel.setVisible(false);
+            returndayLabel.setVisible(false);
+            borrowday.setVisible(false);
+            returnday.setVisible(false);
+        }
+        if (isFavourite()) {
+            favouriteButton.setDisable(true);
+            favouriteButton.setVisible(false);
+            unfavouriteButton.setDisable(false);
+            unfavouriteButton.setVisible(true);
+        } else {
+            favouriteButton.setDisable(false);
+            favouriteButton.setVisible(true);
+            unfavouriteButton.setDisable(true);
+            unfavouriteButton.setVisible(false);
         }
     }
 
@@ -101,8 +131,43 @@ public class BookDetailsController {
             ps.setDate(1, Date.valueOf(borrowDate));
             ps.setDate(2, Date.valueOf(returnDate));
             ps.setInt(3, user.getId());
-            ps.setInt(4, Integer.parseInt(books.getId()));
+            ps.setString(4, books.getId());
             ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getDay() {
+        String query = "select borrow_date, due_date from user_books where idusers = ? and idbooks = ?";
+        try (Connection connection = db.connect()) {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, user.getId());
+            ps.setString(2, books.getId());
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                borrowdayLabel.setText(rs.getString("borrow_date"));
+                returndayLabel.setText(rs.getString("due_date"));
+                LocalDate date = LocalDate.now();
+                LocalDate dueDate = LocalDate.parse(rs.getString("due_date"));
+                if (date.isEqual(dueDate) || date.isAfter(dueDate)) {
+                    alert.setText("Alert: The book is expired");
+                    alert.setStyle("-fx-text-fill: red;");
+                    returnButton.setDisable(false);
+                    returnButton.setVisible(true);
+                    GaussianBlur blur = new GaussianBlur(10);
+                    infoPane.setEffect(blur);
+                    infoPane.setMouseTransparent(true);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("System notifications");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Expired books! please RETURN now!");
+                    alert.showAndWait();
+                } else if (ChronoUnit.DAYS.between(date, dueDate) <= 5) {
+                    alert.setText("Alert: " + String.valueOf(ChronoUnit.DAYS.between(date, dueDate)) + " days left before expiration");
+                    alert.setStyle("-fx-text-fill: red;");
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -113,7 +178,7 @@ public class BookDetailsController {
         try (Connection connection = db.connect()) {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, user.getId());
-            ps.setInt(2, Integer.parseInt(books.getId()));
+            ps.setString(2, books.getId());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,10 +190,33 @@ public class BookDetailsController {
         try (Connection connection = db.connect()) {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, user.getId());
-            ps.setInt(2, Integer.parseInt(books.getId()));
+            ps.setString(2, books.getId());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void addBookFromAPIToDatabase() {
+        if(books.isFromAPI()) {
+            String query = "insert IGNORE into books (idbooks, title, author, created_date, image, description, genre, publisher, ISBN, language, rating) SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
+            try(Connection connection = db.connect()) {
+                PreparedStatement ps = connection.prepareStatement(query);
+                ps.setString(1, books.getId());
+                ps.setString(2, books.getTitle());
+                ps.setString(3, books.getAuthor());
+                ps.setDate(4, Date.valueOf(books.getYear()));
+                ps.setString(5, books.getImageLinks());
+                ps.setString(6, books.getDescription());
+                ps.setString(7, books.getGenre());
+                ps.setString(8, books.getPublisher());
+                ps.setString(9, books.getIsbn());
+                ps.setString(10, books.getLanguage());
+                ps.setString(11, books.getRating());
+                ps.executeUpdate();
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -137,15 +225,11 @@ public class BookDetailsController {
         try (Connection connection = db.connect()) {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, user.getId());
-            ps.setInt(2, Integer.parseInt(books.getId()));
+            ps.setString(2, books.getId());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public boolean isFromApi() {
-        return books.isFromAPI();
     }
 
     public boolean isBorrowed() {
@@ -153,9 +237,9 @@ public class BookDetailsController {
         try (Connection connection = db.connect()) {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, user.getId());
-            ps.setInt(2, Integer.parseInt(books.getId()));
+            ps.setString(2, books.getId());
             ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 return rs.getBoolean("borrow");
             }
         } catch (Exception e) {
@@ -163,14 +247,15 @@ public class BookDetailsController {
         }
         return false;
     }
+
     public boolean isFavourite() {
         String query = "select is_favourite from user_books where idusers = ? and idbooks = ?";
         try (Connection connection = db.connect()) {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, user.getId());
-            ps.setInt(2, Integer.parseInt(books.getId()));
+            ps.setString(2, books.getId());
             ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 return rs.getBoolean("is_favourite");
             }
         } catch (Exception e) {
@@ -181,14 +266,22 @@ public class BookDetailsController {
 
 
     public void Check() {
-        String query = "insert into user_books (idusers, idbooks, is_watched) SELECT ?, ?, ? WHERE NOT EXISTS (SELECT 1 FROM user_books WHERE idusers = ? AND idbooks = ?)";
+        String query = "INSERT IGNORE INTO user_books (idusers, idbooks, currentTime) VALUES (?, ?, ?)";
         try (Connection connection = db.connect()) {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setInt(1, user.getId());
-            ps.setInt(2, Integer.parseInt(books.getId()));
-            ps.setInt(3, 1);
-            ps.setInt(4, user.getId());
-            ps.setInt(5, Integer.parseInt(books.getId()));
+            ps.setString(2, books.getId());
+            ps.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        books.setViews(books.getViews() + 1);
+        String query2 = "update books set views = ? where idbooks = ?";
+        try (Connection connection = db.connect()) {
+            PreparedStatement ps = connection.prepareStatement(query2);
+            ps.setInt(1, books.getViews());
+            ps.setString(2, books.getId());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

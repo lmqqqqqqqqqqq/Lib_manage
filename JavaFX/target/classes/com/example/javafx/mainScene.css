@@ -25,3 +25,10 @@
     -fx-border-color: #64805b;
     -fx-border-width: 1px 1px 1px 1px;
 }
+
+.vbox-background {
+    -fx-background-image: url("/com/example/image/snow.gif");
+    -fx-background-repeat: no-repeat; /* Không lặp lại ảnh */
+    -fx-background-size: cover; /* Ảnh lấp đầy toàn bộ VBox */
+    -fx-background-position: center; /* Căn giữa ảnh */
+}

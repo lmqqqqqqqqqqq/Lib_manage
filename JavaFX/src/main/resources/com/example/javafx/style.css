@@ -21,6 +21,14 @@
     -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
 }
 
+.expireLabel {
+    -fx-background-color: #ff0000; /* Màu nền đen */
+    -fx-text-fill: #FFFFFF; /* Màu chữ trắng */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+}
+
 .text-field {
     -fx-background-color: transparent;
     -fx-border-width: 0 0 2 0;
@@ -53,3 +61,5 @@
 .combo-box .text-field {
     -fx-text-fill: white; /* Đổi màu chữ thành trắng */
 }
+
+

@@ -1,7 +1,9 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -131,8 +133,19 @@ public class mainController {
     }
 
     public void logout() {
-        Stage stage = (Stage) name.getScene().getWindow();
-        SceneSwitcher.SwitchScene(stage, "Login.fxml");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("System notifications");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to logout?");
+        ButtonType yes = new ButtonType("Yes");
+        ButtonType cancel = new ButtonType("Cancel");
+        alert.getButtonTypes().setAll(yes, cancel);
+        alert.showAndWait().ifPresent(response -> {
+            if (response.equals(yes)) {
+                Stage stage = (Stage) name.getScene().getWindow();
+                SceneSwitcher.SwitchScene(stage, "Login.fxml");
+            }
+        });
     }
 
     public void addBookOnAction() throws IOException {

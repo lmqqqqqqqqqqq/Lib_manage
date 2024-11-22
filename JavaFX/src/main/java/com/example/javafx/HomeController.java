@@ -17,8 +17,14 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -40,12 +46,15 @@ public class HomeController {
     private Label error;
     @FXML
     private HBox newPane;
+    @FXML
+    private HBox borowedPane;
     User user = LoginController.user;
 
 
     public void initialize() throws Exception {
         resultBookShow.setParentPane(homeScene);
         loadNewBook();
+        loadTrending();
         welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!" );
         suggest.setDisable(true);
         suggest.setVisible(false);
@@ -81,13 +90,19 @@ public class HomeController {
     }
 
     public void loadNewBook() throws Exception {
-        newPane.getChildren().clear();
         User user = LoginController.user;
         try {
             showLoad.intoBox(newPane, user.getNewBooks());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void loadTrending() throws Exception {
+        List<Books> trendingBooks = new ArrayList<>();
+        String query = "SELECT * FROM books ORDER BY views DESC LIMIT 10";
+        trendingBooks = AdvancedSearch.search(query, Connect.connect());
+        showLoad.intoBox(borowedPane, trendingBooks);
     }
 
     @FXML
