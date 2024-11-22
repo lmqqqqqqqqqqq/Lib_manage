@@ -48,8 +48,8 @@ public class ConnectAPI {
         String id;
         String title ;
         String author;
-        String created_date = "";
-        String image = "";
+        String created_date;
+        String image;
         String description;
         String genre;
         String publisher;

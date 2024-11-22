@@ -59,7 +59,7 @@
                               </Label>
                               <ScrollPane prefHeight="304.0" prefWidth="1296.0" vbarPolicy="NEVER">
                                  <content>
-                                    <HBox fx:id="borowedPane" prefHeight="289.0" prefWidth="1296.0" />
+                                    <HBox fx:id="borowedPane" prefHeight="289.0" prefWidth="1296.0" stylesheets="@mainScene.css" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -76,7 +76,7 @@
                               </Label>
                               <ScrollPane vbarPolicy="NEVER">
                                  <content>
-                                    <HBox fx:id="newPane" prefHeight="277.0" prefWidth="1295.0" />
+                                    <HBox fx:id="newPane" prefHeight="277.0" prefWidth="1295.0" stylesheets="@mainScene.css" />
                                  </content>
                               </ScrollPane>
                            </children>

@@ -11,6 +11,7 @@
     -fx-border-radius: 30; /* Bo tròn các góc của button */
     -fx-background-radius: 30; /* Bo tròn nền button */
     -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+    -fx-cursor: hand;
 }
 
 .Button1 {
@@ -19,6 +20,7 @@
     -fx-border-radius: 30; /* Bo tròn các góc của button */
     -fx-background-radius: 30; /* Bo tròn nền button */
     -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+    -fx-cursor: hand;
 }
 
 .expireLabel {

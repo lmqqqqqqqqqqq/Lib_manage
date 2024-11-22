@@ -84,7 +84,7 @@ public class HomeController {
         if (key != null && !key.equals("")) {
             String query = "SELECT * FROM books WHERE author LIKE ? OR TITLE LIKE ?";
             List<Books> result = AdvancedSearch.search(query, List.of("%" + key + "%", "%" + key + "%"), Connect.connect());
-            showLoad.intoBox(res, result, 232);
+            showLoad.intoBox(res, result);
         } else {
             error.setVisible(true);
             error.setStyle("-fx-text-fill: red");

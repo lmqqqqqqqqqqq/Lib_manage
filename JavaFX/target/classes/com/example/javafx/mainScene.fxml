@@ -14,8 +14,8 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.mainController">
     <left>
-        <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="215.0" style="-fx-background-color: #70da74;" BorderPane.alignment="CENTER">
-            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#profileOnClick" prefHeight="306.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css" text="Welcome">
+        <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="209.0" style="-fx-background-color: #70da74;" BorderPane.alignment="CENTER">
+            <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileOnClick" prefHeight="306.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css" text="Welcome">
                 <cursor>
                     <Cursor fx:constant="HAND" />
                 </cursor>
@@ -73,7 +73,7 @@
             <AnchorPane fx:id="ContentAnchorPane" layoutY="2.0" prefHeight="1000.0" prefWidth="1706.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
             <AnchorPane fx:id="manager" layoutX="-2.0" layoutY="1.0" prefHeight="872.0" prefWidth="1717.0" stylesheets="@profile.css">
                 <children>
-               <AnchorPane fx:id="intro" layoutX="-3.0" layoutY="-6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="327.0" style="-fx-background-color: #91d2f2;" styleClass="anchor-pane">
+               <AnchorPane fx:id="intro" layoutX="2.0" layoutY="-6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="322.0" style="-fx-background-color: #91d2f2;" styleClass="anchor-pane">
                   <children>
                      <ImageView fx:id="introAvatar" fitHeight="230.0" fitWidth="230.0" layoutX="53.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
                      <Label fx:id="name" layoutX="91.0" layoutY="341.0" prefHeight="50.0" prefWidth="174.0" text="Username" textAlignment="CENTER">

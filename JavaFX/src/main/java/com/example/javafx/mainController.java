@@ -40,6 +40,8 @@ public class mainController {
     private Button managerButton;
     @FXML
     private Label roleLabel;
+    @FXML
+    private Button profileButton;
     User user = LoginController.user;
 
 
@@ -48,10 +50,11 @@ public class mainController {
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
         name.setText(user.getUsername());
         outSideManagerClick();
-        homeButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        homeButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
         if (user instanceof Members) {
             managerButton.setVisible(false);
             managerButton.setDisable(true);
@@ -65,39 +68,45 @@ public class mainController {
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
         initialize();
         outSideManagerClick();
-        homeButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        homeButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
         yourBookButton.setStyle(null);
         searchButton.setStyle(null);
         managerButton.setStyle(null);
+        profileButton.setStyle(null);
         loadImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void yourBookOnClick() throws IOException {
         SceneSwitcher.switchPage(ContentAnchorPane, "yourBookScene.fxml", manager);
         outSideManagerClick();
-        yourBookButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        yourBookButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
         homeButton.setStyle(null);
         searchButton.setStyle(null);
         managerButton.setStyle(null);
+        profileButton.setStyle(null);
         loadImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void advancedSearchOnClick() throws IOException {
         SceneSwitcher.switchPage(ContentAnchorPane, "advancedSearchScene.fxml", manager);
         outSideManagerClick();
-        searchButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        searchButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
         yourBookButton.setStyle(null);
         homeButton.setStyle(null);
         managerButton.setStyle(null);
+        profileButton.setStyle(null);
         loadImage(mainSceneAvatar, user.getAvatarLink());
     }
 
@@ -110,6 +119,15 @@ public class mainController {
         intro.setDisable(false);
         Animation.translateAnimation(intro);
         loadImage(introAvatar, user.getAvatarLink());
+        profileButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
+        yourBookButton.setStyle(null);
+        homeButton.setStyle(null);
+        managerButton.setStyle(null);
+        searchButton.setStyle(null);
     }
     public void managerOnAction() {
         manager.setVisible(true);
@@ -119,10 +137,11 @@ public class mainController {
         intro.setVisible(false);
         intro.setDisable(true);
         Animation.translateAnimation(managerBar);
-        managerButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        managerButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
         loadImage(mainSceneAvatar, user.getAvatarLink());
     }
 
@@ -162,10 +181,11 @@ public class mainController {
         homeButton.setStyle(null);
         searchButton.setStyle(null);
         yourBookButton.setStyle(null);
-        managerButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        managerButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
     }
 
     public void userManageOnAction() throws IOException {
@@ -174,10 +194,11 @@ public class mainController {
         homeButton.setStyle(null);
         searchButton.setStyle(null);
         yourBookButton.setStyle(null);
-        managerButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        managerButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
     }
 }
 

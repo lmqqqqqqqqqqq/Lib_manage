@@ -1,13 +1,13 @@
-.left_pane {
-    -fx-background-color: rgba(99, 110, 99, 0.81);
-}
+
 .left_but {
     -fx-background-color: rgba(255, 255, 255, 0);
 }
 .left_but:hover{
-    -fx-background-color: rgba(117, 186, 228, 0.78);
-    -fx-border-color: #0022ff;
-    -fx-border-width: 0px 0px 3px 0px;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-background-color: rgb(94, 154, 94);
+    -fx-border-color: #ffff10;
+    -fx-border-width: 1px 1px 1px 1px;
 }
 
 .mainContent_pane {

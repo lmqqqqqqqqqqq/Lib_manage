@@ -40,6 +40,7 @@
 
 .search_button:hover {
     -fx-background-color: #0088cc;
+    -fx-cursor: hand;
 }
 
 /* Label styling */
@@ -76,6 +77,7 @@
 
 .clear_button:hover {
     -fx-background-color: #aaaaaa;
+    -fx-cursor: hand;
 }
 
 .search_button {
@@ -91,6 +93,7 @@
 
 .search_button:hover {
     -fx-background-color: #0088cc;
+    -fx-cursor: hand;
 }
 
 .back_button {
@@ -131,6 +134,7 @@
     -fx-text-fill: #0b0eba; /* Đổi màu chữ khi chuột vào (màu trắng) */
     -fx-scale-x: 1.2; /* Phóng to button theo chiều ngang */
     -fx-scale-y: 1.2; /* Phóng to button theo chiều dọc */
+    -fx-cursor: hand;
 }
 
 
