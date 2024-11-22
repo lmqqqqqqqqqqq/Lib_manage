@@ -145,6 +145,19 @@ public class mainController {
         loadImage(mainSceneAvatar, user.getAvatarLink());
     }
 
+    public void magOnAction() throws IOException {
+        SceneSwitcher.switchPage(ContentAnchorPane, "BorrowManagement.fxml", manager);
+        outSideManagerClick();
+        homeButton.setStyle(null);
+        searchButton.setStyle(null);
+        yourBookButton.setStyle(null);
+        managerButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
+    }
+
     public void outSideManagerClick() {
         try {
             manager.setVisible(false);
