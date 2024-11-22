@@ -35,8 +35,8 @@
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Button layoutX="25.0" layoutY="852.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="85.0" text="Add book" />
-            <Button layoutX="153.0" layoutY="852.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="32.0" prefWidth="106.0" text="Back To Search" />
+            <Button fx:id="borrowButton" layoutX="25.0" layoutY="852.0" mnemonicParsing="false" onAction="#borrowOnAction" prefHeight="32.0" prefWidth="106.0" text="Borrow book" />
+            <Button layoutX="185.0" layoutY="852.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="32.0" prefWidth="106.0" text="Back " />
             <Label fx:id="ISBNLabel" layoutX="628.0" layoutY="671.0" prefHeight="32.0" prefWidth="269.0">
                <font>
                   <Font name="Calibri Bold Italic" size="25.0" />
@@ -117,6 +117,9 @@
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
             </Label>
+            <Button fx:id="unfavouriteButton" layoutX="25.0" layoutY="898.0" mnemonicParsing="false" onAction="#unfavouriteOnAction" prefHeight="32.0" prefWidth="106.0" text="Unfavourite" />
+            <Button fx:id="returnButton" layoutX="25.0" layoutY="852.0" mnemonicParsing="false" onAction="#returnOnAction" prefHeight="32.0" prefWidth="106.0" text="Return book" />
+            <Button fx:id="favouriteButton" layoutX="25.0" layoutY="898.0" mnemonicParsing="false" onAction="#favouriteOnAction" prefHeight="32.0" prefWidth="106.0" text="Add to favourite" />
          </children>
       </AnchorPane>
    </children>

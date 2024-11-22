@@ -51,6 +51,11 @@ public class Books implements OBJECT {
         this.year = year;
         this.imageLinks = imageLinks;
     }
+
+    public Books() {
+
+    }
+
     public String getId() {
         return id;
     }

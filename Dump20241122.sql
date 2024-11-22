@@ -60,12 +60,12 @@ CREATE TABLE `user_books` (
   `idusers` int NOT NULL,
   `idbooks` int NOT NULL,
   `status` varchar(255) DEFAULT NULL,
-  `is_favorite` tinyint(1) DEFAULT '0',
+  `is_favourite` tinyint(1) DEFAULT '0',
   `in_progress` tinyint(1) DEFAULT '0',
   `borrow` tinyint(1) DEFAULT '0',
-  `check` tinyint(1) DEFAULT '1',
-  `borrow_date` datetime DEFAULT NULL,
-  `due_date` datetime DEFAULT NULL,
+  `is_watched` tinyint(1) DEFAULT '1',
+  `borrow_date` date DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
   PRIMARY KEY (`idusers`,`idbooks`),
   KEY `idbooks` (`idbooks`),
   CONSTRAINT `user_books_ibfk_1` FOREIGN KEY (`idusers`) REFERENCES `users` (`idusers`) ON DELETE CASCADE,
@@ -79,7 +79,7 @@ CREATE TABLE `user_books` (
 
 LOCK TABLES `user_books` WRITE;
 /*!40000 ALTER TABLE `user_books` DISABLE KEYS */;
-INSERT INTO `user_books` VALUES (1,1,'reading',0,1,0,1,NULL,NULL),(2,17,NULL,1,1,1,1,NULL,NULL),(2,20,NULL,1,1,1,1,NULL,NULL),(2,21,NULL,1,1,1,1,NULL,NULL),(2,22,NULL,1,1,1,1,NULL,NULL),(2,23,NULL,1,1,1,1,NULL,NULL),(2,24,NULL,1,1,1,1,NULL,NULL),(2,25,NULL,1,1,1,1,NULL,NULL),(2,26,NULL,1,1,1,1,NULL,NULL),(2,27,NULL,1,1,1,1,NULL,NULL),(2,28,NULL,1,1,1,1,NULL,NULL),(2,29,NULL,1,1,1,1,NULL,NULL),(2,30,NULL,1,1,1,1,NULL,NULL);
+INSERT INTO `user_books` VALUES (3,32,NULL,0,0,0,1,NULL,NULL),(3,33,NULL,0,0,0,1,NULL,NULL),(5,32,NULL,1,0,1,1,'2024-11-22','2024-12-02');
 /*!40000 ALTER TABLE `user_books` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,4 +129,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-22  0:20:11
+-- Dump completed on 2024-11-22  9:11:09

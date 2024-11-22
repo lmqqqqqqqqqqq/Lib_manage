@@ -53,7 +53,7 @@ public class yourBookController {
         favorite.getChildren().clear();
         StringBuilder Q = new StringBuilder("SELECT * FROM books INNER JOIN user_books" +
                 " ON user_books.idbooks = books.idbooks AND user_books.idusers = ? " +
-                "AND user_books.is_favorite = 1");
+                "AND user_books.is_favourite = 1");
         List<Books> result = AdvancedSearch.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
 
         if (result.isEmpty()) {

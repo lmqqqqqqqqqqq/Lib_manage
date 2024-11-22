@@ -3,69 +3,136 @@
     -fx-background-color: #F5F5F5;
 }
 
+/* Header */
 .header {
-    -fx-font-size: 24px;
+    -fx-font-size: 36px;
     -fx-text-fill: #333333;
     -fx-font-weight: bold;
 }
 
+/* Grid styling */
 #guessGrid {
-    -fx-border-color: #E0E0E0;
-    -fx-border-width: 2;
-    -fx-padding: 10;
+    -fx-alignment: center;
+    -fx-grid-lines-visible: false;
 }
 
-.text-field {
-    -fx-pref-width: 200;
+/* Text fields */
+.input-field {
+    -fx-font-size: 20px;
+    -fx-pref-width: 300px;
     -fx-background-color: #FFFFFF;
     -fx-border-color: #CCCCCC;
-    -fx-border-radius: 5;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
 }
 
+/* Base button style */
 .button {
     -fx-background-color: #4CAF50;
     -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
     -fx-padding: 10 20;
     -fx-border-radius: 5;
+    -fx-cursor: hand;
 }
 
-.label {
-    -fx-text-fill: #444;
+/* Shadow Style */
+.shadowed {
+    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 4, 4);
+    -fx-padding: 5;
 }
 
-.cell {
-    -fx-background-color: #D3D3D3;
-    -fx-border-radius: 5;
-    -fx-alignment: center;
+/* Apply shadow to all buttons */
+.button.shadowed {
+    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 4, 4);
 }
 
-/* CSS styles for letter feedback */
+/* Submit button (inherits base style) */
+.submit-button {
+    -fx-background-color: #4CAF50;
+}
+
+/* Grid cell styles */
 .correct-position {
     -fx-background-color: #4CAF50; /* Green */
     -fx-text-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-min-width: 60px;
+    -fx-min-height: 60px;
     -fx-alignment: center;
-    -fx-min-width: 40px;
-    -fx-min-height: 40px;
-    -fx-border-radius: 5;
-    -fx-padding: 10;
+    -fx-border-radius: 10px;
 }
 
 .correct-letter {
     -fx-background-color: #FFD700; /* Yellow */
     -fx-text-fill: black;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-min-width: 60px;
+    -fx-min-height: 60px;
     -fx-alignment: center;
-    -fx-min-width: 40px;
-    -fx-min-height: 40px;
-    -fx-border-radius: 5;
-    -fx-padding: 10;
+    -fx-border-radius: 10px;
 }
 
 .incorrect-letter {
     -fx-background-color: #D3D3D3; /* Grey */
     -fx-text-fill: black;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-min-width: 60px;
+    -fx-min-height: 60px;
     -fx-alignment: center;
-    -fx-min-width: 40px;
-    -fx-min-height: 40px;
+    -fx-border-radius: 10px;
+}
+
+/* Labels for streaks */
+.streak-label {
+    -fx-font-size: 20px;
+    -fx-text-fill: #444444;
+    -fx-font-weight: bold;
+}
+
+/* Restart button */
+.restart-button {
+    -fx-background-color: #ff6666;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
     -fx-border-radius: 5;
-    -fx-padding: 10;
+    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 2, 2);
+    -fx-cursor: hand;
+    -fx-border-width: 0; /* No border */
+}
+
+/* Home button */
+.home-button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-border-radius: 5;
+    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 2, 2);
+    -fx-cursor: hand;
+}
+
+
+/* Hover effect for all buttons */
+.button:hover {
+    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.6), 12, 0.6, 3, 3);
+    -fx-background-color: #45a049; /* Slightly darker green for Submit and Home */
+}
+
+/* Hover effect specific to Restart button */
+.restart-button:hover {
+    -fx-background-color: #ff4d4d; /* Slightly darker red */
+}
+
+/* Button pressed effect */
+.button:pressed {
+    -fx-effect: inset(2px 2px 2px rgba(0, 0, 0, 0.4));
+    -fx-padding: 12 22; /* Slight visual shift inward */
 }

@@ -38,7 +38,7 @@ public class resultBookShow {
         AnchorPane newContent = loader.load();
         BookDetailsController controller = loader.getController();
 
-        controller.setBook(book, newContent);
+        controller.initialize(book, newContent);
         root.getChildren().add(newContent);
     }
 

@@ -141,7 +141,7 @@ public class HomeController {
                             throw new RuntimeException(e);
                         }
                         BookDetailsController controller = loader.getController();
-                        controller.setBook(book, newContent);
+                        controller.initialize(book, newContent);
                         homeScene.getChildren().add(newContent);
                     });
                     setGraphic(box);
