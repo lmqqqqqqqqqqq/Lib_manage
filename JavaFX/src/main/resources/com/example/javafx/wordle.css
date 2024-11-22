@@ -39,13 +39,13 @@
 
 /* Shadow Style */
 .shadowed {
-    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 4, 4);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 4, 4);
     -fx-padding: 5;
 }
 
 /* Apply shadow to all buttons */
 .button.shadowed {
-    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 4, 4);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.5, 4, 4);
 }
 
 /* Submit button (inherits base style) */
@@ -102,7 +102,7 @@
     -fx-font-weight: bold;
     -fx-padding: 10 20;
     -fx-border-radius: 5;
-    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 2, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 2, 2);
     -fx-cursor: hand;
     -fx-border-width: 0; /* No border */
 }
@@ -115,24 +115,24 @@
     -fx-font-weight: bold;
     -fx-padding: 10 20;
     -fx-border-radius: 5;
-    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 2, 2);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 2, 2);
     -fx-cursor: hand;
 }
 
 
 /* Hover effect for all buttons */
 .button:hover {
-    -fx-effect: drop shadow(gaussian, rgba(0, 0, 0, 0.6), 12, 0.6, 3, 3);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 12, 0.6, 3, 3);
     -fx-background-color: #45a049; /* Slightly darker green for Submit and Home */
 }
 
 /* Hover effect specific to Restart button */
 .restart-button:hover {
-    -fx-background-color: #ff4d4d; /* Slightly darker red */
+    -fx-background-color: #ff4d4d;
 }
 
 /* Button pressed effect */
 .button:pressed {
-    -fx-effect: inset(2px 2px 2px rgba(0, 0, 0, 0.4));
-    -fx-padding: 12 22; /* Slight visual shift inward */
+    -fx-effect: innershadow(gaussian, rgba(0, 0, 0, 0.4), 4, 0.5, 0, 0);
+    -fx-padding: 12 22;
 }
