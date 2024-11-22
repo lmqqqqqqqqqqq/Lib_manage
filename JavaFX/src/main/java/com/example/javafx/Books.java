@@ -170,6 +170,8 @@ public class Books implements OBJECT {
                 ", isbn='" + isbn + '\'' +
                 ", language='" + language + '\'' +
                 ", year='" + year + '\'' +
+                ", isAPI='" + isFromAPI() + '\'' +
+                ", views=" + views +
                 '}';
     }
 }
