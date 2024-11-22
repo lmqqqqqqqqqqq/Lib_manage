@@ -65,6 +65,11 @@ public class User implements OBJECT {
         this.isSave = isSave;
     }
 
+    public User(int id, String username) {
+        this.id = id;
+        this.username = username;
+    }
+
     public int getId() {
         return id;
     }

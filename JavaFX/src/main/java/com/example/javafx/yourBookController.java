@@ -26,10 +26,14 @@ public class yourBookController {
     @FXML
     private AnchorPane yourBookPane;
     @FXML
+    private HBox nearestBook;
+
+    @FXML
     public void initialize() throws Exception {
         resultBookShow.setParentPane(yourBookPane);
         loadBorrowed();
         loadFavorite();
+        loadNearestBook();
     }
 
     @FXML
@@ -42,7 +46,7 @@ public class yourBookController {
         List<Books> result = AdvancedSearch.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
 
         if (result.isEmpty()) {
-            System.out.println("No books found");
+            System.out.println("No books found borrow");
         } else {
             showLoad.intoBox(borrowed, result);
         }
@@ -57,10 +61,23 @@ public class yourBookController {
         List<Books> result = AdvancedSearch.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
 
         if (result.isEmpty()) {
-            System.out.println("No books found");
+            System.out.println("No books found favorite");
         } else {
             showLoad.intoBox(favorite, result);
         }
     }
 
+    @FXML
+    public void loadNearestBook() throws Exception {
+        nearestBook.getChildren().clear();
+        StringBuilder Q = new StringBuilder("SELECT * FROM books INNER JOIN user_books" +
+                " ON user_books.idbooks = books.idbooks AND user_books.idusers = ?" +
+                " ORDER BY user_books.currentTime DESC");
+        List<Books> result = AdvancedSearch.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
+        if (result.isEmpty()) {
+            System.out.println("No books found recently");
+        } else {
+            showLoad.intoBox(nearestBook, result);
+        }
+    }
 }

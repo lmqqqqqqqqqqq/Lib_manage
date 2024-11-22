@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1000.0" prefWidth="1705.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.BorrowManagement">
+   <children>
+      <ImageView fitHeight="267.0" fitWidth="200.0" layoutX="82.0" layoutY="214.0" pickOnBounds="true">
+         <image>
+            <Image url="@../image/test.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="267.0" fitWidth="200.0" layoutX="1400.0" layoutY="214.0" pickOnBounds="true">
+         <image>
+            <Image url="@../image/test.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="412.0" layoutY="135.0" prefHeight="46.0" prefWidth="100.0" text="USER">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="1147.0" layoutY="136.0" prefHeight="46.0" prefWidth="100.0" text="BOOK">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Pane fx:id="decor" layoutX="-2.0" layoutY="89.0" prefHeight="8.0" prefWidth="1717.0" />
+      <AnchorPane layoutX="333.0" layoutY="214.0" prefHeight="267.0" prefWidth="277.0">
+         <children>
+            <TextField layoutX="98.0" layoutY="36.0" prefHeight="25.0" prefWidth="75.0" />
+            <Label layoutX="52.0" layoutY="39.0" text="ID :" />
+            <TextField layoutX="98.0" layoutY="82.0" prefHeight="25.0" prefWidth="130.0" />
+            <TextField layoutX="97.0" layoutY="120.0" prefHeight="25.0" prefWidth="130.0" />
+            <Label layoutX="21.0" layoutY="86.0" text="Username :" />
+            <Label layoutX="50.0" layoutY="125.0" text="Role :" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="1059.0" layoutY="214.0" prefHeight="267.0" prefWidth="277.0">
+         <children>
+            <TextField layoutX="87.0" layoutY="36.0" prefHeight="25.0" prefWidth="75.0" />
+            <Label layoutX="43.0" layoutY="40.0" text="ID :" />
+            <TextField layoutX="87.0" layoutY="82.0" prefHeight="25.0" prefWidth="187.0" />
+            <TextField layoutX="87.0" layoutY="121.0" prefHeight="25.0" prefWidth="187.0" />
+            <TextField layoutX="87.0" layoutY="162.0" prefHeight="25.0" prefWidth="187.0" />
+            <Label layoutX="38.0" layoutY="86.0" text="ISBN :" />
+            <Label layoutX="41.0" layoutY="124.0" text="Title :" />
+            <Label layoutX="27.0" layoutY="166.0" text="Author :" />
+            <Label layoutX="36.0" layoutY="205.0" />
+         </children>
+      </AnchorPane>
+      <TextField layoutX="672.0" layoutY="250.0" prefHeight="25.0" prefWidth="121.0" />
+      <TextField layoutX="843.0" layoutY="250.0" prefHeight="25.0" prefWidth="121.0" />
+      <Label layoutX="695.0" layoutY="214.0" prefHeight="25.0" prefWidth="75.0" text="Borrow Date" />
+      <Label layoutX="874.0" layoutY="214.0" prefHeight="25.0" prefWidth="60.0" text="Due Date" />
+      <Label layoutX="813.0" layoutY="254.0" text="To" />
+      <TableView layoutX="48.0" layoutY="552.0" prefHeight="318.0" prefWidth="1614.0">
+        <columns>
+          <TableColumn fx:id="UserID" prefWidth="160.3333282470703" text="User ID" />
+          <TableColumn fx:id="BookID" prefWidth="247.6666717529297" text="Book ID" />
+            <TableColumn fx:id="Borrow" prefWidth="238.6666717529297" text="Borrow" />
+            <TableColumn fx:id="Borrowdate" prefWidth="330.33331298828125" text="Borrow Date" />
+            <TableColumn fx:id="Duedate" minWidth="0.0" prefWidth="295.66668701171875" text="Due Date" />
+            <TableColumn fx:id="ViewTime" prefWidth="343.33331298828125" text="View Time" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

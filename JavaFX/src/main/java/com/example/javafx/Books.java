@@ -54,6 +54,12 @@ public class Books implements OBJECT {
         this.imageLinks = imageLinks;
     }
 
+    public Books(String ISBN, String TITLE, String AUTHOR) {
+        this.isbn = ISBN;
+        this.title = TITLE;
+        this.author = AUTHOR;
+    }
+
     public Books() {
 
     }

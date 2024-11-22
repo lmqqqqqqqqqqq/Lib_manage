@@ -6,6 +6,9 @@ public class Members extends User {
     public Members(int id, String firstname, String lastname, String username, String password, int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks) {
         super(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatarLink, dayIn, isSave, newBooks);
     }
+    public Members(int id, String username) {
+        super(id, username);
+    }
     public int getId() {
         return super.getId();
     }
