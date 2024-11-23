@@ -14,7 +14,6 @@ public class LoadImage {
         } else {
             try {//load trong api
                 image.setImage(new Image(imagepath));
-                System.out.println(imagepath + "==========");
                 image.setPreserveRatio(false);
             } catch (Exception e) { //load trong database
                 Image defaultImage = new Image(ProfileController.class.getResource(imagepath).toExternalForm());
@@ -43,7 +42,6 @@ public class LoadImage {
             avatarImage.setPreserveRatio(false);
             avatarImage.setStyle("-fx-border-width: 5px; -fx-border-color: #000000; -fx-border-style: solid;");
             avatarImage.setClip(circle);
-            System.out.println("=======================================================");
         } catch (Exception e) {
             e.printStackTrace();
         }
