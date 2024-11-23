@@ -1,0 +1,135 @@
+/* Root styling */
+.root {
+    -fx-font-family: Arial, sans-serif;
+    -fx-background-color: #F5F5F5;
+}
+
+/* TableView styling */
+.table-view {
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5px;
+    -fx-background-color: #FFFFFF;
+    -fx-font-size: 14px;
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+    -fx-font-size: 14px;
+    -fx-border-color: #DDDDDD;
+}
+
+#errorMessage {
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+    -fx-text-fill: red;
+    -fx-padding: 5px;
+}
+
+/* Text fields */
+.text-field {
+    -fx-font-size: 14px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+#avatarLink {
+    -fx-font-size: 12px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #CCCCCC;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Buttons */
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 15;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Slightly darker green */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0.5, 2, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #3e8e41; /* Darker green for pressed state */
+    -fx-padding: 12 18; /* Visual shift inward */
+}
+
+/* Specific button styles */
+#add {
+    -fx-background-color: #4CAF50;
+}
+
+#delete {
+    -fx-background-color: #FF6347; /* Tomato red */
+}
+
+#delete:hover {
+    -fx-background-color: #FF4500; /* Darker tomato red */
+}
+
+#update {
+    -fx-background-color: #1E90FF; /* Dodger blue */
+}
+
+#update:hover {
+    -fx-background-color: #1C86EE; /* Slightly darker blue */
+}
+
+#reset {
+    -fx-background-color: #FFD700; /* Gold */
+}
+
+#reset:hover {
+    -fx-background-color: #FFC125; /* Slightly darker gold */
+}
+
+/* HBox Buttons */
+.hbox .button {
+    -fx-pref-width: 120px;
+}
+
+/* Avatar ImageView */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.5, 4, 4);
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* Pane separator */
+#separator {
+    -fx-background-color: #CCCCCC;
+}
+
+/* Highlighting selected rows in the TableView */
+.table-row-cell:selected {
+    -fx-background-color: #D3D3D3; /* Light grey */
+    -fx-text-fill: black;
+}
+
+/* Button for different modes */
+#modeDecision {
+    -fx-background-color: #FF8C00; /* Dark orange */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+#modeDecision:hover {
+    -fx-background-color: #FF7F00; /* Slightly darker orange */
+}
+
+/* Font sizes for prompt text */
+.text-field:focused:prompt-text {
+    -fx-font-size: 12px;
+}

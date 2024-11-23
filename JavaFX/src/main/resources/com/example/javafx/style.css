@@ -11,11 +11,21 @@
     -fx-border-radius: 30; /* Bo tròn các góc của button */
     -fx-background-radius: 30; /* Bo tròn nền button */
     -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+    -fx-cursor: hand;
 }
 
 .Button1 {
     -fx-background-color: #FFFFFF; /* Màu nền đen */
     -fx-text-fill: #000000; /* Màu chữ trắng */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+    -fx-cursor: hand;
+}
+
+.expireLabel {
+    -fx-background-color: #ff0000; /* Màu nền đen */
+    -fx-text-fill: #FFFFFF; /* Màu chữ trắng */
     -fx-border-radius: 30; /* Bo tròn các góc của button */
     -fx-background-radius: 30; /* Bo tròn nền button */
     -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
@@ -53,3 +63,5 @@
 .combo-box .text-field {
     -fx-text-fill: white; /* Đổi màu chữ thành trắng */
 }
+
+

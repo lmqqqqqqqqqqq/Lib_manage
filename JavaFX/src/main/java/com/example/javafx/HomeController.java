@@ -7,20 +7,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class HomeController {
     DatabaseConnect Connect = new DatabaseConnect();
@@ -40,12 +36,17 @@ public class HomeController {
     private Label error;
     @FXML
     private HBox newPane;
+    @FXML
+    private HBox borowedPane;
+    @FXML
+    private Label playLabel;
     User user = LoginController.user;
 
 
     public void initialize() throws Exception {
         resultBookShow.setParentPane(homeScene);
         loadNewBook();
+        loadTrending();
         welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!" );
         suggest.setDisable(true);
         suggest.setVisible(false);
@@ -81,7 +82,6 @@ public class HomeController {
     }
 
     public void loadNewBook() throws Exception {
-        newPane.getChildren().clear();
         User user = LoginController.user;
         try {
             showLoad.intoBox(newPane, user.getNewBooks());
@@ -90,11 +90,32 @@ public class HomeController {
         }
     }
 
+    public void loadTrending() throws Exception {
+        List<Books> trendingBooks = new ArrayList<>();
+        String query = "SELECT * FROM books ORDER BY views DESC LIMIT 10";
+        trendingBooks = AdvancedSearch.search(query, Connect.connect());
+        showLoad.intoBox(borowedPane, trendingBooks);
+    }
+
     @FXML
     public void showSuggest() {
         error.setVisible(false);
         suggest.setVisible(true);
         suggest.setDisable(false);
+    }
+
+    public void playClick() throws IOException {
+        SceneSwitcher.switchPage(homeScene, "wordle.fxml");
+    }
+
+    public void playEntered() {
+        playLabel.setStyle(" -fx-text-fill: #23ff00; " +
+                            "  -fx-underline: true; " +
+                            "-fx-cursor: hand;" );
+    }
+
+    public void playExited() {
+        playLabel.setStyle(null);
     }
 
 
@@ -121,7 +142,7 @@ public class HomeController {
                     HBox box = new HBox(10);
                     box.setAlignment(Pos.CENTER_LEFT);
                     ImageView bookImage = new ImageView();
-                    LoadBookImage.loadBookImage(book.getImageLinks(), bookImage); // Đường dẫn ảnh
+                    LoadImage.loadBookImage(book.getImageLinks(), bookImage); // Đường dẫn ảnh
                     bookImage.setFitWidth(50);
                     bookImage.setFitHeight(50);
                     bookImage.setPreserveRatio(true);

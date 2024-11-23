@@ -44,7 +44,7 @@ public class SceneSwitcher {
         manager.toFront();
     }
 
-    public static void switchBetweenPage(AnchorPane pane, String string) throws IOException {
+    public static void switchPage(AnchorPane pane, String string) throws IOException {
         FXMLLoader loader = new FXMLLoader(SceneSwitcher.class.getResource(string));
         Parent page = loader.load();
 

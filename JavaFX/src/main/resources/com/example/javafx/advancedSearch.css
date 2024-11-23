@@ -40,6 +40,7 @@
 
 .search_button:hover {
     -fx-background-color: #0088cc;
+    -fx-cursor: hand;
 }
 
 /* Label styling */
@@ -76,6 +77,7 @@
 
 .clear_button:hover {
     -fx-background-color: #aaaaaa;
+    -fx-cursor: hand;
 }
 
 .search_button {
@@ -91,6 +93,7 @@
 
 .search_button:hover {
     -fx-background-color: #0088cc;
+    -fx-cursor: hand;
 }
 
 .back_button {
@@ -131,16 +134,19 @@
     -fx-text-fill: #0b0eba; /* Đổi màu chữ khi chuột vào (màu trắng) */
     -fx-scale-x: 1.2; /* Phóng to button theo chiều ngang */
     -fx-scale-y: 1.2; /* Phóng to button theo chiều dọc */
+    -fx-cursor: hand;
 }
 
-.scroll-pane {
-    -fx-background-color: transparent;
-}
 
 .bookPane {
     -fx-border-color: transparent;   /* Màu nền */
-    -fx-background-radius:10;      /* Bo góc nền */
-    -fx-border-radius: 10;          /* Bo góc viền */
-    -fx-background-color: #d6d69d;      /* Màu viền */
+    -fx-background-radius:30;      /* Bo góc nền */
+    -fx-border-radius: 30;          /* Bo góc viền */
+    -fx-background-color: #8bc849;      /* Màu viền */
     -fx-border-width: 2;            /* Độ dày viền */
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-opacity: 0; /* Ẩn thanh dọc */
+    -fx-pref-width: 0px; /* Đảm bảo không chiếm không gian */
 }

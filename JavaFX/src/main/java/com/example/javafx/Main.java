@@ -11,7 +11,7 @@ import java.util.List;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Login.fxml"));
+        FXMLLoader fxmlLoader =  new FXMLLoader(Main.class.getResource("Login.fxml"));
         stage.setMinWidth(600);
         stage.setMinHeight(600);
         Scene scene = new Scene(fxmlLoader.load());

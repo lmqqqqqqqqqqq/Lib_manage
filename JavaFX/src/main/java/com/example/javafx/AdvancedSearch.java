@@ -32,7 +32,8 @@ public class AdvancedSearch {
             String year = rs.getString("created_date");
             String image = rs.getString("image");
             String rating = rs.getString("rating");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating, false);
+            int views = rs.getInt("views");
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating, false, views);
             result.add(bok);
         }
 
@@ -64,7 +65,8 @@ public class AdvancedSearch {
             String year = rs.getString("created_date");
             String image = rs.getString("image");
             String rating = rs.getString("rating");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating, false);
+            int views = rs.getInt("views");
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating, false, views);
             result.add(bok);
         }
 
@@ -87,7 +89,8 @@ public class AdvancedSearch {
             String year = rs.getString("created_date");
             String image = rs.getString("image");
             String rating = rs.getString("rating");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image,rating, false);
+            int views = rs.getInt("views");
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image,rating, false, views);
             result.add(bok);
         }
         return result;
@@ -184,7 +187,8 @@ public class AdvancedSearch {
             String year = rs.getString("created_date");
             String image = rs.getString("image");
             String rating = rs.getString("rating");
-            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating, false);
+            int views = rs.getInt("views");
+            Books bok = new Books(id, title, description, author, genre, publisher, isbn, language, year, image, rating, false, views);
             result.add(bok);
         }
         return result;

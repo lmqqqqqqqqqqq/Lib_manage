@@ -19,7 +19,7 @@
       </Label>
       <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="44.0" prefHeight="276.0" prefWidth="1525.0" vbarPolicy="NEVER">
          <content>
-            <HBox fx:id="borrowed" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0">
+            <HBox fx:id="borrowed" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0" stylesheets="@mainScene.css">
                <padding>
                   <Insets left="20.0" right="20.0" top="15.0" />
                </padding>
@@ -28,7 +28,7 @@
       </ScrollPane>
       <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="365.0" prefHeight="276.0" prefWidth="1525.0" vbarPolicy="NEVER">
          <content>
-            <HBox fx:id="favorite" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0">
+            <HBox fx:id="favorite" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0" stylesheets="@mainScene.css">
                <padding>
                   <Insets left="20.0" right="20.0" top="15.0" />
                </padding>
@@ -37,7 +37,7 @@
       </ScrollPane>
       <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="690.0" prefHeight="276.0" prefWidth="1525.0" vbarPolicy="NEVER">
          <content>
-            <HBox fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0">
+            <HBox fx:id="nearestBook" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0" stylesheets="@mainScene.css">
                <padding>
                   <Insets left="20.0" right="20.0" top="15.0" />
                </padding>

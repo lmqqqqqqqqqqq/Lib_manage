@@ -18,10 +18,13 @@ public class showLoad {
             AnchorPane bookPane = loader.load();
             resultBookShow controller = loader.getController();
             controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b);
+            bookPane.getStyleClass().add("left_but");
+            target.setSpacing(20);
             target.getChildren().add(bookPane);
 
         }
     }
+
 
     @FXML
     public static void intoBox(TilePane target, List<Books> result) throws IOException {
@@ -30,6 +33,7 @@ public class showLoad {
             AnchorPane bookPane = loader.load();
             resultBookShow controller = loader.getController();
             controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b);
+            bookPane.getStyleClass().add("left_but");
             target.getChildren().add(bookPane);
         }
     }

@@ -6,6 +6,9 @@ public class Staff extends User {
     public Staff(int id, String firstname, String lastname, String username, String password, int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks) {
         super(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatarLink, dayIn, isSave, newBooks);
     }
+    public Staff(int id, String username, String avatar) {
+        super(id, username, avatar);
+    }
     public int getId() {
         return super.getId();
     }
@@ -55,4 +58,35 @@ public class Staff extends User {
     public String toString() {
         return "Staff[" + super.toString() + "]";
     }
+    public void setId(int id) {
+        super.setId(id);
+    }
+    public void setFirstname(String firstname) {
+        super.setFirstname(firstname);
+    }
+    public void setLastname(String lastname) {
+        super.setLastname(lastname);
+    }
+    public void setUsername(String username) {
+        super.setUsername(username);
+    }
+    public void setPassword(String password) {
+        super.setPassword(password);
+    }
+    public void setDayOfBirth(int dayOfBirth) {
+        super.setDayOfBirth(dayOfBirth);
+    }
+    public void setMonthOfBirth(int monthOfBirth) {
+        super.setMonthOfBirth(monthOfBirth);
+    }
+    public void setYearOfBirth(int yearOfBirth) {
+        super.setYearOfBirth(yearOfBirth);
+    }
+    public void setRecoveryCode(String recoveryCode) {
+        super.setRecoveryCode(recoveryCode);
+    }
+    public void setDayIn(String dayIn) {
+        super.setDayIn(dayIn);
+    }
+
 }

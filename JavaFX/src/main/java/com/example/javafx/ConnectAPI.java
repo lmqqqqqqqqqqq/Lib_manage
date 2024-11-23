@@ -48,6 +48,114 @@ public class ConnectAPI {
         String id;
         String title ;
         String author;
+        String created_date;
+        String image;
+        String description;
+        String genre;
+        String publisher;
+        String ISBN = "";
+        String language;
+        String rating;
+
+        JsonArray booksArray = searchBookAPI(query);
+        List<Books> books = new ArrayList<>();
+        if(booksArray == null || booksArray.isEmpty()) {
+            return books;
+        }
+        for(int i = 0; i < booksArray.size(); i++) {
+            JsonObject book = booksArray.get(i).getAsJsonObject();
+            JsonObject volumeInfo = book.getAsJsonObject("volumeInfo");
+            if(book.has("id")) {
+                id = book.get("id").getAsString();
+            } else {
+                id = "No id available";
+            }
+            if(volumeInfo.has("title")) {
+                title = volumeInfo.get("title").getAsString();
+            } else {
+                title = "No title available";
+            }
+            if(volumeInfo.has("authors")) {
+                JsonArray authors = volumeInfo.get("authors").getAsJsonArray();
+                List<String> authorList = new ArrayList<>();
+                for(int j = 0; j < authors.size(); j++) {
+                    authorList.add(authors.get(j).getAsString());
+                }
+                author = String.join(", ", authorList);
+            } else {
+                author = "No author available";
+            }
+            if(volumeInfo.has("publishedDate")) {
+                created_date = volumeInfo.get("publishedDate").getAsString();
+            } else {
+                created_date = "No Published Date available";
+            }
+            if(volumeInfo.has("imageLinks")) {
+                JsonObject imageLinks = volumeInfo.getAsJsonObject("imageLinks");
+                if(imageLinks.has("thumbnail")) {
+                    image = imageLinks.get("thumbnail").getAsString();
+                } else {
+                    image = "No image available";
+                }
+            } else {
+                image = "No image available";
+            }
+            if(volumeInfo.has("description")) {
+                description = volumeInfo.get("description").getAsString();
+            } else {
+                description = "No description available";
+            }
+            if(volumeInfo.has("categories")) {
+                genre = volumeInfo.get("categories").getAsString();
+            } else {
+                genre = "No genre available";
+            }
+            if(volumeInfo.has("publisher")) {
+                publisher = volumeInfo.get("publisher").getAsString();
+            } else {
+                publisher = "No publisher available";
+            }
+            if(volumeInfo.has("industryIdentifiers")) {
+                JsonArray industryIdentifiers = volumeInfo.get("industryIdentifiers").getAsJsonArray();
+                for (int j = 0; j < industryIdentifiers.size() ; j++) {
+                    JsonObject industryIdentifier = industryIdentifiers.get(j).getAsJsonObject();
+                    if(industryIdentifier.get("type").getAsString().equals("ISBN_13") ) {
+                        ISBN = industryIdentifier.get("identifier").getAsString();
+                        break;
+                    } else {
+                        ISBN = "No ISBN available";
+                    }
+                }
+            } else {
+                ISBN = "No ISBN available";
+            }
+            if(volumeInfo.has("averageRating")) {
+                rating = volumeInfo.get("averageRating").getAsString();
+            } else {
+                rating = "No Rating available";
+            }
+            if(volumeInfo.has("language")) {
+                language = volumeInfo.get("language").getAsString();
+            } else {
+                language = "No language available";
+            }
+            if(volumeInfo.has("publishedDate")) {
+                created_date = volumeInfo.get("publishedDate").getAsString();
+            }
+            if (year != null && !year.isEmpty() && !created_date.startsWith(year)) {
+                continue;
+            }
+
+            books.add(new Books(id, title, description, author, genre, publisher, ISBN, language, created_date, image, rating, true, 0));
+        }
+        return books;
+    }
+
+    public  List<Books> getBooks(String query, String year, List<Books> dbBooks) throws Exception {
+
+        String id;
+        String title ;
+        String author;
         String created_date = "";
         String image = "";
         String description;
@@ -146,8 +254,13 @@ public class ConnectAPI {
                 continue;
             }
 
-            books.add(new Books(id, title, description, author, genre, publisher, ISBN, language, created_date, image, rating, true));
-
+            Books book1 = new Books(id, title, description, author, genre, publisher, ISBN, language, created_date, image, rating, true, 0);
+            books.add(book1);
+            for(Books b : dbBooks) {
+                if(b.getId().equals(book1.getId())) {
+                    books.remove(b);
+                }
+            }
         }
         return books;
     }

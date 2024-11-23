@@ -3,7 +3,6 @@ package com.example.javafx;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -26,7 +25,7 @@ public class resultBookShow {
     }
     private Books book;
     public void setOutputData(String imagepath, String title, String author, String id, Books books) {
-        LoadBookImage.loadBookImage(imagepath, image);
+        LoadImage.loadBookImage(imagepath, image);
         this.title.setText(title);
         this.author.setText(author);
         this.id.setText(id);

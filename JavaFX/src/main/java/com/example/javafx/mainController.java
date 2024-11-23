@@ -1,15 +1,15 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.example.javafx.ProfileController.loadImage;
 
 public class mainController {
 
@@ -36,22 +36,41 @@ public class mainController {
     private Button searchButton;
     @FXML
     private Button managerButton;
+    @FXML
+    private Label roleLabel;
+    @FXML
+    private Button profileButton;
+    @FXML
+    private Label borrowAmount;
+    @FXML
+    private Label favouriteAmount;
     User user = LoginController.user;
+
+    @FXML private CheckBox darkMode;
 
 
     public void initialize() throws IOException {
-        loadImage(mainSceneAvatar, user.getAvatarLink());
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
-        loadImage(introAvatar, user.getAvatarLink());
         name.setText(user.getUsername());
         outSideManagerClick();
-        homeButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        setDarkMode();
+        homeButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
         if (user instanceof Members) {
             managerButton.setVisible(false);
             managerButton.setDisable(true);
+            roleLabel.setText("( Member )");
+        } else {
+            roleLabel.setText("( Admin )");
+        }
+        if (darkMode == null) {
+            System.out.println("darkMode CheckBox is null. Check FXML bindings.");
+        } else {
+            System.out.println("darkMode CheckBox is initialized.");
         }
     }
 
@@ -59,37 +78,46 @@ public class mainController {
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
         initialize();
         outSideManagerClick();
-        homeButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        homeButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
         yourBookButton.setStyle(null);
         searchButton.setStyle(null);
         managerButton.setStyle(null);
+        profileButton.setStyle(null);
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void yourBookOnClick() throws IOException {
         SceneSwitcher.switchPage(ContentAnchorPane, "yourBookScene.fxml", manager);
         outSideManagerClick();
-        yourBookButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        yourBookButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
         homeButton.setStyle(null);
         searchButton.setStyle(null);
         managerButton.setStyle(null);
+        profileButton.setStyle(null);
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void advancedSearchOnClick() throws IOException {
         SceneSwitcher.switchPage(ContentAnchorPane, "advancedSearchScene.fxml", manager);
         outSideManagerClick();
-        searchButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        searchButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
         yourBookButton.setStyle(null);
         homeButton.setStyle(null);
         managerButton.setStyle(null);
+        profileButton.setStyle(null);
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void profileOnClick() {
@@ -100,7 +128,26 @@ public class mainController {
         intro.setVisible(true);
         intro.setDisable(false);
         Animation.translateAnimation(intro);
-
+        LoadImage.loadAvatarImage(introAvatar, user.getAvatarLink());
+        profileButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
+        yourBookButton.setStyle(null);
+        homeButton.setStyle(null);
+        managerButton.setStyle(null);
+        searchButton.setStyle(null);
+        if(yourBookController.borrowedBookAmount == 0) {
+            borrowAmount.setText("No books");
+        }else {
+            borrowAmount.setText(String.valueOf(yourBookController.borrowedBookAmount));
+        }
+        if(yourBookController.favoriteBookAmount == 0) {
+            favouriteAmount.setText("No books");
+        } else {
+            favouriteAmount.setText(String.valueOf(yourBookController.favoriteBookAmount));
+        }
     }
     public void managerOnAction() {
         manager.setVisible(true);
@@ -110,10 +157,25 @@ public class mainController {
         intro.setVisible(false);
         intro.setDisable(true);
         Animation.translateAnimation(managerBar);
-        managerButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        managerButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
+    }
+
+    public void magOnAction() throws IOException {
+        SceneSwitcher.switchPage(ContentAnchorPane, "BorrowManagement.fxml", manager);
+        outSideManagerClick();
+        homeButton.setStyle(null);
+        searchButton.setStyle(null);
+        yourBookButton.setStyle(null);
+        managerButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
     }
 
     public void outSideManagerClick() {
@@ -127,12 +189,23 @@ public class mainController {
     }
 
     public void setting() throws IOException {
-        SceneSwitcher.switchBetweenPage(ContentAnchorPane, "profileScene.fxml");
+        SceneSwitcher.switchPage(ContentAnchorPane, "profileScene.fxml");
     }
 
     public void logout() {
-        Stage stage = (Stage) name.getScene().getWindow();
-        SceneSwitcher.SwitchScene(stage, "Login.fxml");
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("System notifications");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to logout?");
+        ButtonType yes = new ButtonType("Yes");
+        ButtonType cancel = new ButtonType("Cancel");
+        alert.getButtonTypes().setAll(yes, cancel);
+        alert.showAndWait().ifPresent(response -> {
+            if (response.equals(yes)) {
+                Stage stage = (Stage) name.getScene().getWindow();
+                SceneSwitcher.SwitchScene(stage, "Login.fxml");
+            }
+        });
     }
 
     public void addBookOnAction() throws IOException {
@@ -141,10 +214,58 @@ public class mainController {
         homeButton.setStyle(null);
         searchButton.setStyle(null);
         yourBookButton.setStyle(null);
-        managerButton.setStyle("-fx-font-size: 25px;\n" +
-                "    -fx-border-color: #0022ff;\n" +
-                "    -fx-background-color: rgba(117, 186, 228, 0.78);\n" +
-                "    -fx-border-width: 0px 0px 7px 0px; ");
+        managerButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
+    }
+
+    public void userManageOnAction() throws IOException {
+        SceneSwitcher.switchPage(ContentAnchorPane, "userManage.fxml", manager);
+        outSideManagerClick();
+        homeButton.setStyle(null);
+        searchButton.setStyle(null);
+        yourBookButton.setStyle(null);
+        managerButton.setStyle("-fx-background-radius: 30;\n" +
+                "    -fx-border-radius: 30;\n" +
+                "    -fx-background-color: rgb(94, 154, 94);\n" +
+                "    -fx-border-color: #ffff10;\n" +
+                "    -fx-border-width: 1px 1px 1px 1px; ");
+    }
+
+    public void setDarkMode() {
+        if (ContentAnchorPane.getScene() == null) {
+            ContentAnchorPane.sceneProperty().addListener((observable, oldScene, newScene) -> {
+                if (newScene != null) {
+                    applyStylesToAllAnchorPanes();
+                }
+            });
+        } else {
+            applyStylesToAllAnchorPanes();
+        }
+    }
+
+    private void applyStylesToAllAnchorPanes() {
+        Scene currentScene = ContentAnchorPane.getScene();
+
+        if (darkMode.isSelected()) {
+            currentScene.getStylesheets().clear();
+            currentScene.getStylesheets().add(getClass().getResource("dark-theme.css").toExternalForm());
+        } else {
+            currentScene.getStylesheets().clear();
+            currentScene.getStylesheets().add(getClass().getResource("light-theme.css").toExternalForm());
+        }
+
+        for (Node node : currentScene.getRoot().lookupAll(".anchor-pane")) {
+            if (node instanceof AnchorPane) {
+                if (darkMode.isSelected()) {
+                    node.setStyle("-fx-background-color: #2c2f33;");
+                } else {
+                    node.setStyle("-fx-background-color: #ffffff;");
+                }
+            }
+        }
     }
 }
 

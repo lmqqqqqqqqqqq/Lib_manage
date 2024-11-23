@@ -8,6 +8,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -17,50 +19,64 @@
    <children>
       <AnchorPane fx:id="suggestPane" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="944.0" prefWidth="1706.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="56.0">
          <children>
-            <HBox prefHeight="260.0" prefWidth="1703.0" AnchorPane.bottomAnchor="690.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+            <HBox layoutX="39.0" layoutY="-7.0" prefHeight="277.0" prefWidth="1664.0" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-7.0">
                <children>
-                  <ScrollPane fitToHeight="true" vbarPolicy="NEVER">
+                  <ScrollPane fitToHeight="true" prefHeight="277.0" prefWidth="1836.0" styleClass="resultBox" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="res" prefHeight="320.0" prefWidth="1206.0" styleClass="resultBox" stylesheets="@mainScene.css" />
+                        <HBox fx:id="res" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="1161.0" />
                      </content>
                   </ScrollPane>
-                  <AnchorPane prefHeight="261.0" prefWidth="597.0" />
+                  <AnchorPane prefHeight="260.0" prefWidth="660.0" />
+                  <AnchorPane>
+                     <children>
+                        <ImageView fitHeight="258.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/logo_wordle.jpg" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="playLabel" layoutX="201.0" layoutY="181.0" onMouseClicked="#playClick" onMouseEntered="#playEntered" onMouseExited="#playExited" prefHeight="55.0" prefWidth="160.0" text="Play Now" textFill="#4caf50">
+                           <font>
+                              <Font name="Calibri Bold Italic" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </HBox>
-            <SplitPane dividerPositions="0.8" layoutY="261.0" prefHeight="506.0" prefWidth="1496.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="261.0">
+            <SplitPane dividerPositions="0.8" layoutY="272.0" prefHeight="678.0" prefWidth="1703.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="272.0">
                <items>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="486.0" prefWidth="1194.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="1295.0">
                      <children>
-                        <VBox prefHeight="342.0" prefWidth="1394.0" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+                        <VBox layoutY="3.0" prefHeight="358.0" prefWidth="1296.0" AnchorPane.bottomAnchor="302.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="3.0">
                            <children>
-                              <Label alignment="BASELINE_LEFT" prefHeight="36.0" prefWidth="1391.0" text="Borrowed book">
+                              <Label alignment="BASELINE_LEFT" prefHeight="44.0" prefWidth="1296.0" text="Trending">
                                  <padding>
                                     <Insets left="20.0" />
                                  </padding>
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font name="Calibri Bold Italic" size="25.0" />
                                  </font>
                               </Label>
-                              <ScrollPane>
+                              <ScrollPane prefHeight="304.0" prefWidth="1296.0" vbarPolicy="NEVER">
                                  <content>
-                                    <HBox fx:id="borowedPane" prefHeight="310.0" prefWidth="1296.0" />
+                                    <HBox fx:id="borowedPane" prefHeight="289.0" prefWidth="1296.0" stylesheets="@mainScene.css" />
                                  </content>
                               </ScrollPane>
                            </children>
                         </VBox>
-                        <VBox layoutY="340.0" prefHeight="342.0" prefWidth="1394.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="340.0">
+                        <VBox layoutY="349.0" prefHeight="315.0" prefWidth="1295.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="349.0">
                            <children>
-                              <Label alignment="BASELINE_LEFT" prefHeight="34.0" prefWidth="1501.0" text="New books">
+                              <Label alignment="BASELINE_LEFT" prefHeight="52.0" prefWidth="1295.0" text="New books">
                                  <padding>
                                     <Insets left="20.0" />
                                  </padding>
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font name="Calibri Bold Italic" size="25.0" />
                                  </font>
                               </Label>
-                              <ScrollPane>
+                              <ScrollPane vbarPolicy="NEVER">
                                  <content>
-                                    <HBox fx:id="newPane" prefHeight="313.0" prefWidth="1295.0" />
+                                    <HBox fx:id="newPane" prefHeight="277.0" prefWidth="1295.0" stylesheets="@mainScene.css" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -78,9 +94,9 @@
       </AnchorPane>
       <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="10.0" onKeyTyped="#handleKey" onMouseClicked="#showSuggest" prefHeight="27.0" prefWidth="548.0" promptText="Search for books" />
       <Button layoutX="1155.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchClick" prefHeight="27.0" prefWidth="95.0" text="Search" />
-      <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="494.0" text="Welcom userrrrrrrr !" textFill="#d00000">
+      <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="494.0" textFill="#d00000">
          <font>
-            <Font name="Calibri Bold Italic" size="18.0" />
+            <Font name="Calibri Bold Italic" size="20.0" />
          </font>
       </Label>
       <ListView fx:id="suggest" layoutX="583.0" layoutY="36.0" prefHeight="469.0" prefWidth="548.0" />

@@ -12,4 +12,8 @@ public class  DatabaseConnect{
     public Connection connect() throws Exception {
         return DriverManager.getConnection(url, DataUsername, DataPassword);
     }
+
+    public static Connection getconnect() throws Exception {
+        return DriverManager.getConnection(url, DataUsername, DataPassword);
+    }
 }

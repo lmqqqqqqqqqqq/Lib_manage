@@ -13,8 +13,9 @@ public class Books implements OBJECT {
     private String imageLinks;
     private String rating;
     private boolean fromAPI;
+    private int views;
 
-    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks, String rating, boolean fromAPI) {
+    public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks, String rating, boolean fromAPI, int views) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -27,6 +28,7 @@ public class Books implements OBJECT {
         this.imageLinks = imageLinks;
         this.rating = rating;
         this.fromAPI = fromAPI;
+        this.views = views;
     }
     public Books(String id, String title, String description, String author, String genre, String publisher, String isbn, String language, String year, String imageLinks) {
         this.id = id;
@@ -50,6 +52,13 @@ public class Books implements OBJECT {
         this.language = language;
         this.year = year;
         this.imageLinks = imageLinks;
+    }
+
+    public Books(String ISBN, String TITLE, String AUTHOR, String IMAGE) {
+        this.isbn = ISBN;
+        this.title = TITLE;
+        this.author = AUTHOR;
+        this.imageLinks = IMAGE;
     }
 
     public Books() {
@@ -148,6 +157,14 @@ public class Books implements OBJECT {
         this.fromAPI = fromAPI;
     }
 
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -160,6 +177,8 @@ public class Books implements OBJECT {
                 ", isbn='" + isbn + '\'' +
                 ", language='" + language + '\'' +
                 ", year='" + year + '\'' +
+                ", isAPI='" + isFromAPI() + '\'' +
+                ", views=" + views +
                 '}';
     }
 }
