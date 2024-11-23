@@ -1,14 +1,40 @@
-
+.nav_pane {
+    -fx-background-color: rgb(182, 182, 182);
+}
 .left_but {
-    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-background-color: rgba(103, 103, 103, 0.53);
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-transition: all 0.5s ease-out;
+    -fx-text-fill: black;
 }
 .left_but:hover{
-    -fx-background-radius: 30;
-    -fx-border-radius: 30;
-    -fx-background-color: rgb(94, 154, 94);
-    -fx-border-color: #ffff10;
-    -fx-border-width: 1px 1px 1px 1px;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+    -fx-background-color: rgba(101, 101, 101, 0.66);
 }
+.left_but:pressed {
+    -fx-background-color: rgba(255, 255, 255, 0.46);
+}
+
+.profile_nav {
+    -fx-background-color: rgba(232, 212, 188, 0.97);
+}
+
+.Label {
+    -fx-font-size: 20px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+}
+.Label:hover {
+    -fx-font-size: 25px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #0d7afb;
+    -fx-cursor: hand;
+}
+
+
+
 
 .mainContent_pane {
     -fx-background-color: #64805b;
