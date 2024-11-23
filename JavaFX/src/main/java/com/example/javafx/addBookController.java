@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.HBox;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +16,7 @@ import java.util.*;
 public class addBookController {
 
     DatabaseConnect Connect = new DatabaseConnect();
-    @FXML
-    private Pane decor;
+
 
     @FXML
     private TableView<Books> tableView;
@@ -59,7 +58,8 @@ public class addBookController {
         tableView.setItems(book);
         loadbooks();
 
-        decor.setStyle("-fx-background-color: black");
+
+        addMode();
     }
     public void loadbooks() {
         book.clear();
@@ -324,38 +324,71 @@ public class addBookController {
     }
 
     @FXML
-    private Button test;
+    private Button Action;
+    @FXML
+    private Button ADDMODE;
+    @FXML
+    private Button DELETEMODE;
+    @FXML
+    private Button UPDATEMODE;
+    @FXML
+    private HBox container;
+
     @FXML
     public void addMode() {
-        test.setText("Add Book");
-        test.setOnAction(event -> {
+        Action.setText("Add Book");
+        Action.setOnAction(event -> {
             try {
                 add();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
+        ADDMODE.getStyleClass().setAll("modeselected");
+        handleSelectedMode(ADDMODE,DELETEMODE,UPDATEMODE);
+        DELETEMODE.getStyleClass().setAll("button");
+        UPDATEMODE.getStyleClass().setAll("button");
     }
     @FXML
     public void deleteMode() {
-        test.setText("Delete Book");
-        test.setOnAction(event -> {
+        Action.setText("Delete Book");
+        Action.setOnAction(event -> {
             try {
                 delete();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
+        DELETEMODE.getStyleClass().setAll("modeselected");
+        handleSelectedMode(DELETEMODE,ADDMODE,UPDATEMODE);
+        ADDMODE.getStyleClass().setAll("button");
+        UPDATEMODE.getStyleClass().setAll("button");
     }
     @FXML
     public void updateMode() {
-        test.setText("Update Book");
-        test.setOnAction(event -> {
+        Action.setText("Update Book");
+        Action.setOnAction(event -> {
             try {
                 update();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
+        UPDATEMODE.getStyleClass().setAll("modeselected");
+        handleSelectedMode(UPDATEMODE,DELETEMODE,ADDMODE);
+        DELETEMODE.getStyleClass().setAll("button");
+        ADDMODE.getStyleClass().setAll("button");
+    }
+
+    /**
+     * handle mode button like a tab.
+     * @param c selected button.
+     * @param u1 unselected.
+     * @param u2 unselected.
+     */
+    private void handleSelectedMode(Button c, Button u1, Button u2) {
+        u1.setPrefHeight(c.getPrefHeight());
+        u2.setPrefHeight(c.getPrefHeight());
+        c.setPrefHeight(c.getPrefHeight()+(container.getPrefHeight()-c.getPrefHeight()));
     }
 }
