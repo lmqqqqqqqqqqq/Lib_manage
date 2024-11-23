@@ -1,10 +1,9 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -47,12 +46,15 @@ public class mainController {
     private Label favouriteAmount;
     User user = LoginController.user;
 
+    @FXML private CheckBox darkMode;
+
 
     public void initialize() throws IOException {
         LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
         name.setText(user.getUsername());
         outSideManagerClick();
+        setDarkMode();
         homeButton.setStyle("-fx-background-radius: 30;\n" +
                 "    -fx-border-radius: 30;\n" +
                 "    -fx-background-color: rgb(94, 154, 94);\n" +
@@ -64,6 +66,11 @@ public class mainController {
             roleLabel.setText("( Member )");
         } else {
             roleLabel.setText("( Admin )");
+        }
+        if (darkMode == null) {
+            System.out.println("darkMode CheckBox is null. Check FXML bindings.");
+        } else {
+            System.out.println("darkMode CheckBox is initialized.");
         }
     }
 
@@ -225,6 +232,40 @@ public class mainController {
                 "    -fx-background-color: rgb(94, 154, 94);\n" +
                 "    -fx-border-color: #ffff10;\n" +
                 "    -fx-border-width: 1px 1px 1px 1px; ");
+    }
+
+    public void setDarkMode() {
+        if (ContentAnchorPane.getScene() == null) {
+            ContentAnchorPane.sceneProperty().addListener((observable, oldScene, newScene) -> {
+                if (newScene != null) {
+                    applyStylesToAllAnchorPanes();
+                }
+            });
+        } else {
+            applyStylesToAllAnchorPanes();
+        }
+    }
+
+    private void applyStylesToAllAnchorPanes() {
+        Scene currentScene = ContentAnchorPane.getScene();
+
+        if (darkMode.isSelected()) {
+            currentScene.getStylesheets().clear();
+            currentScene.getStylesheets().add(getClass().getResource("dark-theme.css").toExternalForm());
+        } else {
+            currentScene.getStylesheets().clear();
+            currentScene.getStylesheets().add(getClass().getResource("light-theme.css").toExternalForm());
+        }
+
+        for (Node node : currentScene.getRoot().lookupAll(".anchor-pane")) {
+            if (node instanceof AnchorPane) {
+                if (darkMode.isSelected()) {
+                    node.setStyle("-fx-background-color: #2c2f33;");
+                } else {
+                    node.setStyle("-fx-background-color: #ffffff;");
+                }
+            }
+        }
     }
 }
 
