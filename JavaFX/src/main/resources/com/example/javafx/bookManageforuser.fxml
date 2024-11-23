@@ -6,30 +6,36 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="1000.0" prefWidth="1705.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.UserCheckBook">
    <children>
-      <Label layoutX="94.0" layoutY="157.0" text="User ID">
-         <font>
-            <Font name="Calibri Bold Italic" size="25.0" />
-         </font>
-      </Label>
-      <TextField fx:id="userId" layoutX="249.0" layoutY="157.0" prefHeight="30.0" prefWidth="192.0" />
-      <TableView fx:id="tableView" layoutX="75.0" layoutY="298.0" prefHeight="404.0" prefWidth="1607.0">
+      <TableView fx:id="tableView" layoutX="75.0" layoutY="298.0" prefHeight="404.0" prefWidth="1607.0" styleClass="title-pane" stylesheets="@advancedSearch.css">
         <columns>
           <TableColumn fx:id="imageColumn" prefWidth="68.0" />
           <TableColumn fx:id="idColumn" maxWidth="340.0" minWidth="-1.0" prefWidth="266.0" text="ID" />
             <TableColumn fx:id="nameColumn" prefWidth="427.0" text="Name" />
             <TableColumn fx:id="authorColumn" prefWidth="373.0" text="Author" />
-            <TableColumn fx:id="borrowColumn" prefWidth="245.3333740234375" text="Borrow Date" />
-            <TableColumn fx:id="returnColumn" prefWidth="227.6666259765625" text="Return Date" />
+            <TableColumn fx:id="borrowColumn" prefWidth="241.0" text="Borrow Date" />
+            <TableColumn fx:id="returnColumn" prefWidth="203.0" text="Return Date" />
         </columns>
       </TableView>
-      <Button layoutX="499.0" layoutY="150.0" mnemonicParsing="false" onAction="#findingOnAction" prefHeight="45.0" prefWidth="123.0" text="Finding">
-         <font>
-            <Font name="Calibri Bold Italic" size="20.0" />
-         </font>
-      </Button>
+      <AnchorPane layoutX="88.0" layoutY="73.0" prefHeight="117.0" prefWidth="559.0">
+         <children>
+            <Rectangle arcHeight="70.0" arcWidth="70.0" fill="#a8aaab" height="140.0" stroke="#ffac00" strokeType="INSIDE" strokeWidth="3.0" width="559.0" />
+            <Label layoutX="26.0" layoutY="44.0" text="User ID">
+               <font>
+                  <Font name="Calibri Bold Italic" size="25.0" />
+               </font>
+            </Label>
+            <TextField fx:id="userId" layoutX="142.0" layoutY="44.0" prefHeight="30.0" prefWidth="192.0" />
+            <Button layoutX="399.0" layoutY="37.0" mnemonicParsing="false" onAction="#findingOnAction" prefHeight="45.0" prefWidth="123.0" text="Finding">
+               <font>
+                  <Font name="Calibri Bold Italic" size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

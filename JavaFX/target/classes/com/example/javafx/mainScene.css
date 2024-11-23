@@ -24,7 +24,18 @@
 .resultBox {
     -fx-background-radius: 30; /* Bo góc nền */
     -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
-    -fx-border-color: #4CAF50; /* Màu viền (nếu muốn) */
+    -fx-border-color: #ffa100; /* Màu viền (nếu muốn) */
     -fx-border-width: 4px 4px 4px 4px;      /* Độ dày viền */
+    -fx-padding: 10;
+}
+
+.splitPane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.suggest {
+    -fx-border-color: #a19e9b; /* Màu viền (nếu muốn) */
+    -fx-border-width: 0px 4px 4px 4px;      /* Độ dày viền */
     -fx-padding: 10;
 }

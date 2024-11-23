@@ -43,11 +43,11 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <SplitPane dividerPositions="0.8" layoutY="272.0" prefHeight="678.0" prefWidth="1703.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="272.0">
+            <SplitPane dividerPositions="0.7563176895306859" layoutX="39.0" layoutY="285.0" prefHeight="665.0" prefWidth="1664.0" styleClass="resultBox" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="285.0">
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="1295.0">
                      <children>
-                        <VBox layoutY="3.0" prefHeight="358.0" prefWidth="1296.0" AnchorPane.bottomAnchor="302.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="3.0">
+                        <VBox layoutY="3.0" prefHeight="341.0" prefWidth="1257.0" AnchorPane.bottomAnchor="332.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="3.0">
                            <children>
                               <Label alignment="BASELINE_LEFT" prefHeight="44.0" prefWidth="1296.0" text="Trending">
                                  <padding>
@@ -57,9 +57,9 @@
                                     <Font name="Calibri Bold Italic" size="25.0" />
                                  </font>
                               </Label>
-                              <ScrollPane prefHeight="304.0" prefWidth="1296.0" vbarPolicy="NEVER">
+                              <ScrollPane prefHeight="304.0" prefWidth="1289.0" stylesheets="@mainScene.css" vbarPolicy="ALWAYS">
                                  <content>
-                                    <HBox fx:id="borowedPane" prefHeight="289.0" prefWidth="1296.0" stylesheets="@mainScene.css" />
+                                    <HBox fx:id="borowedPane" prefHeight="289.0" prefWidth="1293.0" stylesheets="@mainScene.css" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -85,7 +85,7 @@
                   </AnchorPane>
                   <AnchorPane minHeight="160.0" minWidth="400.0" prefHeight="504.0" prefWidth="400.0">
                      <children>
-                        <TextArea prefHeight="506.0" prefWidth="447.0" wrapText="true" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0" />
+                        <TextArea layoutY="2.0" prefHeight="637.0" prefWidth="401.0" wrapText="true" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="2.0" />
                      </children>
                   </AnchorPane>
                </items>
@@ -99,7 +99,7 @@
             <Font name="Calibri Bold Italic" size="20.0" />
          </font>
       </Label>
-      <ListView fx:id="suggest" layoutX="583.0" layoutY="36.0" prefHeight="469.0" prefWidth="548.0" />
+      <ListView fx:id="suggest" layoutX="583.0" layoutY="36.0" prefHeight="469.0" prefWidth="548.0" styleClass="suggest" stylesheets="@mainScene.css" />
       <Label fx:id="error" layoutX="585.0" layoutY="39.0" text="Label" />
    </children>
 </AnchorPane>

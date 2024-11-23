@@ -36,7 +36,6 @@ public class resultBookShow {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("bookDetails.fxml"));
         AnchorPane newContent = loader.load();
         BookDetailsController controller = loader.getController();
-
         controller.initialize(book, newContent);
         root.getChildren().add(newContent);
     }

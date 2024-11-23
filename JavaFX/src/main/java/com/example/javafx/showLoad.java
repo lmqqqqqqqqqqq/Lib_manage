@@ -19,7 +19,7 @@ public class showLoad {
             resultBookShow controller = loader.getController();
             controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b);
             bookPane.getStyleClass().add("left_but");
-            target.setSpacing(20);
+            target.setSpacing(40);
             target.getChildren().add(bookPane);
 
         }

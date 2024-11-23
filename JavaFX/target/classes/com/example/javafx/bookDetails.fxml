@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -15,26 +16,25 @@
             <DropShadow radius="23.4525" width="74.81" />
          </effect>
          <children>
-            <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#cbe496" height="949.0" layoutX="2.0" layoutY="1.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" width="1632.0" />
+            <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#e0dd9b" height="949.0" layoutX="2.0" layoutY="1.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" width="1632.0" />
             <Button fx:id="borrowButton" layoutX="25.0" layoutY="835.0" mnemonicParsing="false" onAction="#borrowOnAction" prefHeight="49.0" prefWidth="123.0" stylesheets="@advancedSearch.css" text="Borrow book" />
-            <Button layoutX="25.0" layoutY="904.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="32.0" prefWidth="123.0" styleClass="Button1" stylesheets="@advancedSearch.css" text="Back " />
-            <Button fx:id="returnButton" layoutX="25.0" layoutY="835.0" mnemonicParsing="false" onAction="#returnOnAction" prefHeight="49.0" prefWidth="123.0" styleClass="Button1" stylesheets="@advancedSearch.css" text="Return book" />
-            <Label fx:id="borrowday" layoutX="465.0" layoutY="852.0" prefHeight="32.0" prefWidth="189.0" text="Borrow Day :">
+            <Button fx:id="returnButton" layoutX="25.0" layoutY="835.0" mnemonicParsing="false" onAction="#returnOnAction" prefHeight="49.0" prefWidth="189.0" styleClass="Button1" stylesheets="@advancedSearch.css" text="Return book" />
+            <Label fx:id="borrowday" layoutX="465.0" layoutY="844.0" prefHeight="32.0" prefWidth="189.0" text="Borrow Day :">
                <font>
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="returnday" layoutX="920.0" layoutY="852.0" prefHeight="32.0" prefWidth="189.0" text="Return day :">
+            <Label fx:id="returnday" layoutX="920.0" layoutY="844.0" prefHeight="32.0" prefWidth="189.0" text="Return day :">
                <font>
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="borrowdayLabel" layoutX="639.0" layoutY="852.0" prefHeight="32.0" prefWidth="240.0">
+            <Label fx:id="borrowdayLabel" layoutX="635.0" layoutY="844.0" prefHeight="32.0" prefWidth="240.0">
                <font>
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="returndayLabel" layoutX="1073.0" layoutY="852.0" prefHeight="32.0" prefWidth="240.0">
+            <Label fx:id="returndayLabel" layoutX="1073.0" layoutY="844.0" prefHeight="32.0" prefWidth="240.0">
                <font>
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
@@ -46,7 +46,7 @@
             </Label>
             <AnchorPane fx:id="infoPane" layoutX="24.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="822.0" prefWidth="1605.0">
                <children>
-                  <Label fx:id="authorLabel" layoutX="122.0" layoutY="531.0" prefHeight="91.0" prefWidth="399.0">
+                  <Label fx:id="authorLabel" layoutX="122.0" layoutY="531.0" prefHeight="91.0" prefWidth="399.0" wrapText="true">
                      <font>
                         <Font name="Calibri Bold Italic" size="25.0" />
                      </font>
@@ -136,15 +136,21 @@
                         <Font name="Calibri" size="20.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="bookImage" fitHeight="393.0" fitWidth="293.0" layoutX="27.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="bookNameLabel" layoutX="8.0" layoutY="457.0" prefHeight="74.0" prefWidth="553.0" wrapText="true">
+                  <ImageView fx:id="bookImage" fitHeight="393.0" fitWidth="293.0" layoutX="38.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="bookNameLabel" layoutX="8.0" layoutY="469.0" prefHeight="62.0" prefWidth="553.0" textFill="#e12f2f" wrapText="true">
                      <font>
                         <Font name="Calibri" size="25.0" />
                      </font>
                   </Label>
+                  <Button layoutY="7.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="49.0" prefWidth="158.0" styleClass="Button1" stylesheets="@advancedSearch.css" text="Back" />
+                  <ImageView fitHeight="35.0" fitWidth="51.0" layoutX="16.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/back.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
-            <ImageView fx:id="favourite" fitHeight="62.0" fitWidth="68.0" layoutX="186.0" layoutY="837.0" onMouseClicked="#favouriteOnAction" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="favourite" fitHeight="62.0" fitWidth="68.0" layoutX="272.0" layoutY="829.0" onMouseClicked="#favouriteOnAction" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
