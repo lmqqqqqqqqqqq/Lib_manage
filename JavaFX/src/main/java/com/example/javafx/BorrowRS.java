@@ -1,5 +1,8 @@
 package com.example.javafx;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.time.LocalDate;
 
 public class BorrowRS implements OBJECT {
@@ -7,6 +10,9 @@ public class BorrowRS implements OBJECT {
     private String bookId;
     private LocalDate borrowDate;
     private LocalDate dueDate;
+    private String name;
+    private ImageView image = new ImageView();
+    private String author;
 
     public BorrowRS() {}
     public BorrowRS(int userId, String bookId, LocalDate borrowDate, LocalDate dueDate) {
@@ -14,6 +20,26 @@ public class BorrowRS implements OBJECT {
         this.bookId = bookId;
         this.borrowDate = borrowDate;
         this.dueDate = dueDate;
+    }
+
+    public BorrowRS(String bookId, String name, String author, LocalDate borrowDate, LocalDate dueDate, String imageLink) {
+        this.bookId = bookId;
+        this.name = name;
+        this.borrowDate = borrowDate;
+        this.dueDate = dueDate;
+        this.author = author;
+        LoadImage.loadBookImage(imageLink, this.image);
+        this.image.setFitWidth(90); // Chiều rộng mong muốn
+        this.image.setFitHeight(90); // Chiều cao mong muốn
+        this.image.setPreserveRatio(true);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getUserId() {
@@ -54,6 +80,22 @@ public class BorrowRS implements OBJECT {
 
     public boolean isOverDue() {
         return LocalDate.now().isAfter(dueDate);
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public ImageView getImage() {
+        return image;
+    }
+
+    public void setImage(ImageView image) {
+        this.image = image;
     }
 
     @Override

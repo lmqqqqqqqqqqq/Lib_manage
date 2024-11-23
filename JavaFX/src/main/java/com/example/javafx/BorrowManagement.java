@@ -9,7 +9,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
@@ -52,6 +54,8 @@ public class BorrowManagement {
     private TableColumn<BorrowRS, LocalDate> Duedate;
     @FXML
     private TableView<BorrowRS> BorrowTable;
+    @FXML
+    private AnchorPane userBookPane;
     ObservableList<BorrowRS> borr = FXCollections.observableArrayList();
     @FXML
     public void initialize() throws Exception {
@@ -152,5 +156,9 @@ public class BorrowManagement {
             list.add(new BorrowRS(IDUSER, IDBOOK, BORDATE, DUEDATE));
         }
         return list;
+    }
+
+    public void searchOnAction() throws IOException {
+        SceneSwitcher.switchPage(userBookPane, "bookManageforuser.fxml");
     }
 }
