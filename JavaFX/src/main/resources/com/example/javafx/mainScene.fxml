@@ -4,6 +4,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.mainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.mainController">
     <left>
         <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="209.0" style="-fx-background-color: #70da74;" BorderPane.alignment="CENTER">
             <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileOnClick" prefHeight="306.0" prefWidth="215.0" styleClass="left_but" stylesheets="@mainScene.css" text="Welcome">
@@ -66,6 +67,7 @@
                     </ImageView>
                 </graphic>
             </Button>
+         <CheckBox fx:id="darkMode" mnemonicParsing="false" onAction="#setDarkMode" prefHeight="109.0" prefWidth="127.0" text="Dark mode" />
         </VBox>
     </left>
     <center>
