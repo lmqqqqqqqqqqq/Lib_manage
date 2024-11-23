@@ -72,7 +72,7 @@ public class BorrowManagement {
         if (borrow != null) {
             User u = getUser(borrow.getUserId());
             Books b = getBook(borrow.getBookId());
-            ProfileController.loadImage(userImage, u.getAvatarLink());
+            LoadImage.loadAvatarImage(userImage, u.getAvatarLink());
             idUser.setText(String.valueOf(borrow.getUserId()));
             UserName.setText(u.getUsername());
             if (u instanceof Members) {
@@ -80,7 +80,7 @@ public class BorrowManagement {
             } else {
                 Role.setText("admin");
             }
-            LoadBookImage.loadBookImage(b.getImageLinks(), bookImage);
+            LoadImage.loadBookImage(b.getImageLinks(), bookImage);
             idBook.setText(borrow.getBookId());
             ISBN.setText(b.getIsbn());
             Title.setText(b.getTitle());

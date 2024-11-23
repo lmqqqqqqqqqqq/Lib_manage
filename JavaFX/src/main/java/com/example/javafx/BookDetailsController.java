@@ -76,7 +76,7 @@ public class BookDetailsController {
         languageLabel.setText(books.getLanguage());
         ratingLabel.setText(books.getRating());
         String imageUrl = books.getImageLinks();
-        LoadBookImage.loadBookImage(imageUrl, bookImage);
+        LoadImage.loadBookImage(imageUrl, bookImage);
         borrowButton.setDisable(true);
         borrowButton.setVisible(false);
         returnButton.setDisable(true);
@@ -103,9 +103,9 @@ public class BookDetailsController {
             returnday.setVisible(false);
         }
         if (isFavourite()) {
-            LoadBookImage.loadBookImage("/com/example/image/favourite.png", favourite);
+            LoadImage.loadBookImage("/com/example/image/favourite.png", favourite);
         } else {
-            LoadBookImage.loadBookImage("/com/example/image/unfavoritee.png", favourite);
+            LoadImage.loadBookImage("/com/example/image/unfavoritee.png", favourite);
         }
     }
 
@@ -201,7 +201,7 @@ public class BookDetailsController {
         returnday.setVisible(false);
     }
 
-    public void favouriteOnAction() {
+    public void favouriteOnAction() throws Exception {
         if(isFavourite()) {
             String query = "update user_books set is_favourite = 0 where idusers = ? and idbooks = ?";
             try (Connection connection = db.connect()) {
@@ -212,7 +212,7 @@ public class BookDetailsController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            LoadBookImage.loadBookImage("/com/example/image/unfavoritee.png", favourite);
+            LoadImage.loadBookImage("/com/example/image/unfavoritee.png", favourite);
         } else {
             String query = "update user_books set is_favourite = 1 where idusers = ? and idbooks = ?";
             try (Connection connection = db.connect()) {
@@ -223,7 +223,7 @@ public class BookDetailsController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            LoadBookImage.loadBookImage("/com/example/image/favourite.png", favourite);
+            LoadImage.loadBookImage("/com/example/image/favourite.png", favourite);
         }
     }
 

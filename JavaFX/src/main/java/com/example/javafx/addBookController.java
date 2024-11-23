@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -319,7 +318,7 @@ public class addBookController {
             author.setText(selectedBook.getAuthor());
             publisherDate.setText(selectedBook.getYear());
 
-            LoadBookImage.loadBookImage(selectedBook.getImageLinks(), image);
+            LoadImage.loadBookImage(selectedBook.getImageLinks(), image);
             imlink.setText(selectedBook.getImageLinks());
         }
     }

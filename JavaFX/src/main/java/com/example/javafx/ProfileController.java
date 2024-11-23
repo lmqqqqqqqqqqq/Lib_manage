@@ -90,7 +90,7 @@ public class ProfileController {
         avatarPath = user.getAvatarLink();
         successfulLabel.setVisible(false);
         failedLabel.setVisible(false);
-        loadImage(infoAvatar, user.getAvatarLink());
+        LoadImage.loadAvatarImage(infoAvatar, user.getAvatarLink());
         usernameTextField.setText(user.getUsername());
         idLabel.setText(Integer.toString(user.getId()));
         firstnameTextField.setText(user.getFirstname());
@@ -155,32 +155,6 @@ public class ProfileController {
             Animation.fadeAnimation(failedLabel);
         }
     }
-
-    /**
-     * load image to imageview
-     * @param avatarImage is .
-     * @param link is.
-     */
-    public static void loadImage(ImageView avatarImage, String link) {
-        try {
-            if (!link.equals("/com/example/image/user.jpg")) {
-                Image image = new Image(link);
-                avatarImage.setImage(image);
-            } else {
-                Image defaultImage = new Image(ProfileController.class.getResource("/com/example/image/user.jpg").toExternalForm());
-                avatarImage.setImage(defaultImage);
-            }
-            double radius = Math.min(avatarImage.getFitWidth(), avatarImage.getFitHeight()) / 2;
-            Circle circle = new Circle(avatarImage.getFitWidth() / 2, avatarImage.getFitHeight() / 2, radius);
-            avatarImage.setPreserveRatio(false);
-            avatarImage.setStyle("-fx-border-width: 5px; -fx-border-color: #000000; -fx-border-style: solid;");
-            avatarImage.setClip(circle);
-            System.out.println("=======================================================");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 
     /**
      * using a list to wrap the boolean to take the value of checkUsername from Released.
@@ -386,10 +360,10 @@ public class ProfileController {
 
         if (selectedFile != null) {
             avatarPath = selectedFile.toURI().toString();
-            loadImage(infoAvatar, avatarPath);
+            LoadImage.loadAvatarImage(infoAvatar, avatarPath);
             user.setAvatarLink(avatarPath);
         } else {
-            loadImage(infoAvatar, user.getAvatarLink());
+            LoadImage.loadAvatarImage(infoAvatar, user.getAvatarLink());
             avatarPath = user.getAvatarLink();
         }
     }

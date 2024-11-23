@@ -337,7 +337,7 @@ public class UserManage {
             yearOfBirth.setText(Integer.toString(u.getYearOfBirth()));
             recoveryCode.setText(u.getRecoveryCode());
             avatarLink.setText(u.getAvatarLink());
-            ProfileController.loadImage(avatar, u.getAvatarLink());
+            LoadImage.loadAvatarImage(avatar, u.getAvatarLink());
             signUpDate.setText(u.getDayIn());
             isSave.setText(Integer.toString(u.getIsSave()));
         }

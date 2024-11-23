@@ -7,27 +7,16 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class HomeController {
     DatabaseConnect Connect = new DatabaseConnect();
@@ -153,7 +142,7 @@ public class HomeController {
                     HBox box = new HBox(10);
                     box.setAlignment(Pos.CENTER_LEFT);
                     ImageView bookImage = new ImageView();
-                    LoadBookImage.loadBookImage(book.getImageLinks(), bookImage); // Đường dẫn ảnh
+                    LoadImage.loadBookImage(book.getImageLinks(), bookImage); // Đường dẫn ảnh
                     bookImage.setFitWidth(50);
                     bookImage.setFitHeight(50);
                     bookImage.setPreserveRatio(true);

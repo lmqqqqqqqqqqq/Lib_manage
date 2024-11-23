@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.example.javafx.ProfileController.loadImage;
 
 public class mainController {
 
@@ -42,11 +41,15 @@ public class mainController {
     private Label roleLabel;
     @FXML
     private Button profileButton;
+    @FXML
+    private Label borrowAmount;
+    @FXML
+    private Label favouriteAmount;
     User user = LoginController.user;
 
 
     public void initialize() throws IOException {
-        loadImage(mainSceneAvatar, user.getAvatarLink());
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
         SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
         name.setText(user.getUsername());
         outSideManagerClick();
@@ -77,7 +80,7 @@ public class mainController {
         searchButton.setStyle(null);
         managerButton.setStyle(null);
         profileButton.setStyle(null);
-        loadImage(mainSceneAvatar, user.getAvatarLink());
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void yourBookOnClick() throws IOException {
@@ -92,7 +95,7 @@ public class mainController {
         searchButton.setStyle(null);
         managerButton.setStyle(null);
         profileButton.setStyle(null);
-        loadImage(mainSceneAvatar, user.getAvatarLink());
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void advancedSearchOnClick() throws IOException {
@@ -107,7 +110,7 @@ public class mainController {
         homeButton.setStyle(null);
         managerButton.setStyle(null);
         profileButton.setStyle(null);
-        loadImage(mainSceneAvatar, user.getAvatarLink());
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void profileOnClick() {
@@ -118,7 +121,7 @@ public class mainController {
         intro.setVisible(true);
         intro.setDisable(false);
         Animation.translateAnimation(intro);
-        loadImage(introAvatar, user.getAvatarLink());
+        LoadImage.loadAvatarImage(introAvatar, user.getAvatarLink());
         profileButton.setStyle("-fx-background-radius: 30;\n" +
                 "    -fx-border-radius: 30;\n" +
                 "    -fx-background-color: rgb(94, 154, 94);\n" +
@@ -128,6 +131,16 @@ public class mainController {
         homeButton.setStyle(null);
         managerButton.setStyle(null);
         searchButton.setStyle(null);
+        if(yourBookController.borrowedBookAmount == 0) {
+            borrowAmount.setText("No books");
+        }else {
+            borrowAmount.setText(String.valueOf(yourBookController.borrowedBookAmount));
+        }
+        if(yourBookController.favoriteBookAmount == 0) {
+            favouriteAmount.setText("No books");
+        } else {
+            favouriteAmount.setText(String.valueOf(yourBookController.favoriteBookAmount));
+        }
     }
     public void managerOnAction() {
         manager.setVisible(true);
@@ -142,7 +155,7 @@ public class mainController {
                 "    -fx-background-color: rgb(94, 154, 94);\n" +
                 "    -fx-border-color: #ffff10;\n" +
                 "    -fx-border-width: 1px 1px 1px 1px; ");
-        loadImage(mainSceneAvatar, user.getAvatarLink());
+        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 
     public void magOnAction() throws IOException {

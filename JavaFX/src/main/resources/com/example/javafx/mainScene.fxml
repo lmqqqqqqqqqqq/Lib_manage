@@ -76,12 +76,12 @@
                <AnchorPane fx:id="intro" layoutX="2.0" layoutY="-6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1015.0" prefWidth="322.0" style="-fx-background-color: #91d2f2;" styleClass="anchor-pane">
                   <children>
                      <ImageView fx:id="introAvatar" fitHeight="230.0" fitWidth="230.0" layoutX="53.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
-                     <Label fx:id="name" layoutX="91.0" layoutY="341.0" prefHeight="50.0" prefWidth="174.0" text="Username" textAlignment="CENTER">
+                     <Label fx:id="name" layoutX="105.0" layoutY="341.0" prefHeight="50.0" prefWidth="214.0" text="Username" textAlignment="CENTER">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
                      </Label>
-                     <Label layoutX="10.0" layoutY="500.0" onMouseClicked="#setting" prefHeight="94.0" prefWidth="307.0" styleClass="Label" stylesheets="@profile.css" text="Update information">
+                     <Label layoutX="8.0" layoutY="685.0" onMouseClicked="#setting" prefHeight="94.0" prefWidth="307.0" styleClass="Label" stylesheets="@profile.css" text="Update information">
                         <font>
                            <Font name="Calibri Bold Italic" size="20.0" />
                         </font>
@@ -93,7 +93,7 @@
                            </ImageView>
                         </graphic>
                      </Label>
-                     <Label layoutX="7.0" layoutY="651.0" onMouseClicked="#logout" prefHeight="73.0" prefWidth="168.0" styleClass="Label" stylesheets="@profile.css" text="Log Out !">
+                     <Label layoutX="7.0" layoutY="801.0" onMouseClicked="#logout" prefHeight="73.0" prefWidth="168.0" styleClass="Label" stylesheets="@profile.css" text="Log Out !">
                         <font>
                            <Font name="Calibri Bold Italic" size="20.0" />
                         </font>
@@ -105,14 +105,34 @@
                            </ImageView>
                         </graphic>
                      </Label>
-                     <Label fx:id="roleLabel" layoutX="94.0" layoutY="384.0" prefHeight="50.0" prefWidth="148.0" textAlignment="CENTER">
+                     <Label fx:id="roleLabel" layoutX="87.0" layoutY="384.0" prefHeight="50.0" prefWidth="148.0" textAlignment="CENTER">
+                        <font>
+                           <Font name="Calibri Bold Italic" size="25.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="name1" layoutX="6.0" layoutY="531.0" prefHeight="50.0" prefWidth="197.0" text="Borrowed Books :" textAlignment="CENTER">
+                        <font>
+                           <Font name="Calibri Bold Italic" size="25.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="name2" layoutX="8.0" layoutY="594.0" prefHeight="50.0" prefWidth="193.0" text="Favourite Books :" textAlignment="CENTER">
+                        <font>
+                           <Font name="Calibri Bold Italic" size="25.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="borrowAmount" layoutX="196.0" layoutY="531.0" prefHeight="50.0" prefWidth="122.0" textAlignment="CENTER">
+                        <font>
+                           <Font name="Calibri Bold Italic" size="25.0" />
+                        </font>
+                     </Label>
+                     <Label fx:id="favouriteAmount" layoutX="202.0" layoutY="594.0" prefHeight="50.0" prefWidth="110.0" textAlignment="CENTER">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
                      </Label>
                   </children>
                </AnchorPane>
-                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1015.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF;" styleClass="anchor-pane">
+                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1015.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF;" styleClass="anchor-pane" visible="false">
                         <children>
                             <VBox layoutX="2.0" layoutY="13.0" prefHeight="1004.0" prefWidth="315.0">
                                 <children>
