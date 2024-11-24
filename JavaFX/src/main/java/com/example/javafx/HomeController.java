@@ -1,5 +1,8 @@
 package com.example.javafx;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -11,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -51,7 +55,8 @@ public class HomeController {
         suggest.setDisable(true);
         suggest.setVisible(false);
         homeScene.setOnMouseClicked(event -> {
-            if (event.getSource() != searchPaneInMain) {
+            // Nếu click không nằm trong `searchPaneInMain` hoặc `suggest`, ẩn `suggest`
+            if (!searchPaneInMain.isHover() && !suggest.isHover()) {
                 suggest.setDisable(true);
                 suggest.setVisible(false);
             }
@@ -71,9 +76,14 @@ public class HomeController {
     public void searchClick() throws Exception {
         String key = searchPaneInMain.getText();
         if (key != null && !key.equals("")) {
-            String query = "SELECT * FROM books WHERE author LIKE ? OR TITLE LIKE ?";
+            String query = "SELECT * FROM books WHERE author LIKE ? OR TITLE LIKE ? LIMIT 10";
             List<Books> result = AdvancedSearch.search(query, List.of("%" + key + "%", "%" + key + "%"), Connect.connect());
-            showLoad.intoBox(res, result);
+            if (result.isEmpty()) {
+                error.setVisible(true);
+                error.setText("No results found");
+            } else {
+                showLoad.intoBox(res, result);
+            }
         } else {
             error.setVisible(true);
             error.setStyle("-fx-text-fill: red");
@@ -90,11 +100,18 @@ public class HomeController {
         }
     }
 
-    public void loadTrending() throws Exception {
-        List<Books> trendingBooks = new ArrayList<>();
-        String query = "SELECT * FROM books ORDER BY views DESC LIMIT 10";
-        trendingBooks = AdvancedSearch.search(query, Connect.connect());
-        showLoad.intoBox(borowedPane, trendingBooks);
+    public void loadTrending() {
+        String query = "SELECT * FROM books ORDER BY views DESC LIMIT 7";
+        Task<List<Books>> task = MultiThread.nParamsQ(query);
+        task.setOnSucceeded(event -> {
+            try {
+                List<Books> trendingBooks = task.getValue();
+                showLoad.intoBox(borowedPane, trendingBooks);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        new Thread(task).start();
     }
 
     @FXML
@@ -118,19 +135,36 @@ public class HomeController {
         playLabel.setStyle(null);
     }
 
-
+    private Timeline debounceTimer = new Timeline();
     @FXML
-    public void handleKey() throws Exception {
-        System.out.println("key press");
+    public void handleKey() {
         String key = searchPaneInMain.getText();
+        debounceTimer.stop();
         if (key.isEmpty()) {
             suggest.getItems().clear();
             return;
         }
-        String query = "SELECT * FROM books WHERE author LIKE ? OR title LIKE ?";
-        List<Books> result;
-        result = AdvancedSearch.search(query, List.of("%" + key + "%", "%" + key + "%"), Connect.connect());
-        suggest.getItems().setAll(result);
+        // sau 300ms moi chay task
+        debounceTimer = new Timeline(new KeyFrame(Duration.millis(300), event -> runINPUT(key)));
+        debounceTimer.setCycleCount(1);
+        debounceTimer.play();
+    }
+    private void runINPUT(String key) {
+        String Query = "SELECT * FROM books WHERE author LIKE ? OR title LIKE ? LIMIT 7";
+        Task<List<Books>> task = MultiThread.keyType(Query, key);
+        task.setOnSucceeded(event -> {
+            List<Books> result = task.getValue();
+            suggest.getItems().setAll(result);
+            setSuggestCell();
+        });
+        // if errror
+        task.setOnFailed(event -> {
+            Throwable exception = task.getException();
+            exception.printStackTrace();
+        });
+        new Thread(task).start();
+    }
+    private void setSuggestCell() {
         suggest.setCellFactory(listView -> new ListCell<>() {
             @Override
             protected void updateItem(Books book, boolean empty) {
@@ -141,11 +175,13 @@ public class HomeController {
                 } else {
                     HBox box = new HBox(10);
                     box.setAlignment(Pos.CENTER_LEFT);
+
                     ImageView bookImage = new ImageView();
-                    LoadImage.loadBookImage(book.getImageLinks(), bookImage); // Đường dẫn ảnh
+                    LoadImage.loadBookImage(book.getImageLinks(), bookImage);
                     bookImage.setFitWidth(50);
                     bookImage.setFitHeight(50);
                     bookImage.setPreserveRatio(true);
+
                     VBox textContainer = new VBox(5);
                     Label bookTitle = new Label(book.getTitle());
                     bookTitle.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
@@ -153,6 +189,7 @@ public class HomeController {
                     bookAuthor.setStyle("-fx-font-size: 14px;");
                     textContainer.getChildren().addAll(bookTitle, bookAuthor);
                     box.getChildren().addAll(bookImage, textContainer);
+
                     box.setOnMouseClicked(event -> {
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("bookDetails.fxml"));
                         AnchorPane newContent = null;
@@ -165,6 +202,7 @@ public class HomeController {
                         controller.initialize(book, newContent);
                         homeScene.getChildren().add(newContent);
                     });
+
                     setGraphic(box);
                 }
             }
