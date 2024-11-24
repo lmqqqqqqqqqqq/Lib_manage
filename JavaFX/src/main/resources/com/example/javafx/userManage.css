@@ -130,7 +130,7 @@
 }
 
 /* Font sizes for prompt text */
-.text-field:focused:prompt-text {
+.text-field:focused {
     -fx-font-size: 12px;
 }
 

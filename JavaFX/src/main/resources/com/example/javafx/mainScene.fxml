@@ -134,12 +134,12 @@
                      </Label>
                   </children>
                </AnchorPane>
-                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1007.0" prefWidth="327.0" styleClass="anchor-pan" visible="false">
+                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1007.0" prefWidth="327.0" styleClass="anchor-pan">
                         <children>
                             <VBox layoutX="2.0" layoutY="13.0" prefHeight="993.0" prefWidth="315.0">
                                 <children>
                                     <AnchorPane prefHeight="234.0" prefWidth="163.0" />
-                                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addBookOnAction" prefHeight="113.0" prefWidth="315.0" styleClass="left_but" stylesheets="@mainScene.css" text="Add Books">
+                                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addBookOnAction" prefHeight="113.0" prefWidth="315.0" styleClass="left_but" stylesheets="@mainScene.css" text="Book Management">
                                         <cursor>
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
@@ -160,7 +160,7 @@
                                         <graphic>
                                             <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                       <Image url="@../image/borrow%20manage.png" />
+                                       <Image url="@../image/borrowmanage.png" />
                                     </image></ImageView>
                                         </graphic>
                               <font>
