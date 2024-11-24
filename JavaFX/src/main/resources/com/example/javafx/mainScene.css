@@ -5,9 +5,9 @@
 .left_but:hover{
     -fx-background-radius: 30;
     -fx-border-radius: 30;
-    -fx-background-color: rgb(94, 154, 94);
-    -fx-border-color: #ffff10;
-    -fx-border-width: 1px 1px 1px 1px;
+    -fx-background-color: rgb(255, 115, 0);
+    -fx-border-color: #000000;
+    -fx-border-width: 3;
 }
 
 .mainContent_pane {
@@ -27,6 +27,7 @@
     -fx-border-color: #ffa100; /* Màu viền (nếu muốn) */
     -fx-border-width: 4px 4px 4px 4px;      /* Độ dày viền */
     -fx-padding: 10;
+    -fx-background-color: #a6a5a5;
 }
 
 .splitPane {

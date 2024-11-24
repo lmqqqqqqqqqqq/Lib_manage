@@ -23,7 +23,7 @@
                <children>
                   <ScrollPane fitToHeight="true" prefHeight="277.0" prefWidth="1836.0" styleClass="resultBox" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="264.0" prefWidth="1161.0" spacing="20.0">
+                        <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="264.0" prefWidth="1161.0" spacing="20.0" style="-fx-background-color: #a6a5a5;">
                            <padding>
                               <Insets left="20.0" right="20.0" top="15.0" />
                            </padding></HBox>
@@ -62,7 +62,7 @@
                               </Label>
                               <ScrollPane prefHeight="304.0" prefWidth="1289.0" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                                  <content>
-                                    <HBox fx:id="borowedPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="289.0" prefWidth="1293.0" spacing="20.0" stylesheets="@mainScene.css">
+                                    <HBox fx:id="borowedPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="289.0" prefWidth="1293.0" spacing="20.0" style="-fx-background-color: #a6a5a5;" stylesheets="@mainScene.css">
                                        <padding>
                                           <Insets left="20.0" right="20.0" top="15.0" />
                                        </padding></HBox>
@@ -82,7 +82,7 @@
                               </Label>
                               <ScrollPane vbarPolicy="NEVER">
                                  <content>
-                                    <HBox fx:id="newPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="277.0" prefWidth="1295.0" spacing="20.0" stylesheets="@mainScene.css">
+                                    <HBox fx:id="newPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="277.0" prefWidth="1295.0" spacing="20.0" style="-fx-background-color: #a6a5a5;" stylesheets="@mainScene.css">
                                        <padding>
                                           <Insets left="20.0" right="20.0" top="15.0" />
                                        </padding></HBox>
