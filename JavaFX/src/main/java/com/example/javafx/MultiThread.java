@@ -20,7 +20,6 @@ public class MultiThread {
             }
         };
     }
-
     /**
      * Query without params.
      * @param Query
@@ -32,6 +31,22 @@ public class MultiThread {
             protected List<Books> call() throws Exception {
                 String query = Query;
                 return AdvancedSearch.search(query, DatabaseConnect.getconnect());
+            }
+        };
+    }
+
+    /**
+     * your books query.
+     * @param Query
+     * @param key
+     * @return
+     */
+    public static Task<List<Books>> YourBooks(String Query, Object key) {
+        return new Task<>() {
+            @Override
+            protected List<Books> call() throws Exception {
+                String query = Query;
+                return AdvancedSearch.search(query, key, DatabaseConnect.getconnect());
             }
         };
     }
