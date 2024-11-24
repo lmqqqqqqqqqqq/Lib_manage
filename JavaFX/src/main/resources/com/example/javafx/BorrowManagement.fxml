@@ -13,14 +13,14 @@
 
 <AnchorPane fx:id="userBookPane" prefHeight="1000.0" prefWidth="1705.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.BorrowManagement">
    <children>
-      <ImageView fx:id="userImage" fitHeight="267.0" fitWidth="200.0" layoutX="82.0" layoutY="214.0" pickOnBounds="true">
+      <ImageView fx:id="userImage" fitHeight="231.0" fitWidth="200.0" layoutX="48.0" layoutY="173.0" pickOnBounds="true">
          <image>
-            <Image url="@../image/test.png" />
+            <Image url="@../image/user.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bookImage" fitHeight="267.0" fitWidth="200.0" layoutX="1400.0" layoutY="214.0" pickOnBounds="true">
+      <ImageView fx:id="bookImage" fitHeight="231.0" fitWidth="200.0" layoutX="1396.0" layoutY="181.0" pickOnBounds="true">
          <image>
-            <Image url="@../image/test.png" />
+            <Image url="@../image/book.png" />
          </image>
       </ImageView>
       <Label alignment="CENTER" layoutX="412.0" layoutY="135.0" prefHeight="46.0" prefWidth="100.0" text="USER">
@@ -34,12 +34,21 @@
          </font>
       </Label>
       <Pane fx:id="decor" layoutX="-2.0" layoutY="89.0" prefHeight="8.0" prefWidth="1717.0" />
-      <TextField fx:id="borrowDate" layoutX="672.0" layoutY="250.0" prefHeight="25.0" prefWidth="121.0" />
-      <TextField fx:id="dueDate" layoutX="843.0" layoutY="250.0" prefHeight="25.0" prefWidth="121.0" />
-      <Label layoutX="695.0" layoutY="214.0" prefHeight="25.0" prefWidth="75.0" text="Borrow Date" />
-      <Label layoutX="874.0" layoutY="214.0" prefHeight="25.0" prefWidth="60.0" text="Due Date" />
-      <Label layoutX="813.0" layoutY="254.0" text="To" />
-      <TableView fx:id="BorrowTable" layoutX="48.0" layoutY="552.0" onMouseClicked="#handleROW" prefHeight="318.0" prefWidth="1614.0">
+      <TextField fx:id="borrowDate" editable="false" layoutX="664.0" layoutY="260.0" prefHeight="25.0" prefWidth="121.0" stylesheets="@style.css" />
+      <TextField fx:id="dueDate" editable="false" layoutX="864.0" layoutY="260.0" prefHeight="25.0" prefWidth="121.0" stylesheets="@style.css" />
+      <Label layoutX="646.0" layoutY="214.0" prefHeight="30.0" prefWidth="144.0" text="Borrow Date">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <Label layoutX="858.0" layoutY="214.0" prefHeight="30.0" prefWidth="107.0" text="Due Date">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <Label layoutX="808.0" layoutY="260.0" text="To">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <TableView fx:id="BorrowTable" layoutX="48.0" layoutY="552.0" onMouseClicked="#handleROW" prefHeight="318.0" prefWidth="1614.0" styleClass="title-pane" stylesheets="@advancedSearch.css">
         <columns>
           <TableColumn fx:id="UserID" prefWidth="160.3333282470703" text="User ID" />
           <TableColumn fx:id="BookID" prefWidth="247.6666717529297" text="Book ID" />
@@ -47,25 +56,46 @@
             <TableColumn fx:id="Duedate" minWidth="0.0" prefWidth="448.6666259765625" text="Due Date" />
         </columns>
       </TableView>
-      <TextField fx:id="idUser" layoutX="425.0" layoutY="250.0" prefHeight="25.0" prefWidth="75.0" />
-      <TextField fx:id="UserName" layoutX="412.0" layoutY="332.0" prefHeight="25.0" prefWidth="130.0" />
-      <TextField fx:id="Role" layoutX="412.0" layoutY="398.0" prefHeight="25.0" prefWidth="130.0" />
-      <Label layoutX="359.0" layoutY="402.0" text="Role :" />
-      <Label layoutX="335.0" layoutY="327.0" text="Username :" />
-      <Label layoutX="356.0" layoutY="254.0" text="ID :" />
-      <TextField fx:id="Author" layoutX="1154.0" layoutY="411.0" prefHeight="25.0" prefWidth="187.0" />
-      <TextField fx:id="Title" layoutX="1154.0" layoutY="356.0" prefHeight="25.0" prefWidth="187.0" />
-      <TextField fx:id="ISBN" layoutX="1154.0" layoutY="300.0" prefHeight="25.0" prefWidth="187.0" />
-      <TextField fx:id="idBook" layoutX="1155.0" layoutY="250.0" prefHeight="25.0" prefWidth="187.0" />
-      <Label layoutX="1108.0" layoutY="254.0" text="ID :" />
-      <Label layoutX="1092.0" layoutY="304.0" text="ISBN :" />
-      <Label layoutX="1093.0" layoutY="360.0" text="Title :" />
-      <Label layoutX="1086.0" layoutY="411.0" text="Author :" />
-      <Label fx:id="message" alignment="CENTER" layoutX="795.0" layoutY="298.0" text="Label">
+      <TextField fx:id="idUser" editable="false" layoutX="419.0" layoutY="217.0" prefHeight="27.0" prefWidth="130.0" stylesheets="@style.css" />
+      <TextField fx:id="UserName" editable="false" layoutX="425.0" layoutY="282.0" prefHeight="25.0" prefWidth="130.0" stylesheets="@style.css" />
+      <TextField fx:id="Role" editable="false" layoutX="425.0" layoutY="355.0" prefHeight="25.0" prefWidth="130.0" stylesheets="@style.css" />
+      <Label layoutX="341.0" layoutY="351.0" text="Role :">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <Label layoutX="281.0" layoutY="281.0" text="Username :">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <Label layoutX="369.0" layoutY="217.0" prefHeight="30.0" prefWidth="43.0" text="ID :">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <TextField fx:id="Author" editable="false" layoutX="1154.0" layoutY="411.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
+      <TextField fx:id="Title" editable="false" layoutX="1154.0" layoutY="352.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
+      <TextField fx:id="ISBN" editable="false" layoutX="1154.0" layoutY="283.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
+      <TextField fx:id="idBook" editable="false" layoutX="1154.0" layoutY="218.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
+      <Label layoutX="1100.0" layoutY="217.0" text="ID :">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <Label layoutX="1075.0" layoutY="282.0" text="ISBN :">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <Label layoutX="1076.0" layoutY="351.0" text="Title :">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <Label layoutX="1050.0" layoutY="410.0" text="Author :">
+         <font>
+            <Font name="Calibri Bold Italic" size="25.0" />
+         </font></Label>
+      <Label fx:id="message" alignment="CENTER" layoutX="774.0" layoutY="310.0" prefHeight="54.0" prefWidth="119.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="110.0" layoutY="500.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="37.0" prefWidth="144.0" text="Search by user's ID" />
+      <Button layoutX="76.0" layoutY="444.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="37.0" prefWidth="144.0" styleClass="Button1" stylesheets="@advancedSearch.css" text="Search by user's ID" />
    </children>
 </AnchorPane>

@@ -7,7 +7,7 @@
 }
 
 .Button1:hover {
-    -fx-background-color: #b1f295; /* Đổi màu nền khi chuột vào  */
+    -fx-background-color: #ffc300; /* Đổi màu nền khi chuột vào  */
     -fx-text-fill: #0b0eba; /* Đổi màu chữ khi chuột vào (màu trắng) */
     -fx-scale-x: 1.2; /* Phóng to button theo chiều ngang */
     -fx-scale-y: 1.2; /* Phóng to button theo chiều dọc */
@@ -16,12 +16,12 @@
 .button2 {
     -fx-font-size: 20px;
     -fx-background-color: transparent;
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #ffaa00;
 }
 
 /* Định dạng khi hover vào Button */
 .button2:hover {
-    -fx-background-color: #063755; /* Màu nền khi hover */
+    -fx-background-color: #889781; /* Màu nền khi hover */
 }
 
 .Label {
@@ -56,14 +56,9 @@
 }
 
 .text-field:focused {
-    -fx-border-color: #4CAF50; /* Màu dòng kẻ khi đang nhập liệu */
+    -fx-border-color: #ffa100; /* Màu dòng kẻ khi đang nhập liệu */
 }
 
-.circle {
-    -fx-fill: transparent;   /* Bên trong trong suốt */
-    -fx-stroke: black;       /* Viền đen */
-    -fx-stroke-width: 2;     /* Độ dày của viền */
-}
 .anchor-pane {
     -fx-border-color: black;
     -fx-border-width: 2;

@@ -133,3 +133,35 @@
 .text-field:focused:prompt-text {
     -fx-font-size: 12px;
 }
+
+.mode {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 15;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.mode:hover {
+    -fx-background-color: #45a049; /* Slightly darker green */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0.5, 2, 2);
+}
+
+.mode:pressed {
+    -fx-background-color: #3e8e41; /* Darker green for pressed state */
+    -fx-padding: 12 18; /* Visual shift inward */
+}
+.decor {
+    -fx-background-color: linear-gradient(to bottom, rgba(33, 73, 33, 0.93) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+}
+.modeselected {
+    -fx-background-color: rgba(33, 73, 33, 0.93);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-padding: 12 18;
+}
