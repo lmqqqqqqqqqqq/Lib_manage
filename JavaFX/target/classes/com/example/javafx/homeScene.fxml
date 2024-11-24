@@ -21,11 +21,11 @@
    <children>
       <AnchorPane fx:id="suggestPane" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="944.0" prefWidth="1706.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="56.0">
          <children>
-            <HBox layoutX="39.0" layoutY="-7.0" prefHeight="277.0" prefWidth="1664.0" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-7.0">
+            <HBox layoutX="39.0" layoutY="-3.0" prefHeight="273.0" prefWidth="1689.0" AnchorPane.bottomAnchor="711.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-3.0">
                <children>
-                  <ScrollPane fitToHeight="true" prefHeight="277.0" prefWidth="1836.0" styleClass="resultBox" stylesheets="@mainScene.css" vbarPolicy="NEVER">
+                  <ScrollPane fitToHeight="true" prefHeight="272.0" prefWidth="1816.0" styleClass="resultBox" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="264.0" prefWidth="1161.0" spacing="20.0" style="-fx-background-color: #a6a5a5;">
+                        <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="261.0" prefWidth="1161.0" spacing="20.0" style="-fx-background-color: #a6a5a5;">
                            <padding>
                               <Insets left="20.0" right="20.0" top="15.0" />
                            </padding></HBox>
@@ -108,13 +108,29 @@
          </children>
       </AnchorPane>
       <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="10.0" onKeyTyped="#handleKey" onMouseClicked="#showSuggest" prefHeight="27.0" prefWidth="548.0" promptText="Search for books" />
-      <Button layoutX="1155.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchClick" prefHeight="27.0" prefWidth="95.0" text="Search" />
+      <Button layoutX="1154.0" layoutY="1.0" mnemonicParsing="false" onAction="#searchClick" prefHeight="34.0" prefWidth="131.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Search">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/search.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="494.0" textFill="#d00000">
          <font>
             <Font name="Calibri Bold Italic" size="20.0" />
          </font>
       </Label>
-      <ListView fx:id="suggest" layoutX="583.0" layoutY="36.0" prefHeight="469.0" prefWidth="548.0" styleClass="suggest" stylesheets="@mainScene.css" />
-      <Label fx:id="error" layoutX="585.0" layoutY="39.0" text="Label" />
+      <ListView fx:id="suggest" layoutX="583.0" layoutY="36.0" prefHeight="469.0" prefWidth="548.0" styleClass="suggest" stylesheets="@mainScene.css" visible="false" />
+      <Label fx:id="error" layoutX="585.0" layoutY="39.0" text="Label" visible="false" />
+      <AnchorPane fx:id="waitingScene" opacity="0.73" prefHeight="1033.0" prefWidth="1731.0" style="-fx-background-color: #FFFFFF;" visible="false">
+         <children>
+            <ImageView fitHeight="201.0" fitWidth="229.0" layoutX="759.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/loading.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

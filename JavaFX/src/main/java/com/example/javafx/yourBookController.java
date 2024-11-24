@@ -83,16 +83,16 @@ public class yourBookController {
                 " ORDER BY user_books.currentTime DESC";
         Task<List<Books>> task = MultiThread.YourBooks(Query, LoginController.user.getId());
         task.setOnSucceeded(event -> {
-            try {
-                List<Books> nearestBooks = task.getValue();
-                if(nearestBooks.size() > 0) {
-                    showLoad.intoBox(nearestBook, nearestBooks);
-                } else {
-                    System.out.println("no nearest found");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+           try {
+               List<Books> nearestBooks = task.getValue();
+               if(nearestBooks.size() > 0) {
+                   showLoad.intoBox(nearestBook, nearestBooks);
+               } else {
+                   System.out.println("no nearest found");
+               }
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
         });
         new Thread(task).start();
     }

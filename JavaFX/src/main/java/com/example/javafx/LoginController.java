@@ -1,5 +1,6 @@
 package com.example.javafx;
 
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -50,6 +51,7 @@ public class LoginController {
 
     /**
      * same as the login button on action but with enter.
+     *
      * @param event enter.
      */
     public void loginButtonPressed(KeyEvent event) {
@@ -74,12 +76,11 @@ public class LoginController {
             InvalidLoginLabel.setText("You need to enter a username");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
             usernameTextField.setStyle("-fx-border-color: red");
-        } else if(enterPasswordField.getText().isBlank()) {
+        } else if (enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a password");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
             enterPasswordField.setStyle("-fx-border-color: red");
-        }
-        else {
+        } else {
             user = validLogin();
             if (user != null) {
                 Stage stage = (Stage) loginButton.getScene().getWindow();
@@ -93,9 +94,10 @@ public class LoginController {
 
     /**
      * take information in the database to check the valid login and give information to user.
+     *
      * @return the information.
      */
-    public User validLogin()  {
+    public User validLogin() {
 
         //the input of username and password.
         String usernameInp = usernameTextField.getText();
@@ -113,9 +115,9 @@ public class LoginController {
             preparedStatement.setString(2, passwordInp);
             //resultSet being used to check in the database and return true if it's exist.
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 int isSaved;
-                if(checkPass.isSelected()) {
+                if (checkPass.isSelected()) {
                     isSaved = 1;
                 } else {
                     isSaved = 0;
@@ -141,8 +143,8 @@ public class LoginController {
                 boolean staff = resultSet.getBoolean("staff");
                 ConnectAPI api = new ConnectAPI();
                 String query1 = "java&orderBy=newest";
-                List<Books> newBookList = api.getBooks(query1,"");
-                if(!staff) {
+                List<Books> newBookList = api.getBooks(query1, "");
+                if (!staff) {
                     return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
                 } else
                     return new Staff(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
@@ -217,10 +219,10 @@ public class LoginController {
     boolean isPassUp = false;
 
     public void userclick() {
-        if(!isUserUp && !isPassUp) {
+        if (!isUserUp && !isPassUp) {
             userAnimation(true, usernameLabel);
             isUserUp = true;
-        } else if(isPassUp && !isUserUp) {
+        } else if (isPassUp && !isUserUp) {
             userAnimation(true, usernameLabel);
             passAnimation(false, passwordLabel);
             isUserUp = true;
@@ -229,10 +231,10 @@ public class LoginController {
     }
 
     public void passclick() {
-        if(!isUserUp && !isPassUp) {
+        if (!isUserUp && !isPassUp) {
             passAnimation(true, passwordLabel);
             isPassUp = true;
-        } else if(isUserUp && !isPassUp) {
+        } else if (isUserUp && !isPassUp) {
             passAnimation(true, passwordLabel);
             userAnimation(false, usernameLabel);
             isPassUp = true;
@@ -247,7 +249,7 @@ public class LoginController {
             preparedStatement.setInt(2, 1);
             //resultSet being used to check in the database and return true if it's exist.
             ResultSet resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 String password = resultSet.getString("password");
                 enterPasswordField.setText(password);
                 checkPass.setSelected(true);
@@ -260,12 +262,12 @@ public class LoginController {
 
     public void paneclick() {
         pane.requestFocus();
-        if(isUserUp || isPassUp) {
-            if(isUserUp) {
+        if (isUserUp || isPassUp) {
+            if (isUserUp) {
                 userAnimation(false, usernameLabel);
                 isUserUp = false;
             }
-            if(isPassUp) {
+            if (isPassUp) {
                 passAnimation(false, passwordLabel);
                 isPassUp = false;
             }

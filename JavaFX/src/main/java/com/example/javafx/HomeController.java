@@ -1,6 +1,7 @@
 package com.example.javafx;
 
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -52,33 +53,45 @@ public class HomeController {
     private HBox borowedPane;
     @FXML
     private Label playLabel;
+    @FXML
+    private AnchorPane waitingScene;
     User user = LoginController.user;
 
 
     public void initialize() throws Exception {
-        resultBookShow.setParentPane(homeScene);
-        loadNewBook();
-        loadTrending();
-        welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!" );
-        suggest.setDisable(true);
-        suggest.setVisible(false);
-        homeScene.setOnMouseClicked(event -> {
-            // Nếu click không nằm trong `searchPaneInMain` hoặc `suggest`, ẩn `suggest`
-            if (!searchPaneInMain.isHover() && !suggest.isHover()) {
-                suggest.setDisable(true);
-                suggest.setVisible(false);
+        waitingScene.setVisible(true);
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.1));
+        pause.setOnFinished(event -> {
+            resultBookShow.setParentPane(homeScene);
+            try {
+                loadNewBook();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-        });
-        fontComboBox.getItems().addAll(Font.getFamilies());
-        fontComboBox.setValue("Arial");
-        fontSizeComboBox.getItems().addAll(8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72);
-        fontSizeComboBox.setValue(14);
-        colorPicker.setValue(Color.BLACK);
-        textArea.setFont(new Font("Arial", 14));
-        textArea.setWrapText(true);
+            loadTrending();
+            welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!");
+            suggest.setDisable(true);
+            suggest.setVisible(false);
+            homeScene.setOnMouseClicked(e -> {
+                // Nếu click không nằm trong `searchPaneInMain` hoặc `suggest`, ẩn `suggest`
+                if (!searchPaneInMain.isHover() && !suggest.isHover()) {
+                    suggest.setDisable(true);
+                    suggest.setVisible(false);
+                }
+            });
+            error.setVisible(false);
+            fontComboBox.getItems().addAll(Font.getFamilies());
+            fontComboBox.setValue("Arial");
+            fontSizeComboBox.getItems().addAll(8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72);
+            fontSizeComboBox.setValue(14);
+            colorPicker.setValue(Color.BLACK);
+            textArea.setFont(new Font("Arial", 14));
+            textArea.setWrapText(true);
 
-        textArea.setStyle("-fx-text-fill: black;");
-        error.setVisible(false);
+            textArea.setStyle("-fx-text-fill: black;");
+            waitingScene.setVisible(false);
+        });
+        pause.play();
     }
 
     public String numberOfDay() {
@@ -144,8 +157,8 @@ public class HomeController {
 
     public void playEntered() {
         playLabel.setStyle(" -fx-text-fill: #23ff00; " +
-                            "  -fx-underline: true; " +
-                            "-fx-cursor: hand;" );
+                "  -fx-underline: true; " +
+                "-fx-cursor: hand;");
     }
 
     public void playExited() {
@@ -153,6 +166,7 @@ public class HomeController {
     }
 
     private Timeline debounceTimer = new Timeline();
+
     @FXML
     public void handleKey() {
         String key = searchPaneInMain.getText();
@@ -166,6 +180,7 @@ public class HomeController {
         debounceTimer.setCycleCount(1);
         debounceTimer.play();
     }
+
     private void runINPUT(String key) {
         String Query = "SELECT * FROM books WHERE author LIKE ? OR title LIKE ? LIMIT 7";
         Task<List<Books>> task = MultiThread.keyType(Query, key);
@@ -181,6 +196,7 @@ public class HomeController {
         });
         new Thread(task).start();
     }
+
     private void setSuggestCell() {
         suggest.setCellFactory(listView -> new ListCell<>() {
             @Override
