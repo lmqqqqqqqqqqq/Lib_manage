@@ -67,7 +67,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-         <CheckBox fx:id="darkMode" mnemonicParsing="false" onAction="#setDarkMode" prefHeight="109.0" prefWidth="127.0" text="Dark mode" />
+         <CheckBox fx:id="darkModeBox" mnemonicParsing="false" onAction="#setDarkMode" onMouseClicked="#reloadCurrentPage" prefHeight="109.0" prefWidth="127.0" text="Dark mode" />
         </VBox>
     </left>
     <center>
@@ -139,7 +139,7 @@
                             <VBox layoutX="2.0" layoutY="13.0" prefHeight="993.0" prefWidth="315.0">
                                 <children>
                                     <AnchorPane prefHeight="234.0" prefWidth="163.0" />
-                                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addBookOnAction" prefHeight="113.0" prefWidth="315.0" styleClass="left_but" stylesheets="@mainScene.css" text="Add Books">
+                                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addBookOnAction" prefHeight="113.0" prefWidth="315.0" styleClass="left_but" stylesheets="@mainScene.css" text="Book Management">
                                         <cursor>
                                             <Cursor fx:constant="HAND" />
                                         </cursor>
@@ -160,7 +160,7 @@
                                         <graphic>
                                             <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                       <Image url="@../image/borrow%20manage.png" />
+                                       <Image url="@../image/borrowmanage.png" />
                                     </image></ImageView>
                                         </graphic>
                               <font>

@@ -57,8 +57,6 @@ public class BookDetailsController {
     private AnchorPane infoPane;
     @FXML
     private ImageView favourite;
-    @FXML
-    private ImageView returnIcon;
     private AnchorPane currentPane;
 
     private Books books;
@@ -93,7 +91,6 @@ public class BookDetailsController {
             borrowButton.setDisable(true);
             borrowButton.setVisible(false);
             returnButton.setDisable(false);
-            LoadImage.loadBookImage("/com/example/image/returnBook.png", returnIcon);
             getDay();
         } else {
             borrowButton.setDisable(false);
@@ -104,7 +101,6 @@ public class BookDetailsController {
             returndayLabel.setVisible(false);
             borrowday.setVisible(false);
             returnday.setVisible(false);
-            LoadImage.loadBookImage("/com/example/image/borrow.png", returnIcon);
         }
         if (isFavourite()) {
             LoadImage.loadBookImage("/com/example/image/favourite.png", favourite);
@@ -137,7 +133,6 @@ public class BookDetailsController {
         borrowButton.setVisible(false);
         returnButton.setDisable(false);
         returnButton.setVisible(true);
-        LoadImage.loadBookImage("/com/example/image/returnBook.png", returnIcon);
         getDay();
     }
 
@@ -204,7 +199,6 @@ public class BookDetailsController {
         returndayLabel.setVisible(false);
         borrowday.setVisible(false);
         returnday.setVisible(false);
-        LoadImage.loadBookImage("/com/example/image/borrow.png", returnIcon);
     }
 
     public void favouriteOnAction() throws Exception {
