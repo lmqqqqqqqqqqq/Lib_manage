@@ -6,14 +6,13 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -23,6 +22,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeController {
+    @FXML
+    private TextArea textArea;
+    @FXML
+    private ComboBox<String> fontComboBox;
+    @FXML
+    private ComboBox<Integer> fontSizeComboBox;
+    @FXML
+    private ColorPicker colorPicker;
+
     DatabaseConnect Connect = new DatabaseConnect();
     @FXML
     private AnchorPane homeScene;
@@ -61,6 +69,15 @@ public class HomeController {
                 suggest.setVisible(false);
             }
         });
+        fontComboBox.getItems().addAll(Font.getFamilies());
+        fontComboBox.setValue("Arial");
+        fontSizeComboBox.getItems().addAll(8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72);
+        fontSizeComboBox.setValue(14);
+        colorPicker.setValue(Color.BLACK);
+        textArea.setFont(new Font("Arial", 14));
+        textArea.setWrapText(true);
+
+        textArea.setStyle("-fx-text-fill: black;");
         error.setVisible(false);
     }
 
@@ -209,4 +226,29 @@ public class HomeController {
         });
     }
 
+    @FXML
+    public void changeFont() {
+        fontComboBox.setOnAction(event -> {
+            String selectedFont = fontComboBox.getValue();
+            double currentFontSize = textArea.getFont().getSize();
+            textArea.setFont(Font.font(selectedFont, currentFontSize));
+        });
+
+        fontSizeComboBox.setOnAction(event -> {
+            int selectedFontSize = fontSizeComboBox.getValue();
+            String currentFontFamily = textArea.getFont().getFamily();
+            textArea.setFont(Font.font(currentFontFamily, selectedFontSize));
+        });
+
+        colorPicker.setOnAction(event -> {
+            Color selectedColor = colorPicker.getValue();
+            textArea.setStyle("-fx-text-fill: " + toRgbString(selectedColor) + ";");
+        });
+    }
+
+    private String toRgbString(Color color) {
+        return "rgb(" + (int) (color.getRed() * 255) + ", "
+                + (int) (color.getGreen() * 255) + ", "
+                + (int) (color.getBlue() * 255) + ")";
+    }
 }
