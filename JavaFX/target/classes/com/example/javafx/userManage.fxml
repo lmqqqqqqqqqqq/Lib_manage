@@ -29,23 +29,23 @@
         </columns>
     </TableView>
     <TextField fx:id="id" editable="false" layoutX="385.0" layoutY="192.0" prefHeight="25.0" prefWidth="149.0" promptText="id" />
-    <TextField fx:id="username" layoutX="385.0" layoutY="231.0" promptText="Username" />
-    <PasswordField fx:id="password" layoutX="385.0" layoutY="268.0" promptText="Password" />
-    <TextField fx:id="firstname" layoutX="385.0" layoutY="343.0" promptText="First Name" />
-    <TextField fx:id="lastname" layoutX="385.0" layoutY="376.0" promptText="Last Name" />
-    <TextField fx:id="dayOfBirth" layoutX="641.0" layoutY="193.0" prefHeight="25.0" prefWidth="42.0" promptText="BDay" />
-    <TextField fx:id="monthOfBirth" layoutX="704.0" layoutY="193.0" prefHeight="25.0" prefWidth="42.0" promptText="BMonth" />
-    <TextField fx:id="yearOfBirth" layoutX="769.0" layoutY="193.0" prefHeight="28.0" prefWidth="49.0" promptText="BYear" />
-    <TextField fx:id="recoveryCode" layoutX="641.0" layoutY="289.0" promptText="Recovery" />
-    <TextField fx:id="signUpDate" layoutX="641.0" layoutY="240.0" promptText="Sign up day" />
-    <TextField fx:id="isSave" layoutX="385.0" layoutY="301.0" prefHeight="25.0" prefWidth="49.0" promptText="Saved password" />
+    <TextField fx:id="username" editable="false" layoutX="385.0" layoutY="231.0" promptText="Username" />
+    <PasswordField fx:id="password" editable="false" layoutX="385.0" layoutY="268.0" promptText="Password" />
+    <TextField fx:id="firstname" editable="false" layoutX="385.0" layoutY="343.0" promptText="First Name" />
+    <TextField fx:id="lastname" editable="false" layoutX="385.0" layoutY="376.0" promptText="Last Name" />
+    <TextField fx:id="dayOfBirth" editable="false" layoutX="641.0" layoutY="193.0" prefHeight="25.0" prefWidth="42.0" promptText="BDay" />
+    <TextField fx:id="monthOfBirth" editable="false" layoutX="704.0" layoutY="193.0" prefHeight="25.0" prefWidth="42.0" promptText="BMonth" />
+    <TextField fx:id="yearOfBirth" editable="false" layoutX="769.0" layoutY="193.0" prefHeight="28.0" prefWidth="49.0" promptText="BYear" />
+    <TextField fx:id="recoveryCode" editable="false" layoutX="641.0" layoutY="289.0" promptText="Recovery" />
+    <TextField fx:id="signUpDate" editable="false" layoutX="641.0" layoutY="240.0" promptText="Sign up day" />
+    <TextField fx:id="isSave" editable="false" layoutX="385.0" layoutY="301.0" prefHeight="28.0" prefWidth="171.0" promptText="Saved password" />
     <Label fx:id="errorMessage" layoutX="306.0" layoutY="447.0" prefHeight="17.0" prefWidth="629.0" text="error messages" textFill="RED">
       <font>
          <Font name="System Bold Italic" size="14.0" />
       </font>
     </Label>
     <ImageView fx:id="avatar" fitHeight="233.0" fitWidth="200.0" layoutX="61.0" layoutY="141.0" pickOnBounds="true" />
-    <TextField fx:id="avatarLink" layoutX="48.0" layoutY="444.0" prefHeight="25.0" prefWidth="226.0" promptText="Avatar URL" />
+    <TextField fx:id="avatarLink" editable="false" layoutX="48.0" layoutY="444.0" prefHeight="25.0" prefWidth="226.0" promptText="Avatar URL" visible="false" />
     <Pane fx:id="separator" layoutY="79.0" prefHeight="4.0" prefWidth="1705.0" />
     <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="197.0" prefHeight="17.0" prefWidth="67.0" text="ID :" textAlignment="RIGHT" />
     <Label alignment="CENTER_RIGHT" layoutX="579.0" layoutY="293.0" text="Recovery :" textAlignment="RIGHT" />

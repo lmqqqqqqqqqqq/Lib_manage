@@ -34,8 +34,8 @@
          </font>
       </Label>
       <Pane fx:id="decor" layoutX="-2.0" layoutY="89.0" prefHeight="8.0" prefWidth="1717.0" />
-      <TextField fx:id="borrowDate" layoutX="658.0" layoutY="261.0" prefHeight="25.0" prefWidth="121.0" stylesheets="@style.css" />
-      <TextField fx:id="dueDate" layoutX="858.0" layoutY="261.0" prefHeight="25.0" prefWidth="121.0" stylesheets="@style.css" />
+      <TextField fx:id="borrowDate" editable="false" layoutX="664.0" layoutY="260.0" prefHeight="25.0" prefWidth="121.0" stylesheets="@style.css" />
+      <TextField fx:id="dueDate" editable="false" layoutX="864.0" layoutY="260.0" prefHeight="25.0" prefWidth="121.0" stylesheets="@style.css" />
       <Label layoutX="646.0" layoutY="214.0" prefHeight="30.0" prefWidth="144.0" text="Borrow Date">
          <font>
             <Font name="Calibri Bold Italic" size="25.0" />
@@ -56,9 +56,9 @@
             <TableColumn fx:id="Duedate" minWidth="0.0" prefWidth="448.6666259765625" text="Due Date" />
         </columns>
       </TableView>
-      <TextField fx:id="idUser" layoutX="419.0" layoutY="217.0" prefHeight="27.0" prefWidth="130.0" stylesheets="@style.css" />
-      <TextField fx:id="UserName" layoutX="419.0" layoutY="283.0" prefHeight="25.0" prefWidth="130.0" stylesheets="@style.css" />
-      <TextField fx:id="Role" layoutX="419.0" layoutY="356.0" prefHeight="25.0" prefWidth="130.0" stylesheets="@style.css" />
+      <TextField fx:id="idUser" editable="false" layoutX="419.0" layoutY="217.0" prefHeight="27.0" prefWidth="130.0" stylesheets="@style.css" />
+      <TextField fx:id="UserName" editable="false" layoutX="425.0" layoutY="282.0" prefHeight="25.0" prefWidth="130.0" stylesheets="@style.css" />
+      <TextField fx:id="Role" editable="false" layoutX="425.0" layoutY="355.0" prefHeight="25.0" prefWidth="130.0" stylesheets="@style.css" />
       <Label layoutX="341.0" layoutY="351.0" text="Role :">
          <font>
             <Font name="Calibri Bold Italic" size="25.0" />
@@ -71,10 +71,10 @@
          <font>
             <Font name="Calibri Bold Italic" size="25.0" />
          </font></Label>
-      <TextField fx:id="Author" layoutX="1154.0" layoutY="411.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
-      <TextField fx:id="Title" layoutX="1154.0" layoutY="352.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
-      <TextField fx:id="ISBN" layoutX="1154.0" layoutY="283.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
-      <TextField fx:id="idBook" layoutX="1154.0" layoutY="218.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
+      <TextField fx:id="Author" editable="false" layoutX="1154.0" layoutY="411.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
+      <TextField fx:id="Title" editable="false" layoutX="1154.0" layoutY="352.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
+      <TextField fx:id="ISBN" editable="false" layoutX="1154.0" layoutY="283.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
+      <TextField fx:id="idBook" editable="false" layoutX="1154.0" layoutY="218.0" prefHeight="25.0" prefWidth="187.0" stylesheets="@style.css" />
       <Label layoutX="1100.0" layoutY="217.0" text="ID :">
          <font>
             <Font name="Calibri Bold Italic" size="25.0" />

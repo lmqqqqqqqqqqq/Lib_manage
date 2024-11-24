@@ -19,17 +19,20 @@ public class resultBookShow {
     private Label id;
     @FXML
     private static AnchorPane root;
+    @FXML
+    private Label rating;
 
     public static void setParentPane(AnchorPane pane) {
         root = pane;
     }
     private Books book;
-    public void setOutputData(String imagepath, String title, String author, String id, Books books) {
+    public void setOutputData(String imagepath, String title, String author, String id, String rating, Books books) {
         LoadImage.loadBookImage(imagepath, image);
         this.title.setText(title);
         this.author.setText(author);
         this.id.setText(id);
         this.book = books;
+        this.rating.setText(rating);
     }
 
     public void resultBookClicked() throws IOException {

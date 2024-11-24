@@ -21,7 +21,7 @@ public class GoogleBooksAPIClient {
 
     // Phương thức để tìm sách dựa trên tiêu đề
     public JsonObject searchBooks(String query) throws IOException {
-        String url = API_BASE_URL + query + "&key=AIzaSyAt9UrpQ6vtwkYHb054rpYMx7-uZFdAk1E"; // Thay YOUR_API_KEY bằng API key của bạn
+        String url = API_BASE_URL + query + "&key=AIzaSyAt9UrpQ6vtwkYHb054rpYMx7-uZFdAk1E";
         Request request = new Request.Builder()
                 .url(url)
                 .build();

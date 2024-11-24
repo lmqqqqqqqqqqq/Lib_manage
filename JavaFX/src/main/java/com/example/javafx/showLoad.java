@@ -17,7 +17,7 @@ public class showLoad {
             FXMLLoader loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/resultBookShow.fxml"));
             AnchorPane bookPane = loader.load();
             resultBookShow controller = loader.getController();
-            controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b);
+            controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b.getRating(), b);
             bookPane.getStyleClass().add("left_but");
             target.setSpacing(40);
             target.getChildren().add(bookPane);
@@ -32,7 +32,7 @@ public class showLoad {
             FXMLLoader loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/resultBookShow.fxml"));
             AnchorPane bookPane = loader.load();
             resultBookShow controller = loader.getController();
-            controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b);
+            controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b.getRating(), b);
             bookPane.getStyleClass().add("left_but");
             target.getChildren().add(bookPane);
         }

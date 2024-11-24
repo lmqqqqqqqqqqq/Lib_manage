@@ -20,7 +20,7 @@ public class ConnectAPI {
 
     public JsonArray searchBookAPI(String query) throws Exception {
         String baseUrl = "https://www.googleapis.com/books/v1/volumes?q=";
-        String apiKey = "&key=AIzaSyAt9UrpQ6vtwkYHb054rpYMx7-uZFdAk1E"; // Thay bằng API key của bạn
+        String apiKey = "&key=AIzaSyAt9UrpQ6vtwkYHb054rpYMx7-uZFdAk1E";
         StringBuilder queryBuilder = new StringBuilder(query);
         for(int i = 0; i<queryBuilder.length(); i++){
             if(queryBuilder.charAt(i)==' ') {

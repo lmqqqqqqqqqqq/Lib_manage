@@ -23,18 +23,21 @@
                <children>
                   <ScrollPane fitToHeight="true" prefHeight="277.0" prefWidth="1836.0" styleClass="resultBox" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="res" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="1161.0" />
+                        <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="264.0" prefWidth="1161.0" spacing="20.0">
+                           <padding>
+                              <Insets left="20.0" right="20.0" top="15.0" />
+                           </padding></HBox>
                      </content>
                   </ScrollPane>
                   <AnchorPane prefHeight="260.0" prefWidth="660.0" />
                   <AnchorPane>
                      <children>
-                        <ImageView fitHeight="258.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="wordleImage" fitHeight="272.0" fitWidth="482.0" pickOnBounds="true">
                            <image>
                               <Image url="@../image/logo_wordle.jpg" />
                            </image>
                         </ImageView>
-                        <Label fx:id="playLabel" layoutX="201.0" layoutY="181.0" onMouseClicked="#playClick" onMouseEntered="#playEntered" onMouseExited="#playExited" prefHeight="55.0" prefWidth="160.0" text="Play Now" textFill="#4caf50">
+                        <Label fx:id="playLabel" layoutX="81.0" layoutY="198.0" onMouseClicked="#playClick" onMouseEntered="#playEntered" onMouseExited="#playExited" prefHeight="55.0" prefWidth="160.0" text="Play Now" textFill="#4caf50">
                            <font>
                               <Font name="Calibri Bold Italic" size="40.0" />
                            </font>
@@ -43,7 +46,7 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <SplitPane dividerPositions="0.7563176895306859" layoutX="39.0" layoutY="285.0" prefHeight="665.0" prefWidth="1664.0" styleClass="resultBox" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="285.0">
+            <SplitPane dividerPositions="0.7536674816625917" layoutX="39.0" layoutY="285.0" prefHeight="665.0" prefWidth="1664.0" styleClass="resultBox" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="285.0">
                <items>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="1295.0">
                      <children>
@@ -59,7 +62,10 @@
                               </Label>
                               <ScrollPane prefHeight="304.0" prefWidth="1289.0" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                                  <content>
-                                    <HBox fx:id="borowedPane" prefHeight="289.0" prefWidth="1293.0" stylesheets="@mainScene.css" />
+                                    <HBox fx:id="borowedPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="289.0" prefWidth="1293.0" spacing="20.0" stylesheets="@mainScene.css">
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" top="15.0" />
+                                       </padding></HBox>
                                  </content>
                               </ScrollPane>
                            </children>
@@ -76,7 +82,10 @@
                               </Label>
                               <ScrollPane vbarPolicy="NEVER">
                                  <content>
-                                    <HBox fx:id="newPane" prefHeight="277.0" prefWidth="1295.0" stylesheets="@mainScene.css" />
+                                    <HBox fx:id="newPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="277.0" prefWidth="1295.0" spacing="20.0" stylesheets="@mainScene.css">
+                                       <padding>
+                                          <Insets left="20.0" right="20.0" top="15.0" />
+                                       </padding></HBox>
                                  </content>
                               </ScrollPane>
                            </children>
