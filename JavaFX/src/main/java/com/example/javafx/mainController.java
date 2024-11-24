@@ -1,7 +1,11 @@
 package com.example.javafx;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -46,15 +50,48 @@ public class mainController {
     private Label favouriteAmount;
     User user = LoginController.user;
 
-    @FXML private CheckBox darkMode;
+    @FXML private CheckBox darkModeBox;
+    public static BooleanProperty darkMode = new SimpleBooleanProperty(false);
+    private static mainController instance;
+    private String currentPage;
 
+    public mainController() {
+        instance = this;
+    }
+
+    public static mainController getInstance() {
+        return instance;
+    }
+
+    public AnchorPane getContentAnchorPane() {
+        return ContentAnchorPane;
+    }
+
+    public boolean isDarkMode() {
+        return darkMode.get();
+    }
+
+    public void setDarkMode(boolean value) {
+        darkMode.set(value);
+    }
 
     public void initialize() throws IOException {
+        darkModeBox.setSelected(darkMode.get());
         LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
-        SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
+        SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager, darkMode.get());
         name.setText(user.getUsername());
         outSideManagerClick();
+        darkMode.addListener((obs, oldMode, newMode) -> {
+            try {
+                // Reload the current page when darkMode changes
+                String current = SceneSwitcher.getCurrentPageName();
+                reloadCurrentPage();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         setDarkMode();
+        applyDarkMode(darkMode.get());
         homeButton.setStyle("-fx-background-radius: 30;\n" +
                 "    -fx-border-radius: 30;\n" +
                 "    -fx-background-color: rgb(255, 115, 0);;\n" +
@@ -67,15 +104,11 @@ public class mainController {
         } else {
             roleLabel.setText("( Admin )");
         }
-        if (darkMode == null) {
-            System.out.println("darkMode CheckBox is null. Check FXML bindings.");
-        } else {
-            System.out.println("darkMode CheckBox is initialized.");
-        }
     }
 
     public void homeOnClick() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
+        currentPage = "homeScene.fxml";
+        SceneSwitcher.switchPage(ContentAnchorPane, currentPage, manager, darkMode.get());
         initialize();
         outSideManagerClick();
         homeButton.setStyle("-fx-background-radius: 30;\n" +
@@ -91,7 +124,8 @@ public class mainController {
     }
 
     public void yourBookOnClick() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "yourBookScene.fxml", manager);
+        currentPage = "yourBookScene.fxml";
+        SceneSwitcher.switchPage(ContentAnchorPane, currentPage, manager, darkMode.get());
         outSideManagerClick();
         yourBookButton.setStyle("-fx-background-radius: 30;\n" +
                 "    -fx-border-radius: 30;\n" +
@@ -106,7 +140,8 @@ public class mainController {
     }
 
     public void advancedSearchOnClick() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "advancedSearchScene.fxml", manager);
+        currentPage = "advancedSearchScene.fxml";
+        SceneSwitcher.switchPage(ContentAnchorPane, currentPage, manager, darkMode.get());
         outSideManagerClick();
         searchButton.setStyle("-fx-background-radius: 30;\n" +
                 "    -fx-border-radius: 30;\n" +
@@ -166,7 +201,7 @@ public class mainController {
     }
 
     public void magOnAction() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "BorrowManagement.fxml", manager);
+        SceneSwitcher.switchPage(ContentAnchorPane, "BorrowManagement.fxml", manager, darkMode.get());
         outSideManagerClick();
         homeButton.setStyle(null);
         searchButton.setStyle(null);
@@ -209,7 +244,7 @@ public class mainController {
     }
 
     public void addBookOnAction() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "addBook.fxml", manager);
+        SceneSwitcher.switchPage(ContentAnchorPane, "addBook.fxml", manager, darkMode.get());
         outSideManagerClick();
         homeButton.setStyle(null);
         searchButton.setStyle(null);
@@ -222,7 +257,7 @@ public class mainController {
     }
 
     public void userManageOnAction() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "userManage.fxml", manager);
+        SceneSwitcher.switchPage(ContentAnchorPane, "userManage.fxml", manager, darkMode.get());
         outSideManagerClick();
         homeButton.setStyle(null);
         searchButton.setStyle(null);
@@ -235,41 +270,47 @@ public class mainController {
     }
 
     public void setDarkMode() {
-        if (ContentAnchorPane.getScene() == null) {
-            ContentAnchorPane.sceneProperty().addListener((observable, oldScene, newScene) -> {
-                if (newScene != null) {
-                    applyStylesToAllAnchorPanes();
-                }
-            });
-        } else {
-            applyStylesToAllAnchorPanes();
-        }
-    }
-
-    private void applyStylesToAllAnchorPanes() {
+        darkMode.set(darkModeBox.isSelected());
+        applyDarkMode(darkMode.get());
         Scene currentScene = ContentAnchorPane.getScene();
-
-        if (darkMode.isSelected()) {
-            currentScene.getStylesheets().clear();
-            currentScene.getStylesheets().add(getClass().getResource("dark-theme.css").toExternalForm());
+    }
+    private void applyDarkMode(boolean darkMode) {
+        Scene scene = darkModeBox.getScene();
+        if (darkModeBox.isSelected()) {
+            managerBar.setStyle("-fx-background-color: #2b2b2b;");
         } else {
-            currentScene.getStylesheets().clear();
-            currentScene.getStylesheets().add(getClass().getResource("light-theme.css").toExternalForm());
+            managerBar.setStyle("-fx-background-color: #FFFFFF;");
         }
-
-        for (Node node : currentScene.getRoot().lookupAll(".anchor-pane")) {
-            if (node instanceof AnchorPane) {
-                if (darkMode.isSelected()) {
-                    node.setStyle("-fx-background-color: #2c2f33;");
-                } else {
-                    node.setStyle("-fx-background-color: #ffffff;");
+        if (scene != null) {
+            String darkModeStyle = getClass().getResource("darkMainScene.css").toExternalForm();
+            if (darkMode) {
+                if (!scene.getStylesheets().contains(darkModeStyle)) {
+                    scene.getStylesheets().add(darkModeStyle);
                 }
+            } else {
+                scene.getStylesheets().remove(darkModeStyle);
             }
         }
     }
+
+    public void reloadCurrentPage() throws IOException {
+        if (currentPage == null || currentPage.isEmpty()) {
+            return; // No page loaded yet
+        }
+
+        FXMLLoader loader;
+
+        if (darkMode.get()) {
+            loader = new FXMLLoader(getClass().getResource("Dark" + currentPage));
+        } else {
+            loader = new FXMLLoader(getClass().getResource(currentPage));
+        }
+
+        Parent page = loader.load();
+
+        // Clear and set the new page
+        ContentAnchorPane.getChildren().clear();
+        ContentAnchorPane.getChildren().add(page);
+    }
+
 }
-
-
-
-
-

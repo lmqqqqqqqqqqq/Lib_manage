@@ -13,6 +13,9 @@
 .mainContent_pane {
     -fx-background-color: #64805b;
 }
+.anchor-pane {
+    -fx-background-color: #ffffff;
+}
 .resultBookShow {
     -fx-border-color: #64805b;
     -fx-border-width: 2px 2px 2px 2px;

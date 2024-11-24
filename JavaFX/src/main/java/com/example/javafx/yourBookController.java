@@ -1,14 +1,16 @@
 package com.example.javafx;
 
+import com.mysql.cj.log.Log;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+
+import java.io.IOException;
 import java.util.List;
 
 
 public class yourBookController {
-    DatabaseConnect databaseConnect = new DatabaseConnect();
-
     @FXML
     private HBox borrowed;
 
@@ -32,45 +34,66 @@ public class yourBookController {
     @FXML
     public void loadBorrowed() throws Exception {
         borrowed.getChildren().clear();
-        StringBuilder Q = new StringBuilder("SELECT * FROM books INNER JOIN user_books");
-        Q.append(" ON user_books.idbooks = books.idbooks AND user_books.idusers = ? " +
-                "AND user_books.borrow = 1");
-
-        List<Books> result = AdvancedSearch.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
-        borrowedBookAmount = result.size();
-        if (result.isEmpty()) {
-            System.out.println("No books found borrow");
-        } else {
-            showLoad.intoBox(borrowed, result);
-        }
+        String Query = "SELECT books.* FROM books INNER JOIN user_books ON user_books.idbooks = books.idbooks" +
+                " AND user_books.idusers = ? AND user_books.borrow = 1";
+        Task<List<Books>> task = MultiThread.YourBooks(Query, LoginController.user.getId());
+        task.setOnSucceeded(event -> {
+            try {
+                List<Books> borrowedBooks = task.getValue();
+                if(borrowedBooks.size() > 0) {
+                    showLoad.intoBox(borrowed, borrowedBooks);
+                    borrowedBookAmount = borrowedBooks.size();
+                } else {
+                    borrowedBookAmount = 0;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        new Thread(task).start();
     }
 
     @FXML
     public void loadFavorite() throws Exception {
         favorite.getChildren().clear();
-        StringBuilder Q = new StringBuilder("SELECT * FROM books INNER JOIN user_books" +
-                " ON user_books.idbooks = books.idbooks AND user_books.idusers = ? " +
-                "AND user_books.is_favourite = 1");
-        List<Books> result = AdvancedSearch.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
-        favoriteBookAmount = result.size();
-        if (result.isEmpty()) {
-            System.out.println("No books found favorite");
-        } else {
-            showLoad.intoBox(favorite, result);
-        }
+        String Query = "SELECT books.* FROM books INNER JOIN user_books ON user_books.idbooks = books.idbooks" +
+                " AND user_books.idusers = ? AND user_books.is_favourite = 1";
+        Task<List<Books>> task = MultiThread.YourBooks(Query, LoginController.user.getId());
+        task.setOnSucceeded(event -> {
+            try {
+                List<Books> favoriteBooks = task.getValue();
+                if(favoriteBooks.size() > 0) {
+                    showLoad.intoBox(favorite, favoriteBooks);
+                    favoriteBookAmount = favoriteBooks.size();
+                } else {
+                    favoriteBookAmount = 0;
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        new Thread(task).start();
     }
 
     @FXML
     public void loadNearestBook() throws Exception {
         nearestBook.getChildren().clear();
-        StringBuilder Q = new StringBuilder("SELECT * FROM books INNER JOIN user_books" +
+        String Query = "SELECT books.*, user_books.currentTime FROM books INNER JOIN user_books" +
                 " ON user_books.idbooks = books.idbooks AND user_books.idusers = ?" +
-                " ORDER BY user_books.currentTime DESC");
-        List<Books> result = AdvancedSearch.search(Q.toString(), LoginController.user.getId(), databaseConnect.connect());
-        if (result.isEmpty()) {
-            System.out.println("No books found recently");
-        } else {
-            showLoad.intoBox(nearestBook, result);
-        }
+                " ORDER BY user_books.currentTime DESC";
+        Task<List<Books>> task = MultiThread.YourBooks(Query, LoginController.user.getId());
+        task.setOnSucceeded(event -> {
+            try {
+                List<Books> nearestBooks = task.getValue();
+                if(nearestBooks.size() > 0) {
+                    showLoad.intoBox(nearestBook, nearestBooks);
+                } else {
+                    System.out.println("no nearest found");
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        new Thread(task).start();
     }
 }

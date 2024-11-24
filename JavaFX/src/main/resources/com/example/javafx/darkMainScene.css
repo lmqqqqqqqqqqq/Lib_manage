@@ -1,0 +1,86 @@
+.root {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
+}
+
+.button {
+    -fx-background-color: #3c3f41;
+    -fx-text-fill: #ffffff;
+}
+
+.left_but {
+    -fx-background-color: rgba(255, 255, 255, 0);
+}
+.anchor-pane {
+    -fx-background-color: #2b2b2b;
+}
+
+.left_but:hover{
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-background-color: rgb(255, 115, 0);
+    -fx-border-color: #000000;
+    -fx-border-width: 3;
+}
+
+.mainContent_pane {
+    -fx-background-color: #64805b;
+}
+.resultBookShow {
+    -fx-border-color: #64805b;
+    -fx-border-width: 2px 2px 2px 2px;
+}
+.resultBookShow:hover {
+    -fx-border-color: #000000;
+    -fx-cursor: hand;
+}
+.resultBox {
+    -fx-background-radius: 30; /* Bo góc nền */
+    -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
+    -fx-border-color: #ffa100; /* Màu viền (nếu muốn) */
+    -fx-border-width: 4px 4px 4px 4px;      /* Độ dày viền */
+    -fx-padding: 10;
+    -fx-background-color: #a6a5a5;
+}
+
+.splitPane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+.suggest {
+    -fx-border-color: #a19e9b; /* Màu viền (nếu muốn) */
+    -fx-border-width: 0px 4px 4px 4px;      /* Độ dày viền */
+    -fx-padding: 10;
+}
+/* Dark mode style for text-field */
+.text-field {
+    -fx-font-size: 14px;
+    -fx-background-color: #2b2b2b; /* Dark background for dark mode */
+    -fx-border-color: #444444;    /* Dark border color */
+    -fx-border-radius: 5px;       /* Rounded corners */
+    -fx-padding: 5px;
+    -fx-text-fill: #ffffff;       /* White text for contrast */
+}
+
+/* Focused state for the text-field */
+.text-field:focused {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #3b3b3b; /* Slightly lighter dark background when focused */
+}
+
+/* Placeholder text in dark mode */
+.text-field:prompt-text {
+    -fx-text-fill: #aaaaaa; /* Light gray placeholder text */
+}
+
+.text-field:focused:prompt-text {
+    -fx-text-fill: #888888; /* Gray placeholder text when focused */
+}
+
+/* Apply dark background and white text */
+.text-area {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+    -fx-border-color: transparent; /* Optional: removes the border */
+}

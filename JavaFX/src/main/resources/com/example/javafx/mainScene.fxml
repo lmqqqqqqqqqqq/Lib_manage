@@ -67,7 +67,7 @@
                     </ImageView>
                 </graphic>
             </Button>
-         <CheckBox fx:id="darkMode" mnemonicParsing="false" onAction="#setDarkMode" prefHeight="109.0" prefWidth="127.0" text="Dark mode" />
+         <CheckBox fx:id="darkModeBox" mnemonicParsing="false" onAction="#setDarkMode" onMouseClicked="#reloadCurrentPage" prefHeight="109.0" prefWidth="127.0" text="Dark mode" />
         </VBox>
     </left>
     <center>
@@ -134,7 +134,7 @@
                      </Label>
                   </children>
                </AnchorPane>
-                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1015.0" prefWidth="326.0" style="-fx-background-color: #FFFFFF;" styleClass="anchor-pane" visible="false">
+                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1015.0" prefWidth="326.0" styleClass="anchor-pane" visible="false">
                         <children>
                             <VBox layoutX="2.0" layoutY="13.0" prefHeight="1004.0" prefWidth="315.0">
                                 <children>
