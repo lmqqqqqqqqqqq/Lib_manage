@@ -128,7 +128,8 @@ public class mainController {
     }
 
     public void homeOnClick() throws IOException {
-            SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
+        currentPage = "homeScene.fxml";
+            SceneSwitcher.switchPage(ContentAnchorPane, currentPage, manager);
             initialize();
             outSideManagerClick();
             homeButton.setStyle("-fx-background-radius: 30;\n" +
@@ -222,6 +223,7 @@ public class mainController {
     }
 
     public void magOnAction() throws IOException {
+        currentPage = "BorrowManagement.fxml";
         SceneSwitcher.switchPage(ContentAnchorPane, "BorrowManagement.fxml", manager, darkMode.get());
         outSideManagerClick();
         homeButton.setStyle(null);
@@ -265,7 +267,8 @@ public class mainController {
     }
 
     public void addBookOnAction() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "addBook.fxml", manager, darkMode.get());
+        currentPage = "addBook.fxml";
+        SceneSwitcher.switchPage(ContentAnchorPane, currentPage, manager, darkMode.get());
         outSideManagerClick();
         homeButton.setStyle(null);
         searchButton.setStyle(null);
@@ -278,7 +281,8 @@ public class mainController {
     }
 
     public void userManageOnAction() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "userManage.fxml", manager, darkMode.get());
+        currentPage = "userManage.fxml";
+        SceneSwitcher.switchPage(ContentAnchorPane, currentPage, manager, darkMode.get());
         outSideManagerClick();
         homeButton.setStyle(null);
         searchButton.setStyle(null);
@@ -316,7 +320,7 @@ public class mainController {
 
     public void reloadCurrentPage() throws IOException {
         if (currentPage == null || currentPage.isEmpty()) {
-            return; // No page loaded yet
+            return;
         }
 
         FXMLLoader loader;
@@ -326,12 +330,12 @@ public class mainController {
         } else {
             loader = new FXMLLoader(getClass().getResource(currentPage));
         }
-
         Parent page = loader.load();
-
-        // Clear and set the new page
         ContentAnchorPane.getChildren().clear();
         ContentAnchorPane.getChildren().add(page);
     }
 
+    public void updatePage() throws IOException {
+        reloadCurrentPage();
+    }
 }
