@@ -23,9 +23,9 @@
             <children>
                 <HBox layoutX="39.0" layoutY="-6.0" prefHeight="253.0" prefWidth="1689.0" AnchorPane.bottomAnchor="757.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-6.0">
                     <children>
-                        <ScrollPane fitToHeight="true" prefHeight="241.0" prefWidth="1207.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
+                        <ScrollPane prefHeight="200.0" prefWidth="1207.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
                             <content>
-                                <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="224.0" prefWidth="1181.0" spacing="20.0" style="-fx-background-color: #595858;">
+                                <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="215.0" prefWidth="1181.0" spacing="20.0" style="-fx-background-color: #595858;">
                                     <padding>
                                         <Insets left="20.0" right="20.0" top="15.0" />
                                     </padding>
@@ -65,7 +65,7 @@
                                         </Label>
                                         <ScrollPane prefHeight="265.0" prefWidth="1231.0" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                                             <content>
-                                                <HBox fx:id="borowedPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="247.0" prefWidth="1230.0" spacing="20.0" style="-fx-background-color: #595858;" stylesheets="@mainScene.css">
+                                                <HBox fx:id="borowedPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1230.0" spacing="20.0" style="-fx-background-color: #595858;" stylesheets="@mainScene.css">
                                                     <padding>
                                                         <Insets left="20.0" right="20.0" top="15.0" />
                                                     </padding>
@@ -84,9 +84,9 @@
                                                 <Font name="Calibri Bold Italic" size="25.0" />
                                             </font>
                                         </Label>
-                                        <ScrollPane prefHeight="248.0" prefWidth="1230.0" vbarPolicy="NEVER">
+                                        <ScrollPane prefHeight="249.0" prefWidth="1230.0" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                                             <content>
-                                                <HBox fx:id="newPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="276.0" prefWidth="1230.0" spacing="20.0" style="-fx-background-color: #595858;" stylesheets="@mainScene.css">
+                                                <HBox fx:id="newPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="232.0" prefWidth="1230.0" spacing="20.0" style="-fx-background-color: #595858;" stylesheets="@mainScene.css">
                                                     <padding>
                                                         <Insets left="20.0" right="20.0" top="15.0" />
                                                     </padding>
@@ -103,7 +103,7 @@
                                 <ComboBox fx:id="fontComboBox" layoutY="8.0" onAction="#changeFont" prefWidth="150.0" />
                                 <ComboBox fx:id="fontSizeComboBox" layoutX="150.0" layoutY="8.0" onAction="#changeFont" prefHeight="25.0" prefWidth="55.0" />
                                 <ColorPicker fx:id="colorPicker" layoutX="205.0" layoutY="8.0" onAction="#changeFont" />
-                                <TextArea fx:id="textArea" layoutX="-6.0" layoutY="41.0" prefHeight="606.0" prefWidth="394.0" styleClass="text-area" wrapText="true" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="41.0" />
+                                <TextArea fx:id="textArea" layoutX="8.0" layoutY="43.0" prefHeight="593.0" prefWidth="373.0" styleClass="NOTE" stylesheets="@darkHomeScene.css" wrapText="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="43.0" />
                             </children>
                         </AnchorPane>
                     </items>

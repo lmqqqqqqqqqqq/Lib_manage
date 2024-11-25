@@ -120,8 +120,10 @@ public class mainController {
             managerButton.setVisible(false);
             managerButton.setDisable(true);
             roleLabel.setText("( Member )");
+            roleLabel.setStyle("-fx-text-fill: #009a8d;");
         } else {
             roleLabel.setText("( Admin )");
+            roleLabel.setStyle("-fx-text-fill: #ff0059;");
         }
         waitingScene.setVisible(false);
 
@@ -306,8 +308,8 @@ public class mainController {
             intro.setStyle("-fx-background-color: #2b2b2b;" +
                             " -fx-text-fill: white;");
             boader.setStyle("-fx-background-color: #403f3f;" +
-                            "-fx-border-color: #FFFFFF;" +
                             "-fx-border-width: 3; ");
+            darkModeBox.setStyle("-fx-text-fill: #dddddd");
 
         } else {
             managerBar.setStyle("-fx-background-color: #efc076;");
@@ -315,6 +317,7 @@ public class mainController {
             boader.setStyle("-fx-background-color:  #ababab;" +
                     "-fx-border-color: #000000;" +
                     "-fx-border-width: 3; ");
+            darkModeBox.setStyle("-fx-text-fill: #000000");
         }
         if (scene != null) {
             String darkModeStyle = getClass().getResource("darkMainScene.css").toExternalForm();

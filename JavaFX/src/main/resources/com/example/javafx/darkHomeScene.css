@@ -6,3 +6,31 @@
 .text-field:prompt-text {
     -fx-prompt-text-fill: grey;
 }
+.NOTE {
+    -fx-background-radius: 30; /* Bo góc cho vùng nền ngoài */
+    -fx-border-radius: 30;     /* Bo góc cho viền */
+    -fx-border-width: 2px;
+    -fx-border-color: #21ff00;
+    -fx-control-inner-background: #474747; /* Màu nền */
+}
+
+.NOTE .content {
+    -fx-background-radius: 30; /* Bo góc nội dung bên trong */
+    -fx-padding: 10px;         /* Khoảng cách giữa chữ và viền */
+}
+
+.NOTE .scroll-pane {
+    -fx-background-radius: 30; /* Bo góc cho vùng cuộn */
+    -fx-border-radius: 30;
+    -fx-background-color: transparent; /* Làm trong suốt nền cuộn */
+    -fx-padding: 0; /* Loại bỏ padding của ScrollPane */
+}
+
+.NOTE .scroll-pane .corner {
+    -fx-background-color: transparent; /* Làm trong suốt các góc của ScrollPane */
+}
+
+.NOTE .scroll-pane .viewport {
+    -fx-background-radius: 30; /* Bo góc cho vùng viewport */
+    -fx-background-color: #474747; /* Đồng màu với nền */
+}

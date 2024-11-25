@@ -33,7 +33,7 @@
                 <Font name="Calibri Bold Italic" size="32.0" />
             </font>
         </Label>
-        <Pane fx:id="decor" layoutX="-2.0" layoutY="89.0" prefHeight="8.0" prefWidth="1717.0" />
+        <Pane fx:id="decor" layoutY="-1.0" prefHeight="178.0" prefWidth="1717.0" styleClass="decorDark" stylesheets="@userManage.css" />
         <TextField fx:id="borrowDate" editable="false" layoutX="664.0" layoutY="260.0" prefHeight="25.0" prefWidth="121.0" styleClass="text1-field" stylesheets="@style.css" />
         <TextField fx:id="dueDate" editable="false" layoutX="864.0" layoutY="260.0" prefHeight="25.0" prefWidth="121.0" styleClass="text1-field" stylesheets="@style.css" />
         <Label layoutX="646.0" layoutY="214.0" prefHeight="30.0" prefWidth="144.0" text="Borrow Date" textFill="WHITE">

@@ -46,7 +46,7 @@
     </Label>
     <ImageView fx:id="avatar" fitHeight="233.0" fitWidth="200.0" layoutX="61.0" layoutY="141.0" pickOnBounds="true" />
     <TextField fx:id="avatarLink" editable="false" layoutX="48.0" layoutY="444.0" prefHeight="25.0" prefWidth="226.0" promptText="Avatar URL" visible="false" />
-    <Pane fx:id="separator" layoutY="79.0" prefHeight="4.0" prefWidth="1705.0" />
+    <Pane prefHeight="190.0" prefWidth="1705.0" styleClass="decorDark" stylesheets="@userManage.css" />
     <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="197.0" prefHeight="17.0" prefWidth="67.0" style="-fx-text-fill: white;" text="ID :" textAlignment="RIGHT" />
     <Label alignment="CENTER_RIGHT" layoutX="579.0" layoutY="293.0" style="-fx-text-fill: white;" text="Recovery :" textAlignment="RIGHT" />
     <Label layoutX="595.0" layoutY="197.0" style="-fx-text-fill: white;" text="Genre :" />
