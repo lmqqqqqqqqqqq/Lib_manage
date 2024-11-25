@@ -18,7 +18,7 @@
             <Image url="@../image/user.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bookImage" fitHeight="231.0" fitWidth="200.0" layoutX="1396.0" layoutY="181.0" pickOnBounds="true">
+      <ImageView fx:id="bookImage" fitHeight="231.0" fitWidth="200.0" layoutX="1393.0" layoutY="162.0" pickOnBounds="true">
          <image>
             <Image url="@../image/book.png" />
          </image>
@@ -96,6 +96,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="76.0" layoutY="444.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="37.0" prefWidth="144.0" styleClass="Button1" stylesheets="@advancedSearch.css" text="Search by user's ID" />
+      <Button layoutX="76.0" layoutY="444.0" mnemonicParsing="false" onAction="#searchUserOnAction" prefHeight="37.0" prefWidth="150.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Search by user's ID" />
+      <Button layoutX="1439.0" layoutY="443.0" mnemonicParsing="false" onAction="#searchBookOnAction" prefHeight="43.0" prefWidth="162.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Search by book's ID" />
    </children>
 </AnchorPane>

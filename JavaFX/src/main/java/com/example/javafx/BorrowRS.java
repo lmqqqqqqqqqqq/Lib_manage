@@ -13,6 +13,7 @@ public class BorrowRS implements OBJECT {
     private String name;
     private ImageView image = new ImageView();
     private String author;
+    private String userName;
 
     public BorrowRS() {}
     public BorrowRS(int userId, String bookId, LocalDate borrowDate, LocalDate dueDate) {
@@ -22,6 +23,15 @@ public class BorrowRS implements OBJECT {
         this.dueDate = dueDate;
     }
 
+    /**
+     * management book with idUser.
+     * @param bookId is bookId return.
+     * @param name is nameBook.
+     * @param author is book's author.
+     * @param borrowDate is borrowDate.
+     * @param dueDate is dueDate.
+     * @param imageLink is book image.
+     */
     public BorrowRS(String bookId, String name, String author, LocalDate borrowDate, LocalDate dueDate, String imageLink) {
         this.bookId = bookId;
         this.name = name;
@@ -29,9 +39,38 @@ public class BorrowRS implements OBJECT {
         this.dueDate = dueDate;
         this.author = author;
         LoadImage.loadBookImage(imageLink, this.image);
-        this.image.setFitWidth(90); // Chiều rộng mong muốn
-        this.image.setFitHeight(90); // Chiều cao mong muốn
+        this.image.setFitWidth(90);
+        this.image.setFitHeight(90);
         this.image.setPreserveRatio(true);
+    }
+
+    /**
+     * management user by book
+     * @param userId is id.
+     * @param userName is name.
+     * @param imageLink is avatar.
+     */
+    public BorrowRS(int userId, String userName, LocalDate borrowDate, LocalDate dueDate, String imageLink) {
+        this.userId = userId;
+        this.userName = userName;
+        this.borrowDate = borrowDate;
+        this.dueDate = dueDate;
+        try {
+            LoadImage.loadBUImage(this.image, imageLink);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        this.image.setFitWidth(90);
+        this.image.setFitHeight(90);
+        this.image.setPreserveRatio(true);
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getName() {

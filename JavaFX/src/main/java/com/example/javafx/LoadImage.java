@@ -46,4 +46,23 @@ public class LoadImage {
             e.printStackTrace();
         }
     }
+
+    /**
+     * load in book-user(not include setClip)
+     * @param avatarImage is image
+     * @param link is link
+     */
+    public static void loadBUImage(ImageView avatarImage, String link) {
+        try {
+            if (!link.equals("/com/example/image/user.jpg")) {
+                Image image = new Image(link);
+                avatarImage.setImage(image);
+            } else {
+                Image defaultImage = new Image(ProfileController.class.getResource("/com/example/image/user.jpg").toExternalForm());
+                avatarImage.setImage(defaultImage);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

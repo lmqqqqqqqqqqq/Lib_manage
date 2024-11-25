@@ -158,7 +158,11 @@ public class BorrowManagement {
         return list;
     }
 
-    public void searchOnAction() throws IOException {
-        SceneSwitcher.switchPage(userBookPane, "bookManageforuser.fxml");
+    public void searchUserOnAction() throws IOException {
+        SceneSwitcher.switchPage(userBookPane, "bookManageByUser.fxml");
+    }
+
+    public void searchBookOnAction() throws IOException {
+        SceneSwitcher.switchPage(userBookPane, "userManageByBook.fxml");
     }
 }
