@@ -5,13 +5,16 @@
 .left_but:hover{
     -fx-background-radius: 30;
     -fx-border-radius: 30;
-    -fx-background-color: rgb(255, 115, 0);
+    -fx-background-color: #FFB433;
     -fx-border-color: #000000;
     -fx-border-width: 3;
 }
 
 .mainContent_pane {
     -fx-background-color: #64805b;
+}
+.anchor-pane {
+    -fx-background-color: #ffffff;
 }
 .resultBookShow {
     -fx-border-color: #64805b;
@@ -24,9 +27,8 @@
 .resultBox {
     -fx-background-radius: 30; /* Bo góc nền */
     -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
-    -fx-border-color: #ffa100; /* Màu viền (nếu muốn) */
+    -fx-border-color: #FFB433; /* Màu viền (nếu muốn) */
     -fx-border-width: 4px 4px 4px 4px;      /* Độ dày viền */
-    -fx-padding: 10;
     -fx-background-color: #a6a5a5;
 }
 

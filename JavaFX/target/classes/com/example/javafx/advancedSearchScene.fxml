@@ -39,7 +39,14 @@
                         <Font name="Calibri Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                      <Button alignment="TOP_RIGHT" layoutX="115.0" layoutY="635.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="37.0" prefWidth="132.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Search" />
+                      <Button alignment="CENTER" layoutX="115.0" layoutY="635.0" mnemonicParsing="false" onAction="#onSearchClick" prefHeight="37.0" prefWidth="132.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Search">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/search.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                       <TextField fx:id="Title" layoutX="166.0" layoutY="90.0" prefHeight="35.0" prefWidth="301.0" styleClass="text-field">
                      <font>
                         <Font name="Calibri Italic" size="20.0" />
@@ -92,17 +99,14 @@
                         <Font name="Calibri Italic" size="20.0" />
                      </font>
                   </TextField>
-                      <Button alignment="TOP_RIGHT" layoutX="333.0" layoutY="635.0" mnemonicParsing="false" onAction="#onResetClick" prefHeight="37.0" prefWidth="132.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Reset all" />
-                  <ImageView fitHeight="34.0" fitWidth="31.0" layoutX="133.0" layoutY="641.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/search.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="37.0" fitWidth="38.0" layoutX="348.0" layoutY="635.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/reset.png" />
-                     </image>
-                  </ImageView>
+                      <Button alignment="CENTER" layoutX="333.0" layoutY="632.0" mnemonicParsing="false" onAction="#onResetClick" prefHeight="55.0" prefWidth="132.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Reset all">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/reset.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   </children>
               </AnchorPane>
          </children>

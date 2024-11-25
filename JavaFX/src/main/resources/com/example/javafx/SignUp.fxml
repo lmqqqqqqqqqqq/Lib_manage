@@ -11,124 +11,124 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="559.0" prefWidth="848.0" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.SignUpController">
+<StackPane prefHeight="825.0" prefWidth="1311.0" styleClass="bodySignUp" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.SignUpController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="578.0" prefWidth="844.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="826.0" prefWidth="1314.0">
          <children>
-            <Label layoutX="399.0" layoutY="103.0" prefHeight="38.0" prefWidth="133.0" text="First name" textFill="WHITE">
+            <Label layoutX="950.0" layoutY="112.0" prefHeight="41.0" prefWidth="166.0" text="First name" textFill="WHITE">
                <font>
-                  <Font name="Calibri Italic" size="30.0" />
+                  <Font name="Calibri Bold Italic" size="35.0" />
                </font>
             </Label>
-            <TextField fx:id="firstnameTextField" layoutX="558.0" layoutY="103.0" onKeyPressed="#registerPressed" onKeyReleased="#firstnameReleased" prefHeight="38.0" prefWidth="150.0" styleClass="text1-field" stylesheets="@style.css">
+            <TextField fx:id="firstnameTextField" layoutX="1105.0" layoutY="132.0" onKeyPressed="#registerPressed" onKeyReleased="#firstnameReleased" prefHeight="38.0" prefWidth="179.0" styleClass="text1-field" stylesheets="@style.css">
                <font>
                   <Font name="Calibri Italic" size="17.0" />
                </font>
             </TextField>
-            <Label layoutX="528.0" layoutY="161.0" prefHeight="46.0" prefWidth="133.0" text="Last name" textFill="WHITE">
+            <Label layoutX="950.0" layoutY="252.0" prefHeight="46.0" prefWidth="166.0" text="Last name" textFill="WHITE">
                <font>
-                  <Font name="Calibri Italic" size="30.0" />
+                  <Font name="Calibri Bold Italic" size="35.0" />
                </font>
             </Label>
-            <TextField fx:id="lastnameTextField" layoutX="695.0" layoutY="176.0" onKeyPressed="#registerPressed" prefHeight="38.0" prefWidth="134.0" styleClass="text1-field" stylesheets="@style.css">
+            <TextField fx:id="lastnameTextField" layoutX="1116.0" layoutY="285.0" onKeyPressed="#registerPressed" prefHeight="38.0" prefWidth="179.0" styleClass="text1-field" stylesheets="@style.css">
                <font>
                   <Font name="Calibri Italic" size="17.0" />
                </font>
             </TextField>
-            <Label layoutX="1.0" layoutY="110.0" prefHeight="38.0" prefWidth="134.0" text="Username">
+            <Label layoutX="310.0" layoutY="128.0" prefHeight="41.0" prefWidth="166.0" text="Username">
                <font>
-                  <Font name="Calibri Italic" size="30.0" />
+                  <Font name="Calibri Bold Italic" size="35.0" />
                </font>
             </Label>
-            <TextField fx:id="setUsernameTextField" layoutX="126.0" layoutY="110.0" onKeyPressed="#registerPressed" onKeyReleased="#userNameReleased" prefHeight="38.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
+            <TextField fx:id="setUsernameTextField" layoutX="516.0" layoutY="128.0" onKeyPressed="#registerPressed" onKeyReleased="#userNameReleased" prefHeight="38.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
                <font>
-                  <Font name="Calibri Italic" size="17.0" />
+                  <Font name="Calibri Italic" size="23.0" />
                </font>
             </TextField>
-            <Label layoutX="5.0" layoutY="220.0" prefHeight="38.0" prefWidth="126.0" text="Password">
+            <Label layoutX="315.0" layoutY="263.0" prefHeight="41.0" prefWidth="156.0" text="Password">
                <font>
-                  <Font name="Calibri Italic" size="30.0" />
+                  <Font name="Calibri Bold Italic" size="35.0" />
                </font>
             </Label>
-            <Label layoutX="5.0" layoutY="318.0" prefHeight="38.0" prefWidth="166.0" text="Confirm Password">
+            <Label layoutX="244.0" layoutY="433.0" prefHeight="41.0" prefWidth="272.0" text="Confirm Password">
                <font>
-                  <Font name="Calibri Italic" size="22.0" />
+                  <Font name="Calibri Bold Italic" size="35.0" />
                </font>
             </Label>
-            <Button fx:id="registerButton" layoutX="306.0" layoutY="520.0" mnemonicParsing="false" onAction="#registerButtonClickedOnAction" onKeyPressed="#registerPressed" onMouseEntered="#registerEnter" onMouseExited="#registerExited" prefHeight="43.0" prefWidth="134.0" styleClass="Button" stylesheets="@style.css" text="Register" textFill="WHEAT">
+            <Button fx:id="registerButton" layoutX="646.0" layoutY="742.0" mnemonicParsing="false" onAction="#registerButtonClickedOnAction" onKeyPressed="#registerPressed" onMouseEntered="#registerEnter" onMouseExited="#registerExited" prefHeight="56.0" prefWidth="166.0" styleClass="Button" stylesheets="@style.css" text="Register" textFill="WHEAT">
                <font>
                   <Font name="Calibri Bold Italic" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="cancelSignupButton" layoutX="484.0" layoutY="520.0" mnemonicParsing="false" onAction="#cancelSignupButtonClickedOnAction" onMouseEntered="#cancelEnter" onMouseExited="#cancelExited" prefHeight="44.0" prefWidth="111.0" styleClass="Button" stylesheets="@style.css" text="Cancel" textFill="WHEAT">
+            <Button fx:id="cancelSignupButton" layoutX="860.0" layoutY="742.0" mnemonicParsing="false" onAction="#cancelSignupButtonClickedOnAction" onMouseEntered="#cancelEnter" onMouseExited="#cancelExited" prefHeight="56.0" prefWidth="150.0" styleClass="Button" stylesheets="@style.css" text="Cancel" textFill="WHEAT">
                <font>
                   <Font name="Calibri Bold Italic" size="20.0" />
                </font>
             </Button>
-            <Label fx:id="invalidUsernameLabel" layoutX="4.0" layoutY="196.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="416.0" text="Your username should be between 6-15 characters." textAlignment="RIGHT">
-               <font>
-                  <Font name="Calibri Italic" size="15.0" />
-               </font>
-            </Label>
-            <PasswordField fx:id="confirmPasswordField" layoutX="174.0" layoutY="317.0" onKeyPressed="#registerPressed" onKeyReleased="#confirmReleased" prefHeight="38.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
-               <font>
-                  <Font size="17.0" />
-               </font></PasswordField>
-            <Label fx:id="invalidPasswordLabel" layoutX="62.0" layoutY="277.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="300.0" text="Must be between 6 and 50 characters long." textAlignment="RIGHT">
-               <font>
-                  <Font name="Calibri Italic" size="15.0" />
-               </font>
-            </Label>
-            <PasswordField fx:id="setPasswordField" layoutX="126.0" layoutY="220.0" onKeyPressed="#registerPressed" onKeyReleased="#passwordReleased" prefHeight="38.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
-               <font>
-                  <Font size="17.0" />
-               </font></PasswordField>
-            <Label fx:id="invalidConfirmPasswordLabel" layoutX="98.0" layoutY="368.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="18.0" prefWidth="247.0" textFill="#d41713">
-               <font>
-                  <Font name="Calibri Italic" size="15.0" />
-               </font>
-            </Label>
-            <Button fx:id="backToLoginButton" layoutX="107.0" layoutY="520.0" mnemonicParsing="false" onAction="#backToLoginButtonOnAction" onMouseEntered="#backEnter" onMouseExited="#backExited" prefHeight="44.0" prefWidth="166.0" styleClass="Button" stylesheets="@style.css" text="Back to Login" textFill="WHEAT">
-               <font>
-                  <Font name="Calibri Bold Italic" size="20.0" />
-               </font>
-            </Button>
-            <Label fx:id="titleLabel" alignment="CENTER" layoutX="339.0" layoutY="24.0" prefHeight="55.0" prefWidth="490.0" text="Let's get started!" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Calibri Bold" size="48.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="monthCombo" editable="true" layoutX="695.0" layoutY="362.0" onKeyPressed="#registerPressed" prefWidth="150.0" promptText="month" styleClass="text-field" stylesheets="@style.css" />
-            <ComboBox fx:id="dayCombo" editable="true" layoutX="695.0" layoutY="301.0" onKeyPressed="#registerPressed" prefWidth="150.0" promptText="day" styleClass="text-field" stylesheets="@style.css" />
-            <ComboBox fx:id="yearCombo" editable="true" layoutX="695.0" layoutY="423.0" onKeyPressed="#registerPressed" prefWidth="150.0" promptText="year" styleClass="text-field" stylesheets="@style.css" />
-            <Label layoutX="595.0" layoutY="248.0" prefHeight="18.0" prefWidth="111.0" text="Birth date" textFill="WHITE">
+            <Label fx:id="invalidUsernameLabel" layoutX="357.0" layoutY="205.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="416.0" text="Your username should be between 6-15 characters." textAlignment="RIGHT">
                <font>
                   <Font name="Calibri Italic" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="invalidBirthDateLabel" layoutX="545.0" layoutY="266.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="300.0" textAlignment="RIGHT" textFill="WHEAT">
+            <PasswordField fx:id="confirmPasswordField" layoutX="534.0" layoutY="453.0" onKeyPressed="#registerPressed" onKeyReleased="#confirmReleased" prefHeight="38.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
                <font>
-                  <Font name="Calibri Italic" size="15.0" />
+                  <Font size="17.0" />
+               </font></PasswordField>
+            <Label fx:id="invalidPasswordLabel" layoutX="393.0" layoutY="350.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="63.0" prefWidth="394.0" text="Must be between 6 and 50 characters long." textAlignment="RIGHT" wrapText="true">
+               <font>
+                  <Font name="Calibri Italic" size="17.0" />
                </font>
             </Label>
-            <Label layoutX="5.0" layoutY="405.0" prefHeight="32.0" prefWidth="166.0" text="Recovery Code">
+            <PasswordField fx:id="setPasswordField" layoutX="526.0" layoutY="284.0" onKeyPressed="#registerPressed" onKeyReleased="#passwordReleased" prefHeight="38.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
                <font>
-                  <Font name="Calibri Italic" size="27.0" />
+                  <Font size="17.0" />
+               </font></PasswordField>
+            <Label fx:id="invalidConfirmPasswordLabel" layoutX="455.0" layoutY="547.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="29.0" prefWidth="318.0" textFill="#d41713">
+               <font>
+                  <Font name="Calibri Italic" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="codeTextfield" layoutX="174.0" layoutY="413.0" onKeyPressed="#registerPressed" onKeyReleased="#recoveryReleased" prefHeight="32.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
+            <Button fx:id="backToLoginButton" layoutX="448.0" layoutY="742.0" mnemonicParsing="false" onAction="#backToLoginButtonOnAction" onMouseEntered="#backEnter" onMouseExited="#backExited" prefHeight="56.0" prefWidth="166.0" styleClass="Button" stylesheets="@style.css" text="Back to Login" textFill="WHEAT">
+               <font>
+                  <Font name="Calibri Bold Italic" size="20.0" />
+               </font>
+            </Button>
+            <Label fx:id="titleLabel" alignment="CENTER" layoutX="869.0" layoutY="7.0" prefHeight="63.0" prefWidth="445.0" text="Let's get started!" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="55.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="monthCombo" editable="true" layoutX="1105.0" layoutY="559.0" onKeyPressed="#registerPressed" prefHeight="35.0" prefWidth="179.0" promptText="month" styleClass="text-field" stylesheets="@style.css" />
+            <ComboBox fx:id="dayCombo" editable="true" layoutX="1105.0" layoutY="479.0" onKeyPressed="#registerPressed" prefHeight="35.0" prefWidth="179.0" promptText="day" styleClass="text-field" stylesheets="@style.css" />
+            <ComboBox fx:id="yearCombo" editable="true" layoutX="1116.0" layoutY="627.0" onKeyPressed="#registerPressed" prefHeight="35.0" prefWidth="179.0" promptText="year" styleClass="text-field" stylesheets="@style.css" />
+            <Label layoutX="1021.0" layoutY="393.0" prefHeight="41.0" prefWidth="156.0" text="Birth date" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold Italic" size="35.0" />
+               </font>
+            </Label>
+            <Label fx:id="invalidBirthDateLabel" layoutX="1003.0" layoutY="434.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="300.0" textAlignment="RIGHT" textFill="WHEAT">
+               <font>
+                  <Font name="Calibri Italic" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="273.0" layoutY="603.0" prefHeight="41.0" prefWidth="214.0" text="Recovery Code">
+               <font>
+                  <Font name="Calibri Bold Italic" size="35.0" />
+               </font>
+            </Label>
+            <TextField fx:id="codeTextfield" layoutX="526.0" layoutY="606.0" onKeyPressed="#registerPressed" onKeyReleased="#recoveryReleased" prefHeight="32.0" prefWidth="247.0" styleClass="text-field" stylesheets="@style.css">
                <font>
                   <Font name="Calibri Bold" size="17.0" />
                </font>
             </TextField>
-            <Label fx:id="invalidRecover" layoutX="89.0" layoutY="462.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="309.0" textAlignment="RIGHT" textFill="WHEAT">
+            <Label fx:id="invalidRecover" layoutX="506.0" layoutY="650.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="29.0" prefWidth="363.0" textAlignment="RIGHT" textFill="WHEAT">
                <font>
-                  <Font name="Calibri Italic" size="15.0" />
+                  <Font name="Calibri Italic" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="invalidFirstNameLabel" layoutX="437.0" layoutY="150.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="188.0" textFill="WHEAT">
+            <Label fx:id="invalidFirstNameLabel" layoutX="963.0" layoutY="185.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="41.0" prefWidth="306.0" textFill="WHEAT">
                <font>
-                  <Font name="Calibri Italic" size="15.0" />
+                  <Font name="Calibri Italic" size="20.0" />
                </font>
             </Label>
             <Label fx:id="successfulLabel" layoutX="15.0" layoutY="21.0" prefHeight="67.0" prefWidth="258.0" styleClass="Button" stylesheets="@style.css" text="Successful registration !" textFill="#2ff74df7">

@@ -1,13 +1,22 @@
 .body {
-    -fx-background-image: url("loginBackground.jpeg");
+    -fx-background-image: url("loginBackgroundd.jpeg");
     -fx-background-size: stretch; /* Phóng to hình ảnh để lấp đầy toàn bộ phần tử */
     -fx-background-repeat: no-repeat; /* Không lặp lại hình ảnh */
     -fx-background-position: center; /* Căn giữa hình ảnh */
 }
 
+.bodySignUp {
+    -fx-background-image: url("signUp.png");
+    -fx-background-size: stretch; /* Phóng to hình ảnh để lấp đầy toàn bộ phần tử */
+    -fx-background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+    -fx-background-position: center; /* Căn giữa hình ảnh */
+}
+
+
+
 .Button {
-    -fx-background-color: #000000; /* Màu nền đen */
-    -fx-text-fill: #FFFFFF; /* Màu chữ trắng */
+    -fx-background-color: #FFB433; /* Màu nền đen */
+    -fx-text-fill: #000000; /* Màu chữ trắng */
     -fx-border-radius: 30; /* Bo tròn các góc của button */
     -fx-background-radius: 30; /* Bo tròn nền button */
     -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
@@ -38,7 +47,7 @@
 }
 
 .text-field:focused {
-    -fx-border-color: #3b5998; /* Màu dòng kẻ khi đang nhập liệu */
+    -fx-border-color: #FFB433;
 }
 
 .text1-field {
@@ -49,7 +58,7 @@
 }
 
 .text1-field:focused {
-    -fx-border-color: yellow; /* Màu dòng kẻ khi đang nhập liệu */
+    -fx-border-color: #000000; /* Màu dòng kẻ khi đang nhập liệu */
 }
 
 /* CSS for ComboBox */

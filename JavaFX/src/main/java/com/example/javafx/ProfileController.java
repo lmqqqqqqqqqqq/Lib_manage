@@ -219,6 +219,13 @@ public class ProfileController {
         String year = yearCombo.getValue();
         String avatarLink = avatarPath;
         int id = user.getId();
+        user.setUsername(username);
+        user.setFirstname(firstNameInput);
+        user.setLastname(lastNameInput);
+        user.setDayOfBirth(Integer.parseInt(day));
+        user.setMonthOfBirth(Integer.parseInt(month));
+        user.setYearOfBirth(Integer.parseInt(year));
+        user.setAvatarLink(avatarLink);
 
 
         String query = "update users set username = ?, first_name = ?, last_name = ?, dayOfBirth = ?, monthOfBirth = ?, yearOfBirth = ?, avatar = ?   where idusers = ?";
@@ -233,8 +240,6 @@ public class ProfileController {
             preparedStatement.setInt(6, Integer.parseInt(year));
             preparedStatement.setString(7, avatarLink);
             preparedStatement.setInt(8, id);
-
-
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -369,15 +374,7 @@ public class ProfileController {
     }
 
 
-
-
-
-
-
-
-
-
-
+    //security Scene
     public void changePassOnAction() {
         checkValidSecurity();
     }

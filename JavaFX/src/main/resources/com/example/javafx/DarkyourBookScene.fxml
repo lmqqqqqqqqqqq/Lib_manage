@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="yourBookPane" prefHeight="1000.0" prefWidth="1710.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.yourBookController">
+    <children>
+        <Label alignment="TOP_LEFT" layoutX="92.0" layoutY="15.0" prefHeight="32.0" prefWidth="1525.0" text="Borrowed Books" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20;">
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="44.0" prefHeight="276.0" prefWidth="1525.0" vbarPolicy="NEVER" style="-fx-background: #1E1E1E; -fx-border-color: #3E3E3E; -fx-border-width: 1;">
+            <content>
+                <HBox fx:id="borrowed" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0" style="-fx-background-color: #1E1E1E; -fx-padding: 15;" />
+            </content>
+        </ScrollPane>
+        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="365.0" prefHeight="276.0" prefWidth="1525.0" vbarPolicy="NEVER" style="-fx-background: #1E1E1E; -fx-border-color: #3E3E3E; -fx-border-width: 1;">
+            <content>
+                <HBox fx:id="favorite" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0" style="-fx-background-color: #1E1E1E; -fx-padding: 15;" />
+            </content>
+        </ScrollPane>
+        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="690.0" prefHeight="276.0" prefWidth="1525.0" vbarPolicy="NEVER" style="-fx-background: #1E1E1E; -fx-border-color: #3E3E3E; -fx-border-width: 1;">
+            <content>
+                <HBox fx:id="nearestBook" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0" style="-fx-background-color: #1E1E1E; -fx-padding: 15;" />
+            </content>
+        </ScrollPane>
+        <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="333.0" prefHeight="32.0" prefWidth="1525.0" text="Favorite books" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20;">
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+        <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="658.0" prefHeight="32.0" prefWidth="1525.0" text="something" style="-fx-text-fill: #FFFFFF; -fx-font-size: 20;">
+            <padding>
+                <Insets left="20.0" />
+            </padding>
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>

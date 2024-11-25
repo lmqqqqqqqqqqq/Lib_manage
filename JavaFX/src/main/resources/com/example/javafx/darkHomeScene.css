@@ -1,0 +1,8 @@
+.text-field, .text-area {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+.text-field:prompt-text {
+    -fx-prompt-text-fill: grey;
+}

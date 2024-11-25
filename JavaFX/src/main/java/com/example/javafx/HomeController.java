@@ -1,19 +1,19 @@
 package com.example.javafx;
 
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -23,6 +23,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeController {
+    @FXML
+    private TextArea textArea;
+    @FXML
+    private ComboBox<String> fontComboBox;
+    @FXML
+    private ComboBox<Integer> fontSizeComboBox;
+    @FXML
+    private ColorPicker colorPicker;
+
     DatabaseConnect Connect = new DatabaseConnect();
     @FXML
     private AnchorPane homeScene;
@@ -44,24 +53,44 @@ public class HomeController {
     private HBox borowedPane;
     @FXML
     private Label playLabel;
+    @FXML
+    private AnchorPane waitingScene;
     User user = LoginController.user;
 
-
     public void initialize() throws Exception {
-        resultBookShow.setParentPane(homeScene);
-        loadNewBook();
-        loadTrending();
-        welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!" );
-        suggest.setDisable(true);
-        suggest.setVisible(false);
-        homeScene.setOnMouseClicked(event -> {
-            // Nếu click không nằm trong `searchPaneInMain` hoặc `suggest`, ẩn `suggest`
-            if (!searchPaneInMain.isHover() && !suggest.isHover()) {
-                suggest.setDisable(true);
-                suggest.setVisible(false);
+        waitingScene.setVisible(true);
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.1));
+        pause.setOnFinished(event -> {
+            resultBookShow.setParentPane(homeScene);
+            try {
+                loadNewBook();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
+            loadTrending();
+            welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!");
+            suggest.setDisable(true);
+            suggest.setVisible(false);
+            homeScene.setOnMouseClicked(e -> {
+                // Nếu click không nằm trong `searchPaneInMain` hoặc `suggest`, ẩn `suggest`
+                if (!searchPaneInMain.isHover() && !suggest.isHover()) {
+                    suggest.setDisable(true);
+                    suggest.setVisible(false);
+                }
+            });
+            error.setVisible(false);
+            fontComboBox.getItems().addAll(Font.getFamilies());
+            fontComboBox.setValue("Arial");
+            fontSizeComboBox.getItems().addAll(8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72);
+            fontSizeComboBox.setValue(14);
+            colorPicker.setValue(Color.BLACK);
+            textArea.setFont(new Font("Arial", 14));
+            textArea.setWrapText(true);
+
+            textArea.setStyle("-fx-text-fill: black;");
+            waitingScene.setVisible(false);
         });
-        error.setVisible(false);
+        pause.play();
     }
 
     public String numberOfDay() {
@@ -77,13 +106,21 @@ public class HomeController {
         String key = searchPaneInMain.getText();
         if (key != null && !key.equals("")) {
             String query = "SELECT * FROM books WHERE author LIKE ? OR TITLE LIKE ? LIMIT 10";
-            List<Books> result = AdvancedSearch.search(query, List.of("%" + key + "%", "%" + key + "%"), Connect.connect());
-            if (result.isEmpty()) {
-                error.setVisible(true);
-                error.setText("No results found");
-            } else {
-                showLoad.intoBox(res, result);
-            }
+            Task<List<Books>> task = MultiThread.keyType(query, key);
+            task.setOnSucceeded(event -> {
+                try {
+                    List<Books> result = task.getValue();
+                    if (result.isEmpty()) {
+                        error.setVisible(true);
+                        error.setText("No results found");
+                    } else {
+                        showLoad.intoBox(res, result);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            new Thread(task).start();
         } else {
             error.setVisible(true);
             error.setStyle("-fx-text-fill: red");
@@ -108,7 +145,7 @@ public class HomeController {
                 List<Books> trendingBooks = task.getValue();
                 showLoad.intoBox(borowedPane, trendingBooks);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         });
         new Thread(task).start();
@@ -127,8 +164,8 @@ public class HomeController {
 
     public void playEntered() {
         playLabel.setStyle(" -fx-text-fill: #23ff00; " +
-                            "  -fx-underline: true; " +
-                            "-fx-cursor: hand;" );
+                "  -fx-underline: true; " +
+                "-fx-cursor: hand;");
     }
 
     public void playExited() {
@@ -136,6 +173,7 @@ public class HomeController {
     }
 
     private Timeline debounceTimer = new Timeline();
+
     @FXML
     public void handleKey() {
         String key = searchPaneInMain.getText();
@@ -149,6 +187,7 @@ public class HomeController {
         debounceTimer.setCycleCount(1);
         debounceTimer.play();
     }
+
     private void runINPUT(String key) {
         String Query = "SELECT * FROM books WHERE author LIKE ? OR title LIKE ? LIMIT 7";
         Task<List<Books>> task = MultiThread.keyType(Query, key);
@@ -157,13 +196,13 @@ public class HomeController {
             suggest.getItems().setAll(result);
             setSuggestCell();
         });
-        // if errror
         task.setOnFailed(event -> {
             Throwable exception = task.getException();
             exception.printStackTrace();
         });
         new Thread(task).start();
     }
+
     private void setSuggestCell() {
         suggest.setCellFactory(listView -> new ListCell<>() {
             @Override
@@ -181,7 +220,6 @@ public class HomeController {
                     bookImage.setFitWidth(50);
                     bookImage.setFitHeight(50);
                     bookImage.setPreserveRatio(true);
-
                     VBox textContainer = new VBox(5);
                     Label bookTitle = new Label(book.getTitle());
                     bookTitle.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
@@ -209,4 +247,29 @@ public class HomeController {
         });
     }
 
+    @FXML
+    public void changeFont() {
+        fontComboBox.setOnAction(event -> {
+            String selectedFont = fontComboBox.getValue();
+            double currentFontSize = textArea.getFont().getSize();
+            textArea.setFont(Font.font(selectedFont, currentFontSize));
+        });
+
+        fontSizeComboBox.setOnAction(event -> {
+            int selectedFontSize = fontSizeComboBox.getValue();
+            String currentFontFamily = textArea.getFont().getFamily();
+            textArea.setFont(Font.font(currentFontFamily, selectedFontSize));
+        });
+
+        colorPicker.setOnAction(event -> {
+            Color selectedColor = colorPicker.getValue();
+            textArea.setStyle("-fx-text-fill: " + toRgbString(selectedColor) + ";");
+        });
+    }
+
+    private String toRgbString(Color color) {
+        return "rgb(" + (int) (color.getRed() * 255) + ", "
+                + (int) (color.getGreen() * 255) + ", "
+                + (int) (color.getBlue() * 255) + ")";
+    }
 }

@@ -1,0 +1,40 @@
+/* General background */
+.root {
+    -fx-background-color: #121212;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 20px;
+    -fx-padding: 0 0 10 20; /* Top, Right, Bottom, Left */
+}
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background: #1E1E1E;
+    -fx-border-color: #3E3E3E;
+    -fx-border-width: 1;
+}
+
+/* HBox inside ScrollPane */
+.scroll-pane .content {
+    -fx-background-color: #1E1E1E;
+}
+
+.hbox {
+    -fx-background-color: #1E1E1E;
+    -fx-spacing: 20px;
+    -fx-padding: 15 20 15 20; /* Top, Right, Bottom, Left */
+}
+
+/* ScrollBar styles */
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #3E3E3E;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}

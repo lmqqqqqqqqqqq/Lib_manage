@@ -20,15 +20,29 @@
                   <Font name="Calibri Bold Italic" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="infoButton" layoutY="166.0" mnemonicParsing="false" onAction="#informationOnAction" prefHeight="70.0" prefWidth="300.0" styleClass="button2" stylesheets="@profile.css" text="Individual information">
+            <Button fx:id="infoButton" alignment="BOTTOM_CENTER" layoutY="169.0" mnemonicParsing="false" onAction="#informationOnAction" prefHeight="67.0" prefWidth="286.0" styleClass="button2" stylesheets="@profile.css" text="Individual information">
                <font>
                   <Font name="Calibri Bold Italic" size="20.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/user-profile.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
-            <Button fx:id="securityButton" layoutX="300.0" layoutY="166.0" mnemonicParsing="false" onAction="#securityOnAction" prefHeight="70.0" prefWidth="300.0" styleClass="button2" stylesheets="@profile.css" text="Account and security">
+            <Button fx:id="securityButton" alignment="BOTTOM_CENTER" layoutX="300.0" layoutY="169.0" mnemonicParsing="false" onAction="#securityOnAction" prefHeight="67.0" prefWidth="286.0" styleClass="button2" stylesheets="@profile.css" text="Account and security">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="53.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/padlock.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </Button>
          </children>
       </AnchorPane>
@@ -46,8 +60,15 @@
                </children>
             </AnchorPane>
             <ImageView fx:id="infoAvatar" fitHeight="180.0" fitWidth="180.0" layoutX="1261.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="changeAvatarButton" layoutX="1292.0" layoutY="502.0" mnemonicParsing="false" onAction="#changeOnAction" prefHeight="37.0" prefWidth="122.0" styleClass="Button1" stylesheets="@profile.css" text="Change avatar" />
-            <Button layoutX="713.0" layoutY="649.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="53.0" prefWidth="180.0" styleClass="Button1" stylesheets="@profile.css" text="Update" textFill="#b1f295" />
+            <Button fx:id="changeAvatarButton" layoutX="1292.0" layoutY="502.0" mnemonicParsing="false" onAction="#changeOnAction" prefHeight="43.0" prefWidth="136.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Change avatar" />
+            <Button alignment="CENTER" layoutX="732.0" layoutY="649.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="59.0" prefWidth="161.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Update" textFill="#b1f295">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/reset.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <AnchorPane layoutX="551.0" layoutY="42.0" prefHeight="69.0" prefWidth="450.0">
                <children>
                   <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
@@ -132,14 +153,9 @@
                   </ImageView>
                </graphic>
             </Label>
-            <ImageView fitHeight="45.0" fitWidth="60.0" layoutX="727.0" layoutY="653.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/finish.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="security" layoutY="227.0" prefHeight="795.0" prefWidth="1708.0" style="-fx-background-color: CCBA84FF;" visible="false">
+      <AnchorPane fx:id="security" layoutY="227.0" prefHeight="802.0" prefWidth="1708.0" style="-fx-background-color: CCBA84FF;" visible="false">
          <children>
             <AnchorPane layoutX="727.0" layoutY="110.0" prefHeight="69.0" prefWidth="450.0">
                <children>
@@ -163,7 +179,7 @@
                   <TextField fx:id="codeField" layoutX="177.0" layoutY="21.0" onKeyReleased="#recoveryReleased" prefHeight="27.0" prefWidth="180.0" stylesheets="@profile.css" />
                </children>
             </AnchorPane>
-            <Button layoutX="859.0" layoutY="612.0" mnemonicParsing="false" onAction="#changePassOnAction" styleClass="Button1" stylesheets="@profile.css" text="Change Password and Recovery Code" />
+            <Button layoutX="859.0" layoutY="612.0" mnemonicParsing="false" onAction="#changePassOnAction" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Change Password and Recovery Code" />
             <Label fx:id="passwordLabel" layoutX="941.0" layoutY="185.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
                <font>
                   <Font name="Calibri Italic" size="15.0" />

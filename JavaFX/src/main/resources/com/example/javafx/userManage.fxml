@@ -54,7 +54,7 @@
     <Label alignment="CENTER_RIGHT" layoutX="563.0" layoutY="244.0" text="SignUp Day :" textAlignment="RIGHT" />
     <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="272.0" prefHeight="17.0" prefWidth="67.0" text="Password :" textAlignment="RIGHT" />
     <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="235.0" prefHeight="17.0" prefWidth="67.0" text="Username :" textAlignment="RIGHT" />
-    <Button fx:id="modeDecision" alignment="CENTER" layoutX="640.0" layoutY="339.0" minHeight="38.0" minWidth="158.0" mnemonicParsing="false" onAction="#delete" prefHeight="65.0" prefWidth="171.0" text="Delete" textAlignment="CENTER">
+    <Button fx:id="modeDecision" alignment="CENTER" layoutX="640.0" layoutY="339.0" minHeight="38.0" minWidth="158.0" mnemonicParsing="false" onAction="#delete" prefHeight="65.0" prefWidth="171.0" style="-fx-background-color: red;" text="Delete" textAlignment="CENTER">
       <font>
          <Font size="36.0" />
       </font></Button>

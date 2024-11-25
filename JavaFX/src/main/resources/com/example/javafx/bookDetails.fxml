@@ -11,14 +11,28 @@
 
 <AnchorPane fx:id="BookDetailsScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1006.0" prefWidth="1707.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.BookDetailsController">
    <children>
-      <AnchorPane fx:id="bookDetailsPane" layoutX="26.0" layoutY="21.0" prefHeight="949.0" prefWidth="1415.0">
+      <AnchorPane fx:id="bookDetailsPane" layoutX="26.0" layoutY="12.0" prefHeight="959.0" prefWidth="1652.0">
          <effect>
             <DropShadow radius="23.4525" width="74.81" />
          </effect>
          <children>
-            <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#e0dd9b" height="949.0" layoutX="2.0" layoutY="1.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" width="1632.0" />
-            <Button fx:id="borrowButton" alignment="CENTER_RIGHT" layoutX="55.0" layoutY="876.0" mnemonicParsing="false" onAction="#borrowOnAction" prefHeight="49.0" prefWidth="158.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Borrow book" />
-            <Button fx:id="returnButton" alignment="CENTER_RIGHT" layoutX="55.0" layoutY="877.0" mnemonicParsing="false" onAction="#returnOnAction" prefHeight="49.0" prefWidth="158.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Return book" />
+            <Rectangle arcHeight="70.0" arcWidth="70.0" fill="#e0dd9b" height="944.0" layoutX="2.0" layoutY="6.0" opacity="0.85" stroke="BLACK" strokeType="INSIDE" width="1650.0" />
+            <Button fx:id="borrowButton" alignment="CENTER_RIGHT" layoutX="55.0" layoutY="876.0" mnemonicParsing="false" onAction="#borrowOnAction" prefHeight="49.0" prefWidth="158.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Borrow book">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/borrow.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="returnButton" alignment="CENTER_RIGHT" layoutX="55.0" layoutY="877.0" mnemonicParsing="false" onAction="#returnOnAction" prefHeight="49.0" prefWidth="158.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Return book" visible="false">
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/returnBook.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             <Label fx:id="borrowday" layoutX="735.0" layoutY="886.0" prefHeight="32.0" prefWidth="145.0" text="Borrow Day :">
                <font>
                   <Font name="Calibri Bold Italic" size="25.0" />
@@ -44,7 +58,7 @@
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="infoPane" layoutX="24.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="859.0" prefWidth="1605.0">
+            <AnchorPane fx:id="infoPane" layoutX="24.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="861.0" prefWidth="1637.0">
                <children>
                   <AnchorPane layoutY="550.0">
                      <children>
@@ -131,7 +145,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Label layoutX="456.0" layoutY="14.0" prefHeight="32.0" prefWidth="254.0" text="Description">
+                  <Label layoutX="488.0" layoutY="14.0" prefHeight="32.0" prefWidth="254.0" text="Description">
                      <font>
                         <Font name="Calibri Bold Italic" size="30.0" />
                      </font>
@@ -142,13 +156,15 @@
                         <Font name="Calibri" size="25.0" />
                      </font>
                   </Label>
-                  <Button layoutY="7.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="49.0" prefWidth="158.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Back" />
-                  <ImageView fitHeight="35.0" fitWidth="51.0" layoutX="16.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/back.png" />
-                     </image>
-                  </ImageView>
-                  <AnchorPane layoutX="456.0" layoutY="64.0" prefHeight="445.0" prefWidth="1128.0">
+                  <Button layoutY="7.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="49.0" prefWidth="158.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Back">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <AnchorPane layoutX="469.0" layoutY="66.0" prefHeight="445.0" prefWidth="1128.0">
                      <children>
                         <Rectangle arcHeight="70.0" arcWidth="70.0" fill="#9a9a97" height="445.0" layoutX="7.0" layoutY="6.0" stroke="#ff8000" strokeType="INSIDE" strokeWidth="3.0" width="1128.0" />
                         <Label fx:id="descriptionText" alignment="TOP_LEFT" layoutX="24.0" layoutY="16.0" prefHeight="420.0" prefWidth="1098.0" wrapText="true">
@@ -161,7 +177,6 @@
                </children>
             </AnchorPane>
             <ImageView fx:id="favourite" fitHeight="62.0" fitWidth="68.0" layoutX="244.0" layoutY="871.0" onMouseClicked="#favouriteOnAction" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="returnIcon" fitHeight="35.0" fitWidth="35.0" layoutX="75.0" layoutY="885.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>

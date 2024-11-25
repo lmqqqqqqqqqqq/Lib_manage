@@ -1,0 +1,173 @@
+/* Background for Advanced Search area */
+.advanced_search_root {
+    -fx-background-color: #2b2b2b;
+    /*-fx-padding: 20;
+    -fx-background-radius: 10;*/
+}
+
+/* General styles for the VBox layout */
+.vbox_layout {
+    -fx-background-color: #f4f4f4;
+}
+
+/* Main container for vertical layout */
+.main_container {
+    -fx-padding: 20;
+    -fx-spacing: 15;
+}
+
+/* TextField styling */
+.text_field {
+    -fx-pref-width: 200;
+    -fx-background-color: #555555;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+    -fx-text-fill: #ffffff;
+}
+
+/* Search button styling */
+.search_button {
+    -fx-background-color: #00aaff;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.search_button:hover {
+    -fx-background-color: #0088cc;
+    -fx-cursor: hand;
+}
+
+/* Label styling */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Genre checkboxes container styling */
+.genre_box {
+    -fx-padding: 5;
+    -fx-border-color: #dddddd;
+    -fx-border-width: 1;
+    -fx-background-radius: 5;
+}
+
+/* Individual CheckBox styling */
+.check_box {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+/* Rest of the existing CSS remains the same */
+
+.clear_button {
+    -fx-background-color: #cccccc;
+    -fx-text-fill: #333333;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.clear_button:hover {
+    -fx-background-color: #aaaaaa;
+    -fx-cursor: hand;
+}
+
+.search_button {
+    -fx-background-color: #00aaff;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 20;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.search_button:hover {
+    -fx-background-color: #0088cc;
+    -fx-cursor: hand;
+}
+
+.back_button {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #333;
+    -fx-font-weight: bold;
+    -fx-padding: 5 10;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-border-color: #ccc;
+}
+
+.title-pane {
+    -fx-background-radius: 30; /* Bo góc nền */
+    -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
+    -fx-border-color: #ffa100; /* Màu viền (nếu muốn) */
+    -fx-background-color: #ababab;
+    -fx-border-width: 4;      /* Độ dày viền */
+    -fx-padding: 10;          /* Khoảng cách bên trong */
+}
+.button {
+    -fx-background-color: #4CAF50; /* Màu nền đen */
+    -fx-text-fill: #FFFFFF; /* Màu chữ trắng */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+}
+
+.Button1 {
+    -fx-background-color: #fb842a; /* Màu nền trắng */
+    -fx-text-fill: #000000; /* Màu chữ đen */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+}
+
+.Button1:hover {
+    -fx-background-color: #fff300; /* Đổi màu nền khi chuột vào  */
+    -fx-text-fill: #ff0034; /* Đổi màu chữ khi chuột vào (màu trắng) */
+    -fx-scale-x: 1.2; /* Phóng to button theo chiều ngang */
+    -fx-scale-y: 1.2; /* Phóng to button theo chiều dọc */
+    -fx-cursor: hand;
+}
+
+
+.bookPane {
+    -fx-border-color: #ff8700;   /* Màu nền */
+    -fx-background-radius:30;      /* Bo góc nền */
+    -fx-border-radius: 30;          /* Bo góc viền */
+    -fx-background-color: rgb(214, 214, 157);      /* Màu viền */
+    -fx-border-width: 3;            /* Độ dày viền */
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-opacity: 0; /* Ẩn thanh dọc */
+    -fx-pref-width: 0px; /* Đảm bảo không chiếm không gian */
+}
+
+.ButtonPane {
+    -fx-background-color: #fb842a; /* Màu nền trắng */
+    -fx-text-fill: #000000; /* Màu chữ đen */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+    -fx-cursor: hand;
+    -fx-border-color: #3e3d3d;
+    -fx-border-width: 3;
+}
+
+.ButtonPane:hover {
+    -fx-scale-x: 1.2; /* Phóng to button theo chiều ngang */
+    -fx-scale-y: 1.2; /* Phóng to button theo chiều dọc */
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-border-color: #000000;
+}
