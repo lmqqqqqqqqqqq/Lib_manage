@@ -40,10 +40,21 @@
     -fx-padding: 10;
     -fx-background-color:   #a6a5a5;
 }
-.resultBox .scroll-bar {
+/*.resultBox .scroll-bar {*/
+/*    -fx-opacity: 0; !* Làm ẩn scrollbar *!*/
+/*}*/
+
+.resTOP {
+    -fx-background-radius: 30; /* Bo góc nền */
+    -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
+    -fx-border-color: #FFB433; /* Màu viền (nếu muốn) */
+    -fx-border-width: 4px 4px 4px 4px;      /* Độ dày viền */
+    -fx-padding: 10;
+    -fx-background-color:   #a6a5a5;
+}
+.resTOP .scroll-bar {
     -fx-opacity: 0; /* Làm ẩn scrollbar */
 }
-
 .splitPane {
     -fx-background-color: transparent;
     -fx-border-width: 0;
