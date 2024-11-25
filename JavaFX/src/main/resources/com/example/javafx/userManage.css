@@ -28,7 +28,6 @@
 /* Text fields */
 .text-field {
     -fx-font-size: 14px;
-    -fx-background-color: #FFFFFF;
     -fx-border-color: #CCCCCC;
     -fx-border-radius: 5px;
     -fx-padding: 5px;
