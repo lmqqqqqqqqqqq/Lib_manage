@@ -9,18 +9,10 @@
 }
 
 .left_but {
-    -fx-background-color: rgba(255, 255, 255, 0);
+    -fx-background-color: #575656;
 }
 .anchor-pane {
     -fx-background-color: #2b2b2b;
-}
-
-.left_but:hover{
-    -fx-background-radius: 30;
-    -fx-border-radius: 30;
-    -fx-background-color: rgb(255, 115, 0);
-    -fx-border-color: #000000;
-    -fx-border-width: 3;
 }
 
 .mainContent_pane {
@@ -37,10 +29,14 @@
 .resultBox {
     -fx-background-radius: 30; /* Bo góc nền */
     -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
-    -fx-border-color: #ffa100; /* Màu viền (nếu muốn) */
-    -fx-border-width: 4px 4px 4px 4px;      /* Độ dày viền */
+    -fx-border-color: #23ff00; /* Màu viền (nếu muốn) */
+    -fx-border-width: 3;      /* Độ dày viền */
     -fx-padding: 10;
-    -fx-background-color: #a6a5a5;
+    -fx-background-color:  #595858;
+}
+
+.resultBox .scroll-bar {
+    -fx-opacity: 0; /* Làm ẩn scrollbar */
 }
 
 .splitPane {
@@ -69,18 +65,28 @@
     -fx-background-color: #3b3b3b; /* Slightly lighter dark background when focused */
 }
 
-/* Placeholder text in dark mode */
-.text-field:prompt-text {
-    -fx-text-fill: #aaaaaa; /* Light gray placeholder text */
-}
-
-.text-field:focused:prompt-text {
-    -fx-text-fill: #888888; /* Gray placeholder text when focused */
-}
-
 /* Apply dark background and white text */
 .text-area {
     -fx-background-color: black;
     -fx-text-fill: white;
     -fx-border-color: transparent; /* Optional: removes the border */
+}
+
+.ButtonPane {
+    -fx-background-color: #000000; /* Màu nền trắng */
+    -fx-text-fill: #ffffff; /* Màu chữ đen */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+    -fx-cursor: hand;
+    -fx-border-color: #23ff00;
+    -fx-border-width: 3;
+}
+
+.ButtonPane:hover {
+    -fx-scale-x: 1.2; /* Phóng to button theo chiều ngang */
+    -fx-scale-y: 1.2; /* Phóng to button theo chiều dọc */
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-border-color: #000000;
 }

@@ -64,7 +64,6 @@ public class SceneSwitcher {
         }
         else {
             loader = new FXMLLoader(SceneSwitcher.class.getResource("Dark" + string));
-
         }
         Parent page = loader.load();
 

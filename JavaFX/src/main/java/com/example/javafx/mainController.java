@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -52,6 +53,8 @@ public class mainController {
     private Label favouriteAmount;
     @FXML
     private AnchorPane waitingScene;
+    @FXML
+    private VBox boader;
     User user = LoginController.user;
 
     @FXML private CheckBox darkModeBox;
@@ -299,14 +302,25 @@ public class mainController {
         Scene scene = darkModeBox.getScene();
         if (darkModeBox.isSelected()) {
             managerBar.setStyle("-fx-background-color: #2b2b2b;");
+            intro.setStyle("-fx-background-color: #2b2b2b;" +
+                            " -fx-text-fill: white;");
+            boader.setStyle("-fx-background-color: #403f3f;" +
+                            "-fx-border-color: #FFFFFF;" +
+                            "-fx-border-width: 3; ");
+
         } else {
-            managerBar.setStyle("-fx-background-color: #FFFFFF;");
+            managerBar.setStyle("-fx-background-color: #efc076;");
+            intro.setStyle("-fx-background-color: #efc076;");
+            boader.setStyle("-fx-background-color:  #ababab;" +
+                    "-fx-border-color: #000000;" +
+                    "-fx-border-width: 3; ");
         }
         if (scene != null) {
             String darkModeStyle = getClass().getResource("darkMainScene.css").toExternalForm();
             if (darkMode) {
                 if (!scene.getStylesheets().contains(darkModeStyle)) {
                     scene.getStylesheets().add(darkModeStyle);
+
                 }
             } else {
                 scene.getStylesheets().remove(darkModeStyle);

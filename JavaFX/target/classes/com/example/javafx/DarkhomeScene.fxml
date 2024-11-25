@@ -17,29 +17,30 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="homeScene" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1007.0" prefWidth="1706.0" stylesheets="@darkHomeScene.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HomeController">
+<AnchorPane fx:id="homeScene" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="1706.0" stylesheets="@darkHomeScene.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HomeController">
     <children>
         <AnchorPane fx:id="suggestPane" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="944.0" prefWidth="1706.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="56.0">
             <children>
-                <HBox layoutX="39.0" layoutY="-7.0" prefHeight="277.0" prefWidth="1664.0" AnchorPane.bottomAnchor="680.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-7.0">
+                <HBox layoutX="39.0" layoutY="-6.0" prefHeight="253.0" prefWidth="1689.0" AnchorPane.bottomAnchor="757.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-6.0">
                     <children>
-                        <ScrollPane fitToHeight="true" prefHeight="277.0" prefWidth="1836.0" styleClass="resultBox" stylesheets="@mainScene.css" vbarPolicy="NEVER">
+                        <ScrollPane fitToHeight="true" prefHeight="241.0" prefWidth="1207.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
                             <content>
-                                <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="264.0" prefWidth="1161.0" spacing="20.0" style="-fx-background-color: #a6a5a5;">
+                                <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="224.0" prefWidth="1181.0" spacing="20.0" style="-fx-background-color: #595858;">
                                     <padding>
                                         <Insets left="20.0" right="20.0" top="15.0" />
-                                    </padding></HBox>
+                                    </padding>
+                        </HBox>
                             </content>
                         </ScrollPane>
-                        <AnchorPane prefHeight="260.0" prefWidth="660.0" />
+                        <AnchorPane prefHeight="287.0" prefWidth="0.0" />
                         <AnchorPane>
                             <children>
-                                <ImageView fx:id="wordleImage" fitHeight="272.0" fitWidth="482.0" pickOnBounds="true">
+                                <ImageView fx:id="wordleImage" fitHeight="240.0" fitWidth="431.0" pickOnBounds="true">
                                     <image>
-                                        <Image url="@../image/logo_wordle.jpg" />
+                                        <Image url="@../image/wordle_darkScene.png" />
                                     </image>
                                 </ImageView>
-                                <Label fx:id="playLabel" layoutX="81.0" layoutY="198.0" onMouseClicked="#playClick" onMouseEntered="#playEntered" onMouseExited="#playExited" prefHeight="55.0" prefWidth="160.0" text="Play Now" textFill="#4caf50">
+                                <Label fx:id="playLabel" layoutX="67.0" layoutY="176.0" onMouseClicked="#playClick" onMouseEntered="#playEntered" onMouseExited="#playExited" prefHeight="55.0" prefWidth="160.0" text="Play Now" textFill="#4caf50">
                                     <font>
                                         <Font name="Calibri Bold Italic" size="40.0" />
                                     </font>
@@ -48,13 +49,13 @@
                         </AnchorPane>
                     </children>
                 </HBox>
-                <SplitPane dividerPositions="0.7536674816625917" layoutX="39.0" layoutY="285.0" prefHeight="665.0" prefWidth="1664.0" styleClass="resultBox" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="285.0">
+                <SplitPane dividerPositions="0.7599761762954139" layoutX="39.0" layoutY="260.0" prefHeight="655.0" prefWidth="1633.0" styleClass="resultBoxDark" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="260.0">
                     <items>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="676.0" prefWidth="1295.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="680.0" prefWidth="1230.0">
                             <children>
-                                <VBox layoutY="3.0" prefHeight="341.0" prefWidth="1257.0" AnchorPane.bottomAnchor="332.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="3.0">
+                                <VBox layoutY="3.0" prefHeight="317.0" prefWidth="1231.0" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="3.0">
                                     <children>
-                                        <Label alignment="BASELINE_LEFT" prefHeight="44.0" prefWidth="1296.0" text="Trending">
+                                        <Label alignment="BASELINE_LEFT" prefHeight="44.0" prefWidth="1296.0" text="Trending" textFill="WHITE">
                                             <padding>
                                                 <Insets left="20.0" />
                                             </padding>
@@ -62,19 +63,20 @@
                                                 <Font name="Calibri Bold Italic" size="25.0" />
                                             </font>
                                         </Label>
-                                        <ScrollPane prefHeight="304.0" prefWidth="1289.0" stylesheets="@mainScene.css" vbarPolicy="NEVER">
+                                        <ScrollPane prefHeight="265.0" prefWidth="1231.0" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                                             <content>
-                                                <HBox fx:id="borowedPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="289.0" prefWidth="1293.0" spacing="20.0" style="-fx-background-color: #a6a5a5;" stylesheets="@mainScene.css">
+                                                <HBox fx:id="borowedPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="247.0" prefWidth="1230.0" spacing="20.0" style="-fx-background-color: #595858;" stylesheets="@mainScene.css">
                                                     <padding>
                                                         <Insets left="20.0" right="20.0" top="15.0" />
-                                                    </padding></HBox>
+                                                    </padding>
+                                    </HBox>
                                             </content>
                                         </ScrollPane>
                                     </children>
                                 </VBox>
-                                <VBox layoutY="349.0" prefHeight="315.0" prefWidth="1295.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="349.0">
+                                <VBox layoutY="329.0" prefHeight="317.0" prefWidth="1230.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="329.0">
                                     <children>
-                                        <Label alignment="BASELINE_LEFT" prefHeight="52.0" prefWidth="1295.0" text="New books">
+                                        <Label alignment="BASELINE_LEFT" prefHeight="51.0" prefWidth="1230.0" text="New books" textFill="WHITE">
                                             <padding>
                                                 <Insets left="20.0" />
                                             </padding>
@@ -82,25 +84,26 @@
                                                 <Font name="Calibri Bold Italic" size="25.0" />
                                             </font>
                                         </Label>
-                                        <ScrollPane vbarPolicy="NEVER">
+                                        <ScrollPane prefHeight="248.0" prefWidth="1230.0" vbarPolicy="NEVER">
                                             <content>
-                                                <HBox fx:id="newPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="277.0" prefWidth="1295.0" spacing="20.0" style="-fx-background-color: #a6a5a5;" stylesheets="@mainScene.css">
+                                                <HBox fx:id="newPane" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="276.0" prefWidth="1230.0" spacing="20.0" style="-fx-background-color: #595858;" stylesheets="@mainScene.css">
                                                     <padding>
                                                         <Insets left="20.0" right="20.0" top="15.0" />
-                                                    </padding></HBox>
+                                                    </padding>
+                                    </HBox>
                                             </content>
                                         </ScrollPane>
                                     </children>
                                 </VBox>
                             </children>
                         </AnchorPane>
-                        <AnchorPane minHeight="160.0" minWidth="400.0" prefHeight="305.0" prefWidth="400.0">
+                        <AnchorPane minHeight="160.0" minWidth="357.0" prefHeight="696.0" prefWidth="357.0">
                             <children>
                                 <AnchorPane prefHeight="44.0" prefWidth="400.0" />
                                 <ComboBox fx:id="fontComboBox" layoutY="8.0" onAction="#changeFont" prefWidth="150.0" />
                                 <ComboBox fx:id="fontSizeComboBox" layoutX="150.0" layoutY="8.0" onAction="#changeFont" prefHeight="25.0" prefWidth="55.0" />
                                 <ColorPicker fx:id="colorPicker" layoutX="205.0" layoutY="8.0" onAction="#changeFont" />
-                                <TextArea fx:id="textArea" layoutY="41.0" prefHeight="598.0" prefWidth="401.0" styleClass="text-area" wrapText="true" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="41.0" />
+                                <TextArea fx:id="textArea" layoutX="-6.0" layoutY="41.0" prefHeight="606.0" prefWidth="394.0" styleClass="text-area" wrapText="true" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="41.0" />
                             </children>
                         </AnchorPane>
                     </items>
@@ -108,14 +111,21 @@
             </children>
         </AnchorPane>
         <TextField fx:id="searchPaneInMain" layoutX="582.0" layoutY="10.0" onKeyTyped="#handleKey" onMouseClicked="#showSuggest" prefHeight="27.0" prefWidth="548.0" promptText="Search for books" styleClass="text-field" />
-        <Button layoutX="1155.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchClick" prefHeight="27.0" prefWidth="95.0" text="Search" />
+        <Button layoutX="1155.0" layoutY="2.0" mnemonicParsing="false" onAction="#searchClick" prefHeight="27.0" prefWidth="110.0" styleClass="ButtonPane" stylesheets="@darkMainScene.css" text="Search">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/darkSearch.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
         <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="494.0" textFill="#d00000">
             <font>
                 <Font name="Calibri Bold Italic" size="20.0" />
             </font>
         </Label>
-        <ListView fx:id="suggest" layoutX="583.0" layoutY="36.0" prefHeight="469.0" prefWidth="548.0" styleClass="text-area" stylesheets="@mainScene.css" />
-        <Label fx:id="error" layoutX="585.0" layoutY="39.0" text="Label" />
+        <ListView fx:id="suggest" layoutX="583.0" layoutY="36.0" prefHeight="469.0" prefWidth="548.0" styleClass="text-area" stylesheets="@mainScene.css" visible="false" />
+        <Label fx:id="error" layoutX="585.0" layoutY="39.0" text="Label" visible="false" />
       <AnchorPane fx:id="waitingScene" opacity="0.73" prefHeight="1033.0" prefWidth="1731.0" style="-fx-background-color: #FFFFFF;" visible="false">
          <children>
             <ImageView fitHeight="201.0" fitWidth="229.0" layoutX="759.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">

@@ -15,7 +15,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.mainController">
     <left>
-        <VBox alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="232.0" style="-fx-background-color: #ababab; -fx-border-color: #000000; -fx-border-width: 3;" BorderPane.alignment="CENTER">
+        <VBox fx:id="boader" alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="232.0" style="-fx-background-color: #ababab; -fx-border-color: #000000; -fx-border-width: 3;" BorderPane.alignment="CENTER">
             <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileOnClick" prefHeight="345.0" prefWidth="216.0" styleClass="left_but" stylesheets="@mainScene.css" text="Welcome">
                 <cursor>
                     <Cursor fx:constant="HAND" />
@@ -75,10 +75,10 @@
             <AnchorPane fx:id="ContentAnchorPane" layoutY="2.0" prefHeight="1000.0" prefWidth="1706.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
             <AnchorPane fx:id="manager" layoutX="9.0" layoutY="1.0" prefHeight="1023.0" prefWidth="1693.0" stylesheets="@profile.css">
                 <children>
-               <AnchorPane fx:id="intro" layoutY="-7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1009.0" prefWidth="323.0" styleClass="anchor-pan" stylesheets="@profile.css" visible="false">
+               <AnchorPane fx:id="intro" layoutY="-7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1009.0" prefWidth="323.0" styleClass="anchor-pan" stylesheets="@profile.css">
                   <children>
                      <ImageView fx:id="introAvatar" fitHeight="230.0" fitWidth="230.0" layoutX="53.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
-                     <Label fx:id="name" layoutX="105.0" layoutY="341.0" prefHeight="50.0" prefWidth="214.0" text="Username" textAlignment="CENTER">
+                     <Label fx:id="name" alignment="CENTER" layoutX="44.0" layoutY="305.0" prefHeight="50.0" prefWidth="236.0" text="Username" textAlignment="CENTER" textFill="RED">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
@@ -107,34 +107,34 @@
                            </ImageView>
                         </graphic>
                      </Label>
-                     <Label fx:id="roleLabel" layoutX="87.0" layoutY="384.0" prefHeight="50.0" prefWidth="148.0" textAlignment="CENTER">
+                     <Label fx:id="roleLabel" alignment="CENTER" layoutX="94.0" layoutY="355.0" prefHeight="50.0" prefWidth="148.0" textAlignment="CENTER" textFill="RED">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
                      </Label>
-                     <Label fx:id="name1" layoutX="5.0" layoutY="472.0" prefHeight="50.0" prefWidth="197.0" text="Borrowed Books :" textAlignment="CENTER">
+                     <Label fx:id="name1" layoutX="7.0" layoutY="472.0" prefHeight="50.0" prefWidth="197.0" text="Borrowed Books :" textAlignment="CENTER" textFill="RED">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
                      </Label>
-                     <Label fx:id="name2" layoutX="9.0" layoutY="548.0" prefHeight="50.0" prefWidth="193.0" text="Favourite Books :" textAlignment="CENTER">
+                     <Label fx:id="name2" layoutX="9.0" layoutY="548.0" prefHeight="50.0" prefWidth="193.0" text="Favourite Books :" textAlignment="CENTER" textFill="RED">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
                      </Label>
-                     <Label fx:id="borrowAmount" layoutX="195.0" layoutY="472.0" prefHeight="50.0" prefWidth="122.0" textAlignment="CENTER">
+                     <Label fx:id="borrowAmount" layoutX="195.0" layoutY="472.0" prefHeight="50.0" prefWidth="122.0" textAlignment="CENTER" textFill="RED">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
                      </Label>
-                     <Label fx:id="favouriteAmount" layoutX="203.0" layoutY="548.0" prefHeight="50.0" prefWidth="110.0" textAlignment="CENTER">
+                     <Label fx:id="favouriteAmount" layoutX="203.0" layoutY="548.0" prefHeight="50.0" prefWidth="110.0" textAlignment="CENTER" textFill="RED">
                         <font>
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
                      </Label>
                   </children>
                </AnchorPane>
-                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1007.0" prefWidth="327.0" styleClass="anchor-pan">
+                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1007.0" prefWidth="327.0" styleClass="anchor-pan" stylesheets="@profile.css" visible="false">
                         <children>
                             <VBox layoutX="2.0" layoutY="13.0" prefHeight="993.0" prefWidth="315.0">
                                 <children>

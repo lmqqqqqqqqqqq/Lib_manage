@@ -28,9 +28,20 @@
     -fx-background-radius: 30; /* Bo góc nền */
     -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
     -fx-border-color: #FFB433; /* Màu viền (nếu muốn) */
+    -fx-border-width: 4;      /* Độ dày viền */
+    -fx-background-color: #a6a5a5;
+}
+
+.resultBox {
+    -fx-background-radius: 30; /* Bo góc nền */
+    -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
+    -fx-border-color: #FFB433; /* Màu viền (nếu muốn) */
     -fx-border-width: 4px 4px 4px 4px;      /* Độ dày viền */
     -fx-padding: 10;
-    -fx-background-color: #a6a5a5;
+    -fx-background-color:   #a6a5a5;
+}
+.resultBox .scroll-bar {
+    -fx-opacity: 0; /* Làm ẩn scrollbar */
 }
 
 .splitPane {
@@ -42,4 +53,15 @@
     -fx-border-color: #a19e9b; /* Màu viền (nếu muốn) */
     -fx-border-width: 0px 4px 4px 4px;      /* Độ dày viền */
     -fx-padding: 10;
+}
+.resultBoxDark {
+    -fx-background-radius: 30; /* Bo góc nền */
+    -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
+    -fx-border-color: #21ff00; /* Màu viền (nếu muốn) */
+    -fx-border-width: 4;      /* Độ dày viền */
+    -fx-background-color: #000000;
+}
+
+.resultBoxDark.scroll-bar {
+    -fx-opacity: 0;
 }

@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.UsermanageBybook">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="1000.0" prefWidth="1705.0">
+      <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="1000.0" prefWidth="1705.0">
          <children>
             <TableView fx:id="tableView" layoutX="180.0" layoutY="274.0" prefHeight="404.0" prefWidth="1238.0" styleClass="title-pane" stylesheets="@advancedSearch.css">
                <columns>
@@ -30,8 +30,8 @@
                         <Font name="Calibri Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="bookId" layoutX="142.0" layoutY="44.0" prefHeight="30.0" prefWidth="192.0" />
-                  <Button layoutX="399.0" layoutY="37.0" mnemonicParsing="false" onAction="#findingOnAction" prefHeight="45.0" prefWidth="123.0" text="Finding">
+                  <TextField fx:id="bookId" layoutX="142.0" layoutY="44.0" prefHeight="30.0" prefWidth="192.0" stylesheets="@profile.css" />
+                  <Button layoutX="399.0" layoutY="37.0" mnemonicParsing="false" onAction="#findingOnAction" prefHeight="45.0" prefWidth="123.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Finding">
                      <font>
                         <Font name="Calibri Bold Italic" size="20.0" />
                      </font>
