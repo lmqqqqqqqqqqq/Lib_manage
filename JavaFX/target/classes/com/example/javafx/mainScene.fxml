@@ -67,6 +67,7 @@
                     </ImageView>
                 </graphic>
             </Button>
+         <CheckBox fx:id="darkModeBox" mnemonicParsing="false" onAction="#setDarkMode" onMouseClicked="#reloadCurrentPage" prefHeight="109.0" prefWidth="127.0" text="Dark mode" />
         </VBox>
     </left>
     <center>
@@ -133,7 +134,7 @@
                      </Label>
                   </children>
                </AnchorPane>
-                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1007.0" prefWidth="327.0" styleClass="anchor-pan" stylesheets="@profile.css">
+                    <AnchorPane fx:id="managerBar" layoutX="-3.0" layoutY="-14.0" prefHeight="1007.0" prefWidth="327.0" styleClass="anchor-pan" stylesheets="@profile.css" visible="false">
                         <children>
                             <VBox layoutX="2.0" layoutY="13.0" prefHeight="993.0" prefWidth="315.0">
                                 <children>
@@ -180,7 +181,6 @@
                                  <Font name="Calibri Bold Italic" size="30.0" />
                               </font>
                                     </Button>
-                           <CheckBox fx:id="darkModeBox" mnemonicParsing="false" onAction="#setDarkMode" onMouseClicked="#reloadCurrentPage" prefHeight="109.0" prefWidth="127.0" text="Dark mode" />
                                 </children>
                             </VBox>
                         </children>
