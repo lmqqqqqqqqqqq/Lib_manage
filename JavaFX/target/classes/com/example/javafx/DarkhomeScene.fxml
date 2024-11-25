@@ -116,5 +116,14 @@
         </Label>
         <ListView fx:id="suggest" layoutX="583.0" layoutY="36.0" prefHeight="469.0" prefWidth="548.0" styleClass="text-area" stylesheets="@mainScene.css" />
         <Label fx:id="error" layoutX="585.0" layoutY="39.0" text="Label" />
+      <AnchorPane fx:id="waitingScene" opacity="0.73" prefHeight="1033.0" prefWidth="1731.0" style="-fx-background-color: #FFFFFF;" visible="false">
+         <children>
+            <ImageView fitHeight="201.0" fitWidth="229.0" layoutX="759.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/loading.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

@@ -57,7 +57,6 @@ public class HomeController {
     private AnchorPane waitingScene;
     User user = LoginController.user;
 
-
     public void initialize() throws Exception {
         waitingScene.setVisible(true);
         PauseTransition pause = new PauseTransition(Duration.seconds(0.1));
@@ -107,13 +106,21 @@ public class HomeController {
         String key = searchPaneInMain.getText();
         if (key != null && !key.equals("")) {
             String query = "SELECT * FROM books WHERE author LIKE ? OR TITLE LIKE ? LIMIT 10";
-            List<Books> result = AdvancedSearch.search(query, List.of("%" + key + "%", "%" + key + "%"), Connect.connect());
-            if (result.isEmpty()) {
-                error.setVisible(true);
-                error.setText("No results found");
-            } else {
-                showLoad.intoBox(res, result);
-            }
+            Task<List<Books>> task = MultiThread.keyType(query, key);
+            task.setOnSucceeded(event -> {
+                try {
+                    List<Books> result = task.getValue();
+                    if (result.isEmpty()) {
+                        error.setVisible(true);
+                        error.setText("No results found");
+                    } else {
+                        showLoad.intoBox(res, result);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            new Thread(task).start();
         } else {
             error.setVisible(true);
             error.setStyle("-fx-text-fill: red");
@@ -138,7 +145,7 @@ public class HomeController {
                 List<Books> trendingBooks = task.getValue();
                 showLoad.intoBox(borowedPane, trendingBooks);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         });
         new Thread(task).start();
@@ -189,7 +196,6 @@ public class HomeController {
             suggest.getItems().setAll(result);
             setSuggestCell();
         });
-        // if errror
         task.setOnFailed(event -> {
             Throwable exception = task.getException();
             exception.printStackTrace();
@@ -214,7 +220,6 @@ public class HomeController {
                     bookImage.setFitWidth(50);
                     bookImage.setFitHeight(50);
                     bookImage.setPreserveRatio(true);
-
                     VBox textContainer = new VBox(5);
                     Label bookTitle = new Label(book.getTitle());
                     bookTitle.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");

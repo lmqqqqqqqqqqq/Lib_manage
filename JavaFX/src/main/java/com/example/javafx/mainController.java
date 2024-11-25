@@ -100,7 +100,6 @@ public class mainController {
         outSideManagerClick();
         darkMode.addListener((obs, oldMode, newMode) -> {
             try {
-                // Reload the current page when darkMode changes
                 String current = SceneSwitcher.getCurrentPageName();
                 reloadCurrentPage();
             } catch (IOException e) {
@@ -141,9 +140,6 @@ public class mainController {
             searchButton.setStyle(null);
             managerButton.setStyle(null);
             profileButton.setStyle(null);
-//            LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
-//            nameLabel.setText(user.getFirstname() + " " + user.getLastname());
-
     }
     public void yourBookOnClick() throws IOException {
         currentPage = "yourBookScene.fxml";
@@ -317,14 +313,11 @@ public class mainController {
             }
         }
     }
-
     public void reloadCurrentPage() throws IOException {
         if (currentPage == null || currentPage.isEmpty()) {
             return;
         }
-
         FXMLLoader loader;
-
         if (darkMode.get()) {
             loader = new FXMLLoader(getClass().getResource("Dark" + currentPage));
         } else {
@@ -333,9 +326,5 @@ public class mainController {
         Parent page = loader.load();
         ContentAnchorPane.getChildren().clear();
         ContentAnchorPane.getChildren().add(page);
-    }
-
-    public void updatePage() throws IOException {
-        reloadCurrentPage();
     }
 }
