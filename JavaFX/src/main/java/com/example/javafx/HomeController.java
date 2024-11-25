@@ -57,7 +57,6 @@ public class HomeController {
     private AnchorPane waitingScene;
     User user = LoginController.user;
 
-
     public void initialize() throws Exception {
         waitingScene.setVisible(true);
         PauseTransition pause = new PauseTransition(Duration.seconds(0.1));
@@ -189,7 +188,6 @@ public class HomeController {
             suggest.getItems().setAll(result);
             setSuggestCell();
         });
-        // if errror
         task.setOnFailed(event -> {
             Throwable exception = task.getException();
             exception.printStackTrace();
@@ -214,7 +212,6 @@ public class HomeController {
                     bookImage.setFitWidth(50);
                     bookImage.setFitHeight(50);
                     bookImage.setPreserveRatio(true);
-
                     VBox textContainer = new VBox(5);
                     Label bookTitle = new Label(book.getTitle());
                     bookTitle.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
