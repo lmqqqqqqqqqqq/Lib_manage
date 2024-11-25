@@ -218,6 +218,7 @@ public class mainController {
                 "    -fx-background-color: #FFB433;;\n" +
                 "    -fx-border-color: #000000;" +
                 "    -fx-border-width: 3; ");
+        profileButton.setStyle(null);
         LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 

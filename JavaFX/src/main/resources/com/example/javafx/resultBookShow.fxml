@@ -39,7 +39,7 @@
             <Font name="Calibri Bold Italic" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="rating" layoutX="246.0" layoutY="128.0" prefHeight="28.0" prefWidth="152.0">
+      <Label fx:id="rating" layoutX="246.0" layoutY="128.0" prefHeight="28.0" prefWidth="169.0">
          <font>
             <Font name="Calibri Bold Italic" size="20.0" />
          </font>
