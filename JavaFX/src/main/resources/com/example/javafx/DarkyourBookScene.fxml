@@ -29,7 +29,7 @@
         </ScrollPane>
         <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="690.0" prefHeight="276.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
             <content>
-                <HBox fx:id="nearestBook" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="209.0" prefWidth="1477.0" spacing="20.0" style="-fx-background-color: #595858;" />
+                <HBox fx:id="nearestBook" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="237.0" prefWidth="1502.0" spacing="20.0" style="-fx-background-color: #595858;" />
             </content>
         </ScrollPane>
         <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="333.0" prefHeight="32.0" prefWidth="1525.0" text="Favorite books" textFill="WHITE">

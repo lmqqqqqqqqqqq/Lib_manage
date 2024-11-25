@@ -29,8 +29,8 @@
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="userId" layoutX="142.0" layoutY="44.0" prefHeight="30.0" prefWidth="192.0" />
-            <Button layoutX="399.0" layoutY="37.0" mnemonicParsing="false" onAction="#findingOnAction" prefHeight="45.0" prefWidth="123.0" text="Finding">
+            <TextField fx:id="userId" layoutX="142.0" layoutY="44.0" prefHeight="30.0" prefWidth="192.0" stylesheets="@profile.css" />
+            <Button layoutX="399.0" layoutY="37.0" mnemonicParsing="false" onAction="#findingOnAction" prefHeight="45.0" prefWidth="123.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Finding">
                <font>
                   <Font name="Calibri Bold Italic" size="20.0" />
                </font>
