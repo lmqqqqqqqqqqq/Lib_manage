@@ -40,6 +40,9 @@ public class LoginController {
      */
     DatabaseConnect databaseConnect = new DatabaseConnect();
 
+//    public void initialize() {
+//        pane.requestFocus();
+//    }
     /**
      * check if the login button being clicked and move to main's interface.
      */
