@@ -107,13 +107,21 @@ public class HomeController {
         String key = searchPaneInMain.getText();
         if (key != null && !key.equals("")) {
             String query = "SELECT * FROM books WHERE author LIKE ? OR TITLE LIKE ? LIMIT 10";
-            List<Books> result = AdvancedSearch.search(query, List.of("%" + key + "%", "%" + key + "%"), Connect.connect());
-            if (result.isEmpty()) {
-                error.setVisible(true);
-                error.setText("No results found");
-            } else {
-                showLoad.intoBox(res, result);
-            }
+            Task<List<Books>> task = MultiThread.keyType(query, key);
+            task.setOnSucceeded(event -> {
+                try {
+                    List<Books> result = task.getValue();
+                    if (result.isEmpty()) {
+                        error.setVisible(true);
+                        error.setText("No results found");
+                    } else {
+                        showLoad.intoBox(res, result);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+            new Thread(task).start();
         } else {
             error.setVisible(true);
             error.setStyle("-fx-text-fill: red");
@@ -138,7 +146,7 @@ public class HomeController {
                 List<Books> trendingBooks = task.getValue();
                 showLoad.intoBox(borowedPane, trendingBooks);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         });
         new Thread(task).start();

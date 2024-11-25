@@ -23,9 +23,9 @@
          <children>
             <HBox layoutX="39.0" layoutY="-3.0" prefHeight="273.0" prefWidth="1689.0" AnchorPane.bottomAnchor="711.0" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="-3.0">
                <children>
-                  <ScrollPane fitToHeight="true" prefHeight="272.0" prefWidth="1816.0" styleClass="resultBox" stylesheets="@mainScene.css" vbarPolicy="NEVER">
+                  <ScrollPane prefHeight="272.0" prefWidth="1830.0" styleClass="resultBox" stylesheets="@mainScene.css" vbarPolicy="NEVER">
                      <content>
-                        <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="261.0" prefWidth="1161.0" spacing="20.0" style="-fx-background-color: #a6a5a5;">
+                        <HBox fx:id="res" nodeOrientation="LEFT_TO_RIGHT" prefHeight="263.0" prefWidth="1178.0" spacing="20.0" style="-fx-background-color: #a6a5a5;">
                            <padding>
                               <Insets left="20.0" right="20.0" top="15.0" />
                            </padding></HBox>
