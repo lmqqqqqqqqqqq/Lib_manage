@@ -17,7 +17,6 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class UserManage {
-    @FXML private Pane separator;
     DatabaseConnect Connect = new DatabaseConnect();
     @FXML private TableView<User> userTableView;
     ObservableList<User> users = FXCollections.observableArrayList();

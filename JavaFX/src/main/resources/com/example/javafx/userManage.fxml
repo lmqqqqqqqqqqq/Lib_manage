@@ -46,7 +46,7 @@
     </Label>
     <ImageView fx:id="avatar" fitHeight="233.0" fitWidth="200.0" layoutX="61.0" layoutY="141.0" pickOnBounds="true" />
     <TextField fx:id="avatarLink" editable="false" layoutX="48.0" layoutY="444.0" prefHeight="25.0" prefWidth="226.0" promptText="Avatar URL" visible="false" />
-    <Pane fx:id="separator" layoutY="79.0" prefHeight="4.0" prefWidth="1705.0" />
+    <Pane layoutY="-2.0" prefHeight="192.0" prefWidth="1705.0" styleClass="decor" stylesheets="@userManage.css" />
     <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="197.0" prefHeight="17.0" prefWidth="67.0" text="ID :" textAlignment="RIGHT" />
     <Label alignment="CENTER_RIGHT" layoutX="579.0" layoutY="293.0" text="Recovery :" textAlignment="RIGHT" />
     <Label layoutX="595.0" layoutY="197.0" text="Genre :" />
@@ -59,12 +59,12 @@
          <Font size="36.0" />
       </font></Button>
    <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="305.0" prefHeight="17.0" prefWidth="67.0" text="Saved :" textAlignment="RIGHT" />
-   <Label layoutX="690.0" layoutY="192.0" text="/">
+   <Label layoutX="690.0" layoutY="189.0" prefHeight="39.0" prefWidth="11.0" text="/">
       <font>
          <Font size="18.0" />
       </font>
    </Label>
-   <Label layoutX="754.0" layoutY="192.0" text="/">
+   <Label layoutX="753.0" layoutY="192.0" prefHeight="32.0" prefWidth="7.0" text="/">
       <font>
          <Font size="18.0" />
       </font>
