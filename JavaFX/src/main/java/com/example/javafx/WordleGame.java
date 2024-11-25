@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class WordleGame {
     private final String targetWord;
-    private final int maxAttempts = 6;
+    private final int maxAttempts = 8;
     private int attempts;
     private List<String> guesses;
     private static final List<String> wordList = new ArrayList<>();

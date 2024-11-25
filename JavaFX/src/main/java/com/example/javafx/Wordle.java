@@ -78,7 +78,7 @@ public class Wordle {
             streakScore = 0;
             updateStreakScoreLabel();
             updateStreakHighScore();
-            messageLabel.setText("Game Over! You've used all attempts.");
+            messageLabel.setText("Game Over! You've used all attempts. The word was " + game.getTargetWord());
             submitButton.setDisable(true);
         } else {
             messageLabel.setText("Try again.");
