@@ -15,10 +15,10 @@ Nhóm
 2. Lê Minh Quân - 
 3. Bùi Mạnh Nam -
 ## Mô tả <a name="author"></a>
-## UML diagram <a name="author"></a>
-## Hướng dẫn cài đặt <a name="author"></a>
-## Sử dụng <a name="author"></a>
-## Những phát triển trong tương lai <a name="author"></a>
-## Đóng góp <a name="author"></a>
-## Trạng thái dự án <a name="author"></a>
-## Ghi chú <a name="author"></a>
+## UML diagram <a name="uml"></a>
+## Hướng dẫn cài đặt <a name="install"></a>
+## Sử dụng <a name="usage"></a>
+## Những phát triển trong tương lai <a name="improvemnets"></a>
+## Đóng góp <a name="contribute"></a>
+## Trạng thái dự án <a name="status"></a>
+## Ghi chú <a name="note"></a>
