@@ -22,7 +22,7 @@
                 <HBox fx:id="borrowed" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="226.0" prefWidth="1525.0" spacing="20.0" style="-fx-background-color: #595858;" />
             </content>
         </ScrollPane>
-        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="365.0" prefHeight="229.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
+        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="393.0" prefHeight="229.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
             <content>
                 <HBox fx:id="favorite" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0" style="-fx-background-color: #595858;" />
             </content>
@@ -32,7 +32,7 @@
                 <HBox fx:id="nearestBook" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="196.0" prefWidth="1507.0" spacing="20.0" style="-fx-background-color: #595858;" />
             </content>
         </ScrollPane>
-        <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="321.0" prefHeight="35.0" prefWidth="298.0" text="Favorite books" textFill="WHITE">
+        <Label alignment="TOP_LEFT" layoutX="96.0" layoutY="337.0" prefHeight="35.0" prefWidth="298.0" text="Favorite books" textFill="WHITE">
             <padding>
                 <Insets left="20.0" />
             </padding>
@@ -40,7 +40,7 @@
                 <Font name="Calibri Bold Italic" size="35.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" layoutX="92.0" layoutY="650.0" prefHeight="41.0" prefWidth="322.0" text="Recently Viewed" textFill="WHITE">
+        <Label alignment="TOP_LEFT" layoutX="96.0" layoutY="658.0" prefHeight="41.0" prefWidth="322.0" text="Recently Viewed" textFill="WHITE">
             <padding>
                 <Insets left="20.0" />
             </padding>

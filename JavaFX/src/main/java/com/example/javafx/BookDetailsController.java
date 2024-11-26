@@ -71,7 +71,11 @@ public class BookDetailsController {
         ISBNLabel.setText(books.getIsbn());
         idLabel.setText(books.getId());
         descriptionText.setText(books.getDescription());
-        createdDateLabel.setText(books.getYear());
+        if(books.getYear() == null) {
+            createdDateLabel.setText("No date available");
+        } else {
+            createdDateLabel.setText(books.getYear());
+        }
         genreLabel.setText(books.getGenre());
         languageLabel.setText(books.getLanguage());
         ratingLabel.setText(books.getRating());
@@ -235,7 +239,11 @@ public class BookDetailsController {
                 ps.setString(1, books.getId());
                 ps.setString(2, books.getTitle());
                 ps.setString(3, books.getAuthor());
-                ps.setDate(4, Date.valueOf(books.getYear()));
+                try {
+                    ps.setDate(4, Date.valueOf(books.getYear()));
+                } catch (Exception e) {
+                    ps.setDate(4, null);
+                }
                 ps.setString(5, books.getImageLinks());
                 ps.setString(6, books.getDescription());
                 ps.setString(7, books.getGenre());
