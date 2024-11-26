@@ -25,7 +25,7 @@ Nhóm
 - Ứng dụng chủ yếu sử dụng tiếng Anh
 - 
 ## UML diagram <a name="uml"></a>
-![UML](https://imgur.com/a/YKWYCbG)
+![UML](https://imgur.com/a/uml.png)
 ## Hướng dẫn cài đặt <a name="install"></a>
 1. Clone repository về máy
 2. 
