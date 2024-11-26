@@ -3,14 +3,19 @@ package com.example.javafx;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -78,6 +83,11 @@ public class ProfileController {
     @FXML
     private Button securityButton;
 
+    @FXML
+    public CheckBox darkModeBox;
+
+    AnchorPane ContentAnchorPane = mainController.getInstance().getContentAnchorPane();
+
 
 
     User user = LoginController.user;
@@ -92,6 +102,7 @@ public class ProfileController {
         failedLabel.setVisible(false);
         LoadImage.loadAvatarImage(infoAvatar, user.getAvatarLink());
         usernameTextField.setText(user.getUsername());
+
         idLabel.setText(Integer.toString(user.getId()));
         firstnameTextField.setText(user.getFirstname());
         lastnameTextField.setText(user.getLastname());
@@ -102,6 +113,22 @@ public class ProfileController {
         security.setVisible(false);
         security.setDisable(true);
 
+        darkModeBox.selectedProperty().bindBidirectional(DarkModeController.darkMode);
+        darkModeBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            System.out.println("Dark Mode Checkbox changed: " + newValue);
+            Scene scene = ContentAnchorPane.getScene();
+            if (scene != null) {
+                DarkModeController.applyDarkMode(scene);
+                DarkModeController.setDarkModeStyle(mainController.getInstance().getManagerBar()
+                        , mainController.getInstance().getIntro(), mainController.getInstance().getBoader(), darkModeBox.isSelected());
+            } else {
+                System.out.println("Scene is null! Styles will not be applied.");
+            }
+        });
+
+//        setDarkMode();
+
+        DarkModeController.setDarkMode(darkModeBox.getScene());
         ObservableList<String> months = FXCollections.observableArrayList();
         for (int i = 1; i <= 12; i++) {
             months.add(Integer.toString(i));
@@ -506,4 +533,16 @@ public class ProfileController {
                 "    -fx-text-fill: #00f3ff; ");
     }
 
+    public void setDarkMode() {
+        DarkModeController.darkMode.set(DarkModeController.darkMode.get());
+        DarkModeController.applyDarkMode(darkModeBox.getScene());
+    }
+
+    public void setCurrentPage() throws IOException {
+        try {
+            DarkModeController.reloadCurrentPage(ContentAnchorPane, mainController.currentPage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
