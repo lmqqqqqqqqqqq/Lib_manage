@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="homeScene" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="1706.0" stylesheets="@darkHomeScene.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HomeController">
+<AnchorPane fx:id="homeScene" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="1706.0" stylesheets="@darkHomeScene.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HomeController">
     <children>
         <AnchorPane fx:id="suggestPane" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="944.0" prefWidth="1706.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="56.0">
             <children>
