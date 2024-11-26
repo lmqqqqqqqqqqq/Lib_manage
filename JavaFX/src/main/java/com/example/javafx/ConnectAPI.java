@@ -87,6 +87,17 @@ public class ConnectAPI {
             }
             if(volumeInfo.has("publishedDate")) {
                 created_date = volumeInfo.get("publishedDate").getAsString();
+                String date = "";
+                if (created_date != null && created_date.matches("\\d{4}")) {
+                    date = created_date + "-01-01";
+                    created_date = date;
+                } else if (created_date != null && created_date.matches("\\d{4}-\\d{2}")) {
+                    date = created_date + "-01";
+                    created_date = date;
+                } else if (created_date != null && created_date.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                    date = created_date;
+                    created_date = date;
+                }
             } else {
                 created_date = "No Published Date available";
             }

@@ -7,45 +7,45 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="yourBookPane" prefHeight="1000.0" prefWidth="1710.0" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.yourBookController">
+<AnchorPane fx:id="yourBookPane" prefHeight="1000.0" prefWidth="1710.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.yourBookController">
     <children>
-        <Label alignment="TOP_LEFT" layoutX="92.0" layoutY="15.0" prefHeight="32.0" prefWidth="1525.0" text="Borrowed Books" textFill="WHITE">
+        <Label alignment="TOP_LEFT" layoutX="92.0" layoutY="25.0" prefHeight="41.0" prefWidth="330.0" text="Borrowed Books" textFill="WHITE">
             <padding>
                 <Insets left="20.0" />
             </padding>
             <font>
-                <Font name="Calibri Italic" size="30.0" />
+                <Font name="Calibri Italic" size="35.0" />
             </font>
         </Label>
-        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="44.0" prefHeight="276.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
+        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="72.0" prefHeight="229.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
             <content>
-                <HBox fx:id="borrowed" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0" style="-fx-background-color: #595858;" />
+                <HBox fx:id="borrowed" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="226.0" prefWidth="1525.0" spacing="20.0" style="-fx-background-color: #595858;" />
             </content>
         </ScrollPane>
-        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="365.0" prefHeight="276.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
+        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="365.0" prefHeight="229.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
             <content>
                 <HBox fx:id="favorite" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="250.0" prefWidth="1525.0" spacing="20.0" style="-fx-background-color: #595858;" />
             </content>
         </ScrollPane>
-        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="690.0" prefHeight="276.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
+        <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="713.0" prefHeight="229.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
             <content>
-                <HBox fx:id="nearestBook" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="237.0" prefWidth="1502.0" spacing="20.0" style="-fx-background-color: #595858;" />
+                <HBox fx:id="nearestBook" fillHeight="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="196.0" prefWidth="1507.0" spacing="20.0" style="-fx-background-color: #595858;" />
             </content>
         </ScrollPane>
-        <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="333.0" prefHeight="32.0" prefWidth="1525.0" text="Favorite books" textFill="WHITE">
+        <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="321.0" prefHeight="35.0" prefWidth="298.0" text="Favorite books" textFill="WHITE">
             <padding>
                 <Insets left="20.0" />
             </padding>
             <font>
-                <Font name="Calibri Bold Italic" size="30.0" />
+                <Font name="Calibri Bold Italic" size="35.0" />
             </font>
         </Label>
-        <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="658.0" prefHeight="32.0" prefWidth="1525.0" text="Recently Watched" textFill="WHITE">
+        <Label alignment="TOP_LEFT" layoutX="92.0" layoutY="650.0" prefHeight="41.0" prefWidth="322.0" text="Recently Viewed" textFill="WHITE">
             <padding>
                 <Insets left="20.0" />
             </padding>
             <font>
-                <Font name="Calibri Italic" size="30.0" />
+                <Font name="Calibri Italic" size="35.0" />
             </font>
         </Label>
     </children>

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="advancedSearchPane" prefHeight="1000.0" prefWidth="1705.0" styleClass="vbox-background" stylesheets="@mainScene.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AdvancedSearchController">
+<AnchorPane fx:id="advancedSearchPane" prefHeight="1000.0" prefWidth="1705.0" styleClass="vbox-background" stylesheets="@mainScene.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.AdvancedSearchController">
     <children>
         <ScrollPane hbarPolicy="NEVER" layoutX="65.0" layoutY="85.0" prefHeight="761.0" prefWidth="1050.0" styleClass="title-pane" stylesheets="@advancedSearch.css">
             <content>

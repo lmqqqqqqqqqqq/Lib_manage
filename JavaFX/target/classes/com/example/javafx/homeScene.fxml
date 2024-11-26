@@ -116,7 +116,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="494.0" textFill="#d00000">
+      <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="548.0" textFill="#d00000">
          <font>
             <Font name="Calibri Bold Italic" size="20.0" />
          </font>

@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.UsermanageBybook">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.UsermanageBybook">
    <children>
       <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="1000.0" prefWidth="1705.0">
          <children>
@@ -30,7 +30,7 @@
                         <Font name="Calibri Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="bookId" layoutX="142.0" layoutY="44.0" prefHeight="30.0" prefWidth="192.0" stylesheets="@profile.css" />
+                  <TextField fx:id="bookId" layoutX="142.0" layoutY="44.0" prefHeight="30.0" prefWidth="192.0" styleClass="text-field" stylesheets="@style.css" />
                   <Button layoutX="399.0" layoutY="37.0" mnemonicParsing="false" onAction="#findingOnAction" prefHeight="45.0" prefWidth="123.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Finding">
                      <font>
                         <Font name="Calibri Bold Italic" size="20.0" />

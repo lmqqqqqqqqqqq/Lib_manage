@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="homeScene" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="1706.0" stylesheets="@darkHomeScene.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HomeController">
+<AnchorPane fx:id="homeScene" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1000.0" prefWidth="1706.0" stylesheets="@darkHomeScene.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.HomeController">
     <children>
         <AnchorPane fx:id="suggestPane" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="944.0" prefWidth="1706.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="56.0">
             <children>
@@ -25,7 +25,7 @@
                     <children>
                         <ScrollPane prefHeight="200.0" prefWidth="1207.0" styleClass="resultBox" stylesheets="@darkMainScene.css" vbarPolicy="NEVER">
                             <content>
-                                <HBox fx:id="res" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="215.0" prefWidth="1181.0" spacing="20.0" style="-fx-background-color: #595858;">
+                                <HBox fx:id="res" nodeOrientation="LEFT_TO_RIGHT" prefHeight="212.0" prefWidth="1189.0" spacing="20.0" style="-fx-background-color: #595858;">
                                     <padding>
                                         <Insets left="20.0" right="20.0" top="15.0" />
                                     </padding>
@@ -35,7 +35,7 @@
                         <AnchorPane prefHeight="287.0" prefWidth="0.0" />
                         <AnchorPane>
                             <children>
-                                <ImageView fx:id="wordleImage" fitHeight="240.0" fitWidth="431.0" pickOnBounds="true">
+                                <ImageView fx:id="wordleImage" fitHeight="240.0" fitWidth="431.0" layoutX="21.0" pickOnBounds="true">
                                     <image>
                                         <Image url="@../image/wordle_darkScene.png" />
                                     </image>
@@ -119,7 +119,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-        <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="494.0" textFill="#d00000">
+        <Label fx:id="welcomeText" layoutX="22.0" layoutY="10.0" prefHeight="38.0" prefWidth="548.0" textFill="#d00000">
             <font>
                 <Font name="Calibri Bold Italic" size="20.0" />
             </font>

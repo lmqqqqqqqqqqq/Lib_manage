@@ -44,6 +44,7 @@
     -fx-background-color: transparent;
     -fx-border-width: 0 0 2 0;
     -fx-border-color: #000000; /* Màu của dòng kẻ, có thể thay đổi */
+    -fx-font-size: 20;
 }
 
 .text-field:focused {
@@ -55,6 +56,7 @@
     -fx-text-fill: #FFFFFF;
     -fx-border-width: 0 0 2 0;
     -fx-border-color: #FFFFFF; /* Màu của dòng kẻ, có thể thay đổi */
+    -fx-font-size: 20;
 }
 
 .text1-field:focused {

@@ -29,7 +29,7 @@
 .resultBox {
     -fx-background-radius: 30; /* Bo góc nền */
     -fx-border-radius: 30;    /* Bo góc viền (nếu có) */
-    -fx-border-color: #23ff00; /* Màu viền (nếu muốn) */
+    -fx-effect: dropshadow(gaussian, #39FF14, 15, 0.5, 0, 0);
     -fx-border-width: 3;      /* Độ dày viền */
     -fx-padding: 10;
     -fx-background-color:  #595858;

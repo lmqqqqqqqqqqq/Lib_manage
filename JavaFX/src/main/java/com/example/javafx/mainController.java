@@ -89,6 +89,7 @@ public class mainController {
     }
 
     public void initialize() throws IOException {
+        manager.setVisible(false);
         waitingScene.setVisible(true);
         PauseTransition pause = new PauseTransition(Duration.seconds(0.1));
         pause.setOnFinished(event -> {

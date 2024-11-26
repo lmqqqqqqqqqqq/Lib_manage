@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@wordle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Wordle">
+<StackPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@wordle.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Wordle">
 
     <AnchorPane fx:id="playScreen" prefHeight="432.0" prefWidth="594.0" style="-fx-background-color: #f0f0f0;">
         <StackPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">

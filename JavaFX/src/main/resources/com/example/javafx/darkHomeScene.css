@@ -3,14 +3,14 @@
     -fx-text-fill: white;
 }
 
-.text-field:prompt-text {
+.text-field {
     -fx-prompt-text-fill: grey;
 }
 .NOTE {
     -fx-background-radius: 30; /* Bo góc cho vùng nền ngoài */
     -fx-border-radius: 30;     /* Bo góc cho viền */
     -fx-border-width: 2px;
-    -fx-border-color: #21ff00;
+    -fx-effect: dropshadow(gaussian, #39FF14, 15, 0.5, 0, 0);
     -fx-control-inner-background: #474747; /* Màu nền */
 }
 

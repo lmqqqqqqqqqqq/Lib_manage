@@ -108,3 +108,22 @@
     -fx-cursor: hand;
     -fx-border-color: #000000;
 }
+
+.ButtonPaneDark {
+    -fx-background-color: #23ff00; /* Màu nền trắng */
+    -fx-text-fill: #000000; /* Màu chữ đen */
+    -fx-border-radius: 30; /* Bo tròn các góc của button */
+    -fx-background-radius: 30; /* Bo tròn nền button */
+    -fx-padding: 10 20; /* Đệm bên trong để tăng kích thước button */
+    -fx-cursor: hand;
+    -fx-border-color: #3e3d3d;
+    -fx-border-width: 3;
+}
+
+.ButtonPaneDark:hover {
+    -fx-scale-x: 1.2; /* Phóng to button theo chiều ngang */
+    -fx-scale-y: 1.2; /* Phóng to button theo chiều dọc */
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-border-color: #000000;
+}

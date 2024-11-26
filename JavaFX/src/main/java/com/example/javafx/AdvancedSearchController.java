@@ -71,11 +71,6 @@ public class AdvancedSearchController {
 
         StringBuilder Q = new StringBuilder(AdvancedSearch.process(title, author, genre, publisher, isbn, language, year, sortBy, params));
         List<Books> result = AdvancedSearch.search(Q.toString(), params, databaseConnect.connect());
-        for(Books b : result) {
-            if(b.getId().equals("-UcKEQAAQBAJ")) {
-                System.out.println(b.toString());
-            }
-        }
         ConnectAPI api = new ConnectAPI();
         String Q1 = api.createQuery(title, author, genre, publisher, isbn, language, sortBy);
         List<Books> result1 = api.getBooks(Q1, year, result);

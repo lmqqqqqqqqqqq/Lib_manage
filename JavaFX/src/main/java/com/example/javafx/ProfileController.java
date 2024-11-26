@@ -115,7 +115,6 @@ public class ProfileController {
 
         darkModeBox.selectedProperty().bindBidirectional(DarkModeController.darkMode);
         darkModeBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("Dark Mode Checkbox changed: " + newValue);
             Scene scene = ContentAnchorPane.getScene();
             if (scene != null) {
                 DarkModeController.applyDarkMode(scene);

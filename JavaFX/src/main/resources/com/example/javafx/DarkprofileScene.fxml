@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1021.0" prefWidth="1708.0" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ProfileController">
+<AnchorPane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1021.0" prefWidth="1708.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ProfileController">
     <children>
         <AnchorPane fx:id="header" layoutY="-3.0" prefHeight="233.0" prefWidth="1708.0" style="-fx-background-color: #303030;">
             <children>
@@ -45,25 +45,28 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <CheckBox fx:id="darkModeBox" layoutX="806.0" layoutY="194.0" mnemonicParsing="false" onAction="#setDarkMode" onMouseClicked="#setCurrentPage" text="Dark mode" textFill="RED" />
+                <CheckBox fx:id="darkModeBox" layoutX="1540.0" layoutY="188.0" mnemonicParsing="false" onAction="#setDarkMode" onMouseClicked="#setCurrentPage" styleClass="button2" stylesheets="@profile.css" text="Dark mode" textFill="RED">
+               <font>
+                  <Font size="30.0" />
+               </font></CheckBox>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="information" layoutY="231.0" prefHeight="795.0" prefWidth="1708.0" style="-fx-background-color: CCBA84FF;">
+        <AnchorPane fx:id="information" layoutY="231.0" prefHeight="795.0" prefWidth="1708.0" style="-fx-background-color: #595858;">
             <children>
                 <AnchorPane layoutX="551.0" layoutY="172.0" prefHeight="69.0" prefWidth="450.0">
                     <children>
-                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
-                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="94.0" text="Username">
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#262626" height="68.0" stroke="#4dff00" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="94.0" text="Username" textFill="WHITE">
                             <font>
                                 <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="usernameTextField" layoutX="130.0" layoutY="27.0" onKeyReleased="#usernameReleased" prefHeight="26.0" prefWidth="216.0" stylesheets="@profile.css" />
+                        <TextField fx:id="usernameTextField" layoutX="132.0" layoutY="11.0" onKeyReleased="#usernameReleased" prefHeight="33.0" prefWidth="239.0" styleClass="text1-field" stylesheets="@style.css" />
                     </children>
                 </AnchorPane>
                 <ImageView fx:id="infoAvatar" fitHeight="180.0" fitWidth="180.0" layoutX="1261.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
-                <Button fx:id="changeAvatarButton" layoutX="1292.0" layoutY="502.0" mnemonicParsing="false" onAction="#changeOnAction" prefHeight="43.0" prefWidth="136.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Change avatar" />
-                <Button alignment="CENTER" layoutX="732.0" layoutY="649.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="59.0" prefWidth="161.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Update" textFill="#b1f295">
+                <Button fx:id="changeAvatarButton" layoutX="1292.0" layoutY="502.0" mnemonicParsing="false" onAction="#changeOnAction" prefHeight="43.0" prefWidth="136.0" styleClass="ButtonPaneDark" stylesheets="@advancedSearch.css" text="Change avatar" />
+                <Button alignment="CENTER" layoutX="732.0" layoutY="649.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="59.0" prefWidth="161.0" styleClass="ButtonPaneDark" stylesheets="@advancedSearch.css" text="Update" textFill="#b1f295">
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -73,13 +76,13 @@
                     </graphic></Button>
                 <AnchorPane layoutX="551.0" layoutY="42.0" prefHeight="69.0" prefWidth="450.0">
                     <children>
-                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
-                        <Label layoutX="22.0" prefHeight="34.0" prefWidth="94.0" text="ID User">
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#262626" height="68.0" stroke="#4dff00" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="22.0" prefHeight="34.0" prefWidth="94.0" text="ID User" textFill="WHITE">
                             <font>
                                 <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
                         </Label>
-                        <Label fx:id="idLabel" layoutX="139.0" layoutY="22.0" prefHeight="26.0" prefWidth="146.0">
+                        <Label fx:id="idLabel" layoutX="139.0" layoutY="22.0" prefHeight="27.0" prefWidth="186.0" textFill="WHITE">
                             <font>
                                 <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
@@ -88,21 +91,21 @@
                 </AnchorPane>
                 <AnchorPane layoutX="551.0" layoutY="297.0" prefHeight="69.0" prefWidth="450.0">
                     <children>
-                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
-                        <Label layoutX="7.0" layoutY="-3.0" prefHeight="34.0" prefWidth="94.0" text="First Name">
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#262626" height="68.0" stroke="#4dff00" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="7.0" layoutY="-3.0" prefHeight="34.0" prefWidth="94.0" text="First Name" textFill="WHITE">
                             <font>
                                 <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="firstnameTextField" layoutX="128.0" layoutY="21.0" onKeyReleased="#nameReleased" prefHeight="26.0" prefWidth="216.0" stylesheets="@profile.css" />
+                        <TextField fx:id="firstnameTextField" layoutX="122.0" layoutY="8.0" onKeyReleased="#nameReleased" prefHeight="33.0" prefWidth="239.0" styleClass="text1-field" stylesheets="@style.css" />
                     </children>
                 </AnchorPane>
                 <AnchorPane layoutX="551.0" layoutY="539.0" prefHeight="69.0" prefWidth="450.0">
                     <children>
-                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
-                        <ComboBox fx:id="dayCombo" editable="true" layoutX="14.0" layoutY="21.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@profile.css" />
-                        <ComboBox fx:id="monthCombo" editable="true" layoutX="177.0" layoutY="21.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@profile.css" />
-                        <ComboBox fx:id="yearCombo" editable="true" layoutX="339.0" layoutY="21.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@profile.css" />
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#262626" height="68.0" stroke="#4dff00" strokeType="INSIDE" width="503.0" />
+                        <ComboBox fx:id="dayCombo" editable="true" layoutX="14.0" layoutY="11.0" prefWidth="150.0" styleClass="text-field" stylesheets="@style.css" />
+                        <ComboBox fx:id="monthCombo" editable="true" layoutX="177.0" layoutY="10.0" prefWidth="150.0" styleClass="text-field" stylesheets="@style.css" />
+                        <ComboBox fx:id="yearCombo" editable="true" layoutX="339.0" layoutY="10.0" prefWidth="150.0" styleClass="text-field" stylesheets="@style.css" />
                     </children>
                 </AnchorPane>
                 <Label fx:id="usernameLabel" layoutX="593.0" layoutY="251.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="34.0" prefWidth="468.0" textAlignment="CENTER" textFill="#216104">
@@ -122,13 +125,13 @@
                 </Label>
                 <AnchorPane layoutX="551.0" layoutY="411.0" prefHeight="69.0" prefWidth="450.0">
                     <children>
-                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
-                        <Label layoutX="7.0" layoutY="-3.0" prefHeight="34.0" prefWidth="130.0" text="Second Name">
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#262626" height="68.0" stroke="#4dff00" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="7.0" layoutY="-3.0" prefHeight="34.0" prefWidth="130.0" text="Second Name" textFill="WHITE">
                             <font>
                                 <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="lastnameTextField" layoutX="128.0" layoutY="21.0" onKeyReleased="#nameReleased" prefHeight="26.0" prefWidth="216.0" stylesheets="@profile.css" />
+                        <TextField fx:id="lastnameTextField" layoutX="132.0" layoutY="8.0" onKeyReleased="#nameReleased" prefHeight="33.0" prefWidth="239.0" styleClass="text1-field" stylesheets="@style.css" />
                     </children>
                 </AnchorPane>
                 <Label fx:id="failedLabel" layoutX="1328.0" layoutY="55.0" prefHeight="67.0" prefWidth="258.0" styleClass="Button" stylesheets="@style.css" text="Update Failed !">
@@ -157,69 +160,69 @@
                 </Label>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="security" layoutY="227.0" prefHeight="802.0" prefWidth="1708.0" style="-fx-background-color: CCBA84FF;" visible="false">
+        <AnchorPane fx:id="security" layoutY="227.0" prefHeight="802.0" prefWidth="1708.0" style="-fx-background-color: #595858;" visible="false">
             <children>
-                <AnchorPane layoutX="727.0" layoutY="110.0" prefHeight="69.0" prefWidth="450.0">
+                <AnchorPane layoutX="543.0" layoutY="75.0" prefHeight="69.0" prefWidth="450.0">
                     <children>
-                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
-                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="151.0" text="Current Password">
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#282828" height="68.0" stroke="#3cff00" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="151.0" text="Current Password" textFill="WHITE">
                             <font>
                                 <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
                         </Label>
-                        <PasswordField fx:id="passwordField" layoutX="176.0" layoutY="27.0" onKeyReleased="#passReleased" prefHeight="27.0" prefWidth="180.0" stylesheets="@profile.css" />
+                        <PasswordField fx:id="passwordField" layoutX="181.0" layoutY="11.0" onKeyReleased="#passReleased" prefHeight="33.0" prefWidth="225.0" styleClass="text1-field" stylesheets="@style.css" />
                     </children>
                 </AnchorPane>
-                <AnchorPane layoutX="727.0" layoutY="486.0" prefHeight="69.0" prefWidth="450.0">
+                <AnchorPane layoutX="543.0" layoutY="451.0" prefHeight="69.0" prefWidth="450.0">
                     <children>
-                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
-                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="130.0" text="Recovery Code">
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#282828" height="68.0" stroke="#3cff00" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="130.0" text="Recovery Code" textFill="WHITE">
                             <font>
                                 <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="codeField" layoutX="177.0" layoutY="21.0" onKeyReleased="#recoveryReleased" prefHeight="27.0" prefWidth="180.0" stylesheets="@profile.css" />
+                        <TextField fx:id="codeField" layoutX="199.0" layoutY="11.0" onKeyReleased="#recoveryReleased" prefHeight="33.0" prefWidth="225.0" styleClass="text1-field" stylesheets="@style.css" />
                     </children>
                 </AnchorPane>
-                <Button layoutX="859.0" layoutY="612.0" mnemonicParsing="false" onAction="#changePassOnAction" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Change Password and Recovery Code" />
-                <Label fx:id="passwordLabel" layoutX="941.0" layoutY="185.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
+                <Button layoutX="675.0" layoutY="577.0" mnemonicParsing="false" onAction="#changePassOnAction" styleClass="ButtonPaneDark" stylesheets="@advancedSearch.css" text="Change Password and Recovery Code" />
+                <Label fx:id="passwordLabel" layoutX="757.0" layoutY="150.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
                     <font>
                         <Font name="Calibri Italic" size="15.0" />
                     </font>
                 </Label>
-                <Label fx:id="codeLabel" layoutX="941.0" layoutY="574.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
+                <Label fx:id="codeLabel" layoutX="757.0" layoutY="539.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
                     <font>
                         <Font name="Calibri Italic" size="15.0" />
                     </font>
                 </Label>
-                <AnchorPane layoutX="727.0" layoutY="362.0" prefHeight="69.0" prefWidth="450.0">
+                <AnchorPane layoutX="543.0" layoutY="327.0" prefHeight="69.0" prefWidth="450.0">
                     <children>
-                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
-                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="206.0" text="Confirm New Password">
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#282828" height="68.0" layoutY="1.0" stroke="#3cff00" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="206.0" text="Confirm New Password" textFill="WHITE">
                             <font>
                                 <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
                         </Label>
-                        <PasswordField fx:id="confirmPasswordField" layoutX="175.0" layoutY="27.0" onKeyReleased="#confirmReleased" prefHeight="27.0" prefWidth="180.0" stylesheets="@profile.css" />
+                        <PasswordField fx:id="confirmPasswordField" layoutX="207.0" layoutY="12.0" onKeyReleased="#confirmReleased" prefHeight="33.0" prefWidth="225.0" styleClass="text1-field" stylesheets="@style.css" />
                     </children>
                 </AnchorPane>
-                <Label fx:id="newPasswordLabel" layoutX="850.0" layoutY="310.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="380.0" textFill="#d41713">
+                <Label fx:id="newPasswordLabel" layoutX="666.0" layoutY="275.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="380.0" textFill="#d41713">
                     <font>
                         <Font name="Calibri Italic" size="15.0" />
                     </font>
                 </Label>
-                <AnchorPane layoutX="727.0" layoutY="225.0" prefHeight="69.0" prefWidth="450.0">
+                <AnchorPane layoutX="543.0" layoutY="190.0" prefHeight="69.0" prefWidth="450.0">
                     <children>
-                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
-                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="130.0" text="New Password">
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#282828" height="68.0" layoutY="1.0" stroke="#3cff00" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="130.0" text="New Password" textFill="WHITE">
                             <font>
                                 <Font name="Calibri Bold Italic" size="20.0" />
                             </font>
                         </Label>
-                        <PasswordField fx:id="newPasswordField" layoutX="168.0" layoutY="22.0" onKeyReleased="#passwordReleased" prefHeight="27.0" prefWidth="180.0" stylesheets="@profile.css" />
+                        <PasswordField fx:id="newPasswordField" layoutX="179.0" layoutY="12.0" onKeyReleased="#passwordReleased" prefHeight="33.0" prefWidth="225.0" styleClass="text1-field" stylesheets="@style.css" />
                     </children>
                 </AnchorPane>
-                <Label fx:id="confirmPasswordLabel" layoutX="944.0" layoutY="448.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
+                <Label fx:id="confirmPasswordLabel" layoutX="760.0" layoutY="413.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
                     <font>
                         <Font name="Calibri Italic" size="15.0" />
                     </font>
