@@ -33,7 +33,7 @@ public class mainController {
     @FXML
     private AnchorPane intro;
     @FXML
-    private AnchorPane ContentAnchorPane;
+    public AnchorPane ContentAnchorPane;
     @FXML
     private Label name;
     @FXML
@@ -60,10 +60,9 @@ public class mainController {
     private VBox boader;
     User user = LoginController.user;
 
-    @FXML private CheckBox darkModeBox;
-    public static BooleanProperty darkMode = new SimpleBooleanProperty(false);
+    BooleanProperty darkMode = DarkModeController.darkMode;
     private static mainController instance;
-    private String currentPage;
+    public static String currentPage;
 
     public mainController() {
         instance = this;
@@ -73,63 +72,53 @@ public class mainController {
         return instance;
     }
 
+    public AnchorPane getManagerBar() {
+        return managerBar;
+    }
+
+    public AnchorPane getIntro() {
+        return intro;
+    }
+
+    public VBox getBoader() {
+        return boader;
+    }
+
     public AnchorPane getContentAnchorPane() {
         return ContentAnchorPane;
-    }
-
-    public boolean isDarkMode() {
-        return darkMode.get();
-    }
-
-    public void setDarkMode(boolean value) {
-        darkMode.set(value);
     }
 
     public void initialize() throws IOException {
         waitingScene.setVisible(true);
         PauseTransition pause = new PauseTransition(Duration.seconds(0.1));
         pause.setOnFinished(event -> {
-        darkModeBox.setSelected(darkMode.get());
-        LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
-            try {
-                SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            name.setText(user.getUsername());
+            LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
             try {
                 SceneSwitcher.switchPage(ContentAnchorPane, "homeScene.fxml", manager, darkMode.get());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             name.setText(user.getUsername());
-        outSideManagerClick();
-        darkMode.addListener((obs, oldMode, newMode) -> {
-            try {
-                String current = SceneSwitcher.getCurrentPageName();
-                reloadCurrentPage();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        setDarkMode();
-        applyDarkMode(darkMode.get());
-        homeButton.setStyle("-fx-background-radius: 30;\n" +
+            outSideManagerClick();
+//            darkMode.addListener((obs, oldMode, newMode) -> {
+//                DarkModeController.applyDarkMode(ContentAnchorPane.getScene());
+//                DarkModeController.setDarkModeStyle(managerBar, intro, boader, newMode);
+//            });
+            homeButton.setStyle("-fx-background-radius: 30;\n" +
                 "    -fx-border-radius: 30;\n" +
                 "    -fx-background-color: #FFB433;;\n" +
                 "    -fx-border-color: #000000;" +
                 "    -fx-border-width: 3;");
-        if (user instanceof Members) {
-            managerButton.setVisible(false);
-            managerButton.setDisable(true);
-            roleLabel.setText("( Member )");
-            roleLabel.setStyle("-fx-text-fill: #009a8d;");
-        } else {
-            roleLabel.setText("( Admin )");
-            roleLabel.setStyle("-fx-text-fill: #ff0059;");
-        }
-        waitingScene.setVisible(false);
-
+            if (user instanceof Members) {
+                managerButton.setVisible(false);
+                managerButton.setDisable(true);
+                roleLabel.setText("( Member )");
+                roleLabel.setStyle("-fx-text-fill: #009a8d;");
+            } else {
+                roleLabel.setText("( Admin )");
+                roleLabel.setStyle("-fx-text-fill: #ff0059;");
+            }
+            waitingScene.setVisible(false);
         });
         pause.play();
     }
@@ -181,7 +170,7 @@ public class mainController {
         LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 
-    public void profileOnClick() {
+    public void profileOnClick() throws IOException {
         manager.setVisible(true);
         manager.setDisable(false);
         managerBar.setVisible(false);
@@ -260,7 +249,8 @@ public class mainController {
     }
 
     public void setting() throws IOException {
-        SceneSwitcher.switchPage(ContentAnchorPane, "profileScene.fxml");
+        currentPage = "profileScene.fxml";
+        SceneSwitcher.switchPage(ContentAnchorPane, currentPage, manager, darkMode.get());
     }
 
     public void logout() {
@@ -305,55 +295,5 @@ public class mainController {
                 "    -fx-background-color: #FFB433;;\n" +
                 "    -fx-border-color: #000000;" +
                 "    -fx-border-width: 3; ");
-    }
-
-    public void setDarkMode() {
-        darkMode.set(darkModeBox.isSelected());
-        applyDarkMode(darkMode.get());
-        Scene currentScene = ContentAnchorPane.getScene();
-    }
-    private void applyDarkMode(boolean darkMode) {
-        Scene scene = darkModeBox.getScene();
-        if (darkModeBox.isSelected()) {
-            managerBar.setStyle("-fx-background-color: #2b2b2b;");
-            intro.setStyle("-fx-background-color: #2b2b2b;" +
-                            " -fx-text-fill: white;");
-            boader.setStyle("-fx-background-color: #403f3f;" +
-                            "-fx-border-width: 3; ");
-            darkModeBox.setStyle("-fx-text-fill: #dddddd");
-
-        } else {
-            managerBar.setStyle("-fx-background-color: #efc076;");
-            intro.setStyle("-fx-background-color: #efc076;");
-            boader.setStyle("-fx-background-color:  #ababab;" +
-                    "-fx-border-color: #000000;" +
-                    "-fx-border-width: 3; ");
-            darkModeBox.setStyle("-fx-text-fill: #000000");
-        }
-        if (scene != null) {
-            String darkModeStyle = getClass().getResource("darkMainScene.css").toExternalForm();
-            if (darkMode) {
-                if (!scene.getStylesheets().contains(darkModeStyle)) {
-                    scene.getStylesheets().add(darkModeStyle);
-
-                }
-            } else {
-                scene.getStylesheets().remove(darkModeStyle);
-            }
-        }
-    }
-    public void reloadCurrentPage() throws IOException {
-        if (currentPage == null || currentPage.isEmpty()) {
-            return;
-        }
-        FXMLLoader loader;
-        if (darkMode.get()) {
-            loader = new FXMLLoader(getClass().getResource("Dark" + currentPage));
-        } else {
-            loader = new FXMLLoader(getClass().getResource(currentPage));
-        }
-        Parent page = loader.load();
-        ContentAnchorPane.getChildren().clear();
-        ContentAnchorPane.getChildren().add(page);
     }
 }

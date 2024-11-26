@@ -67,7 +67,6 @@
                     </ImageView>
                 </graphic>
             </Button>
-         <CheckBox fx:id="darkModeBox" mnemonicParsing="false" onAction="#setDarkMode" onMouseClicked="#reloadCurrentPage" prefHeight="109.0" prefWidth="127.0" text="Dark mode" />
         </VBox>
     </left>
     <center>
