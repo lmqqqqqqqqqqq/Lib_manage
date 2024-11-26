@@ -13,8 +13,8 @@
    <children>
       <TableView fx:id="tableView" layoutX="75.0" layoutY="298.0" prefHeight="404.0" prefWidth="1607.0" styleClass="title-pane" stylesheets="@advancedSearch.css">
         <columns>
-          <TableColumn fx:id="imageColumn" prefWidth="68.0" />
-          <TableColumn fx:id="idColumn" maxWidth="340.0" minWidth="-1.0" prefWidth="266.0" text="ID" />
+          <TableColumn fx:id="imageColumn" prefWidth="156.0" styleClass="image-column" />
+          <TableColumn fx:id="idColumn" maxWidth="340.0" minWidth="-1.0" prefWidth="178.0" text="ID" />
             <TableColumn fx:id="nameColumn" prefWidth="427.0" text="Name" />
             <TableColumn fx:id="authorColumn" prefWidth="373.0" text="Author" />
             <TableColumn fx:id="borrowColumn" prefWidth="241.0" text="Borrow Date" />

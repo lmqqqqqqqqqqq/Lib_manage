@@ -134,3 +134,11 @@
     -fx-cursor: hand;
     -fx-border-color: #000000;
 }
+
+.table-view .cell {
+    -fx-font-size: 16px; /* Larger font size for text */
+}
+
+.table-view .image-column .cell {
+    -fx-font-size: 0px; /* Prevent font size changes affecting the image */
+}
