@@ -14,7 +14,7 @@ Nhóm
 1. Lưu Đạt Tuấn Nghĩa - 
 2. Lê Minh Quân - 
 3. Bùi Mạnh Nam -
-## Mô tả <a name="author"></a>
+## Mô tả <a name="description"></a>
 - Ứng dụng được thiết kế chủ yếu bằng Java kết hợp với Javafx và CSS giúp hỗ trợ thiết kế đồ họa.
 - Đây là một thư viện sách online với các chức năng như mượn sách, thêm sách vào yêu thích, tìm kiếm theo thông tin sách,... số với cơ sở dữ liệu lớn gồm nhiều loại sách khác nhau kết hợp với API Google Book giúp cho đa dạng hơn về dữ liệu sách.
 - Khi tìm kiếm thông thường những từ nhập vào đầu tiên sẽ được ngay lập tức tìm kiếm trên cơ sở dữ liệu và đưa ra đề xuất.
@@ -25,7 +25,7 @@ Nhóm
 - Ứng dụng chủ yếu sử dụng tiếng Anh
 - 
 ## UML diagram <a name="uml"></a>
-
+<img width="640" height="480" src="https://imgur.com/a/YKWYCbG" >
 ## Hướng dẫn cài đặt <a name="install"></a>
 1. Clone repository về máy
 2. 
