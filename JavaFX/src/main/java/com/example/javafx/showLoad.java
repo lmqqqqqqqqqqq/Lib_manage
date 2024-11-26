@@ -11,6 +11,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class showLoad {
+    /**
+     * use for Box.
+     * @param target
+     * @param result
+     * @throws IOException
+     */
     @FXML
     public static void intoBox(HBox target, List<Books> result) throws IOException {
         for (Books b : result) {
@@ -25,7 +31,12 @@ public class showLoad {
         }
     }
 
-
+    /**
+     * use for title pane
+     * @param target
+     * @param result
+     * @throws IOException
+     */
     @FXML
     public static void intoBox(TilePane target, List<Books> result) throws IOException {
         for (Books b : result) {

@@ -16,6 +16,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
 public class mainController {
@@ -196,15 +199,23 @@ public class mainController {
         homeButton.setStyle(null);
         managerButton.setStyle(null);
         searchButton.setStyle(null);
-        if(yourBookController.borrowedBookAmount == 0) {
-            borrowAmount.setText("No books");
-        }else {
-            borrowAmount.setText(String.valueOf(yourBookController.borrowedBookAmount));
-        }
-        if(yourBookController.favoriteBookAmount == 0) {
-            favouriteAmount.setText("No books");
-        } else {
-            favouriteAmount.setText(String.valueOf(yourBookController.favoriteBookAmount));
+        String query = "select count(*) from user_books where idusers = ? and borrow = 1";
+        String query1 = "select count(*) from user_books where idusers = ? and is_favourite = 1";
+        try (Connection connection = DatabaseConnect.getconnect()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+            preparedStatement.setInt(1, user.getId());
+            preparedStatement1.setInt(1, user.getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSet resultSet1 = preparedStatement1.executeQuery();
+            if (resultSet.next()) {
+                borrowAmount.setText(resultSet.getString(1));
+            }
+            if(resultSet1.next()) {
+                favouriteAmount.setText(resultSet1.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     public void managerOnAction() {

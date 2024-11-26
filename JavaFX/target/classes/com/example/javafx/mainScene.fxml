@@ -75,7 +75,7 @@
             <AnchorPane fx:id="ContentAnchorPane" layoutX="-1.0" layoutY="2.0" prefHeight="1000.0" prefWidth="1687.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0" />
             <AnchorPane fx:id="manager" layoutX="-1.0" layoutY="1.0" prefHeight="1023.0" prefWidth="1731.0" stylesheets="@profile.css">
                 <children>
-               <AnchorPane fx:id="intro" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="323.0" styleClass="anchor-pan" stylesheets="@profile.css" visible="false">
+               <AnchorPane fx:id="intro" layoutY="2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="323.0" styleClass="anchor-pan" stylesheets="@profile.css">
                   <children>
                      <ImageView fx:id="introAvatar" fitHeight="230.0" fitWidth="230.0" layoutX="53.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
                      <Label fx:id="name" alignment="CENTER" layoutX="44.0" layoutY="305.0" prefHeight="50.0" prefWidth="236.0" text="Username" textAlignment="CENTER" textFill="RED">
@@ -83,7 +83,7 @@
                            <Font name="Calibri Bold Italic" size="25.0" />
                         </font>
                      </Label>
-                     <Label layoutX="8.0" layoutY="656.0" onMouseClicked="#setting" prefHeight="94.0" prefWidth="307.0" styleClass="Label" stylesheets="@profile.css" text="Update information">
+                     <Label alignment="CENTER" layoutX="8.0" layoutY="656.0" onMouseClicked="#setting" prefHeight="94.0" prefWidth="307.0" styleClass="Label" stylesheets="@profile.css" text="Update information" textFill="#0031ff">
                         <font>
                            <Font name="Calibri Bold Italic" size="20.0" />
                         </font>
@@ -95,7 +95,7 @@
                            </ImageView>
                         </graphic>
                      </Label>
-                     <Label layoutX="3.0" layoutY="774.0" onMouseClicked="#logout" prefHeight="73.0" prefWidth="168.0" styleClass="Label" stylesheets="@profile.css" text="Log Out !">
+                     <Label alignment="CENTER" layoutX="3.0" layoutY="774.0" onMouseClicked="#logout" prefHeight="73.0" prefWidth="317.0" styleClass="Label" stylesheets="@profile.css" text="Log Out !">
                         <font>
                            <Font name="Calibri Bold Italic" size="20.0" />
                         </font>

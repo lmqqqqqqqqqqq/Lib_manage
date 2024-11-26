@@ -79,11 +79,6 @@ public class AdvancedSearchController {
         ConnectAPI api = new ConnectAPI();
         String Q1 = api.createQuery(title, author, genre, publisher, isbn, language, sortBy);
         List<Books> result1 = api.getBooks(Q1, year, result);
-        for(Books b : result1) {
-            if(b.getId().equals("-UcKEQAAQBAJ")) {
-                System.out.println(b.toString());
-            }
-        }
         resultpane.getChildren().clear();
         if (result.isEmpty() && result1.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

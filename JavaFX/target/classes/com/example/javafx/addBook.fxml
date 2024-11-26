@@ -14,16 +14,16 @@
     <children>
         <TableView fx:id="tableView" layoutX="48.0" layoutY="552.0" onMouseClicked="#handleRowClick" prefHeight="318.0" prefWidth="1614.0">
             <columns>
-                <TableColumn fx:id="idColumn" prefWidth="49.666664123535156" text="ID" />
-                <TableColumn fx:id="authorColumn" prefWidth="173.33333587646484" text="Author" />
-                <TableColumn fx:id="titleColumn" prefWidth="201.6666717529297" text="Title" />
-                <TableColumn fx:id="descriptionColumn" prefWidth="274.0" text="Description" />
-                <TableColumn fx:id="genreColumn" prefWidth="161.0" text="Genre" />
-                <TableColumn fx:id="publisherColumn" prefWidth="204.0" text="Publisher" />
-                <TableColumn fx:id="publishedDateColumn" prefWidth="171.0" text="Publisher date" />
-                <TableColumn fx:id="languageColumn" prefWidth="120.0" text="Language" />
-                <TableColumn fx:id="isbnColumn" prefWidth="99.0" text="ISBN" />
-                <TableColumn fx:id="imageLinksColumn" prefWidth="94.0" text="imagelink" />
+                <TableColumn fx:id="imageLinksColumn" prefWidth="110.0" text="imagelink" />
+                <TableColumn fx:id="idColumn" prefWidth="84.66665649414062" text="ID" />
+                <TableColumn fx:id="authorColumn" prefWidth="151.33334350585938" text="Author" />
+                <TableColumn fx:id="titleColumn" prefWidth="174.0" text="Title" />
+                <TableColumn fx:id="descriptionColumn" prefWidth="312.66668701171875" text="Description" />
+                <TableColumn fx:id="genreColumn" prefWidth="165.33331298828125" text="Genre" />
+                <TableColumn fx:id="publisherColumn" prefWidth="191.3333740234375" text="Publisher" />
+                <TableColumn fx:id="publishedDateColumn" prefWidth="183.666748046875" text="Publisher date" />
+                <TableColumn fx:id="languageColumn" prefWidth="116.6666259765625" text="Language" />
+                <TableColumn fx:id="isbnColumn" prefWidth="124.666748046875" text="ISBN" />
             </columns>
         </TableView>
         <TextField fx:id="id" editable="false" layoutX="370.0" layoutY="253.0" prefHeight="25.0" prefWidth="42.0" promptText="id" />

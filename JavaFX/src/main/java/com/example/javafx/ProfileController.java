@@ -97,7 +97,7 @@ public class ProfileController {
         lastnameTextField.setText(user.getLastname());
         infoButton.setStyle("-fx-font-size: 25px;\n" +
                 "    -fx-background-color: transparent;\n" +
-                "    -fx-text-fill: #43fb00; ");
+                "    -fx-text-fill: #00f3ff; ");
         information.setVisible(true);
         security.setVisible(false);
         security.setDisable(true);
@@ -493,7 +493,7 @@ public class ProfileController {
         securityButton.setStyle(null);
         infoButton.setStyle("-fx-font-size: 25px;\n" +
                 "    -fx-background-color: transparent;\n" +
-                "    -fx-text-fill: #43fb00; ");
+                "    -fx-text-fill: #00f3ff; ");
     }
 
     public void securityOnAction() {
@@ -503,7 +503,7 @@ public class ProfileController {
         infoButton.setStyle(null);
         securityButton.setStyle("-fx-font-size: 25px;\n" +
                 "    -fx-background-color: transparent;\n" +
-                "    -fx-text-fill: #43fb00; ");
+                "    -fx-text-fill: #00f3ff; ");
     }
 
 }

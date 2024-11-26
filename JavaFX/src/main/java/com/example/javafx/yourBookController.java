@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class yourBookController {
+public class    yourBookController {
     @FXML
     private HBox borrowed;
 
@@ -29,8 +29,6 @@ public class yourBookController {
         loadNearestBook();
     }
 
-    public static int borrowedBookAmount;
-    public static int favoriteBookAmount;
     @FXML
     public void loadBorrowed() throws Exception {
         borrowed.getChildren().clear();
@@ -42,9 +40,6 @@ public class yourBookController {
                 List<Books> borrowedBooks = task.getValue();
                 if(borrowedBooks.size() > 0) {
                     showLoad.intoBox(borrowed, borrowedBooks);
-                    borrowedBookAmount = borrowedBooks.size();
-                } else {
-                    borrowedBookAmount = 0;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -64,9 +59,6 @@ public class yourBookController {
                 List<Books> favoriteBooks = task.getValue();
                 if(favoriteBooks.size() > 0) {
                     showLoad.intoBox(favorite, favoriteBooks);
-                    favoriteBookAmount = favoriteBooks.size();
-                } else {
-                    favoriteBookAmount = 0;
                 }
             } catch (IOException e) {
                 e.printStackTrace();

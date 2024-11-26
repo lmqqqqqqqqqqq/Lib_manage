@@ -13,14 +13,14 @@
 
 <AnchorPane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1021.0" prefWidth="1708.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ProfileController">
    <children>
-      <AnchorPane fx:id="header" layoutY="-3.0" prefHeight="233.0" prefWidth="1708.0" style="-fx-background-color: #7a7878;">
+      <AnchorPane fx:id="header" layoutY="-3.0" prefHeight="233.0" prefWidth="1708.0" style="-fx-background-color: #303030;">
          <children>
             <Label layoutX="12.0" layoutY="21.0" prefHeight="109.0" prefWidth="445.0" text="Information Management System" textFill="#ffaa00">
                <font>
                   <Font name="Calibri Bold Italic" size="30.0" />
                </font>
             </Label>
-            <Button fx:id="infoButton" alignment="BOTTOM_CENTER" layoutY="169.0" mnemonicParsing="false" onAction="#informationOnAction" prefHeight="67.0" prefWidth="286.0" styleClass="button2" stylesheets="@profile.css" text="Individual information">
+            <Button fx:id="infoButton" alignment="BOTTOM_CENTER" layoutY="169.0" mnemonicParsing="false" onAction="#informationOnAction" prefHeight="67.0" prefWidth="408.0" styleClass="button2" stylesheets="@profile.css" text="Individual information">
                <font>
                   <Font name="Calibri Bold Italic" size="20.0" />
                </font>
@@ -32,7 +32,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="securityButton" alignment="BOTTOM_CENTER" layoutX="300.0" layoutY="169.0" mnemonicParsing="false" onAction="#securityOnAction" prefHeight="67.0" prefWidth="286.0" styleClass="button2" stylesheets="@profile.css" text="Account and security">
+            <Button fx:id="securityButton" alignment="BOTTOM_CENTER" layoutX="408.0" layoutY="169.0" mnemonicParsing="false" onAction="#securityOnAction" prefHeight="67.0" prefWidth="408.0" styleClass="button2" stylesheets="@profile.css" text="Account and security">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
