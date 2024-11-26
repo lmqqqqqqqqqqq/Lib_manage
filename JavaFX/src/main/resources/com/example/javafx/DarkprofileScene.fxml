@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1021.0" prefWidth="1708.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ProfileController">
+<AnchorPane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1021.0" prefWidth="1708.0" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ProfileController">
     <children>
         <AnchorPane fx:id="header" layoutY="-3.0" prefHeight="233.0" prefWidth="1708.0" style="-fx-background-color: #303030;">
             <children>

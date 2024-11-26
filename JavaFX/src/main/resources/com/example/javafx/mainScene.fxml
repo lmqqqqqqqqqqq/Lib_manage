@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.mainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.mainController">
     <left>
         <VBox fx:id="boader" alignment="TOP_CENTER" prefHeight="1000.0" prefWidth="232.0" style="-fx-background-color: #ababab; -fx-border-color: #000000; -fx-border-width: 3;" BorderPane.alignment="CENTER">
             <Button fx:id="profileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileOnClick" prefHeight="345.0" prefWidth="216.0" styleClass="left_but" stylesheets="@mainScene.css" text="Welcome">

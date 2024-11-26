@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@userManage.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.UserManage">
+<AnchorPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@userManage.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.UserManage">
     <TableView fx:id="userTableView" layoutX="48.0" layoutY="552.0" onMouseClicked="#handleRowClick" prefHeight="318.0" prefWidth="1614.0">
         <columns>
             <TableColumn fx:id="idCol" prefWidth="49.666664123535156" text="ID" />
