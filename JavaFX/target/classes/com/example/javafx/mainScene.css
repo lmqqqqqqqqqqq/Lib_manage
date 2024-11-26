@@ -10,6 +10,17 @@
     -fx-border-width: 3;
 }
 
+.left_but1 {
+    -fx-background-color: rgba(255, 255, 255, 0);
+}
+.left_but1:hover{
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+    -fx-background-color: #8e8b8b;
+    -fx-effect: dropshadow(gaussian, #39FF14, 15, 0.5, 0, 0);
+    -fx-border-width: 3;
+}
+
 .mainContent_pane {
     -fx-background-color: #64805b;
 }

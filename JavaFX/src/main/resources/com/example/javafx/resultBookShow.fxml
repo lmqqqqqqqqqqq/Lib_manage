@@ -8,20 +8,20 @@
 
 <AnchorPane onMouseClicked="#resultBookClicked" prefHeight="184.0" prefWidth="427.0" styleClass="bookPane" stylesheets="@advancedSearch.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.resultBookShow">
    <children>
-      <Label fx:id="author" layoutX="238.0" layoutY="51.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="169.0">
+      <Label fx:id="author" layoutX="238.0" layoutY="37.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="169.0" wrapText="true">
          <font>
             <Font name="Calibri Bold Italic" size="16.0" />
          </font>
       </Label>
       <ImageView fx:id="image" fitHeight="132.0" fitWidth="140.0" layoutX="14.0" layoutY="34.0" pickOnBounds="true" />
-      <Label fx:id="title" layoutX="27.0" layoutY="6.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="350.0" wrapText="true">
+      <Label fx:id="title" layoutX="27.0" layoutY="6.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="350.0" wrapText="true">
          <font>
             <Font name="Calibri Bold Italic" size="17.0" />
          </font>
       </Label>
       <Label fx:id="id" layoutX="238.0" layoutY="86.0" prefHeight="28.0" prefWidth="169.0">
          <font>
-            <Font name="Calibri Bold Italic" size="14.0" />
+            <Font name="Calibri Bold Italic" size="16.0" />
          </font>
       </Label>
       <Label alignment="CENTER" layoutX="182.0" layoutY="86.0" prefHeight="28.0" prefWidth="29.0" text="ID :">

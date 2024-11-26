@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMouseClicked="#resultBookClicked" prefHeight="184.0" prefWidth="427.0" styleClass="bookPane" stylesheets="@darkResultBookShow.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.resultBookShow">
+<AnchorPane onMouseClicked="#resultBookClicked" prefHeight="184.0" prefWidth="427.0" styleClass="bookPane1" stylesheets="@advancedSearch.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.resultBookShow">
     <children>
         <Label fx:id="author" layoutX="238.0" layoutY="51.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="28.0" prefWidth="169.0" textFill="WHITE">
             <font>
