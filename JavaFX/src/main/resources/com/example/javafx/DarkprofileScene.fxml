@@ -1,14 +1,254 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
-
+<AnchorPane fx:id="profile" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="1021.0" prefWidth="1708.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.ProfileController">
+    <children>
+        <AnchorPane fx:id="header" layoutY="-3.0" prefHeight="233.0" prefWidth="1708.0" style="-fx-background-color: #303030;">
+            <children>
+                <Label layoutX="12.0" layoutY="21.0" prefHeight="109.0" prefWidth="445.0" text="Information Management System" textFill="#ffaa00">
+                    <font>
+                        <Font name="Calibri Bold Italic" size="30.0" />
+                    </font>
+                </Label>
+                <Button fx:id="infoButton" alignment="BOTTOM_CENTER" layoutY="169.0" mnemonicParsing="false" onAction="#informationOnAction" prefHeight="67.0" prefWidth="408.0" styleClass="button2" stylesheets="@profile.css" text="Individual information">
+                    <font>
+                        <Font name="Calibri Bold Italic" size="20.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="53.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/user-profile.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <Button fx:id="securityButton" alignment="BOTTOM_CENTER" layoutX="408.0" layoutY="169.0" mnemonicParsing="false" onAction="#securityOnAction" prefHeight="67.0" prefWidth="408.0" styleClass="button2" stylesheets="@profile.css" text="Account and security">
+                    <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="53.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/padlock.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Button>
+                <CheckBox fx:id="darkModeBox" layoutX="806.0" layoutY="194.0" mnemonicParsing="false" onAction="#setDarkMode" onMouseClicked="#setCurrentPage" text="Dark mode" textFill="RED" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="information" layoutY="231.0" prefHeight="795.0" prefWidth="1708.0" style="-fx-background-color: CCBA84FF;">
+            <children>
+                <AnchorPane layoutX="551.0" layoutY="172.0" prefHeight="69.0" prefWidth="450.0">
+                    <children>
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="94.0" text="Username">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="usernameTextField" layoutX="130.0" layoutY="27.0" onKeyReleased="#usernameReleased" prefHeight="26.0" prefWidth="216.0" stylesheets="@profile.css" />
+                    </children>
+                </AnchorPane>
+                <ImageView fx:id="infoAvatar" fitHeight="180.0" fitWidth="180.0" layoutX="1261.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true" />
+                <Button fx:id="changeAvatarButton" layoutX="1292.0" layoutY="502.0" mnemonicParsing="false" onAction="#changeOnAction" prefHeight="43.0" prefWidth="136.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Change avatar" />
+                <Button alignment="CENTER" layoutX="732.0" layoutY="649.0" mnemonicParsing="false" onAction="#updateButtonOnAction" prefHeight="59.0" prefWidth="161.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Update" textFill="#b1f295">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/reset.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+                <AnchorPane layoutX="551.0" layoutY="42.0" prefHeight="69.0" prefWidth="450.0">
+                    <children>
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="22.0" prefHeight="34.0" prefWidth="94.0" text="ID User">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="idLabel" layoutX="139.0" layoutY="22.0" prefHeight="26.0" prefWidth="146.0">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="551.0" layoutY="297.0" prefHeight="69.0" prefWidth="450.0">
+                    <children>
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="7.0" layoutY="-3.0" prefHeight="34.0" prefWidth="94.0" text="First Name">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="firstnameTextField" layoutX="128.0" layoutY="21.0" onKeyReleased="#nameReleased" prefHeight="26.0" prefWidth="216.0" stylesheets="@profile.css" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="551.0" layoutY="539.0" prefHeight="69.0" prefWidth="450.0">
+                    <children>
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+                        <ComboBox fx:id="dayCombo" editable="true" layoutX="14.0" layoutY="21.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@profile.css" />
+                        <ComboBox fx:id="monthCombo" editable="true" layoutX="177.0" layoutY="21.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@profile.css" />
+                        <ComboBox fx:id="yearCombo" editable="true" layoutX="339.0" layoutY="21.0" prefWidth="150.0" styleClass="combo-box" stylesheets="@profile.css" />
+                    </children>
+                </AnchorPane>
+                <Label fx:id="usernameLabel" layoutX="593.0" layoutY="251.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="34.0" prefWidth="468.0" textAlignment="CENTER" textFill="#216104">
+                    <font>
+                        <Font name="Calibri Italic" size="17.0" />
+                    </font>
+                </Label>
+                <Label fx:id="firstnameLabel" layoutX="803.0" layoutY="375.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="239.0" textFill="WHEAT">
+                    <font>
+                        <Font name="Calibri Italic" size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="invalidBirthDateLabel" layoutX="750.0" layoutY="627.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="300.0" textAlignment="RIGHT" textFill="WHEAT">
+                    <font>
+                        <Font name="Calibri Italic" size="15.0" />
+                    </font>
+                </Label>
+                <AnchorPane layoutX="551.0" layoutY="411.0" prefHeight="69.0" prefWidth="450.0">
+                    <children>
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="7.0" layoutY="-3.0" prefHeight="34.0" prefWidth="130.0" text="Second Name">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="lastnameTextField" layoutX="128.0" layoutY="21.0" onKeyReleased="#nameReleased" prefHeight="26.0" prefWidth="216.0" stylesheets="@profile.css" />
+                    </children>
+                </AnchorPane>
+                <Label fx:id="failedLabel" layoutX="1328.0" layoutY="55.0" prefHeight="67.0" prefWidth="258.0" styleClass="Button" stylesheets="@style.css" text="Update Failed !">
+                    <font>
+                        <Font name="Calibri Bold Italic" size="17.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/failed.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <Label fx:id="successfulLabel" layoutX="1328.0" layoutY="55.0" prefHeight="67.0" prefWidth="258.0" styleClass="Button" stylesheets="@style.css" text="Update Successful !" textFill="#2ff74df7">
+                    <font>
+                        <Font name="Calibri Bold Italic" size="17.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/check.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="security" layoutY="227.0" prefHeight="802.0" prefWidth="1708.0" style="-fx-background-color: CCBA84FF;" visible="false">
+            <children>
+                <AnchorPane layoutX="727.0" layoutY="110.0" prefHeight="69.0" prefWidth="450.0">
+                    <children>
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="151.0" text="Current Password">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <PasswordField fx:id="passwordField" layoutX="176.0" layoutY="27.0" onKeyReleased="#passReleased" prefHeight="27.0" prefWidth="180.0" stylesheets="@profile.css" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane layoutX="727.0" layoutY="486.0" prefHeight="69.0" prefWidth="450.0">
+                    <children>
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="130.0" text="Recovery Code">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="codeField" layoutX="177.0" layoutY="21.0" onKeyReleased="#recoveryReleased" prefHeight="27.0" prefWidth="180.0" stylesheets="@profile.css" />
+                    </children>
+                </AnchorPane>
+                <Button layoutX="859.0" layoutY="612.0" mnemonicParsing="false" onAction="#changePassOnAction" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Change Password and Recovery Code" />
+                <Label fx:id="passwordLabel" layoutX="941.0" layoutY="185.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
+                    <font>
+                        <Font name="Calibri Italic" size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="codeLabel" layoutX="941.0" layoutY="574.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
+                    <font>
+                        <Font name="Calibri Italic" size="15.0" />
+                    </font>
+                </Label>
+                <AnchorPane layoutX="727.0" layoutY="362.0" prefHeight="69.0" prefWidth="450.0">
+                    <children>
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="206.0" text="Confirm New Password">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <PasswordField fx:id="confirmPasswordField" layoutX="175.0" layoutY="27.0" onKeyReleased="#confirmReleased" prefHeight="27.0" prefWidth="180.0" stylesheets="@profile.css" />
+                    </children>
+                </AnchorPane>
+                <Label fx:id="newPasswordLabel" layoutX="850.0" layoutY="310.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="380.0" textFill="#d41713">
+                    <font>
+                        <Font name="Calibri Italic" size="15.0" />
+                    </font>
+                </Label>
+                <AnchorPane layoutX="727.0" layoutY="225.0" prefHeight="69.0" prefWidth="450.0">
+                    <children>
+                        <Rectangle arcHeight="30.0" arcWidth="30.0" fill="#ffc300" height="68.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+                        <Label layoutX="14.0" layoutY="6.0" prefHeight="34.0" prefWidth="130.0" text="New Password">
+                            <font>
+                                <Font name="Calibri Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <PasswordField fx:id="newPasswordField" layoutX="168.0" layoutY="22.0" onKeyReleased="#passwordReleased" prefHeight="27.0" prefWidth="180.0" stylesheets="@profile.css" />
+                    </children>
+                </AnchorPane>
+                <Label fx:id="confirmPasswordLabel" layoutX="944.0" layoutY="448.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="286.0" textFill="#d41713">
+                    <font>
+                        <Font name="Calibri Italic" size="15.0" />
+                    </font>
+                </Label>
+                <Label fx:id="successfulLabel1" layoutX="1410.0" layoutY="111.0" prefHeight="67.0" prefWidth="258.0" styleClass="Button" stylesheets="@style.css" text="Update Successful !" textFill="#2ff74df7" visible="false">
+                    <font>
+                        <Font name="Calibri Bold Italic" size="17.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/check.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+                <Label fx:id="failedLabel1" layoutX="1410.0" layoutY="111.0" prefHeight="67.0" prefWidth="258.0" styleClass="Button" stylesheets="@style.css" text="Update Failed !" visible="false">
+                    <font>
+                        <Font name="Calibri Bold Italic" size="17.0" />
+                    </font>
+                    <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../image/failed.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>
