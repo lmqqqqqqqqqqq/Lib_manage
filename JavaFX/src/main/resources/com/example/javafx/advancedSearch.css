@@ -78,10 +78,10 @@
 
 
 .bookPane {
-    -fx-border-color: #FFB433;   /* Màu nền */
+    -fx-effect: dropshadow(gaussian, #39FF14, 15, 0.5, 0, 0);
     -fx-background-radius:30;      /* Bo góc nền */
     -fx-border-radius: 30;          /* Bo góc viền */
-    -fx-background-color: rgb(214, 214, 157);      /* Màu viền */
+    -fx-background-color: rgb(110, 108, 108);      /* Màu viền */
     -fx-border-width: 3;            /* Độ dày viền */
 }
 
