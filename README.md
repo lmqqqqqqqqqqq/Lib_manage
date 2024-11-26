@@ -14,4 +14,11 @@ Nhóm
 1. Lưu Đạt Tuấn Nghĩa - 
 2. Lê Minh Quân - 
 3. Bùi Mạnh Nam -
-## Mô tả
+## Mô tả <a name="author"></a>
+## UML diagram <a name="author"></a>
+## Hướng dẫn cài đặt <a name="author"></a>
+## Sử dụng <a name="author"></a>
+## Những phát triển trong tương lai <a name="author"></a>
+## Đóng góp <a name="author"></a>
+## Trạng thái dự án <a name="author"></a>
+## Ghi chú <a name="author"></a>
