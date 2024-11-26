@@ -78,11 +78,11 @@
 
 
 .bookPane {
-    -fx-border-color: #ffb433;
+    -fx-border-color: #23ff00;
     -fx-background-radius:30;      /* Bo góc nền */
     -fx-border-radius: 30;          /* Bo góc viền */
-    -fx-background-color: faeb78;      /* Màu viền */
-    -fx-border-width: 3;            /* Độ dày viền */
+    -fx-background-color: #3f3f3f;      /* Màu viền */
+    -fx-border-width: 5;            /* Độ dày viền */
 }
 
 .scroll-pane .scroll-bar:vertical {

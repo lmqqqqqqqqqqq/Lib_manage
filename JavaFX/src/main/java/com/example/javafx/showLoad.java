@@ -20,14 +20,25 @@ public class showLoad {
     @FXML
     public static void intoBox(HBox target, List<Books> result) throws IOException {
         for (Books b : result) {
-            FXMLLoader loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/resultBookShow.fxml"));
-            AnchorPane bookPane = loader.load();
-            resultBookShow controller = loader.getController();
-            controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b.getRating(), b);
-            bookPane.getStyleClass().add("left_but");
-            target.setSpacing(40);
-            target.getChildren().add(bookPane);
-
+            FXMLLoader loader;
+            if(DarkModeController.darkMode.get()) {
+                loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/DarkresultBookShow.fxml"));
+                AnchorPane bookPane = loader.load();
+                resultBookShow controller = loader.getController();
+                controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b.getRating(), b);
+                bookPane.getStyleClass().add("left_but");
+                target.setSpacing(40);
+                target.getChildren().add(bookPane);
+            }
+            else {
+                loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/resultBookShow.fxml"));
+                AnchorPane bookPane = loader.load();
+                resultBookShow controller = loader.getController();
+                controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b.getRating(), b);
+                bookPane.getStyleClass().add("left_but");
+                target.setSpacing(40);
+                target.getChildren().add(bookPane);
+            }
         }
     }
 
@@ -40,7 +51,13 @@ public class showLoad {
     @FXML
     public static void intoBox(TilePane target, List<Books> result) throws IOException {
         for (Books b : result) {
-            FXMLLoader loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/resultBookShow.fxml"));
+            FXMLLoader loader;
+            if (DarkModeController.darkMode.get()) {
+                loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/DarkresultBookShow.fxml"));
+            }
+            else {
+                loader = new FXMLLoader(showLoad.class.getResource("/com/example/javafx/resultBookShow.fxml"));
+            }
             AnchorPane bookPane = loader.load();
             resultBookShow controller = loader.getController();
             controller.setOutputData(b.getImageLinks(), b.getTitle(), b.getAuthor(), b.getId(), b.getRating(), b);
@@ -48,5 +65,4 @@ public class showLoad {
             target.getChildren().add(bookPane);
         }
     }
-
 }
