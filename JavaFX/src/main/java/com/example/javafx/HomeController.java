@@ -159,7 +159,7 @@ public class HomeController {
     }
 
     public void playClick() throws IOException {
-        SceneSwitcher.switchPage(homeScene, "wordle.fxml");
+        SceneSwitcher.switchPage(homeScene, "wordle.fxml", DarkModeController.darkMode.get());
     }
 
     public void playEntered() {

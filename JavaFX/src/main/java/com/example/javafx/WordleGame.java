@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class WordleGame {
     private final String targetWord;
-    private final int maxAttempts = 8;
-    private int attempts;
+    private static final int maxAttempts = 8;
+    private static int attempts;
     private List<String> guesses;
     private static final List<String> wordList = new ArrayList<>();
 
@@ -20,6 +20,10 @@ public class WordleGame {
         this.targetWord = getRandomWord();
         this.guesses = new ArrayList<>();
         this.attempts = 0;
+    }
+
+    public static int getMaxAttempts() {
+        return maxAttempts;
     }
 
     private static void loadWords() {
@@ -63,7 +67,7 @@ public class WordleGame {
         return wordList.get(random.nextInt(wordList.size()));
     }
 
-    public int getAttempts() {
+    public static int getAttempts() {
         return attempts;
     }
 

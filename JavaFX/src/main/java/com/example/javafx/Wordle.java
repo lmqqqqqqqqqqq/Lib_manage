@@ -119,7 +119,7 @@ public class Wordle {
 
     @FXML
     void submitEnter(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER) {
+        if (event.getCode() == KeyCode.ENTER && WordleGame.getMaxAttempts() > WordleGame.getAttempts()) {
             handleGuess();
         }
     }

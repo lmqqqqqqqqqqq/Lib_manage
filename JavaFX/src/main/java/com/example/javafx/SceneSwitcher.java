@@ -97,4 +97,18 @@ public class SceneSwitcher {
         pane.getChildren().clear();
         pane.getChildren().add(page);
     }
+
+    public static void switchPage(AnchorPane pane, String string, boolean isDarkMode) throws IOException {
+        FXMLLoader loader;
+        if (isDarkMode) {
+            loader = new FXMLLoader(SceneSwitcher.class.getResource("Dark" + string));
+        }
+        else {
+            loader = new FXMLLoader(SceneSwitcher.class.getResource(string));
+        }
+        Parent page = loader.load();
+
+        pane.getChildren().clear();
+        pane.getChildren().add(page);
+    }
 }

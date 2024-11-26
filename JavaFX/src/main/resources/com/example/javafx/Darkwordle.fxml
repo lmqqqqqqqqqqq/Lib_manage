@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@darkWordle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Wordle">
+
+    <AnchorPane fx:id="gameScreen" prefHeight="997.0" prefWidth="1703.0" style="-fx-background-color: #333333;">
+        <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="30" styleClass="vbox-background" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Label fx:id="headerLabel" styleClass="header" text="Wordle Game" />
+
+            <!-- Larger grid -->
+            <GridPane fx:id="guessGrid" hgap="10" maxHeight="400" maxWidth="600" style="-fx-alignment: center;" vgap="10">
+            </GridPane>
+
+            <HBox alignment="CENTER" spacing="20">
+                <TextField fx:id="inputField" onKeyPressed="#submitEnter" prefWidth="300" promptText="Enter guess" styleClass="input-field" />
+                <Button fx:id="submitButton" onAction="#handleGuess" styleClass="submit-button" text="Submit" />
+            </HBox>
+
+            <Label fx:id="messageLabel" textFill="WHITE" />
+
+            <VBox alignment="CENTER" prefHeight="53.0" prefWidth="1161.0" spacing="15">
+                <Label fx:id="streakScoreLabel" styleClass="streak-label" text="Streak: 0" />
+                <Label fx:id="highScoreLabel" text="High Streak: 0" textFill="WHITE" />
+            </VBox>
+
+            <HBox alignment="CENTER" spacing="20">
+                <HBox alignment="CENTER" spacing="10">
+                    <Button fx:id="restartButton" onAction="#restartGame" styleClass="restart-button" text="Restart" />
+                    <Button fx:id="homeButton" onAction="#goHome" styleClass="home-button" text="Home" />
+                </HBox>
+            </HBox>
+        </VBox>
+    </AnchorPane>
+</StackPane>
