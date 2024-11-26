@@ -3,36 +3,13 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@wordle.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Wordle">
-
-    <AnchorPane fx:id="playScreen" prefHeight="432.0" prefWidth="594.0" style="-fx-background-color: #f0f0f0;">
-        <StackPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-            <VBox alignment="CENTER" spacing="20">
-                <ImageView fitHeight="300" fitWidth="500" pickOnBounds="true" preserveRatio="true">
-                    <Image url="@../image/logo_wordle.jpg" />
-                </ImageView>
-
-                <Button fx:id="playButton" onAction="#startGame" styleClass="play-button">
-                    <graphic>
-                        <ImageView fitHeight="150" fitWidth="300" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../image/play_button.PNG" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-            </VBox>
-        </StackPane>
-    </AnchorPane>
-
+<StackPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@wordle.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.Wordle">
     <AnchorPane fx:id="gameScreen" prefHeight="997.0" prefWidth="1703.0" style="-fx-background-color: #F5F5F5;">
         <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="30" styleClass="vbox-background" stylesheets="@mainScene.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <Label fx:id="headerLabel" styleClass="header" text="Wordle Game" />
@@ -42,7 +19,7 @@
             </GridPane>
 
             <HBox alignment="CENTER" spacing="20">
-                <TextField fx:id="inputField" onKeyPressed="#submitEnter" prefWidth="300" promptText="Enter guess" styleClass="input-field" />
+                <TextField fx:id="inputField" onAction="#handleGuess" onKeyPressed="#submitEnter" prefWidth="300" promptText="Enter guess" styleClass="input-field" />
                 <Button fx:id="submitButton" onAction="#handleGuess" styleClass="submit-button" text="Submit" />
             </HBox>
 

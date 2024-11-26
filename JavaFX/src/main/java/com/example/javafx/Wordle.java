@@ -53,6 +53,11 @@ public class Wordle {
 
     @FXML
     public void handleGuess() {
+        if (game.isGameOver()) {
+            messageLabel.setText("Game Over! You've used all attempts. The word was " + game.getTargetWord());
+            return;
+        }
+
         String guess = inputField.getText().toUpperCase();
 
         if (guess.length() != game.getTargetWord().length()) {
@@ -118,8 +123,8 @@ public class Wordle {
     }
 
     @FXML
-    void submitEnter(KeyEvent event) {
-        if (event.getCode() == KeyCode.ENTER && WordleGame.getMaxAttempts() > WordleGame.getAttempts()) {
+    public void submitEnter(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
             handleGuess();
         }
     }
