@@ -10,7 +10,7 @@
 8. [Ghi chú](#note)
 ## Tác giả <a name="author"></a>
 Nhóm 
-1. Lưu Đạt Tuấn Nghĩa - 
+1. Lưu Đạt Tuấn Nghĩa - 23020559
 2. Lê Minh Quân - 23020563
 3. Bùi Mạnh Nam - 23020556
 ## Mô tả <a name="description"></a>
