@@ -6,9 +6,8 @@
 4. [Hướng dẫn cài đặt](#install)
 5. [Sử dụng](#usage)
 6. [Những phát triển trong tương lai](#improvemnets)
-7. [Đóng góp](#contribute)
-8. [Trạng thái dự án](#status)
-9. [Ghi chú](#note)
+7. [Trạng thái dự án](#status)
+8. [Ghi chú](#note)
 ## Tác giả <a name="author"></a>
 Nhóm 
 1. Lưu Đạt Tuấn Nghĩa - 
@@ -23,7 +22,6 @@ Nhóm
 - Ứng dụng có tích hợp thêm game wordle giúp người dùng có thể biết thêm nhiều từ tiếng Anh.
 - Có hệ thống đăng nhập, đăng kí tài khoản với tính năng bảo mật đổi mật khẩu hay quên mật khẩu thông qua sử dụng Recovery Key cho mỗi người dùng.
 - Ứng dụng chủ yếu sử dụng tiếng Anh
-- 
 ## UML diagram <a name="uml"></a>
 ![UML](https://i.imgur.com/eq2REkk.png)
 ## Hướng dẫn cài đặt <a name="install"></a>
@@ -34,7 +32,10 @@ Nhóm
 2. tạo tài khoản đã có thể sử dụng như bình thường.
 3. Đối với người quản lí có thêm chức năng quản lí thư viện, truy cập bằng nút thứ 5 từ trên xuống ở thanh điều hương bên trái.
 ## Những phát triển trong tương lai <a name="improvemnets"></a>
-## Đóng góp <a name="contribute"></a>
+- Thêm chức năng đọc sách.
+- tối ưu kết nối tới cơ sở dữ liệu.
+- cải thiện giao diện dễ sử dụng hơn.
 ## Trạng thái dự án <a name="status"></a>
 Đang phát triển
 ## Ghi chú <a name="note"></a>
+code được lấy cảm hứng từ thầy CHATGPT
