@@ -100,7 +100,7 @@ public class addBookController {
     /**
      * only add books information not id.
      * co check trung` isbn
-     * @throws Exception
+     * @throws Exception is exception.
      */
     @FXML
     private void add() throws Exception {
@@ -170,7 +170,7 @@ public class addBookController {
 
     /**
      * delete with id.
-     * @throws Exception
+     * @throws Exception is exception.
      */
     @FXML
     private void delete() throws Exception {

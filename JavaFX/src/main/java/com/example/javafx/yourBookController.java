@@ -1,6 +1,5 @@
 package com.example.javafx;
 
-import com.mysql.cj.log.Log;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -38,7 +37,7 @@ public class    yourBookController {
         task.setOnSucceeded(event -> {
             try {
                 List<Books> borrowedBooks = task.getValue();
-                if(borrowedBooks.size() > 0) {
+                if(!borrowedBooks.isEmpty()) {
                     showLoad.intoBox(borrowed, borrowedBooks);
                 }
             } catch (IOException e) {
@@ -68,7 +67,7 @@ public class    yourBookController {
     }
 
     @FXML
-    public void loadNearestBook() throws Exception {
+    public void loadNearestBook() {
         nearestBook.getChildren().clear();
         String Query = "SELECT books.*, user_books.currentTime FROM books INNER JOIN user_books" +
                 " ON user_books.idbooks = books.idbooks AND user_books.idusers = ?" +
@@ -77,7 +76,7 @@ public class    yourBookController {
         task.setOnSucceeded(event -> {
            try {
                List<Books> nearestBooks = task.getValue();
-               if(nearestBooks.size() > 0) {
+               if(!nearestBooks.isEmpty()) {
                    showLoad.intoBox(nearestBook, nearestBooks);
                } else {
                    System.out.println("no nearest found");

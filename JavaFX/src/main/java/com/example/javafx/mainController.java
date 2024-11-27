@@ -1,13 +1,8 @@
 package com.example.javafx;
 
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -101,10 +96,6 @@ public class mainController {
             }
             name.setText(user.getUsername());
             outSideManagerClick();
-//            darkMode.addListener((obs, oldMode, newMode) -> {
-//                DarkModeController.applyDarkMode(ContentAnchorPane.getScene());
-//                DarkModeController.setDarkModeStyle(managerBar, intro, boader, newMode);
-//            });
             homeButton.setStyle("-fx-background-radius: 30;\n" +
                 "    -fx-border-radius: 30;\n" +
                 "    -fx-background-color: #FFB433;;\n" +
@@ -171,7 +162,7 @@ public class mainController {
         LoadImage.loadAvatarImage(mainSceneAvatar, user.getAvatarLink());
     }
 
-    public void profileOnClick() throws IOException {
+    public void profileOnClick()  {
         manager.setVisible(true);
         manager.setDisable(false);
         managerBar.setVisible(false);
@@ -265,6 +256,7 @@ public class mainController {
         alert.showAndWait().ifPresent(response -> {
             if (response.equals(yes)) {
                 Stage stage = (Stage) name.getScene().getWindow();
+                DarkModeController.darkMode.set(false);
                 SceneSwitcher.SwitchScene(stage, "Login.fxml");
             }
         });

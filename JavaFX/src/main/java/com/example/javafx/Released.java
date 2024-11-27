@@ -87,7 +87,7 @@ public class Released {
                 checkPassword[0] = true;
             }
             else {
-                label.setText("Week Password");
+                label.setText("Weak Password");
                 label.setStyle("-fx-text-fill: red");
                 passwordField.setStyle("-fx-border-color: red;");
                 checkPassword[0] = false;

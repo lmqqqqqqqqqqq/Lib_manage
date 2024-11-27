@@ -6,9 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -137,82 +135,6 @@ public class UserManage {
         loadUsers();
     }
 
-    private void addDB(Connection conn) {
-        String Q = "INSERT INTO users (username, password, first_name, last_name, dayOfBirth, " +
-                "monthOfBirth, yearOfBirth, recoveryCode, avatar, currentDate, isSave) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        String Username = username.getText();
-        String Password = password.getText();
-        String Firstname = firstname.getText();
-        String Lastname = lastname.getText();
-        int DayOfBirth = Integer.parseInt(dayOfBirth.getText());
-        int MonthOfBirth = Integer.parseInt(monthOfBirth.getText());
-        int YearOfBirth = Integer.parseInt(yearOfBirth.getText());
-        String RecoveryCode = recoveryCode.getText();
-        String AvatarLink = avatarLink.getText();
-        String SignUpDate = signUpDate.getText();
-        Integer IsSave = Integer.valueOf(isSave.getText());
-
-        try (PreparedStatement stm = conn.prepareStatement(Q)) {
-            stm.setString(1, Username);
-            stm.setString(2, Password);
-            stm.setString(3, Firstname);
-            stm.setString(4, Lastname);
-            stm.setInt(5, DayOfBirth);
-            stm.setInt(6, MonthOfBirth);
-            stm.setInt(7, YearOfBirth);
-            stm.setString(8, RecoveryCode);
-            stm.setString(9, AvatarLink);
-            stm.setString(10, SignUpDate);
-            stm.setInt(11, IsSave);
-
-            stm.executeUpdate();
-            System.out.println("User added successfully to the database!");
-        } catch (SQLException e) {
-            System.out.println("Failed to add user to the database");
-            e.printStackTrace();
-        }
-    }
-
-
-    @FXML
-    private void add() throws Exception {
-        if(checkempty()) {
-            errorMessage.setVisible(true);
-            errorMessage.setText("One or more information is missing!");
-            return;
-        }
-        String Username = username.getText();
-        String Password = password.getText();
-        String Firstname = firstname.getText();
-        String Lastname = lastname.getText();
-        int DayOfBirth = Integer.parseInt(dayOfBirth.getText());
-        int MonthOfBirth = Integer.parseInt(monthOfBirth.getText());
-        int YearOfBirth = Integer.parseInt(yearOfBirth.getText());
-        String RecoveryCode = recoveryCode.getText();
-        String AvatarLink = avatarLink.getText();
-        String SignUpDate = signUpDate.getText();
-        Integer IsSave = Integer.valueOf(isSave.getText());
-
-        StringBuilder error = new StringBuilder();
-        for (User u : users) {
-            if (Username.equals(u.getUsername())) {
-                error.append(" Username ").append(u.getUsername()).append(" already exists! ");
-            }
-        }
-        if (!error.isEmpty()) {
-            errorMessage.setText(error.toString());
-            errorMessage.setVisible(true);
-        } else {
-            User newU = new User(Firstname, Lastname, Username, Password, DayOfBirth, MonthOfBirth, YearOfBirth,
-                    RecoveryCode, AvatarLink, SignUpDate, IsSave);
-            users.add(newU);
-            addDB(Connect.connect());
-            reset();
-        }
-    }
-
     private void delDB(Connection conn) {
         try (PreparedStatement stm = conn.prepareStatement("Delete from users where idusers = ?")) {
             stm.setString(1, id.getText());
@@ -257,71 +179,6 @@ public class UserManage {
         }
     }
 
-    private void upDB(Connection connect) {
-        String Q = "update users set username = ?, password = ?, first_name = ?" +
-                "last_name = ?, dayOfBirth = ?, monthOfBirth = ?, yearOfBirth = ?, recoveryCode = ?, avatar = ?, " +
-                "currentDate = ?, isSave = ? WHERE idusers = ?";
-        try (PreparedStatement stm = connect.prepareStatement(Q)) {
-            stm.setString(1,username.getText());
-            stm.setString(2,password.getText());
-            stm.setString(3,firstname.getText());
-            stm.setString(4,lastname.getText());
-            stm.setInt(5, Integer.parseInt(dayOfBirth.getText()));
-            stm.setInt(6, Integer.parseInt(monthOfBirth.getText()));
-            stm.setInt(7, Integer.parseInt(yearOfBirth.getText()));
-            stm.setString(8,recoveryCode.getText());
-            stm.setString(9,avatarLink.getText());
-            stm.setString(10,signUpDate.getText());
-            stm.setInt(11, Integer.parseInt(isSave.getText()));
-            stm.executeUpdate();
-            System.out.println("Update successfully on database");
-        } catch (SQLException e) {
-            System.out.println("Update failed on database");
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private void update() throws Exception {
-        if(checkempty()) {
-            errorMessage.setVisible(true);
-            errorMessage.setText("Something is missing! Please check and then update again.");
-            return;
-        }
-        User u = userTableView.getSelectionModel().getSelectedItem();
-        if (u == null) {
-            System.out.println("unselected");
-            errorMessage.setText("There is nothing to update");
-            errorMessage.setVisible(true);
-            return;
-        }
-        String Username = username.getText();
-        String Password = password.getText();
-        String Firstname = firstname.getText();
-        String Lastname = lastname.getText();
-        int DayOfBirth = Integer.parseInt(dayOfBirth.getText());
-        int MonthOfBirth = Integer.parseInt(monthOfBirth.getText());
-        int YearOfBirth = Integer.parseInt(yearOfBirth.getText());
-        String RecoveryCode = recoveryCode.getText();
-        String AvatarLink = avatar.getImage().getUrl();
-        String SignUpDate = signUpDate.getText();
-        Integer IsSave = Integer.valueOf(isSave.getText());
-
-        u.setUsername(Username);
-        u.setPassword(Password);
-        u.setFirstname(Firstname);
-        u.setLastname(Lastname);
-        u.setDayOfBirth(DayOfBirth);
-        u.setMonthOfBirth(MonthOfBirth);
-        u.setYearOfBirth(YearOfBirth);
-        u.setRecoveryCode(RecoveryCode);
-        u.setAvatarLink(AvatarLink);
-        u.setDayIn(SignUpDate);
-        u.setIsSave(IsSave);
-        userTableView.refresh();
-        upDB(Connect.connect());
-    }
-
     @FXML
     public void handleRowClick() {
         User u = userTableView.getSelectionModel().getSelectedItem();
@@ -340,40 +197,5 @@ public class UserManage {
             signUpDate.setText(u.getDayIn());
             isSave.setText(Integer.toString(u.getIsSave()));
         }
-    }
-
-
-    @FXML
-    public void addMode() {
-        modeDecision.setText("Add User");
-        modeDecision.setOnAction(event -> {
-            try {
-                add();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-    @FXML
-    public void deleteMode() {
-        modeDecision.setText("Delete User");
-        modeDecision.setOnAction(event -> {
-            try {
-                delete();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-    @FXML
-    public void updateMode() {
-        modeDecision.setText("Update User");
-        modeDecision.setOnAction(event -> {
-            try {
-                update();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
     }
 }

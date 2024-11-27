@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 
 public class Wordle {
     public Label headerLabel;
-    public Button playButton;
     @FXML private AnchorPane playScreen;
     @FXML private AnchorPane gameScreen;
     public Button homeButton;

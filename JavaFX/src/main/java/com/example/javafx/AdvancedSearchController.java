@@ -1,7 +1,6 @@
 package com.example.javafx;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -11,7 +10,6 @@ import javafx.scene.layout.TilePane;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class AdvancedSearchController {
 

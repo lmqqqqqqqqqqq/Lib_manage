@@ -42,11 +42,11 @@ public class AdvancedSearch {
 
     /**
      * excute query with only 1 param. ( Using for yourBook)
-     * @param query
-     * @param o
-     * @param connect
-     * @return
-     * @throws SQLException
+     * @param query is query.
+     * @param o is o.
+     * @param connect is connection.
+     * @return a.
+     * @throws SQLException is excepyion.
      */
     public static List<Books> search(String query, Object o, Connection connect) throws SQLException {
         PreparedStatement stm = connect.prepareStatement(query);
@@ -99,15 +99,15 @@ public class AdvancedSearch {
     /**
      * when everything is null select the newest first.
      * process to get query from database.
-     * @param title
-     * @param author
-     * @param genre
-     * @param publisher
-     * @param isbn
-     * @param language
-     * @param year
-     * @param sortBy
-     * @param params
+     * @param title .
+     * @param author .
+     * @param genre .
+     * @param publisher .
+     * @param isbn .
+     * @param language .
+     * @param year .
+     * @param sortBy .
+     * @param params .
      * @return query.
      */
     public static String process(String title, String author, String genre

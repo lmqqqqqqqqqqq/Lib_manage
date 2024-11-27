@@ -171,7 +171,7 @@ public class BookDetailsController {
                     alert.setContentText("Expired books! please RETURN now!");
                     alert.showAndWait();
                 } else if (ChronoUnit.DAYS.between(date, dueDate) <= 5) {
-                    alert.setText("Alert: " + String.valueOf(ChronoUnit.DAYS.between(date, dueDate)) + " days left before expiration");
+                    alert.setText("Alert: " + ChronoUnit.DAYS.between(date, dueDate) + " days left before expiration");
                     alert.setStyle("-fx-text-fill: red;");
                 }
             }
@@ -205,7 +205,7 @@ public class BookDetailsController {
         returnday.setVisible(false);
     }
 
-    public void favouriteOnAction() throws Exception {
+    public void favouriteOnAction() {
         if(isFavourite()) {
             String query = "update user_books set is_favourite = 0 where idusers = ? and idbooks = ?";
             try (Connection connection = db.connect()) {
