@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -16,6 +18,13 @@
          <font>
             <Font name="Calibri Bold Italic" size="30.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/borrow.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Label>
       <ScrollPane fitToHeight="true" layoutX="92.0" layoutY="44.0" prefHeight="276.0" prefWidth="1525.0" styleClass="resultBox" stylesheets="@mainScene.css" vbarPolicy="NEVER">
          <content>
@@ -44,21 +53,35 @@
             </HBox>
          </content>
       </ScrollPane>
-      <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="330.0" prefHeight="32.0" prefWidth="1525.0" text="Favorite books">
+      <Label alignment="TOP_LEFT" layoutX="92.0" layoutY="330.0" prefHeight="32.0" prefWidth="1525.0" text="Favorite books">
          <padding>
             <Insets left="20.0" />
          </padding>
          <font>
             <Font name="Calibri Bold Italic" size="30.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/favourite.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Label>
-      <Label alignment="TOP_LEFT" layoutX="93.0" layoutY="658.0" prefHeight="32.0" prefWidth="1525.0" text="Recently Viewed">
+      <Label alignment="TOP_LEFT" layoutX="92.0" layoutY="654.0" prefHeight="32.0" prefWidth="1525.0" text="Recently Viewed">
          <padding>
             <Insets left="20.0" />
          </padding>
          <font>
             <Font name="Calibri Bold Italic" size="30.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/eye.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Label>
    </children>
 </AnchorPane>
