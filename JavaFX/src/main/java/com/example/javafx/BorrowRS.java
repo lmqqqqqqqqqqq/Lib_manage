@@ -13,6 +13,7 @@ public class BorrowRS implements OBJECT {
     private ImageView image = new ImageView();
     private String author;
     private String userName;
+    private String status;
 
     public BorrowRS() {}
     public BorrowRS(int userId, String bookId, LocalDate borrowDate, LocalDate dueDate) {
@@ -31,7 +32,7 @@ public class BorrowRS implements OBJECT {
      * @param dueDate is dueDate.
      * @param imageLink is book image.
      */
-    public BorrowRS(String bookId, String name, String author, LocalDate borrowDate, LocalDate dueDate, String imageLink) {
+    public BorrowRS(String bookId, String name, String author, LocalDate borrowDate, LocalDate dueDate, String imageLink, String status) {
         this.bookId = bookId;
         this.name = name;
         this.borrowDate = borrowDate;
@@ -41,6 +42,7 @@ public class BorrowRS implements OBJECT {
         this.image.setFitWidth(90);
         this.image.setFitHeight(90);
         this.image.setPreserveRatio(true);
+        this.status = status;
     }
 
     /**
@@ -49,7 +51,7 @@ public class BorrowRS implements OBJECT {
      * @param userName is name.
      * @param imageLink is avatar.
      */
-    public BorrowRS(int userId, String userName, LocalDate borrowDate, LocalDate dueDate, String imageLink) {
+    public BorrowRS(int userId, String userName, LocalDate borrowDate, LocalDate dueDate, String imageLink, String status) {
         this.userId = userId;
         this.userName = userName;
         this.borrowDate = borrowDate;
@@ -62,6 +64,7 @@ public class BorrowRS implements OBJECT {
         this.image.setFitWidth(90);
         this.image.setFitHeight(90);
         this.image.setPreserveRatio(true);
+        this.status = status;
     }
 
     public String getUserName() {
@@ -134,6 +137,14 @@ public class BorrowRS implements OBJECT {
 
     public void setImage(ImageView image) {
         this.image = image;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

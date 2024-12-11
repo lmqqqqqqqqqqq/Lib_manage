@@ -92,6 +92,7 @@ public class BorrowManagement {
             borrowDate.setText(borrow.getBorrowDate().toString());
             dueDate.setText(borrow.getDueDate().toString());
             message.setText(calDay(borrow));
+            message.setStyle("-fx-text-fill: #f18100;");
         }
     }
 
@@ -99,10 +100,10 @@ public class BorrowManagement {
         if (borrow.getRemainingDays() < 0) {
             message.setVisible(true);
             message.setStyle("-fx-text-fill: red;");
-            return "Over Due!!!";
+            return "Over Due !";
         } else {
             message.setVisible(true);
-            message.setStyle("-fx-text-fill: black;");
+            message.setStyle("-fx-text-fill: #f18100;");
             return borrow.getRemainingDays() + " Days left";
         }
     }

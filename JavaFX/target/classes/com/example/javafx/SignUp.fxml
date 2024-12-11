@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="825.0" prefWidth="1311.0" styleClass="bodySignUp" stylesheets="@style.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.SignUpController">
+<StackPane prefHeight="825.0" prefWidth="1311.0" styleClass="bodySignUp" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.SignUpController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="826.0" prefWidth="1314.0">
          <children>
@@ -65,7 +65,7 @@
                   <Font name="Calibri Bold Italic" size="20.0" />
                </font>
             </Button>
-            <Label fx:id="invalidUsernameLabel" layoutX="357.0" layoutY="205.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="22.0" prefWidth="416.0" text="Your username should be between 6-15 characters." textAlignment="RIGHT">
+            <Label fx:id="invalidUsernameLabel" alignment="CENTER" layoutX="97.0" layoutY="191.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="46.0" prefWidth="684.0" text="Your username should be between 6-15 characters." textAlignment="RIGHT" wrapText="true">
                <font>
                   <Font name="Calibri Italic" size="20.0" />
                </font>

@@ -13,12 +13,13 @@
    <children>
       <TableView fx:id="tableView" layoutX="75.0" layoutY="298.0" prefHeight="404.0" prefWidth="1607.0" styleClass="title-pane" stylesheets="@advancedSearch.css">
         <columns>
-          <TableColumn fx:id="imageColumn" prefWidth="156.0" styleClass="image-column" />
-          <TableColumn fx:id="idColumn" maxWidth="340.0" minWidth="-1.0" prefWidth="178.0" text="ID" />
-            <TableColumn fx:id="nameColumn" prefWidth="427.0" text="Name" />
-            <TableColumn fx:id="authorColumn" prefWidth="373.0" text="Author" />
-            <TableColumn fx:id="borrowColumn" prefWidth="241.0" text="Borrow Date" />
-            <TableColumn fx:id="returnColumn" prefWidth="203.0" text="Return Date" />
+          <TableColumn fx:id="imageColumn" prefWidth="100.0" styleClass="image-column" text="Image" />
+          <TableColumn fx:id="idColumn" maxWidth="340.0" minWidth="-1.0" prefWidth="184.66665649414062" text="ID" />
+            <TableColumn fx:id="nameColumn" prefWidth="368.33331298828125" text="Name" />
+            <TableColumn fx:id="authorColumn" prefWidth="315.66668701171875" text="Author" />
+            <TableColumn fx:id="borrowColumn" prefWidth="266.6666259765625" text="Borrow Date" />
+            <TableColumn fx:id="returnColumn" minWidth="0.0" prefWidth="215.6666259765625" text="Return Date" />
+            <TableColumn fx:id="Status" prefWidth="129.3333740234375" text="Status" />
         </columns>
       </TableView>
       <AnchorPane layoutX="88.0" layoutY="73.0" prefHeight="117.0" prefWidth="559.0">
@@ -35,6 +36,31 @@
                   <Font name="Calibri Bold Italic" size="20.0" />
                </font>
             </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="828.0" layoutY="73.0" prefHeight="146.0" prefWidth="425.0">
+         <children>
+            <Rectangle arcHeight="70.0" arcWidth="70.0" fill="#a8aaab" height="140.0" layoutX="8.0" layoutY="3.0" stroke="#ffac00" strokeType="INSIDE" strokeWidth="3.0" width="416.0" />
+            <Label layoutX="34.0" layoutY="13.0" prefHeight="46.0" prefWidth="123.0" text="Borrowing :">
+               <font>
+                  <Font name="Calibri Bold Italic" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="borrow" layoutX="196.0" layoutY="13.0" prefHeight="46.0" prefWidth="123.0" textFill="RED">
+               <font>
+                  <Font name="Calibri Bold Italic" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="72.0" prefHeight="46.0" prefWidth="123.0" text="Overdue :">
+               <font>
+                  <Font name="Calibri Bold Italic" size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="over" layoutX="196.0" layoutY="72.0" prefHeight="46.0" prefWidth="123.0" textFill="RED">
+               <font>
+                  <Font name="Calibri Bold Italic" size="25.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

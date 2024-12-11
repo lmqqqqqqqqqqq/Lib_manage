@@ -52,7 +52,7 @@ public class BookDetailsController {
     @FXML
     private Label returnday;
     @FXML
-    private Label alert;
+    private Label allert;
     @FXML
     private AnchorPane infoPane;
     @FXML
@@ -158,8 +158,8 @@ public class BookDetailsController {
                 LocalDate date = LocalDate.now();
                 LocalDate dueDate = LocalDate.parse(rs.getString("due_date"));
                 if (date.isEqual(dueDate) || date.isAfter(dueDate)) {
-                    alert.setText("Alert: The book is expired");
-                    alert.setStyle("-fx-text-fill: red;");
+                    allert.setText("Alert: The book is expired");
+                    allert.setStyle("-fx-text-fill: red;");
                     returnButton.setDisable(false);
                     returnButton.setVisible(true);
                     GaussianBlur blur = new GaussianBlur(10);
@@ -171,8 +171,8 @@ public class BookDetailsController {
                     alert.setContentText("Expired books! please RETURN now!");
                     alert.showAndWait();
                 } else if (ChronoUnit.DAYS.between(date, dueDate) <= 5) {
-                    alert.setText("Alert: " + ChronoUnit.DAYS.between(date, dueDate) + " days left before expiration");
-                    alert.setStyle("-fx-text-fill: red;");
+                    allert.setText("Alert: " + ChronoUnit.DAYS.between(date, dueDate) + " days left before expiration");
+                    allert.setStyle("-fx-text-fill: red;");
                 }
             }
         } catch (Exception e) {
@@ -203,6 +203,9 @@ public class BookDetailsController {
         returndayLabel.setVisible(false);
         borrowday.setVisible(false);
         returnday.setVisible(false);
+        infoPane.setEffect(null);
+        infoPane.setMouseTransparent(false);
+        allert.setVisible(false);
     }
 
     public void favouriteOnAction() {
@@ -233,7 +236,7 @@ public class BookDetailsController {
 
     public void addBookFromAPIToDatabase() {
         if(books.isFromAPI()) {
-            String query = "insert IGNORE into books (idbooks, title, author, created_date, image, description, genre, publisher, ISBN, language, rating) SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?";
+            String query = "insert IGNORE into books (idbooks, title, author, created_date, image, description, genre, publisher, ISBN, language, rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             try(Connection connection = db.connect()) {
                 PreparedStatement ps = connection.prepareStatement(query);
                 ps.setString(1, books.getId());
@@ -252,6 +255,7 @@ public class BookDetailsController {
                 ps.setString(10, books.getLanguage());
                 ps.setString(11, books.getRating());
                 ps.executeUpdate();
+                System.out.println("Sucessssssssssssssssss");
             } catch(Exception e) {
                 e.printStackTrace();
             }

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@userManage.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.UserManage">
+<AnchorPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@userManage.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.UserManage">
     <TableView fx:id="userTableView" layoutX="48.0" layoutY="552.0" onMouseClicked="#handleRowClick" prefHeight="318.0" prefWidth="1614.0">
         <columns>
             <TableColumn fx:id="idCol" prefWidth="49.666664123535156" text="ID" />
@@ -28,46 +28,73 @@
             <TableColumn fx:id="isSaveCol" prefWidth="94.0" text="SavedPass" />
         </columns>
     </TableView>
-    <TextField fx:id="id" editable="false" layoutX="385.0" layoutY="192.0" prefHeight="25.0" prefWidth="149.0" promptText="id" />
-    <TextField fx:id="username" editable="false" layoutX="385.0" layoutY="231.0" promptText="Username" />
-    <PasswordField fx:id="password" editable="false" layoutX="385.0" layoutY="268.0" promptText="Password" />
-    <TextField fx:id="firstname" editable="false" layoutX="385.0" layoutY="343.0" promptText="First Name" />
-    <TextField fx:id="lastname" editable="false" layoutX="385.0" layoutY="376.0" promptText="Last Name" />
-    <TextField fx:id="dayOfBirth" editable="false" layoutX="641.0" layoutY="193.0" prefHeight="25.0" prefWidth="42.0" promptText="BDay" />
-    <TextField fx:id="monthOfBirth" editable="false" layoutX="704.0" layoutY="193.0" prefHeight="25.0" prefWidth="42.0" promptText="BMonth" />
-    <TextField fx:id="yearOfBirth" editable="false" layoutX="769.0" layoutY="193.0" prefHeight="28.0" prefWidth="49.0" promptText="BYear" />
-    <TextField fx:id="recoveryCode" editable="false" layoutX="641.0" layoutY="289.0" promptText="Recovery" />
-    <TextField fx:id="signUpDate" editable="false" layoutX="641.0" layoutY="240.0" promptText="Sign up day" />
-    <TextField fx:id="isSave" editable="false" layoutX="385.0" layoutY="301.0" prefHeight="28.0" prefWidth="171.0" promptText="Saved password" />
-    <Label fx:id="errorMessage" layoutX="306.0" layoutY="447.0" prefHeight="17.0" prefWidth="629.0" text="error messages" textFill="RED">
+    <TextField fx:id="id" editable="false" layoutX="391.0" layoutY="165.0" prefHeight="35.0" prefWidth="226.0" promptText="id" styleClass="text1-field" stylesheets="@style.css" />
+    <TextField fx:id="username" editable="false" layoutX="572.0" layoutY="226.0" promptText="Username" styleClass="text1-field" stylesheets="@style.css" />
+    <PasswordField fx:id="password" editable="false" layoutX="572.0" layoutY="280.0" promptText="Password" styleClass="text1-field" stylesheets="@style.css" />
+    <TextField fx:id="firstname" editable="false" layoutX="576.0" layoutY="380.0" promptText="First Name" styleClass="text1-field" stylesheets="@style.css" />
+    <TextField fx:id="lastname" editable="false" layoutX="576.0" layoutY="427.0" promptText="Last Name" styleClass="text1-field" stylesheets="@style.css" />
+    <TextField fx:id="dayOfBirth" editable="false" layoutX="1243.0" layoutY="197.0" prefHeight="35.0" prefWidth="80.0" promptText="Day" styleClass="text1-field" stylesheets="@style.css" />
+    <TextField fx:id="monthOfBirth" editable="false" layoutX="1376.0" layoutY="197.0" prefHeight="35.0" prefWidth="80.0" promptText="Month" styleClass="text1-field" stylesheets="@style.css" />
+    <TextField fx:id="yearOfBirth" editable="false" layoutX="1502.0" layoutY="197.0" prefHeight="35.0" prefWidth="91.0" promptText="Year" styleClass="text1-field" stylesheets="@style.css" />
+    <TextField fx:id="recoveryCode" editable="false" layoutX="1219.0" layoutY="326.0" promptText="Recovery" styleClass="text1-field" stylesheets="@style.css" />
+    <TextField fx:id="signUpDate" editable="false" layoutX="1219.0" layoutY="263.0" promptText="Sign up day" styleClass="text1-field" stylesheets="@style.css" />
+    <TextField fx:id="isSave" editable="false" layoutX="572.0" layoutY="331.0" prefHeight="35.0" prefWidth="160.0" promptText="Saved password" styleClass="text1-field" stylesheets="@style.css" />
+    <Label fx:id="errorMessage" layoutX="303.0" layoutY="497.0" prefHeight="35.0" prefWidth="691.0" text="error messages" textFill="RED">
         <font>
-            <Font name="System Bold Italic" size="14.0" />
+            <Font name="System Bold Italic" size="16.0" />
         </font>
     </Label>
     <ImageView fx:id="avatar" fitHeight="233.0" fitWidth="200.0" layoutX="61.0" layoutY="141.0" pickOnBounds="true" />
     <TextField fx:id="avatarLink" editable="false" layoutX="48.0" layoutY="444.0" prefHeight="25.0" prefWidth="226.0" promptText="Avatar URL" visible="false" />
-    <Pane prefHeight="190.0" prefWidth="1705.0" styleClass="decorDark" stylesheets="@userManage.css" />
-    <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="197.0" prefHeight="17.0" prefWidth="67.0" style="-fx-text-fill: white;" text="ID :" textAlignment="RIGHT" />
-    <Label alignment="CENTER_RIGHT" layoutX="579.0" layoutY="293.0" style="-fx-text-fill: white;" text="Recovery :" textAlignment="RIGHT" />
-    <Label layoutX="595.0" layoutY="197.0" style="-fx-text-fill: white;" text="Genre :" />
-    <Label alignment="CENTER_RIGHT" layoutX="305.0" layoutY="347.0" style="-fx-text-fill: white;" text="First Name :" textAlignment="RIGHT" />
-    <Label alignment="CENTER_RIGHT" layoutX="563.0" layoutY="244.0" style="-fx-text-fill: white;" text="SignUp Day :" textAlignment="RIGHT" />
-    <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="272.0" prefHeight="17.0" prefWidth="67.0" style="-fx-text-fill: white;" text="Password :" textAlignment="RIGHT" />
-    <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="235.0" prefHeight="17.0" prefWidth="67.0" style="-fx-text-fill: white;" text="Username :" textAlignment="RIGHT" />
-    <Button fx:id="modeDecision" alignment="CENTER" layoutX="640.0" layoutY="339.0" minHeight="38.0" minWidth="158.0" mnemonicParsing="false" onAction="#delete" prefHeight="65.0" prefWidth="171.0" style="-fx-background-color: red;" text="Delete" textAlignment="CENTER">
+    <Pane prefHeight="116.0" prefWidth="1705.0" styleClass="decorDark" stylesheets="@userManage.css" />
+    <Label alignment="CENTER_RIGHT" layoutX="289.0" layoutY="165.0" prefHeight="17.0" prefWidth="67.0" text="ID :" textAlignment="RIGHT" textFill="WHITE">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font></Label>
+    <Label alignment="CENTER_RIGHT" layoutX="1037.0" layoutY="326.0" text="Recovery :" textAlignment="RIGHT" textFill="WHITE">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font></Label>
+    <Label layoutX="1050.0" layoutY="197.0" text="Birthday:" textFill="WHITE">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font></Label>
+    <Label alignment="CENTER_RIGHT" layoutX="402.0" layoutY="380.0" text="First Name :" textAlignment="RIGHT" textFill="WHITE">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font></Label>
+    <Label alignment="CENTER_RIGHT" layoutX="1006.0" layoutY="263.0" text="SignUp Day :" textAlignment="RIGHT" textFill="WHITE">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font></Label>
+    <Label alignment="CENTER_RIGHT" layoutX="382.0" layoutY="281.0" prefHeight="35.0" prefWidth="171.0" text="Password :" textAlignment="RIGHT" textFill="WHITE">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font></Label>
+    <Label alignment="CENTER_RIGHT" layoutX="398.0" layoutY="226.0" prefHeight="35.0" prefWidth="160.0" text="Username :" textAlignment="RIGHT" textFill="WHITE">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font></Label>
+    <Button fx:id="modeDecision" alignment="CENTER" layoutX="1048.0" layoutY="415.0" minHeight="38.0" minWidth="158.0" mnemonicParsing="false" onAction="#delete" prefHeight="65.0" prefWidth="171.0" style="-fx-background-color: red;" text="Delete" textAlignment="CENTER">
         <font>
             <Font size="36.0" />
         </font></Button>
-    <Label alignment="CENTER_RIGHT" layoutX="301.0" layoutY="305.0" prefHeight="17.0" prefWidth="67.0" style="-fx-text-fill: white;" text="Saved :" textAlignment="RIGHT" />
-    <Label layoutX="690.0" layoutY="192.0" style="-fx-text-fill: white;" text="/">
+    <Label alignment="CENTER_RIGHT" layoutX="424.0" layoutY="331.0" prefHeight="35.0" prefWidth="129.0" text="Saved :" textAlignment="RIGHT" textFill="WHITE">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font></Label>
+    <Label alignment="CENTER" layoutX="1465.0" layoutY="197.0" prefHeight="35.0" prefWidth="30.0" style="-fx-text-fill: white;" text="/">
         <font>
-            <Font size="18.0" />
+            <Font size="30.0" />
         </font>
     </Label>
-    <Label layoutX="754.0" layoutY="192.0" style="-fx-text-fill: white;" text="/">
-        <font>
-            <Font size="18.0" />
-        </font>
-    </Label>
-    <Label alignment="CENTER_RIGHT" layoutX="306.0" layoutY="380.0" style="-fx-text-fill: white;" text="Last Name :" textAlignment="RIGHT" />
+    <Label alignment="CENTER_RIGHT" layoutX="404.0" layoutY="430.0" text="Last Name :" textAlignment="RIGHT" textFill="WHITE">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font></Label>
+   <Label alignment="CENTER" layoutX="1338.0" layoutY="197.0" prefHeight="35.0" prefWidth="30.0" style="-fx-text-fill: white;" text="/">
+      <font>
+         <Font size="30.0" />
+      </font>
+   </Label>
 </AnchorPane>

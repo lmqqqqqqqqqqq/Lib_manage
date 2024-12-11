@@ -12,8 +12,10 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 
 
 public class mainController {
@@ -53,6 +55,8 @@ public class mainController {
     private AnchorPane waitingScene;
     @FXML
     private VBox boader;
+    @FXML
+    private Label over;
     User user = LoginController.user;
 
     BooleanProperty darkMode = DarkModeController.darkMode;
@@ -182,18 +186,26 @@ public class mainController {
         searchButton.setStyle(null);
         String query = "select count(*) from user_books where idusers = ? and borrow = 1";
         String query1 = "select count(*) from user_books where idusers = ? and is_favourite = 1";
+        String query2 = "select count(*) from user_books where idusers = ? and due_date <= ?";
         try (Connection connection = DatabaseConnect.getconnect()) {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+            PreparedStatement preparedStatement2 = connection.prepareStatement(query2);
             preparedStatement.setInt(1, user.getId());
             preparedStatement1.setInt(1, user.getId());
+            preparedStatement2.setInt(1, user.getId());
+            preparedStatement2.setDate(2, Date.valueOf(LocalDate.now()));
             ResultSet resultSet = preparedStatement.executeQuery();
             ResultSet resultSet1 = preparedStatement1.executeQuery();
+            ResultSet resultSet2 = preparedStatement2.executeQuery();
             if (resultSet.next()) {
                 borrowAmount.setText(resultSet.getString(1));
             }
             if(resultSet1.next()) {
                 favouriteAmount.setText(resultSet1.getString(1));
+            }
+            if(resultSet2.next()) {
+                over.setText(resultSet2.getString(1));
             }
         } catch (Exception e) {
             e.printStackTrace();

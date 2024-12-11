@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="BookDetailsScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1006.0" prefWidth="1707.0" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.BookDetailsController">
+<AnchorPane fx:id="BookDetailsScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1006.0" prefWidth="1707.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.BookDetailsController">
    <children>
       <AnchorPane fx:id="bookDetailsPane" layoutX="26.0" layoutY="12.0" prefHeight="959.0" prefWidth="1652.0">
          <effect>
@@ -53,12 +53,12 @@
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="alert" layoutX="920.0" layoutY="795.0" prefHeight="32.0" prefWidth="429.0">
+            <Label fx:id="allert" layoutX="1118.0" layoutY="795.0" prefHeight="32.0" prefWidth="512.0">
                <font>
                   <Font name="Calibri Bold Italic" size="25.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="infoPane" layoutX="24.0" layoutY="4.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="861.0" prefWidth="1637.0">
+            <AnchorPane fx:id="infoPane" layoutX="18.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="853.0" prefWidth="1643.0">
                <children>
                   <AnchorPane layoutY="550.0">
                      <children>
@@ -156,14 +156,6 @@
                         <Font name="Calibri" size="25.0" />
                      </font>
                   </Label>
-                  <Button layoutY="7.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="49.0" prefWidth="158.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Back">
-                     <graphic>
-                        <ImageView fitHeight="35.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../image/back.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
                   <AnchorPane layoutX="469.0" layoutY="66.0" prefHeight="445.0" prefWidth="1128.0">
                      <children>
                         <Rectangle arcHeight="70.0" arcWidth="70.0" fill="#9a9a97" height="445.0" layoutX="7.0" layoutY="6.0" stroke="#ff8000" strokeType="INSIDE" strokeWidth="3.0" width="1128.0" />
@@ -179,5 +171,14 @@
             <ImageView fx:id="favourite" fitHeight="62.0" fitWidth="68.0" layoutX="244.0" layoutY="871.0" onMouseClicked="#favouriteOnAction" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
+      <Button layoutX="41.0" layoutY="24.0" mnemonicParsing="false" onAction="#backToSearchOnAction" prefHeight="62.0" prefWidth="176.0" styleClass="ButtonPane" stylesheets="@advancedSearch.css" text="Back">
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

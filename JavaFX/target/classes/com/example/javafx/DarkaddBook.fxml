@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@darkAddBook.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.addBookController">
+<AnchorPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@darkAddBook.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.addBookController">
     <children>
         <TableView fx:id="tableView" layoutX="48.0" layoutY="552.0" onMouseClicked="#handleRowClick" prefHeight="318.0" prefWidth="1614.0">
             <columns>
@@ -46,7 +46,7 @@
                 <Button fx:id="UPDATEMODE" mnemonicParsing="false" onAction="#updateMode" prefHeight="40.0" prefWidth="120.0" styleClass="modeselected" stylesheets="@userManage.css" text="UPDATE" />
             </children>
         </HBox>
-        <Pane layoutY="79.0" prefHeight="172.0" prefWidth="1705.0" styleClass="decorDark" stylesheets="@userManage.css" />
+        <Pane layoutY="79.0" prefHeight="50.0" prefWidth="1705.0" styleClass="decorDark" stylesheets="@userManage.css" />
         <Label layoutX="339.0" layoutY="257.0" prefHeight="17.0" prefWidth="25.0" text="ID :" textFill="WHITE" />
         <Label layoutX="318.0" layoutY="304.0" text="Author :" textFill="WHITE" />
         <Label layoutX="325.0" layoutY="355.0" text="Title :" textFill="WHITE" />
@@ -57,5 +57,6 @@
         <Label layoutX="599.0" layoutY="405.0" text="Language :" textFill="WHITE" />
         <Label layoutX="866.0" layoutY="257.0" text="ISBN :" textFill="WHITE" />
         <Button fx:id="Action" layoutX="891.0" layoutY="395.0" mnemonicParsing="false" styleClass="modeselected" stylesheets="@userManage.css" text="Button" />
+      <Button fx:id="changeImage" layoutX="101.0" layoutY="441.0" mnemonicParsing="false" onAction="#changeImageOnAction" prefHeight="40.0" prefWidth="136.0" styleClass="modeselected" stylesheets="@userManage.css" text="Choose image" />
     </children>
 </AnchorPane>

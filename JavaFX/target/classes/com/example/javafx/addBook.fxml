@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@userManage.css" xmlns="http://javafx.com/javafx/22.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.addBookController">
+<AnchorPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@userManage.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.addBookController">
     <children>
         <TableView fx:id="tableView" layoutX="48.0" layoutY="552.0" onMouseClicked="#handleRowClick" prefHeight="318.0" prefWidth="1614.0">
             <columns>
@@ -55,5 +55,6 @@
       <Label layoutX="599.0" layoutY="405.0" text="Language :" />
       <Label layoutX="866.0" layoutY="257.0" text="ISBN :" />
       <Button fx:id="Action" layoutX="891.0" layoutY="395.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="changeImage" layoutX="95.0" layoutY="454.0" mnemonicParsing="false" onAction="#changeImageOnAction" prefHeight="40.0" prefWidth="132.0" text="Choose image" />
     </children>
 </AnchorPane>
