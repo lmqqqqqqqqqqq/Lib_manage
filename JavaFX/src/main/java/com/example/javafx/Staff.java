@@ -1,10 +1,11 @@
 package com.example.javafx;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Staff extends User {
-    public Staff(int id, String firstname, String lastname, String username, String password, int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks) {
-        super(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatarLink, dayIn, isSave, newBooks);
+    public Staff(int id, String firstname, String lastname, String username, String password, int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks, LocalDate date, String reson) {
+        super(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatarLink, dayIn, isSave, newBooks, date, reson);
     }
     public Staff(int id, String username, String avatar) {
         super(id, username, avatar);
@@ -88,5 +89,6 @@ public class Staff extends User {
     public void setDayIn(String dayIn) {
         super.setDayIn(dayIn);
     }
+
 
 }

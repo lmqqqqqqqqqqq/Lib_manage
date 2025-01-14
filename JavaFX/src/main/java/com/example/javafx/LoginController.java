@@ -3,6 +3,7 @@ package com.example.javafx;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.List;
 
 public class LoginController {
@@ -35,14 +37,22 @@ public class LoginController {
     private AnchorPane pane;
     @FXML
     private CheckBox checkPass;
+    @FXML
+    private AnchorPane banAnchor;
+    @FXML
+    private Label banReason;
+    @FXML
+    private Label dayBan;
+
     /**
      * connect with database.
      */
     DatabaseConnect databaseConnect = new DatabaseConnect();
 
-//    public void initialize() {
-//        pane.requestFocus();
-//    }
+    public void initialize() {
+        banAnchor.setVisible(false);
+        banAnchor.setDisable(true);
+    }
     /**
      * check if the login button being clicked and move to main's interface.
      */
@@ -60,6 +70,13 @@ public class LoginController {
         if (event.getCode() == KeyCode.ENTER) {
             checkValid();
         }
+    }
+
+    public void backOnAction() {
+        banAnchor.setVisible(false);
+        banAnchor.setDisable(true);
+        pane.setEffect(null);
+        pane.setMouseTransparent(false);
     }
 
     /**
@@ -85,8 +102,22 @@ public class LoginController {
         } else {
             user = validLogin();
             if (user != null) {
-                Stage stage = (Stage) loginButton.getScene().getWindow();
-                SceneSwitcher.SwitchScene(stage, "mainScene.fxml");
+                if(user.getIsBan() != null) {
+                    GaussianBlur blur = new GaussianBlur(40);
+                    pane.setEffect(blur);
+                    pane.setMouseTransparent(true);
+                    banAnchor.setVisible(true);
+                    banAnchor.setDisable(false);
+                    dayBan.setText(user.getIsBan().toString());
+                    if(user.getBanReason() != null) {
+                        banReason.setText(user.getBanReason());
+                    } else {
+                        banReason.setText("No reason was given by Admin");
+                    }
+                } else {
+                    Stage stage = (Stage) loginButton.getScene().getWindow();
+                    SceneSwitcher.SwitchScene(stage, "mainScene.fxml");
+                }
             } else {
                 InvalidLoginLabel.setText("Invalid password or username. Please try again !");
                 InvalidLoginLabel.setStyle("-fx-text-fill: red");
@@ -143,13 +174,19 @@ public class LoginController {
                 String dayIn = resultSet.getString("currentDate");
                 int isSave = resultSet.getInt("isSave");
                 boolean staff = resultSet.getBoolean("staff");
+                Date sqlBanDate = resultSet.getDate("isBan");
+                LocalDate banDate = null;
+                if(sqlBanDate != null) {
+                    banDate = sqlBanDate.toLocalDate();
+                }
+                String reason = resultSet.getString("banReason");
                 ConnectAPI api = new ConnectAPI();
                 String query1 = "java&orderBy=newest";
                 List<Books> newBookList = api.getBooks(query1, "");
                 if (!staff) {
-                    return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
+                    return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList, banDate, reason);
                 } else
-                    return new Staff(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList);
+                    return new Staff(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList, banDate, reason);
             }
 
         } catch (Exception e) {

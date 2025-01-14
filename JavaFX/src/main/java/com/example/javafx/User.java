@@ -1,5 +1,6 @@
 package com.example.javafx;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class User implements OBJECT {
@@ -16,9 +17,11 @@ public class User implements OBJECT {
     private String dayIn;
     private Integer isSave;
     private List<Books> newBooks;
+    private LocalDate isBan;
+    private String banReason;
 
     public User(int id, String firstname, String lastname, String username, String password,
-                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks) {
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks, LocalDate isBan, String reason) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -32,10 +35,12 @@ public class User implements OBJECT {
         this.dayIn = dayIn;
         this.isSave = isSave;
         this.newBooks = newBooks;
+        this.isBan = isBan;
+        this.banReason = reason;
     }
 
     public User(int id, String firstname, String lastname, String username, String password,
-                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave) {
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, LocalDate isBan, String reason) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -48,6 +53,8 @@ public class User implements OBJECT {
         this.avatarLink = avatarLink;
         this.dayIn = dayIn;
         this.isSave = isSave;
+        this.isBan = isBan;
+        this.banReason = reason;
     }
 
     public User(String firstname, String lastname, String username, String password,
@@ -169,6 +176,22 @@ public class User implements OBJECT {
 
     public List<Books> getNewBooks() {
         return newBooks;
+    }
+
+    public LocalDate getIsBan() {
+        return isBan;
+    }
+
+    public void setIsBan(LocalDate isBan) {
+        this.isBan = isBan;
+    }
+
+    public String getBanReason() {
+        return banReason;
+    }
+
+    public void setBanReason(String banReason) {
+        this.banReason = banReason;
     }
 
     @Override

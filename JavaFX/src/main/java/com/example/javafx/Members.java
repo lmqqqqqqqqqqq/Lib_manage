@@ -1,10 +1,13 @@
 package com.example.javafx;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class Members extends User {
-    public Members(int id, String firstname, String lastname, String username, String password, int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks) {
-        super(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatarLink, dayIn, isSave, newBooks);
+    public Members(int id, String firstname, String lastname, String username, String password, int dayOfBirth, int monthOfBirth
+            , int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks, LocalDate date, String reson) {
+        super(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatarLink, dayIn, isSave, newBooks, date, reson);
     }
     public Members(int id, String username, String avatar) {
         super(id, username, avatar);

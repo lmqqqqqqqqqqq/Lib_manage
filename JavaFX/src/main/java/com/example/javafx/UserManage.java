@@ -9,9 +9,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.*;
 
 public class UserManage {
@@ -30,6 +32,8 @@ public class UserManage {
     @FXML private TableColumn<User, String> avatarCol;
     @FXML private TableColumn<User, String> signUpDateCol;
     @FXML private TableColumn<User, Integer> isSaveCol;
+    @FXML private TableColumn<User, String> reasonOfBan;
+    @FXML private TableColumn<User, Date> dayOfBan;
 
     @FXML private TextField id;
     @FXML private TextField username;
@@ -45,6 +49,8 @@ public class UserManage {
     @FXML private TextField signUpDate;
     @FXML private TextField isSave;
     @FXML private Label errorMessage;
+    @FXML private TextArea banReason;
+    @FXML private DatePicker banDate;
 
     @FXML
     private Button modeDecision;
@@ -66,10 +72,14 @@ public class UserManage {
         avatarCol.setCellValueFactory(new PropertyValueFactory<User,String>("avatarLink"));
         signUpDateCol.setCellValueFactory(new PropertyValueFactory<User,String>("dayIn"));
         isSaveCol.setCellValueFactory(new PropertyValueFactory<User,Integer>("isSave"));
+        reasonOfBan.setCellValueFactory(new PropertyValueFactory<User, String>("banReason"));
+        dayOfBan.setCellValueFactory(new PropertyValueFactory<User, Date>("isBan"));
+
 
         errorMessage.setVisible(false);
         userTableView.setItems(users);
         loadUsers();
+        reset();
     }
 
     public List<User> getAllUsers(Connection connect) throws SQLException {
@@ -89,8 +99,14 @@ public class UserManage {
             String avatar = res.getString("avatar");
             String signUpDate = res.getString("currentDate");
             Integer isSave = res.getInt("isSave");
+            Date sqlBanDate = res.getDate("isBan");
+            LocalDate banDate = null;
+            if(sqlBanDate != null) {
+                banDate = sqlBanDate.toLocalDate();
+            }
+            String reason = res.getString("banReason");
             User newUser = new User(idusers, firstName, lastName, userName, passWord, dayBirth, monthBirth,
-                    yearBirth, recoverCode, avatar, signUpDate, isSave);
+                    yearBirth, recoverCode, avatar, signUpDate, isSave, banDate, reason);
             result.add(newUser);
         }
         return result;
@@ -110,9 +126,7 @@ public class UserManage {
 
     private boolean checkempty() {
         return id.getText().isEmpty() || username.getText().isEmpty() || password.getText().isEmpty()
-                || firstname.getText().isEmpty() || lastname.getText().isEmpty() || dayOfBirth.getText().isEmpty()
-                || monthOfBirth.getText().isEmpty() || yearOfBirth.getText().isEmpty() || recoveryCode.getText().isEmpty()
-                || signUpDate.getText().isEmpty() || isSave.getText().isEmpty();
+                || banDate.getValue() == null || banDate.getValue().isBefore(LocalDate.now());
     }
 
     @FXML
@@ -130,27 +144,54 @@ public class UserManage {
         avatar.setImage(null);
         signUpDate.setText("");
         isSave.setText("");
-        errorMessage.setVisible(false);
+        banReason.setText("");
+        banDate.setValue(null);
         userTableView.getSelectionModel().clearSelection();
         loadUsers();
     }
 
-    private void delDB(Connection conn) {
-        try (PreparedStatement stm = conn.prepareStatement("Delete from users where idusers = ?")) {
+    private void banUser(Connection conn) {
+        try (PreparedStatement stm = conn.prepareStatement("update users set isBan = ?, banReason = ? where idusers = ?")) {
+            stm.setDate(1, Date.valueOf(banDate.getValue()));
+            stm.setString(2, banReason.getText());
+            stm.setString(3, id.getText());
+            stm.executeUpdate();
+            System.out.println("Ban user successfully from the database!");
+            errorMessage.setVisible(true);
+            errorMessage.setText("Ban user successfully from the database!");
+            errorMessage.setStyle("-fx-text-fill: green;");
+        } catch (SQLException e) {
+            System.out.println("Ban user failed!");
+            errorMessage.setVisible(true);
+            errorMessage.setText("Ban user failed!");
+            errorMessage.setStyle("-fx-text-fill: red;");
+            e.printStackTrace();
+        }
+    }
+
+    private void unbanUser(Connection conn) {
+        try (PreparedStatement stm = conn.prepareStatement("update users set isBan = null, banReason = null where idusers = ?")) {
             stm.setString(1, id.getText());
             stm.executeUpdate();
-            System.out.println("User deleted successfully from the database!");
+            System.out.println("Unban user successfully from the database!");
+            errorMessage.setVisible(true);
+            errorMessage.setText("Unban user successfully from the database!");
+            errorMessage.setStyle("-fx-text-fill: green;");
         } catch (SQLException e) {
-            System.out.println("Deletion failed!");
+            System.out.println("Unban user failed!");
+            errorMessage.setVisible(true);
+            errorMessage.setText("Unban user failed!");
+            errorMessage.setStyle("-fx-text-fill: red;");
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void delete() throws Exception {
+    private void banOnAction() throws Exception {
         if(checkempty()) {
             errorMessage.setVisible(true);
-            errorMessage.setText("Something is missing! Please check and then delete again.");
+            errorMessage.setText("Please choose your User and complete the user's banning section.");
+            errorMessage.setStyle("-fx-text-fill: red;");
             return;
         }
         StringBuilder error = new StringBuilder();
@@ -160,22 +201,20 @@ public class UserManage {
             errorMessage.setText(error.toString());
             errorMessage.setVisible(true);
         } else {
-            int targetId;
-            User u = userTableView.getSelectionModel().getSelectedItem();
-            if (u == null) {
-                targetId = Integer.parseInt(id.getText());
-            } else {
-                targetId = u.getId();
-            }
-            Iterator<User> it = users.iterator();
-            while (it.hasNext()) {
-                User next = it.next();
-                if (next.getId() == targetId) {
-                    it.remove();
-                    delDB(Connect.connect());
-                    reset();
-                }
-            }
+            banUser(Connect.connect());
+            reset();
+        }
+    }
+
+    @FXML
+    private void unBanOnAction() throws Exception {
+        if(banDate.getValue() == null) {
+            errorMessage.setVisible(true);
+            errorMessage.setText("User is not being banned");
+            errorMessage.setStyle("-fx-text-fill: red;");
+        } else {
+            unbanUser(Connect.connect());
+            reset();
         }
     }
 
@@ -196,6 +235,8 @@ public class UserManage {
             LoadImage.loadAvatarImage(avatar, u.getAvatarLink());
             signUpDate.setText(u.getDayIn());
             isSave.setText(Integer.toString(u.getIsSave()));
+            banDate.setValue(u.getIsBan());
+            banReason.setText(u.getBanReason());
         }
     }
 }

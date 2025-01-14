@@ -12,6 +12,40 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane prefHeight="554.0" prefWidth="689.0" styleClass="body" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.LoginController">
+   <AnchorPane fx:id="banAnchor" prefHeight="618.0" prefWidth="1066.0">
+      <children>
+         <Label fx:id="dayBan" alignment="CENTER" contentDisplay="CENTER" layoutX="475.0" layoutY="410.0" prefHeight="82.0" prefWidth="294.0">
+            <font>
+               <Font name="Calibri Bold Italic" size="40.0" />
+            </font>
+         </Label>
+         <Label fx:id="banReason" alignment="TOP_LEFT" layoutX="466.0" layoutY="265.0" prefHeight="112.0" prefWidth="822.0" wrapText="true">
+            <font>
+               <Font name="Calibri Bold" size="25.0" />
+            </font>
+         </Label>
+         <Label fx:id="banReason1" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="6.0" prefHeight="218.0" prefWidth="1273.0" text="Your account has been banned  !" textFill="RED">
+            <font>
+               <Font name="Calibri Bold Italic" size="40.0" />
+            </font>
+         </Label>
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="289.0" layoutY="415.0" prefHeight="74.0" prefWidth="182.0" text="Until :">
+            <font>
+               <Font name="Calibri Bold Italic" size="40.0" />
+            </font>
+         </Label>
+         <Label alignment="CENTER" contentDisplay="CENTER" layoutX="298.0" layoutY="254.0" prefHeight="121.0" prefWidth="164.0" text="Reason :">
+            <font>
+               <Font name="Calibri Bold Italic" size="40.0" />
+            </font>
+         </Label>
+         <Button layoutX="449.0" layoutY="527.0" mnemonicParsing="false" onAction="#backOnAction" onMouseExited="#loginExited" prefHeight="66.0" prefWidth="326.0" styleClass="Button" stylesheets="@style.css" text="Return to Login">
+            <font>
+               <Font name="Calibri Bold" size="15.0" />
+            </font>
+         </Button>
+      </children>
+   </AnchorPane>
    <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#paneclick" prefHeight="825.0" prefWidth="1311.0">
       <Label layoutX="64.0" layoutY="73.0" prefHeight="82.0" prefWidth="319.0" text="Login System" textFill="#ffae00">
          <font>

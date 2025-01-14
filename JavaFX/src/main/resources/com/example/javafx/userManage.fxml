@@ -1,57 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="1000.0" prefWidth="1705.0" stylesheets="@userManage.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafx.UserManage">
-    <TableView fx:id="userTableView" layoutX="48.0" layoutY="552.0" onMouseClicked="#handleRowClick" prefHeight="318.0" prefWidth="1614.0">
+    <TableView fx:id="userTableView" layoutX="4.0" layoutY="552.0" onMouseClicked="#handleRowClick" prefHeight="318.0" prefWidth="1698.0">
         <columns>
             <TableColumn fx:id="idCol" prefWidth="49.666664123535156" text="ID" />
-            <TableColumn fx:id="usernameCol" prefWidth="173.33333587646484" text="Username" />
-            <TableColumn fx:id="passwordCol" prefWidth="201.6666717529297" text="Password" />
-            <TableColumn fx:id="firstnameCol" prefWidth="274.0" text="FirstName" />
-            <TableColumn fx:id="lastnameCol" prefWidth="161.0" text="LastName" />
-            <TableColumn fx:id="dayOfBirthCol" prefWidth="204.0" text="BirthDay" />
-            <TableColumn fx:id="monthOfBirthCol" prefWidth="171.0" text="BirthMonth" />
-            <TableColumn fx:id="yearOfBirthCol" prefWidth="120.0" text="BirthYear" />
-            <TableColumn fx:id="recoveryCodeCol" prefWidth="99.0" text="RecoveryCode" />
-            <TableColumn fx:id="avatarCol" prefWidth="94.0" text="Avatar URL" />
-            <TableColumn fx:id="signUpDateCol" prefWidth="94.0" text="SignUp Date" />
-            <TableColumn fx:id="isSaveCol" prefWidth="94.0" text="SavedPass" />
+            <TableColumn fx:id="usernameCol" prefWidth="143.0" text="Username" />
+            <TableColumn fx:id="passwordCol" prefWidth="106.0" text="Password" />
+            <TableColumn fx:id="firstnameCol" prefWidth="124.0" text="FirstName" />
+            <TableColumn fx:id="lastnameCol" prefWidth="139.0" text="LastName" />
+            <TableColumn fx:id="dayOfBirthCol" prefWidth="98.0" text="BirthDay" />
+            <TableColumn fx:id="monthOfBirthCol" prefWidth="148.0" text="BirthMonth" />
+            <TableColumn fx:id="yearOfBirthCol" prefWidth="136.0" text="BirthYear" />
+            <TableColumn fx:id="recoveryCodeCol" prefWidth="128.0" text="RecoveryCode" />
+            <TableColumn fx:id="avatarCol" prefWidth="91.0" text="Avatar URL" />
+            <TableColumn fx:id="signUpDateCol" prefWidth="188.0" text="SignUp Date" />
+            <TableColumn fx:id="isSaveCol" prefWidth="85.0" text="SavedPass" />
+         <TableColumn fx:id="reasonOfBan" prefWidth="125.0" text="Reason " />
+         <TableColumn fx:id="dayOfBan" prefWidth="132.0" text="Date of ban" />
         </columns>
     </TableView>
-    <TextField fx:id="id" editable="false" layoutX="298.0" layoutY="106.0" prefHeight="25.0" prefWidth="149.0" promptText="id" styleClass="text-field" stylesheets="@style.css" />
+    <TextField fx:id="id" editable="false" layoutX="460.0" layoutY="112.0" prefHeight="35.0" prefWidth="237.0" promptText="id" styleClass="text-field" stylesheets="@style.css" />
     <TextField fx:id="username" editable="false" layoutX="465.0" layoutY="177.0" promptText="Username" stylesheets="@style.css" />
     <PasswordField fx:id="password" editable="false" layoutX="465.0" layoutY="231.0" promptText="Password" stylesheets="@style.css" />
     <TextField fx:id="firstname" editable="false" layoutX="471.0" layoutY="357.0" promptText="First Name" stylesheets="@style.css" />
     <TextField fx:id="lastname" editable="false" layoutX="471.0" layoutY="430.0" promptText="Last Name" stylesheets="@style.css" />
-    <TextField fx:id="dayOfBirth" editable="false" layoutX="1150.0" layoutY="160.0" prefHeight="35.0" prefWidth="55.0" promptText="Day" stylesheets="@style.css" />
-    <TextField fx:id="monthOfBirth" editable="false" layoutX="1241.0" layoutY="161.0" prefHeight="35.0" prefWidth="67.0" promptText="Month" stylesheets="@style.css" />
-    <TextField fx:id="yearOfBirth" editable="false" layoutX="1347.0" layoutY="161.0" prefHeight="35.0" prefWidth="80.0" promptText="Year" stylesheets="@style.css" />
-    <TextField fx:id="recoveryCode" editable="false" layoutX="1150.0" layoutY="308.0" promptText="Recovery" stylesheets="@style.css" />
-    <TextField fx:id="signUpDate" editable="false" layoutX="1150.0" layoutY="240.0" promptText="Sign up day" stylesheets="@style.css" />
+    <TextField fx:id="dayOfBirth" editable="false" layoutX="1149.0" layoutY="106.0" prefHeight="35.0" prefWidth="55.0" promptText="Day" stylesheets="@style.css" />
+    <TextField fx:id="monthOfBirth" editable="false" layoutX="1240.0" layoutY="107.0" prefHeight="35.0" prefWidth="67.0" promptText="Month" stylesheets="@style.css" />
+    <TextField fx:id="yearOfBirth" editable="false" layoutX="1346.0" layoutY="107.0" prefHeight="35.0" prefWidth="80.0" promptText="Year" stylesheets="@style.css" />
+    <TextField fx:id="recoveryCode" editable="false" layoutX="1149.0" layoutY="254.0" promptText="Recovery" stylesheets="@style.css" />
+    <TextField fx:id="signUpDate" editable="false" layoutX="1149.0" layoutY="186.0" promptText="Sign up day" stylesheets="@style.css" />
     <TextField fx:id="isSave" editable="false" layoutX="471.0" layoutY="290.0" prefHeight="28.0" prefWidth="171.0" promptText="Saved password" stylesheets="@style.css" />
-    <Label fx:id="errorMessage" layoutX="202.0" layoutY="500.0" prefHeight="17.0" prefWidth="629.0" textFill="RED">
+    <Label fx:id="errorMessage" layoutX="89.0" layoutY="491.0" prefHeight="35.0" prefWidth="742.0" textFill="RED">
       <font>
-         <Font name="Calibri Bold Italic" size="16.0" />
+         <Font name="Calibri Bold Italic" size="25.0" />
       </font>
     </Label>
     <ImageView fx:id="avatar" fitHeight="233.0" fitWidth="200.0" layoutX="61.0" layoutY="141.0" pickOnBounds="true" />
     <TextField fx:id="avatarLink" editable="false" layoutX="48.0" layoutY="444.0" prefHeight="25.0" prefWidth="226.0" promptText="Avatar URL" visible="false" />
     <Pane layoutY="-2.0" prefHeight="125.0" prefWidth="1705.0" styleClass="decor" stylesheets="@userManage.css" />
-    <Label alignment="CENTER_RIGHT" layoutX="958.0" layoutY="308.0" text="Recovery :" textAlignment="RIGHT">
+    <Label alignment="CENTER_RIGHT" layoutX="957.0" layoutY="254.0" text="Recovery :" textAlignment="RIGHT">
       <font>
          <Font name="Calibri Bold Italic" size="30.0" />
       </font></Label>
-    <Label layoutX="954.0" layoutY="166.0" text="BirthDate :">
+    <Label layoutX="953.0" layoutY="112.0" text="BirthDate :">
       <font>
          <Font name="Calibri Bold Italic" size="30.0" />
       </font></Label>
@@ -59,7 +64,7 @@
       <font>
          <Font name="Calibri Bold Italic" size="30.0" />
       </font></Label>
-    <Label alignment="CENTER_RIGHT" layoutX="930.0" layoutY="240.0" text="SignUp Day :" textAlignment="RIGHT">
+    <Label alignment="CENTER_RIGHT" layoutX="929.0" layoutY="186.0" text="SignUp Day :" textAlignment="RIGHT">
       <font>
          <Font name="Calibri Bold Italic" size="30.0" />
       </font></Label>
@@ -71,20 +76,16 @@
       <font>
          <Font name="Calibri Bold Italic" size="30.0" />
       </font></Label>
-    <Button fx:id="modeDecision" alignment="CENTER" layoutX="974.0" layoutY="415.0" minHeight="38.0" minWidth="158.0" mnemonicParsing="false" onAction="#delete" prefHeight="65.0" prefWidth="171.0" style="-fx-background-color: red;" text="Delete" textAlignment="CENTER">
-      <font>
-         <Font size="36.0" />
-      </font></Button>
    <Label alignment="CENTER_RIGHT" layoutX="319.0" layoutY="290.0" prefHeight="35.0" prefWidth="108.0" text="Saved :" textAlignment="RIGHT">
       <font>
          <Font name="Calibri Bold Italic" size="30.0" />
       </font></Label>
-   <Label alignment="CENTER" layoutX="1209.0" layoutY="154.0" prefHeight="42.0" prefWidth="26.0" text="/">
+   <Label alignment="CENTER" layoutX="1208.0" layoutY="100.0" prefHeight="42.0" prefWidth="26.0" text="/">
       <font>
          <Font size="30.0" />
       </font>
    </Label>
-   <Label alignment="CENTER" layoutX="1311.0" layoutY="156.0" prefHeight="35.0" prefWidth="26.0" text="/">
+   <Label alignment="CENTER" layoutX="1310.0" layoutY="102.0" prefHeight="35.0" prefWidth="26.0" text="/">
       <font>
          <Font size="30.0" />
       </font>
@@ -93,9 +94,42 @@
       <font>
          <Font name="Calibri Bold Italic" size="30.0" />
       </font></Label>
-    <Label alignment="CENTER_RIGHT" layoutX="202.0" layoutY="117.0" prefHeight="17.0" prefWidth="67.0" text="ID :" textAlignment="RIGHT">
+    <Label alignment="CENTER_RIGHT" layoutX="361.0" layoutY="112.0" prefHeight="17.0" prefWidth="67.0" text="ID :" textAlignment="RIGHT">
       <font>
          <Font name="Calibri Bold Italic" size="30.0" />
+      </font>
+   </Label>
+    <Button fx:id="modeDecision" alignment="CENTER" layoutX="933.0" layoutY="375.0" minHeight="38.0" minWidth="158.0" mnemonicParsing="false" onAction="#banOnAction" prefHeight="65.0" prefWidth="178.0" style="-fx-background-color: red;" text="Ban User" textAlignment="CENTER">
+      <font>
+         <Font name="Calibri Bold" size="50.0" />
+      </font></Button>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff130b" height="227.0" layoutX="899.0" layoutY="325.0" stroke="#f20000" strokeType="INSIDE" width="7.0" />
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff130b" height="8.0" layoutX="903.0" layoutY="325.0" stroke="#f20000" strokeType="INSIDE" width="803.0" />
+   <Label layoutX="1140.0" layoutY="358.0" text="Reason :">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font>
+   </Label>
+   <Label layoutX="1155.0" layoutY="458.0" text="Until :">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font>
+   </Label>
+   <TextArea fx:id="banReason" layoutX="1273.0" layoutY="345.0" prefHeight="77.0" prefWidth="359.0" />
+   <DatePicker fx:id="banDate" layoutX="1274.0" layoutY="453.0" prefHeight="45.0" prefWidth="200.0" />
+   <Button alignment="CENTER" layoutX="933.0" layoutY="481.0" minHeight="38.0" minWidth="158.0" mnemonicParsing="false" onAction="#unBanOnAction" prefHeight="65.0" prefWidth="178.0" style="-fx-background-color: green;" text="Unban User" textAlignment="CENTER">
+      <font>
+         <Font name="Calibri Bold" size="50.0" />
+      </font>
+   </Button>
+   <Label fx:id="notification" alignment="CENTER" contentDisplay="CENTER" layoutX="590.0" layoutY="889.0" prefHeight="85.0" prefWidth="446.0" textAlignment="RIGHT">
+      <font>
+         <Font name="Calibri Bold Italic" size="30.0" />
+      </font>
+   </Label>
+   <Label layoutX="1488.0" layoutY="447.0" prefHeight="35.0" prefWidth="38.0" text="*" textFill="RED">
+      <font>
+         <Font name="Calibri Bold Italic" size="50.0" />
       </font>
    </Label>
 </AnchorPane>
