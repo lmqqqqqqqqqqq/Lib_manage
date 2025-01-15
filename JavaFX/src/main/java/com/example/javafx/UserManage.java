@@ -34,6 +34,7 @@ public class UserManage {
     @FXML private TableColumn<User, Integer> isSaveCol;
     @FXML private TableColumn<User, String> reasonOfBan;
     @FXML private TableColumn<User, Date> dayOfBan;
+    @FXML private TableColumn<User, Integer> coin;
 
     @FXML private TextField id;
     @FXML private TextField username;
@@ -51,6 +52,7 @@ public class UserManage {
     @FXML private Label errorMessage;
     @FXML private TextArea banReason;
     @FXML private DatePicker banDate;
+    @FXML private TextField coinText;
 
     @FXML
     private Button modeDecision;
@@ -74,6 +76,7 @@ public class UserManage {
         isSaveCol.setCellValueFactory(new PropertyValueFactory<User,Integer>("isSave"));
         reasonOfBan.setCellValueFactory(new PropertyValueFactory<User, String>("banReason"));
         dayOfBan.setCellValueFactory(new PropertyValueFactory<User, Date>("isBan"));
+        coin.setCellValueFactory(new PropertyValueFactory<User, Integer>("coin"));
 
 
         errorMessage.setVisible(false);
@@ -100,13 +103,14 @@ public class UserManage {
             String signUpDate = res.getString("currentDate");
             Integer isSave = res.getInt("isSave");
             Date sqlBanDate = res.getDate("isBan");
+            Integer coinA = res.getInt("coin");
             LocalDate banDate = null;
             if(sqlBanDate != null) {
                 banDate = sqlBanDate.toLocalDate();
             }
             String reason = res.getString("banReason");
             User newUser = new User(idusers, firstName, lastName, userName, passWord, dayBirth, monthBirth,
-                    yearBirth, recoverCode, avatar, signUpDate, isSave, banDate, reason);
+                    yearBirth, recoverCode, avatar, signUpDate, isSave, banDate, reason, coinA);
             result.add(newUser);
         }
         return result;
@@ -146,6 +150,7 @@ public class UserManage {
         isSave.setText("");
         banReason.setText("");
         banDate.setValue(null);
+        coinText.setText("");
         userTableView.getSelectionModel().clearSelection();
         loadUsers();
     }
@@ -237,6 +242,7 @@ public class UserManage {
             isSave.setText(Integer.toString(u.getIsSave()));
             banDate.setValue(u.getIsBan());
             banReason.setText(u.getBanReason());
+            coinText.setText(Integer.toString(u.getCoin()));
         }
     }
 }

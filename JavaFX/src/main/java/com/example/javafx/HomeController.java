@@ -54,6 +54,8 @@ public class HomeController {
     private Label playLabel;
     @FXML
     private AnchorPane waitingScene;
+    @FXML
+    private Label coinLabel;
     User user = LoginController.user;
 
     public void initialize() throws Exception {
@@ -68,6 +70,7 @@ public class HomeController {
             }
             loadTrending();
             welcomeText.setText("Welcome user " + user.getLastname() + " " + user.getFirstname() + "! It's been " + numberOfDay() + " since the first time!");
+            coinLabel.setText(user.getCoin() + "");
             suggest.setDisable(true);
             suggest.setVisible(false);
             homeScene.setOnMouseClicked(e -> {

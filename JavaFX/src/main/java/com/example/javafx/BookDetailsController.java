@@ -60,7 +60,7 @@ public class BookDetailsController {
     private AnchorPane currentPane;
 
     private Books books;
-    User user = LoginController.user;
+    static User user = LoginController.user;
 
     public void initialize(Books book, AnchorPane currentPane) {
         this.currentPane = currentPane;
@@ -113,33 +113,58 @@ public class BookDetailsController {
         }
     }
 
-    public void borrowOnAction() {
-        LocalDate borrowDate = LocalDate.now();
-        LocalDate returnDate = borrowDate.plusDays(10);
-        String query = "update user_books set borrow = 1, borrow_date = ?, due_date = ? where idusers = ? and idbooks = ?";
-        try (Connection connection = db.connect()) {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setDate(1, Date.valueOf(borrowDate));
-            ps.setDate(2, Date.valueOf(returnDate));
-            ps.setInt(3, user.getId());
-            ps.setString(4, books.getId());
-            ps.executeUpdate();
-        } catch (Exception e) {
+    public static void updateCoin(Connection conn, int amount) {
+        user.setCoin(user.getCoin() + amount);
+        try (PreparedStatement stm = conn.prepareStatement("update users set coin = ? where idusers = ?")) {
+            stm.setInt(1, user.getCoin());
+            stm.setInt(2, user.getId());
+            stm.executeUpdate();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("System notifications");
-        alert.setHeaderText(null);
-        alert.setContentText("Borrow book successfully!\nYour book will expire on " + returnDate);
-        alert.showAndWait();
-
-        borrowButton.setDisable(true);
-        borrowButton.setVisible(false);
-        returnButton.setDisable(false);
-        returnButton.setVisible(true);
-        getDay();
     }
 
+    public void borrowOnAction() {
+        if(user.getCoin() < 1) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("System notifications");
+            alert.setHeaderText(null);
+            alert.setContentText("Your balance is insufficient to borrow this book\nYour Balance: " + user.getCoin());
+            alert.showAndWait();
+        } else {
+            user.setCoin(user.getCoin() - 100);
+            LocalDate borrowDate = LocalDate.now();
+            LocalDate returnDate = borrowDate.plusDays(10);
+            String query = "update user_books set borrow = 1, borrow_date = ?, due_date = ? where idusers = ? and idbooks = ?";
+            String query2 = "update users set coin = ? where idusers = ?";
+            try (Connection connection = db.connect()) {
+                PreparedStatement ps = connection.prepareStatement(query);
+                PreparedStatement ps2 = connection.prepareStatement(query2);
+                ps.setDate(1, Date.valueOf(borrowDate));
+                ps.setDate(2, Date.valueOf(returnDate));
+                ps.setInt(3, user.getId());
+                ps.setString(4, books.getId());
+                ps.executeUpdate();
+                ps2.setInt(1, user.getCoin());
+                ps2.setInt(2, user.getId());
+                ps2.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("System notifications");
+            alert.setHeaderText(null);
+            alert.setContentText("Borrow book successfully!\nYour book will expire on " + returnDate + "\nYou have spent 100 coins        Your Balance: " + user.getCoin());
+            alert.showAndWait();
+
+            borrowButton.setDisable(true);
+            borrowButton.setVisible(false);
+            returnButton.setDisable(false);
+            returnButton.setVisible(true);
+            getDay();
+        }
+    }
+    int total;
     public void getDay() {
         returnButton.setVisible(true);
         borrowdayLabel.setVisible(true);
@@ -168,9 +193,11 @@ public class BookDetailsController {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("System notifications");
                     alert.setHeaderText(null);
-                    alert.setContentText("Expired books! please RETURN now!");
+                    total = (int)ChronoUnit.DAYS.between(dueDate, date) * 100;
+                    alert.setContentText("Expired book! please RETURN now!\nYou were fined for returning book late for "
+                            + (int)ChronoUnit.DAYS.between(dueDate, date) + " days\nTotal fine amount: " + total + " coins");
                     alert.showAndWait();
-                } else if (ChronoUnit.DAYS.between(date, dueDate) <= 5) {
+                } else if (ChronoUnit.DAYS.between(dueDate, date) <= 5) {
                     allert.setText("Alert: " + ChronoUnit.DAYS.between(date, dueDate) + " days left before expiration");
                     allert.setStyle("-fx-text-fill: red;");
                 }
@@ -181,20 +208,41 @@ public class BookDetailsController {
     }
 
     public void returnOnAction() {
-        String query = "update user_books set borrow = 0, borrow_date = null, due_date = null where idusers = ? and idbooks = ?";
-        try (Connection connection = db.connect()) {
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, user.getId());
-            ps.setString(2, books.getId());
-            ps.executeUpdate();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        user.setCoin(user.getCoin() - total);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("System notifications");
         alert.setHeaderText(null);
-        alert.setContentText("Return book successfully!");
-        alert.showAndWait();
+        if(LocalDate.parse(returndayLabel.getText()).isAfter(LocalDate.now())) {
+            alert.setContentText("Return book successfully!");
+            alert.showAndWait();
+            String query = "update user_books set borrow = 0, borrow_date = null, due_date = null where idusers = ? and idbooks = ?";
+            try (Connection connection = db.connect()) {
+                PreparedStatement ps = connection.prepareStatement(query);
+                ps.setInt(1, user.getId());
+                ps.setString(2, books.getId());
+                ps.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            alert.setContentText("You were fined for returning book late for " +
+                    (int)ChronoUnit.DAYS.between(LocalDate.parse(returndayLabel.getText()), LocalDate.now()) + " days\nTotal fine amount: " + total + " coins\nYour Balance: " + user.getCoin());
+            alert.showAndWait();
+            String query = "update user_books set borrow = 0, borrow_date = null, due_date = null where idusers = ? and idbooks = ?";
+            String query2 = "update users set coin = ? where idusers = ?";
+            try (Connection connection = db.connect()) {
+                PreparedStatement ps = connection.prepareStatement(query);
+                PreparedStatement ps2 = connection.prepareStatement(query2);
+                ps.setInt(1, user.getId());
+                ps.setString(2, books.getId());
+                ps.executeUpdate();
+                ps2.setInt(1, user.getCoin());
+                ps2.setInt(2, user.getId());
+                ps2.executeUpdate();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         returnButton.setDisable(true);
         returnButton.setVisible(false);
         borrowButton.setDisable(false);

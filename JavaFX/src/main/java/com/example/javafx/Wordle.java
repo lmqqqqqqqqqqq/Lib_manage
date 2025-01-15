@@ -3,6 +3,7 @@ package com.example.javafx;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -11,6 +12,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.sql.Connection;
 
 public class Wordle {
     public Label headerLabel;
@@ -28,6 +31,7 @@ public class Wordle {
     private int highScore = 0;
     @FXML private Label highScoreLabel;
 
+    DatabaseConnect Connect = new DatabaseConnect();
     public void initialize() {
         startNewGame();
     }
@@ -51,7 +55,7 @@ public class Wordle {
     }
 
     @FXML
-    public void handleGuess() {
+    public void handleGuess() throws Exception {
         if (game.isGameOver()) {
             messageLabel.setText("Game Over! You've used all attempts. The word was " + game.getTargetWord());
             return;
@@ -78,6 +82,12 @@ public class Wordle {
             updateStreakHighScore();
             messageLabel.setText("Congratulations! You've guessed the word!");
             submitButton.setDisable(true);
+            BookDetailsController.updateCoin(Connect.connect(), 100);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("System notifications");
+            alert.setHeaderText(null);
+            alert.setContentText("Congratulations! You've been given 100 coins!");
+            alert.showAndWait();
         } else if (game.isGameOver()) {
             streakScore = 0;
             updateStreakScoreLabel();
@@ -122,7 +132,7 @@ public class Wordle {
     }
 
     @FXML
-    public void submitEnter(KeyEvent event) {
+    public void submitEnter(KeyEvent event) throws Exception {
         if (event.getCode() == KeyCode.ENTER) {
             handleGuess();
         }

@@ -19,9 +19,10 @@ public class User implements OBJECT {
     private List<Books> newBooks;
     private LocalDate isBan;
     private String banReason;
+    private int coin;
 
     public User(int id, String firstname, String lastname, String username, String password,
-                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks, LocalDate isBan, String reason) {
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, List<Books> newBooks, LocalDate isBan, String reason, int coin) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -37,10 +38,12 @@ public class User implements OBJECT {
         this.newBooks = newBooks;
         this.isBan = isBan;
         this.banReason = reason;
+        this.coin = coin;
     }
 
+
     public User(int id, String firstname, String lastname, String username, String password,
-                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, LocalDate isBan, String reason) {
+                int dayOfBirth, int monthOfBirth, int yearOfBirth, String recoveryCode, String avatarLink, String dayIn, Integer isSave, LocalDate isBan, String reason, Integer coin) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -55,6 +58,7 @@ public class User implements OBJECT {
         this.isSave = isSave;
         this.isBan = isBan;
         this.banReason = reason;
+        this.coin = coin;
     }
 
     public User(String firstname, String lastname, String username, String password,
@@ -192,6 +196,17 @@ public class User implements OBJECT {
 
     public void setBanReason(String banReason) {
         this.banReason = banReason;
+    }
+
+    public int getCoin() {
+        return coin;
+    }
+
+    public void setCoin(int coin) {
+        if(coin < 0) {
+            coin = 0;
+        }
+        this.coin = coin;
     }
 
     @Override

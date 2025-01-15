@@ -175,6 +175,7 @@ public class LoginController {
                 int isSave = resultSet.getInt("isSave");
                 boolean staff = resultSet.getBoolean("staff");
                 Date sqlBanDate = resultSet.getDate("isBan");
+                Integer coinA = resultSet.getInt("coin");
                 LocalDate banDate = null;
                 if(sqlBanDate != null) {
                     banDate = sqlBanDate.toLocalDate();
@@ -184,9 +185,9 @@ public class LoginController {
                 String query1 = "java&orderBy=newest";
                 List<Books> newBookList = api.getBooks(query1, "");
                 if (!staff) {
-                    return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList, banDate, reason);
+                    return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList, banDate, reason, coinA);
                 } else
-                    return new Staff(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList, banDate, reason);
+                    return new Staff(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList, banDate, reason, coinA);
             }
 
         } catch (Exception e) {
