@@ -10,7 +10,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         try {
-            Image icon = new Image(getClass().getResourceAsStream("/com/example/image/uy.jpg"));
+            Image icon = new Image(getClass().getResourceAsStream("/com/example/image/library.png"));
             stage.getIcons().add(icon);
         } catch (Exception e) {
             System.err.println("Không tìm thấy file icon: " + e.getMessage());

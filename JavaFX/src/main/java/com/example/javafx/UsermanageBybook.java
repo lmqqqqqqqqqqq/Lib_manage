@@ -73,7 +73,8 @@ public class UsermanageBybook {
                     status = "Expired";
                     Status.setStyle("-fx-text-fill: red;");
                 } else {
-                    status = STR."\{ChronoUnit.DAYS.between(date, returnDate)} days";
+                    status = ChronoUnit.DAYS.between(date, returnDate) + " days";
+
                 }
                 books.add(new BorrowRS(idusers, name, borrowDate, returnDate, imageLink, status));
             }
