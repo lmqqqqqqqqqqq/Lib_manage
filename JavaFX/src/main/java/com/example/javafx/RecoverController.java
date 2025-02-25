@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class RecoverController {
+public class    RecoverController {
     @FXML
     private Label InvalidLoginLabel;
     @FXML

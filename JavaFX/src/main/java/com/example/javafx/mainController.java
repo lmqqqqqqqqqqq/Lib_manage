@@ -272,6 +272,7 @@ public class mainController {
                 SceneSwitcher.SwitchScene(stage, "Login.fxml");
             }
         });
+        user = null;
     }
 
     public void addBookOnAction() throws IOException {

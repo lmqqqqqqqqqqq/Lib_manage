@@ -62,6 +62,7 @@ public class BookDetailsController {
     private Books books;
     static User user = LoginController.user;
 
+    DatabaseConnect connect = new DatabaseConnect();
     public void initialize(Books book, AnchorPane currentPane) {
         this.currentPane = currentPane;
         books = book;
@@ -124,30 +125,25 @@ public class BookDetailsController {
         }
     }
 
-    public void borrowOnAction() {
-        if(user.getCoin() < 1) {
+    public void borrowOnAction() throws Exception {
+        if(user.getCoin() < 100) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("System notifications");
             alert.setHeaderText(null);
             alert.setContentText("Your balance is insufficient to borrow this book\nYour Balance: " + user.getCoin());
             alert.showAndWait();
         } else {
-            user.setCoin(user.getCoin() - 100);
             LocalDate borrowDate = LocalDate.now();
             LocalDate returnDate = borrowDate.plusDays(10);
+            updateCoin(connect.connect(), -100);
             String query = "update user_books set borrow = 1, borrow_date = ?, due_date = ? where idusers = ? and idbooks = ?";
-            String query2 = "update users set coin = ? where idusers = ?";
             try (Connection connection = db.connect()) {
                 PreparedStatement ps = connection.prepareStatement(query);
-                PreparedStatement ps2 = connection.prepareStatement(query2);
                 ps.setDate(1, Date.valueOf(borrowDate));
                 ps.setDate(2, Date.valueOf(returnDate));
                 ps.setInt(3, user.getId());
                 ps.setString(4, books.getId());
                 ps.executeUpdate();
-                ps2.setInt(1, user.getCoin());
-                ps2.setInt(2, user.getId());
-                ps2.executeUpdate();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -183,7 +179,7 @@ public class BookDetailsController {
                 LocalDate date = LocalDate.now();
                 LocalDate dueDate = LocalDate.parse(rs.getString("due_date"));
                 if (date.isEqual(dueDate) || date.isAfter(dueDate)) {
-                    allert.setText("Alert: The book is expired");
+                    allert.setText("Alert: The book has been expired for " + (int)ChronoUnit.DAYS.between(dueDate, date) + " days");
                     allert.setStyle("-fx-text-fill: red;");
                     returnButton.setDisable(false);
                     returnButton.setVisible(true);

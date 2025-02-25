@@ -56,7 +56,7 @@ public class LoginController {
     /**
      * check if the login button being clicked and move to main's interface.
      */
-    public void loginButtonClickedOnAction() {
+    public void loginButtonClickedOnAction() throws Exception {
         checkValid();
     }
 
@@ -66,7 +66,7 @@ public class LoginController {
      *
      * @param event enter.
      */
-    public void loginButtonPressed(KeyEvent event) {
+    public void loginButtonPressed(KeyEvent event) throws Exception {
         if (event.getCode() == KeyCode.ENTER) {
             checkValid();
         }
@@ -85,7 +85,7 @@ public class LoginController {
 
     public static User user;
 
-    public void checkValid() {
+    public void checkValid() throws Exception {
         if (usernameTextField.getText().isBlank() && enterPasswordField.getText().isBlank()) {
             InvalidLoginLabel.setText("You need to enter a username and password");
             InvalidLoginLabel.setStyle("-fx-text-fill: red");
@@ -102,7 +102,17 @@ public class LoginController {
         } else {
             user = validLogin();
             if (user != null) {
-                if(user.getIsBan() != null) {
+                if(user.getIsBan() != null && user.getIsBan().isBefore(LocalDate.now())) {
+                    user.setIsBan(null);
+                    String query = "UPDATE users set isBan = ?, banReason = ? WHERE username = ?";
+                    try(Connection connection = databaseConnect.connect()) {
+                        PreparedStatement preparedStatement = connection.prepareStatement(query);
+                        preparedStatement.setString(1, null);
+                        preparedStatement.setString(2, null);
+                        preparedStatement.setString(3, user.getUsername());
+                        preparedStatement.executeUpdate();
+                    }
+                } else if(user.getIsBan() != null) {
                     GaussianBlur blur = new GaussianBlur(40);
                     pane.setEffect(blur);
                     pane.setMouseTransparent(true);
