@@ -20,6 +20,7 @@ Nhóm
 - Được tích hợp với hệ thống quản lí thư viện giúp người quản lí có thể quản lí được hệ thống sách, người dùng và quản lí việc mượn, trả sách của người dùng.
 - Ứng dụng có chế độ nền tối, sáng hỗ trợ người dùng sử dụng.
 - Ứng dụng có tích hợp thêm game wordle giúp người dùng có thể biết thêm nhiều từ tiếng Anh.
+- Tích hợp coin để người dùng có thể sử dụng vào việc mượn, trả sách, nhận thưởng.
 - Có hệ thống đăng nhập, đăng kí tài khoản với tính năng bảo mật đổi mật khẩu hay quên mật khẩu thông qua sử dụng Recovery Key cho mỗi người dùng.
 - Ứng dụng chủ yếu sử dụng tiếng Anh
 ## UML diagram <a name="uml"></a>
@@ -30,7 +31,7 @@ Nhóm
 ## Sử dụng <a name="usage"></a>
 1. Người dùng tạo tài khoản khi vào ứng dụng.
 2. tạo tài khoản đã có thể sử dụng như bình thường.
-3. Đối với người quản lí có thêm chức năng quản lí thư viện, truy cập bằng nút thứ 5 từ trên xuống ở thanh điều hương bên trái.
+3. Đối với người quản lí có thêm chức năng quản lí thư viện, quản lí người dùng, truy cập bằng nút thứ 5 từ trên xuống ở thanh điều hương bên trái.
 ## Những phát triển trong tương lai <a name="improvemnets"></a>
 - Thêm chức năng đọc sách.
 - tối ưu kết nối tới cơ sở dữ liệu.
@@ -38,4 +39,3 @@ Nhóm
 ## Trạng thái dự án <a name="status"></a>
 Đang phát triển
 ## Ghi chú <a name="note"></a>
-code được lấy cảm hứng từ thầy CHATGPT
