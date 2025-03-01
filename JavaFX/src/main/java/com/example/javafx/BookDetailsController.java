@@ -130,7 +130,7 @@ public class BookDetailsController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("System notifications");
             alert.setHeaderText(null);
-            alert.setContentText("Your balance is insufficient to borrow this book\nYour Balance: " + user.getCoin());
+            alert.setContentText("Your balance is insufficient to borrow this book\nYour Balance: " + user.getCoin() + "coins");
             alert.showAndWait();
         } else {
             LocalDate borrowDate = LocalDate.now();
@@ -150,7 +150,7 @@ public class BookDetailsController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("System notifications");
             alert.setHeaderText(null);
-            alert.setContentText("Borrow book successfully!\nYour book will expire on " + returnDate + "\nYou have spent 100 coins        Your Balance: " + user.getCoin());
+            alert.setContentText("Borrow book successfully!\nYour book will expire on " + returnDate + "\nYou have spent 100 coins        Your Balance: " + user.getCoin() + " coins");
             alert.showAndWait();
 
             borrowButton.setDisable(true);
@@ -204,7 +204,6 @@ public class BookDetailsController {
     }
 
     public void returnOnAction() {
-        user.setCoin(user.getCoin() - total);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("System notifications");
         alert.setHeaderText(null);
@@ -221,35 +220,41 @@ public class BookDetailsController {
                 e.printStackTrace();
             }
         } else {
-            alert.setContentText("You were fined for returning book late for " +
-                    (int)ChronoUnit.DAYS.between(LocalDate.parse(returndayLabel.getText()), LocalDate.now()) + " days\nTotal fine amount: " + total + " coins\nYour Balance: " + user.getCoin());
-            alert.showAndWait();
-            String query = "update user_books set borrow = 0, borrow_date = null, due_date = null where idusers = ? and idbooks = ?";
-            String query2 = "update users set coin = ? where idusers = ?";
-            try (Connection connection = db.connect()) {
-                PreparedStatement ps = connection.prepareStatement(query);
-                PreparedStatement ps2 = connection.prepareStatement(query2);
-                ps.setInt(1, user.getId());
-                ps.setString(2, books.getId());
-                ps.executeUpdate();
-                ps2.setInt(1, user.getCoin());
-                ps2.setInt(2, user.getId());
-                ps2.executeUpdate();
-            } catch (Exception e) {
-                e.printStackTrace();
+                if (total > user.getCoin()) {
+                    alert.setContentText("Your balance is not enough to cover the penalty\nYor balance " + user.getCoin() + " coins          Your fine : " + total + " coins");
+                    alert.showAndWait();
+                } else {
+                    user.setCoin(user.getCoin() - total);
+                    alert.setContentText("You were fined for returning book late for " +
+                            (int)ChronoUnit.DAYS.between(LocalDate.parse(returndayLabel.getText()), LocalDate.now()) + " days\nTotal fine amount: " + total + " coins\nYour Balance: " + user.getCoin() + " coins");
+                    alert.showAndWait();
+                    String query = "update user_books set borrow = 0, borrow_date = null, due_date = null where idusers = ? and idbooks = ?";
+                    String query2 = "update users set coin = ? where idusers = ?";
+                    try (Connection connection = db.connect()) {
+                        PreparedStatement ps = connection.prepareStatement(query);
+                        PreparedStatement ps2 = connection.prepareStatement(query2);
+                        ps.setInt(1, user.getId());
+                        ps.setString(2, books.getId());
+                        ps.executeUpdate();
+                        ps2.setInt(1, user.getCoin());
+                        ps2.setInt(2, user.getId());
+                        ps2.executeUpdate();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    returnButton.setDisable(true);
+                    returnButton.setVisible(false);
+                    borrowButton.setDisable(false);
+                    borrowButton.setVisible(true);
+                    borrowdayLabel.setVisible(false);
+                    returndayLabel.setVisible(false);
+                    borrowday.setVisible(false);
+                    returnday.setVisible(false);
+                    infoPane.setEffect(null);
+                    infoPane.setMouseTransparent(false);
+                    allert.setVisible(false);
+                }
             }
-        }
-        returnButton.setDisable(true);
-        returnButton.setVisible(false);
-        borrowButton.setDisable(false);
-        borrowButton.setVisible(true);
-        borrowdayLabel.setVisible(false);
-        returndayLabel.setVisible(false);
-        borrowday.setVisible(false);
-        returnday.setVisible(false);
-        infoPane.setEffect(null);
-        infoPane.setMouseTransparent(false);
-        allert.setVisible(false);
     }
 
     public void favouriteOnAction() {

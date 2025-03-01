@@ -105,7 +105,7 @@ public class NewPasswordController {
         try (Connection connection = databaseConnect.connect()) {
             String password1 = setPasswordField.getText();
             String username1 = RecoverController.Username;
-            String query = "update users set password = ? where username = ?";
+            String query = "update users set password = ?, isSave = 0 where username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, password1);
             preparedStatement.setString(2, username1);

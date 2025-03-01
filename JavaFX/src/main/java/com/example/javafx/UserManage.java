@@ -38,7 +38,7 @@ public class UserManage {
 
     @FXML private TextField id;
     @FXML private TextField username;
-    @FXML private PasswordField password;
+    @FXML private TextField password;
     @FXML private TextField firstname;
     @FXML private TextField lastname;
     @FXML private TextField dayOfBirth;
