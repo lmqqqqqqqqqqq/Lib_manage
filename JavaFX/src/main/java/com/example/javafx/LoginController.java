@@ -192,7 +192,7 @@ public class LoginController {
                 }
                 String reason = resultSet.getString("banReason");
                 ConnectAPI api = new ConnectAPI();
-                String query1 = "java&orderBy=newest";
+                String query1 = "ironman&orderBy=newest";
                 List<Books> newBookList = api.getBooks(query1, "");
                 if (!staff) {
                     return new Members(id, firstname, lastname, username, password, dayOfBirth, monthOfBirth, yearOfBirth, recoveryCode, avatar, dayIn, isSave, newBookList, banDate, reason, coinA);

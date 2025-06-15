@@ -64,6 +64,7 @@ public class BookDetailsController {
 
     DatabaseConnect connect = new DatabaseConnect();
     public void initialize(Books book, AnchorPane currentPane) {
+        user = LoginController.user;
         this.currentPane = currentPane;
         books = book;
         bookNameLabel.setText(books.getTitle());
