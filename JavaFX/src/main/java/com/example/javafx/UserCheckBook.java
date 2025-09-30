@@ -75,7 +75,8 @@ public class UserCheckBook {
                     status = "Expired";
                     Status.setStyle("-fx-text-fill: red;");
                 } else {
-                    status = STR."\{ChronoUnit.DAYS.between(date, returnDate)} days";
+                    long days = ChronoUnit.DAYS.between(date, returnDate);
+                    status = String.format("%d days", days);
                 }
                 String imageLink = rs.getString("image");
                 books.add(new BorrowRS(idbooks, title, author, borrowDate, returnDate, imageLink, status));

@@ -102,7 +102,7 @@ public class Wordle {
     }
 
     private void updateStreakScoreLabel() {
-        streakScoreLabel.setText(STR."Streak: \{streakScore}");
+        streakScoreLabel.setText("Streak: " + streakScore);
     }
 
     @FXML

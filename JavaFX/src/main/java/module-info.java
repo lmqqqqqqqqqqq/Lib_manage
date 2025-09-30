@@ -10,6 +10,7 @@ module com.example.javafx {
     requires com.google.gson;
     requires okhttp3;
     requires jdk.jfr;
+    requires io.github.cdimascio.dotenv.java;
 
     opens com.example.javafx to javafx.fxml;
     exports com.example.javafx;
