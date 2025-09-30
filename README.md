@@ -43,3 +43,11 @@ Nhóm
 
 ---------------------
 FOR DEV, use db connection with .env file
+## ⚙️ Environment Variables
+
+When developing, create a new **.env** file with the following format:
+
+```env
+DB_URL=jdbc:mysql://localhost:3306/lib_schema
+DB_USERNAME="youroot"
+DB_PASSWORD="yourpassword"
