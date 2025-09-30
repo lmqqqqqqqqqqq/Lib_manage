@@ -39,3 +39,7 @@ Nhóm
 ## Trạng thái dự án <a name="status"></a>
 Đang phát triển
 ## Ghi chú <a name="note"></a>
+
+
+---------------------
+FOR DEV, use db connection with .env file
